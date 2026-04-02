@@ -2,7 +2,7 @@ using G6_BevoTunes.Models;
 using Microsoft.Identity.Client;
 using System.ComponentModel.DataAnnotations;
 
-namespace G6_BevoTunes.Models.ViewModels
+namespace G6_BevoTunes.Models
 {
     public class Promotion
     {
