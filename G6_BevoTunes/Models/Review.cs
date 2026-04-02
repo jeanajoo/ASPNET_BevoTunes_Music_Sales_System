@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using G6_BevoTunes.Models.ViewModels;
 
 namespace G6_BevoTunes.Models
 {

@@ -24,7 +24,7 @@ namespace G6_BevoTunes.DAL
          }
 
         //TODO: Add Dbsets here.  Products is included as an example.  
-        public DbSet<Product> Products { get; set; }
+        // public DbSet<Product> Products { get; set; }
 
     }
 }
