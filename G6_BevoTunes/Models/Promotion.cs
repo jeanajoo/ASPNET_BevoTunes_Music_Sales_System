@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace G6_BevoTunes.Models.ViewModels
 {
-    public class Promotions
+    public class Promotion
     {
         public int PromotionId { get; set; }
 
