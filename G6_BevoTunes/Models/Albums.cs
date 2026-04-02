@@ -9,7 +9,7 @@ namespace G6_BevoTunes.Models.ViewModels
 
         public string? AlbumName { get; set; }
 
-        public string? AlbumPrice { get; set; }
+        public decimal AlbumPrice { get; set; }
 
         public string? AlbumCover { get; set; }
 
