@@ -12,7 +12,7 @@ public AppUser Customer {get; set;}
 public CustCreditCard Card {get; set;}
 
 [Display(Name="Recipient")]
-public AppUser? Recipient {get; set;}
+public AppUser Recipient {get; set;}
 
 [Display(Name="Order Details:")]
 public List<OrderDetail> OrderDetails {get; set;}
