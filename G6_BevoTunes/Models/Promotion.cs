@@ -8,8 +8,10 @@ namespace G6_BevoTunes.Models.ViewModels
     {
         public int PromotionId { get; set; }
 
+        [Display(Name = "Promotion Type")]
         public string? PromotionType { get; set; }
 
+        [Display(Name = "Discount Price")]
         public decimal DiscountPrice { get; set; }
 
         public bool PromotionActive { get; set; }

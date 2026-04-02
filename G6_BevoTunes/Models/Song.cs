@@ -7,8 +7,10 @@ namespace G6_BevoTunes.Models.ViewModels
     {
         public int SongId { get; set; }
 
+        [Display(Name = "Song Title")]
         public string? SongTitle { get; set; }
 
+        [Display(Name = "Song Price")]
         public decimal SongPrice { get; set; }
 
         public List<Album>? Albums { get; set; }
