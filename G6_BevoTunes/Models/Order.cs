@@ -11,8 +11,8 @@ public AppUser Customer {get; set;}
 [Display(Name="Using Card:")]
 public CustCreditCard Card {get; set;}
 
-[Display(Name="For A Friend?")]
-public AppUser? Friend {get; set;}
+[Display(Name="Recipient")]
+public AppUser? Recipient {get; set;}
 
 [Display(Name="Order Details:")]
 public List<OrderDetail> OrderDetails {get; set;}

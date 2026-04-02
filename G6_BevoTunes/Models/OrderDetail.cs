@@ -11,10 +11,10 @@ public class OrderDetail
 
     // analogous to product;
     [Display(Name="Album")]
-    public Int32 Album {get; set;}
+    public Album? Album {get; set;}
     
     [Display(Name="Song")]
-    public Int32 Song {get; set;} 
+    public Song? Song {get; set;} 
 
     [Display(Name="Price")]
     public Decimal PurchasedPrice {get; set;}
