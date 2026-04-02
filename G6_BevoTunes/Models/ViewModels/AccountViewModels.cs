@@ -51,6 +51,14 @@ namespace G6_BevoTunes.Models
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
 
+        [Required(ErrorMessage = "Address is required.")]
+        [Display(Name = "Address")]
+        public String Address { get; set; }
+
+        [Required(ErrorMessage = "Zip code is required.")]
+        [Display(Name = "Zip Code")]
+        public String ZipCode { get; set; }
+
         //NOTE: Here is the logic for putting in a password
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
