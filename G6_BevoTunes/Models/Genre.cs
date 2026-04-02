@@ -7,6 +7,7 @@ namespace G6_BevoTunes.Models.ViewModels
     {
         public int GenreId { get; set; }
 
+        [Display(Name = "Genre Name")]
         public string? GenreName { get; set; }
 
     }
