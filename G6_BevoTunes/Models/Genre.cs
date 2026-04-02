@@ -1,7 +1,7 @@
 using G6_BevoTunes.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace G6_BevoTunes.Models.ViewModels
+namespace G6_BevoTunes.Models
 {
     public class Genre
     {
