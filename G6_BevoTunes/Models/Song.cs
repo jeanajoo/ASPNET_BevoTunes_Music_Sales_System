@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace G6_BevoTunes.Models.ViewModels
 {
-    public class Songs
+    public class Song
     {
         public int SongId { get; set; }
 
@@ -11,9 +11,9 @@ namespace G6_BevoTunes.Models.ViewModels
 
         public decimal SongPrice { get; set; }
 
-        public List<Albums>? Albums { get; set; }
+        public List<Album>? Albums { get; set; }
 
-        public List<Artists>? Artists { get; set; }
+        public List<Artist>? Artists { get; set; }
 
         public List<Genre>? Genre { get; set; }
     }

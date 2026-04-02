@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace G6_BevoTunes.Models.ViewModels
 {
-    public class Artists 
+    public class Artist 
     {
         public int ArtistId { get; set; }
 
