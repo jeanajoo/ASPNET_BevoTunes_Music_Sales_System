@@ -64,6 +64,9 @@ namespace G6_BevoTunes.Utilities
                 //FirstName is included as an example
                 dbUser.FirstName = aum.User.FirstName;
                 dbUser.LastName = aum.User.LastName;
+                dbUser.Address = aum.User.Address;
+                dbUser.ZipCode = aum.User.ZipCode;
+                dbUser.Status = aum.User.Status;
 
                 //update the database
                 _context.Update(dbUser);
