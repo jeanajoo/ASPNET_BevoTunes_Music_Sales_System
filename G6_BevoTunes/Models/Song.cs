@@ -17,16 +17,16 @@ namespace G6_BevoTunes.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal SongPrice { get; set; }
 
-        public List<Album>? Albums { get; set; }
+        public List<Album> Albums { get; set; } = new List<Album>();
 
-        public List<Artist>? Artists { get; set; }
+        public List<Artist> Artists { get; set; } = new List<Artist>();
 
-        public List<Genre>? Genre { get; set; }
-
-        public List<Promotion>? Promotions { get; set; }
-
-        public List<OrderDetail>? OrderDetails { get; set; }    
+        public List<Genre> Genres { get; set; } = new List<Genre>();
 
         public List<Review>? Reviews { get; set; }
+
+        public List<OrderDetail>? OrderDetails { get; set; }
+
+        public List<Promotion>? Promotions { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 using G6_BevoTunes.Models;
-using Microsoft.Identity.Client;
 using System.ComponentModel.DataAnnotations;
 
 namespace G6_BevoTunes.Models
@@ -26,11 +25,10 @@ namespace G6_BevoTunes.Models
         [Display(Name = "Promotion Active")]
         public bool PromotionActive { get; set; }
 
-        public List<Song>? Songs { get; set; }
+        public List<Song> Songs { get; set; } = new List<Song>();
 
-        public List<Album>? Albums { get; set; }
+        public List<Album> Albums { get; set; } = new List<Album>();
 
-        public List<Artist>? Artists { get; set; }
+        public List<Artist> Artists { get; set; } = new List<Artist>();
     }
-
 }

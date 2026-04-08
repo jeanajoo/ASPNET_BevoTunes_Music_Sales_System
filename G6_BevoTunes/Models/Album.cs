@@ -22,15 +22,16 @@ namespace G6_BevoTunes.Models
         [Url]
         public string? AlbumCover { get; set; }
 
-        public List<Artist>? Artists { get; set; }
+        public List<Artist> Artists { get; set; } = new List<Artist>();
 
-        public List<Genre>? Genre { get; set; }  
+        public List<Genre> Genres { get; set; } = new List<Genre>();
 
         public List<Song>? Songs { get; set; }
 
         public List<Review>? Reviews { get; set; }
 
-        public List<Promotion>? Promotions { get; set; }
+        public List<OrderDetail>? OrderDetails { get; set; }
 
+        public List<Promotion>? Promotions { get; set; }
     }
 }

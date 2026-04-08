@@ -1,30 +1,54 @@
 using Microsoft.EntityFrameworkCore;
 
-//TODO: Update this using statement to include your project name
 using G6_BevoTunes.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-//TODO: Make this namespace match your project name
 namespace G6_BevoTunes.DAL
 {
-    //NOTE: This class definition references the user class for this project.  
-    //If your User class is called something other than AppUser, you will need
-    //to change it in the line below
-
     public class AppDbContext: IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){ }
 
          protected override void OnModelCreating(ModelBuilder builder)
          {
-             //this code makes sure the database is re-created on the $5/month Azure tier
              builder.HasPerformanceLevel("Basic");
              builder.HasServiceTier("Basic");
              base.OnModelCreating(builder);
+
+             builder.Entity<Order>()
+                 .HasOne(o => o.Customer)
+                 .WithMany(u => u.Orders)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+             builder.Entity<Order>()
+                 .HasOne(o => o.Recipient)
+                 .WithMany()
+                 .OnDelete(DeleteBehavior.Restrict);
+
+             builder.Entity<CustCreditCard>()
+                 .HasOne(c => c.User)
+                 .WithMany(u => u.CreditCards)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+             builder.Entity<Review>()
+                 .HasOne(r => r.Reviewer)
+                 .WithMany(u => u.Reviews)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+             builder.Entity<Review>()
+                 .HasOne(r => r.Approver)
+                 .WithMany()
+                 .OnDelete(DeleteBehavior.Restrict);
          }
 
-        //TODO: Add Dbsets here.  Products is included as an example.  
-        // public DbSet<Product> Products { get; set; }
-
+        public DbSet<Song> Songs { get; set; }
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Artist> Artists { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<CustCreditCard> CustCreditCards { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
     }
 }

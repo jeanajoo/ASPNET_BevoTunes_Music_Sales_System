@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-//TODO: Make this namespace match your project name
 namespace G6_BevoTunes.Models
 {
     public enum UserStatus { Active, Blocked, Deleted }
 
     public class AppUser : IdentityUser
     {
-        //TODO: Add custom user fields - first name is included as an example
         [Display(Name = "First Name")]
         public String FirstName { get; set; }
 
@@ -24,5 +22,10 @@ namespace G6_BevoTunes.Models
         [Display(Name = "Status")]
         public UserStatus Status { get; set; }
 
+        public List<Order> Orders { get; set; } = new List<Order>();
+
+        public List<CustCreditCard> CreditCards { get; set; } = new List<CustCreditCard>();
+
+        public List<Review> Reviews { get; set; } = new List<Review>();
     }
 }
