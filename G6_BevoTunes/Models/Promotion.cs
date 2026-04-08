@@ -5,10 +5,12 @@ namespace G6_BevoTunes.Models
 {
     public enum PromotionType
     {
+        [Display(Name = "Featured Item")]
         FEATURED,
+
+        [Display(Name = "Item Discount")]
         DISCOUNT
     }
-
     public class Promotion
     {
         public int PromotionId { get; set; }
@@ -17,8 +19,10 @@ namespace G6_BevoTunes.Models
         public PromotionType PromotionType { get; set; }
 
         [Display(Name = "Discount Price")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal DiscountPrice { get; set; }
 
+        [Display(Name = "Promotion Active")]
         public bool PromotionActive { get; set; }
 
         public List<Song> Songs { get; set; } = new List<Song>();
