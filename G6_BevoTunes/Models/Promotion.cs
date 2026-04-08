@@ -7,10 +7,10 @@ namespace G6_BevoTunes.Models
     public enum PromotionType
     {
         [Display(Name = "Featured Item")]
-        FeaturedItem,
+        FEATURED,
 
         [Display(Name = "Item Discount")]
-        ItemDiscount,
+        DISCOUNT
     }
     public class Promotion
     {
