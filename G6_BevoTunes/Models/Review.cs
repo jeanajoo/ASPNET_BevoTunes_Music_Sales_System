@@ -8,10 +8,6 @@ namespace G6_BevoTunes.Models
         public Int32 ReviewID { get; set; }
 
         [Required]
-        [Display(Name = "Review Title")]
-        public String Title { get; set; }
-
-        [Required]
         [Display(Name = "Review Description")]
         public String? Description { get; set; }
 

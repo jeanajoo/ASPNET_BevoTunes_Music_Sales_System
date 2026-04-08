@@ -27,7 +27,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r1 = new Review()
                 {
-                    Title = "",
                     Description = "Big hook, playful delivery, and a beat that still lands; a fun throwback single.",
                     Rating = 5,
                     Status = ReviewStatus.Approve,
@@ -58,7 +57,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r2 = new Review()
                 {
-                    Title = "",
                     Description = "Energetic remix with punchy beats; a solid update that keeps the groove fresh.",
                     Rating = 5,
                     Status = ReviewStatus.Approve,
@@ -89,7 +87,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r3 = new Review()
                 {
-                    Title = "",
                     Description = "Catchy and recognizable, even if it leans more on nostalgia than depth.",
                     Rating = 3,
                     Status = ReviewStatus.Approve,
@@ -120,7 +117,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r4 = new Review()
                 {
-                    Title = "",
                     Description = "Dark trap energy and cold delivery make this track feel gritty and relentless.",
                     Rating = 4,
                     Status = ReviewStatus.Reject,
@@ -151,7 +147,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r5 = new Review()
                 {
-                    Title = "",
                     Description = "Club-ready production and an easy chorus make this one reliably entertaining.",
                     Rating = 4,
                     Status = ReviewStatus.Approve,
@@ -182,7 +177,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r6 = new Review()
                 {
-                    Title = "",
                     Description = "Catchy hook and confident verses; a defining trap anthem of its era.",
                     Rating = 4,
                     Status = ReviewStatus.Approve,
@@ -213,7 +207,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r7 = new Review()
                 {
-                    Title = "",
                     Description = "Iconic bassline and haunting groove; one of pop’s most unforgettable tracks.",
                     Rating = 4,
                     Status = ReviewStatus.Approve,
@@ -244,7 +237,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r8 = new Review()
                 {
-                    Title = "",
                     Description = "Sharp lyrics and playful attitude; Eminem at his most entertaining.",
                     Rating = 5,
                     Status = ReviewStatus.Approve,
@@ -275,7 +267,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r9 = new Review()
                 {
-                    Title = "",
                     Description = "High-energy production packed with bold beats and flashy collaborations.",
                     Rating = 4,
                     Status = ReviewStatus.Reject,
@@ -306,7 +297,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r10 = new Review()
                 {
-                    Title = "",
                     Description = "Fast-paced and catchy; the back-and-forth delivery keeps the song moving the whole time.",
                     Rating = 4,
                     Status = ReviewStatus.Pending,
@@ -335,7 +325,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r11 = new Review()
                 {
-                    Title = "",
                     Description = "Warm groove, strong rhythm, and an easy chorus make this one an instant repeat.",
                     Rating = 5,
                     Status = ReviewStatus.Pending,
@@ -364,7 +353,6 @@ namespace G6_BevoTunes.Seeding
 
                 Review r12 = new Review()
                 {
-                    Title = "",
                     Description = "The hook is memorable, but the track feels repetitive after a few listens.",
                     Rating = 2,
                     Status = ReviewStatus.Reject,
