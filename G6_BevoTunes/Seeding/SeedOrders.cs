@@ -29,7 +29,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212000,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Michelle" && u.LastName == "Banks"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1010"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1010),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Michelle" && u.LastName == "Banks"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -43,7 +43,7 @@ namespace G6_BevoTunes.Seeding
                 o1.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 17m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Nellyville")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Nellyville")
                 });
 
                 Orders.Add(o1);
@@ -52,7 +52,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212001,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1001"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1001),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -71,7 +71,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212002,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1001"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1001),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -90,7 +90,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212003,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Eric" && u.LastName == "Stuart"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1009"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1009),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Eric" && u.LastName == "Stuart"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -107,7 +107,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212004,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1004"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Louis" && u.LastName == "Winthorpe"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -123,7 +123,7 @@ namespace G6_BevoTunes.Seeding
                 o5.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 15m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Shock Value")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Shock Value")
                 });
 
                 Orders.Add(o5);
@@ -132,7 +132,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212005,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Hearn"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1008"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1008),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Hearn"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -149,7 +149,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212006,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1003"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -168,7 +168,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212007,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1004"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -193,7 +193,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212008,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1007"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1007),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -207,7 +207,7 @@ namespace G6_BevoTunes.Seeding
                 o9.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 14m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Harder Than Ever")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Harder Than Ever")
                 });
 
                 Orders.Add(o9);
@@ -216,7 +216,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212009,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1003"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     OrderStatus = OrderStatus.Refunded
                 };
@@ -235,7 +235,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212010,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1002"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1002),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -260,7 +260,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212011,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1006"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1006),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -277,7 +277,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212012,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1004"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Refunded
                 };
@@ -287,7 +287,7 @@ namespace G6_BevoTunes.Seeding
                 o13.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 15m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Still Rollin")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Still Rollin")
                 });
 
                 Orders.Add(o13);
@@ -296,7 +296,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212013,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1002"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1002),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -321,7 +321,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212014,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1003"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -340,7 +340,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212015,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1003"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     OrderStatus = OrderStatus.Refunded
                 };
@@ -359,7 +359,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212016,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1001"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1001),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -375,7 +375,7 @@ namespace G6_BevoTunes.Seeding
                 o17.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 22m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "The Trinity")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "The Trinity")
                 });
 
                 Orders.Add(o17);
@@ -384,7 +384,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212017,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1002"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1002),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -403,7 +403,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212018,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1004"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Joe" && u.LastName == "Nguyen"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -422,7 +422,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212019,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1004"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Refunded
                 };
@@ -441,7 +441,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212020,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1001"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1001),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -460,7 +460,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212021,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1004"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Refunded
                 };
@@ -470,7 +470,7 @@ namespace G6_BevoTunes.Seeding
                 o22.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 11m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Please Excuse Me for Being Antisocial")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Please Excuse Me for Being Antisocial")
                 });
 
                 Orders.Add(o22);
@@ -479,7 +479,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212022,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1007"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1007),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
                     OrderStatus = OrderStatus.Ordered
                 };
@@ -498,7 +498,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212023,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1005"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1005),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -506,7 +506,7 @@ namespace G6_BevoTunes.Seeding
                 o24.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 23m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Office Hours")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours")
                 });
 
                 Orders.Add(o24);
@@ -515,7 +515,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212024,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1005"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1005),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
                     OrderStatus = OrderStatus.InCart
                 };
@@ -523,7 +523,7 @@ namespace G6_BevoTunes.Seeding
                 o25.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 20m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumTitle == "The Evil Genius")
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "The Evil Genius")
                 });
 
                 Orders.Add(o25);
@@ -532,7 +532,7 @@ namespace G6_BevoTunes.Seeding
                 {
                     OrderID = 212025,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == "1003"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     OrderStatus = OrderStatus.Ordered
                 };

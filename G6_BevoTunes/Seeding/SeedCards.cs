@@ -118,7 +118,7 @@ namespace G6_BevoTunes.Seeding
 
                 foreach (CustCreditCard cardToAdd in CustCreditCards)
                 {
-                    Artist dbCreditCard = db.CustCreditCards.FirstOrDefault(c => c.CardNumber == cardToAdd.CardNumber);
+                    CustCreditCard dbCreditCard = db.CustCreditCards.FirstOrDefault(c => c.CardNumber == cardToAdd.CardNumber);
                     if (dbCreditCard == null)
                     {
                         db.CustCreditCards.Add(cardToAdd);

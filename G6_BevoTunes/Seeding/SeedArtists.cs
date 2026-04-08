@@ -2008,7 +2008,7 @@ namespace G6_BevoTunes.Seeding
                     {
                         db.Artists.Add(artistToAdd);
                         db.SaveChanges();
-                        intGenresAdded += 1;
+                        intArtistsAdded += 1;
                     }
                 }
 

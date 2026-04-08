@@ -42,7 +42,7 @@ namespace G6_BevoTunes.Seeding
                     r1.Song = songItem1;
                 }
 
-                Album albumItem1 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Ice Ice Baby");
+                Album albumItem1 = db.Albums.FirstOrDefault(a => a.AlbumName == "Ice Ice Baby");
                 if (albumItem1 != null)
                 {
                     r1.Album = albumItem1;
@@ -73,7 +73,7 @@ namespace G6_BevoTunes.Seeding
                     r2.Song = songItem2;
                 }
 
-                Album albumItem2 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Bootstrap Remix");
+                Album albumItem2 = db.Albums.FirstOrDefault(a => a.AlbumName == "Bootstrap Remix");
                 if (albumItem2 != null)
                 {
                     r2.Album = albumItem2;
@@ -104,7 +104,7 @@ namespace G6_BevoTunes.Seeding
                     r3.Song = songItem3;
                 }
 
-                Album albumItem3 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Ice Ice Baby");
+                Album albumItem3 = db.Albums.FirstOrDefault(a => a.AlbumName == "Ice Ice Baby");
                 if (albumItem3 != null)
                 {
                     r3.Album = albumItem3;
@@ -135,7 +135,7 @@ namespace G6_BevoTunes.Seeding
                     r4.Song = songItem4;
                 }
 
-                Album albumItem4 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "No Heart");
+                Album albumItem4 = db.Albums.FirstOrDefault(a => a.AlbumName == "No Heart");
                 if (albumItem4 != null)
                 {
                     r4.Album = albumItem4;
@@ -166,7 +166,7 @@ namespace G6_BevoTunes.Seeding
                     r5.Song = songItem5;
                 }
 
-                Album albumItem5 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Hot In Herre");
+                Album albumItem5 = db.Albums.FirstOrDefault(a => a.AlbumName == "Hot In Herre");
                 if (albumItem5 != null)
                 {
                     r5.Album = albumItem5;
@@ -197,7 +197,7 @@ namespace G6_BevoTunes.Seeding
                     r6.Song = songItem6;
                 }
 
-                Album albumItem6 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Bad and Boujee (feat. Lil Uzi Vert)");
+                Album albumItem6 = db.Albums.FirstOrDefault(a => a.AlbumName == "Bad and Boujee (feat. Lil Uzi Vert)");
                 if (albumItem6 != null)
                 {
                     r6.Album = albumItem6;
@@ -228,7 +228,7 @@ namespace G6_BevoTunes.Seeding
                     r7.Song = songItem7;
                 }
 
-                Album albumItem7 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Billie Jean");
+                Album albumItem7 = db.Albums.FirstOrDefault(a => a.AlbumName == "Billie Jean");
                 if (albumItem7 != null)
                 {
                     r7.Album = albumItem7;
@@ -259,7 +259,7 @@ namespace G6_BevoTunes.Seeding
                     r8.Song = songItem8;
                 }
 
-                Album albumItem8 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Without Me");
+                Album albumItem8 = db.Albums.FirstOrDefault(a => a.AlbumName == "Without Me");
                 if (albumItem8 != null)
                 {
                     r8.Album = albumItem8;
@@ -290,7 +290,7 @@ namespace G6_BevoTunes.Seeding
                     r9.Song = songItem9;
                 }
 
-                Album albumItem9 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Shock Value");
+                Album albumItem9 = db.Albums.FirstOrDefault(a => a.AlbumName == "Shock Value");
                 if (albumItem9 != null)
                 {
                     r9.Album = albumItem9;
@@ -319,7 +319,7 @@ namespace G6_BevoTunes.Seeding
                     r10.Song = songItem10;
                 }
 
-                Album albumItem10 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Sprinter");
+                Album albumItem10 = db.Albums.FirstOrDefault(a => a.AlbumName == "Sprinter");
                 if (albumItem10 != null)
                 {
                     r10.Album = albumItem10;
@@ -348,7 +348,7 @@ namespace G6_BevoTunes.Seeding
                     r11.Song = songItem11;
                 }
 
-                Album albumItem11 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Could You Be Loved");
+                Album albumItem11 = db.Albums.FirstOrDefault(a => a.AlbumName == "Could You Be Loved");
                 if (albumItem11 != null)
                 {
                     r11.Album = albumItem11;
@@ -379,7 +379,7 @@ namespace G6_BevoTunes.Seeding
                     r12.Song = songItem12;
                 }
 
-                Album albumItem12 = db.Albums.FirstOrDefault(a => a.AlbumTitle == "Hot In Herre");
+                Album albumItem12 = db.Albums.FirstOrDefault(a => a.AlbumName == "Hot In Herre");
                 if (albumItem12 != null)
                 {
                     r12.Album = albumItem12;

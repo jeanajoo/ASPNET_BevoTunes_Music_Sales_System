@@ -31,6 +31,7 @@ namespace G6_BevoTunes.Seeding
                     PromotionActive = true
                 };
                 p1.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Hacker"));
+                Promotions.Add(p1);
 
                 Promotion p2 = new Promotion()
                 {
@@ -38,6 +39,7 @@ namespace G6_BevoTunes.Seeding
                     PromotionActive = false
                 };
                 p2.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
+                Promotions.Add(p2);
 
                 Promotion p3 = new Promotion()
                 {
@@ -45,6 +47,7 @@ namespace G6_BevoTunes.Seeding
                     PromotionActive = false
                 };
                 p3.Songs.Add(db.Songs.FirstOrDefault(s => s.SongTitle == "Without Me"));
+                Promotions.Add(p3);
 
                 Promotion p4 = new Promotion()
                 {
@@ -53,6 +56,7 @@ namespace G6_BevoTunes.Seeding
                 };
                 p4.Songs.Add(db.Songs.FirstOrDefault(s => s.SongTitle == "Another One Bites The Dust - Remastered 2011"));
                 p4.DiscountPrice = 1m;
+                Promotions.Add(p4);
 
                 Promotion p5 = new Promotion()
                 {
@@ -61,6 +65,7 @@ namespace G6_BevoTunes.Seeding
                 };
                 p5.Songs.Add(db.Songs.FirstOrDefault(s => s.SongTitle == "JSON Cipher"));
                 p5.DiscountPrice = 1.5m;
+                Promotions.Add(p5);
 
                 Promotion p6 = new Promotion()
                 {
@@ -69,6 +74,7 @@ namespace G6_BevoTunes.Seeding
                 };
                 p6.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Everybody Loves Ice Prince"));
                 p6.DiscountPrice = 4.75m;
+                Promotions.Add(p6);
 
                 Promotion p7 = new Promotion()
                 {
@@ -77,6 +83,7 @@ namespace G6_BevoTunes.Seeding
                 };
                 p7.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "One of Wun"));
                 p7.DiscountPrice = 5.25m;
+                Promotions.Add(p7);
 
                 Promotion p8 = new Promotion()
                 {
@@ -85,6 +92,7 @@ namespace G6_BevoTunes.Seeding
                 };
                 p8.Songs.Add(db.Songs.FirstOrDefault(s => s.SongTitle == "SQL Anthem"));
                 p8.DiscountPrice = 10m;
+                Promotions.Add(p8);
 
                 Promotion p9 = new Promotion()
                 {
@@ -93,17 +101,13 @@ namespace G6_BevoTunes.Seeding
                 };
                 p9.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 p9.DiscountPrice = 10m;
-
+                Promotions.Add(p9);
 
                 foreach (Promotion promotionToAdd in Promotions)
                 {
-                    Promotion dbPromotion = db.Promotions.FirstOrDefault();
-                    if (dbPromotion == null)
-                    {
-                        db.Promotions.Add(dbPromotion);
-                        db.SaveChanges();
-                        intPromotionsAdded += 1;
-                    }
+                    db.Promotions.Add(promotionToAdd);
+                    db.SaveChanges();
+                    intPromotionsAdded += 1;
                 }
 
             }
