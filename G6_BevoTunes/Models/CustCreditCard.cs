@@ -3,7 +3,7 @@ namespace G6_BevoTunes.Models;
 
 public class CustCreditCard
 {
-    public Int32 CardID {get; set;}
+    public Int32 CustCreditCardID {get; set;}
 
     [Required(ErrorMessage = "Write Your Card Number.")]
     [StringLength(16, MinimumLength = 15, ErrorMessage = "Your card number must be between 15 and 16 digits.")]
