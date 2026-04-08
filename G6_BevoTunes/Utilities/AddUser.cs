@@ -67,6 +67,9 @@ namespace G6_BevoTunes.Utilities
                 dbUser.Address = aum.User.Address;
                 dbUser.ZipCode = aum.User.ZipCode;
                 dbUser.Status = aum.User.Status;
+                dbUser.Orders = aum.User.Orders;
+                dbUser.CreditCards = aum.User.CreditCards;
+                dbUser.Reviews = aum.User.Reviews;
 
                 //update the database
                 _context.Update(dbUser);

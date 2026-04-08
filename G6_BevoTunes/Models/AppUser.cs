@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-//TODO: Make this namespace match your project name
 namespace G6_BevoTunes.Models
 {
     public enum UserStatus { Active, Blocked, Deleted }
@@ -26,5 +25,10 @@ namespace G6_BevoTunes.Models
         public UserStatus Status { get; set; }
         public List<Order> Orders { get; set; } = new List<Order> ();
 
+        public List<Order> Orders { get; set; } = new List<Order>();
+
+        public List<CustCreditCard> CreditCards { get; set; } = new List<CustCreditCard>();
+
+        public List<Review> Reviews { get; set; } = new List<Review>();
     }
 }
