@@ -8,10 +8,11 @@ namespace G6_BevoTunes.Models
 
     public class AppUser : IdentityUser
     {
-        //TODO: Add custom user fields - first name is included as an example
         [Display(Name = "First Name")]
+        [Required(ErrorMessage = "First name is required.")]
         public String FirstName { get; set; }
 
+        [Required(ErrorMessage = "Last name is required.")]
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
 
@@ -23,6 +24,7 @@ namespace G6_BevoTunes.Models
 
         [Display(Name = "Status")]
         public UserStatus Status { get; set; }
+        public List<Order> Orders { get; set; } = new List<Order> ();
 
     }
 }
