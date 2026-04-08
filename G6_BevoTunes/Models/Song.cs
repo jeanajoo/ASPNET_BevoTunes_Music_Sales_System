@@ -8,9 +8,12 @@ namespace G6_BevoTunes.Models
         public int SongId { get; set; }
 
         [Display(Name = "Song Title")]
-        public string? SongTitle { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "Song title cannot be longer than 100 characters.")]
+        public string SongTitle { get; set; }
 
         [Display(Name = "Song Price")]
+        [Required]
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal SongPrice { get; set; }
 
