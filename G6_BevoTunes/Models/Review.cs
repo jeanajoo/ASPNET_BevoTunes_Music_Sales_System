@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace G6_BevoTunes.Models
 {
@@ -19,24 +20,25 @@ namespace G6_BevoTunes.Models
         [Range(1, 5)]
         public Int32 Rating { get; set; }
 
-        [Display(Name = "Approved")]
-        public Boolean Approved { get; set; }   
+        [Display(Name = "Status")]
+        public ReviewStatus Status { get; set; }
 
-        // public string ReviewerID { get; set; }
         [Required]
-        public AppUser Reviewer { get; set; }   
+        public AppUser Reviewer { get; set; }
 
-        // public string ApproverID { get; set; }
-        [Required]
-        public AppUser Approver { get; set; }   
-        // public int? SongID { get; set; }   
+        public AppUser? Approver { get; set; }
+
         public Song? Song { get; set; }
 
-        // public int? AlbumID { get; set; }   
-        public Album? Album { get; set; }    
+        public Album? Album { get; set; }
 
-        // public int? ArtistID { get; set; }   
         public Artist? Artist { get; set; }
+    }
 
+    public enum ReviewStatus
+    {
+        Pending,
+        Approve,
+        Reject
     }
 }
