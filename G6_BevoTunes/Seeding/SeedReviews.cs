@@ -8,9 +8,9 @@ using G6_BevoTunes.Models;
 
 namespace G6_BevoTunes.Seeding
 {
-    public static class SeedReviewss
+    public static class SeedReviews
     {
-        public static void SeedOrders(AppDbContext db)
+        public static void SeedAllReviews(AppDbContext db)
         {
             // check to see if all the genres have already been added
             if (db.Reviews.Count() == 12)

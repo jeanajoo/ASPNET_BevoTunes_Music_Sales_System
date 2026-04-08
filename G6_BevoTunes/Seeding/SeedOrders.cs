@@ -13,10 +13,10 @@ namespace G6_BevoTunes.Seeding
         public static void SeedAllOrders(AppDbContext db)
         {
             // check to see if all the genres have already been added
-            if (db.Orders.Count() == 25)
+            if (db.Orders.Count() == 26)
             {
                 //exit the program - we don't need to do any of this
-                NotSupportedException ex = new NotSupportedException("Order record count is already 25!");
+                NotSupportedException ex = new NotSupportedException("Order record count is already 26!");
                 throw ex;
             }
             Int32 intOrdersAdded = 0;
