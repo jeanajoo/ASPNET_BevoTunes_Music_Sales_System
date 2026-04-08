@@ -10,7 +10,7 @@ namespace G6_BevoTunes.Seeding
 {
     public static class SeedOrders
     {
-        public static void SeedOrders(AppDbContext db)
+        public static void SeedAllOrders(AppDbContext db)
         {
             // check to see if all the genres have already been added
             if (db.Orders.Count() == 25)

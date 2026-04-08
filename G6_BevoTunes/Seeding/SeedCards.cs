@@ -10,7 +10,7 @@ namespace G6_BevoTunes.Seeding
 {
     public static class SeedCustCreditCards
     {
-        public static void SeedCustCreditCards(AppDbContext db)
+        public static void SeedAllCustCreditCards(AppDbContext db)
         {
             // check to see if all the genres have already been added
             if (db.CustCreditCards.Count() == 10)
