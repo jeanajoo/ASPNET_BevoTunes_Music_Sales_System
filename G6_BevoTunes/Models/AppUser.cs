@@ -23,9 +23,8 @@ namespace G6_BevoTunes.Models
 
         [Display(Name = "Status")]
         public UserStatus Status { get; set; }
+        
         public List<Order> Orders { get; set; } = new List<Order> ();
-
-        public List<Order> Orders { get; set; } = new List<Order>();
 
         public List<CustCreditCard> CreditCards { get; set; } = new List<CustCreditCard>();
 
