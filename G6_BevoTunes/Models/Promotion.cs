@@ -16,6 +16,7 @@ namespace G6_BevoTunes.Models
         public int PromotionId { get; set; }
 
         [Display(Name = "Promotion Type")]
+        [Required]
         public PromotionType PromotionType { get; set; }
 
         [Display(Name = "Discount Price")]

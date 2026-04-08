@@ -14,12 +14,12 @@ namespace G6_BevoTunes.Models
 
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
-        public List<Album>? Albums { get; set; }
+        public List<Album> Albums { get; set; } = new List<Album>();
 
-        public List<Song>? Songs { get; set; }
+        public List<Song> Songs { get; set; } = new List<Song>();
 
-        public List<Review>? Reviews { get; set; }
+        public List<Review> Reviews { get; set; } = new List<Review>();
 
-        public List<Promotion>? Promotions { get; set; }
+        public List<Promotion> Promotions { get; set; } = new List<Promotion>();
     }
 }

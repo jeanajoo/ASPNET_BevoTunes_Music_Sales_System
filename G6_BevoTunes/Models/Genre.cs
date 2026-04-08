@@ -12,10 +12,10 @@ namespace G6_BevoTunes.Models
         [StringLength(60, ErrorMessage = "Genre name cannot be longer than 60 characters.")]
         public string GenreName { get; set; }
 
-        public List<Album>? Albums { get; set; }
+        public List<Album> Albums { get; set; } = new List<Album>();
 
-        public List<Artist>? Artists { get; set; }
+        public List<Artist> Artists { get; set; } = new List<Artist>();
 
-        public List<Song>? Songs { get; set; }
+        public List<Song> Songs { get; set; } = new List<Song>();
     }
 }
