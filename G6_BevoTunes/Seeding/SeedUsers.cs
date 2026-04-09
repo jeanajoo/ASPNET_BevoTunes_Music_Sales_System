@@ -16,7 +16,7 @@ namespace G6_BevoTunes.Seeding
             //Create a list of AddUserModels
             List<AddUserModel> AllUsers = new List<AddUserModel>();
 
-                        AllUsers.Add(new AddUserModel()
+            AllUsers.Add(new AddUserModel()
             {
                 User = new AppUser()
                 {
@@ -1369,7 +1369,7 @@ namespace G6_BevoTunes.Seeding
                     Status = UserStatus.Active
 
                 },
-                Password = "MarodSHORT",
+                Password = "Marod1",
                 RoleName = "Employee"
             });
 
@@ -1530,7 +1530,7 @@ namespace G6_BevoTunes.Seeding
                     Status = UserStatus.Active
 
                 },
-                Password = "User7SHORT",
+                Password = "User77",
                 RoleName = "Employee"
             });
 
