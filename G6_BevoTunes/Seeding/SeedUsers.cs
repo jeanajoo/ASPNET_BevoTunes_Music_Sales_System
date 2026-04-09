@@ -1369,7 +1369,7 @@ namespace G6_BevoTunes.Seeding
                     Status = UserStatus.Active
 
                 },
-                Password = "Marod",
+                Password = "MarodSHORT",
                 RoleName = "Employee"
             });
 
@@ -1530,7 +1530,7 @@ namespace G6_BevoTunes.Seeding
                     Status = UserStatus.Active
 
                 },
-                Password = "User7",
+                Password = "User7SHORT",
                 RoleName = "Employee"
             });
 

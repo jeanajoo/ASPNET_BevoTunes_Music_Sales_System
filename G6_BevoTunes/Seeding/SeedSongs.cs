@@ -3437,7 +3437,7 @@ namespace G6_BevoTunes.Seeding
                     Song dbSong = db.Songs.FirstOrDefault(g => g.SongTitle == songToAdd.SongTitle);
                     if (dbSong == null)
                     {
-                        db.Songs.Add(dbSong);
+                        db.Songs.Add(songToAdd);
                         db.SaveChanges();
                         intSongsAdded += 1;
                     }
