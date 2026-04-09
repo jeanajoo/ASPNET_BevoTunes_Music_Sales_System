@@ -27,7 +27,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s1 = new Song()
                 {
-                    SongId = 1001,
                     SongTitle = "Ice Ice Baby",
                     SongPrice = 1m
                 };
@@ -39,7 +38,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s2 = new Song()
                 {
-                    SongId = 1002,
                     SongTitle = "Give It To Me",
                     SongPrice = 3m
                 };
@@ -53,7 +51,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s3 = new Song()
                 {
-                    SongId = 1003,
                     SongTitle = "NISSAN ALTIMA",
                     SongPrice = 2m
                 };
@@ -64,7 +61,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s4 = new Song()
                 {
-                    SongId = 1004,
                     SongTitle = "Baby (Lil Baby feat. DaBaby)",
                     SongPrice = 1m
                 };
@@ -79,7 +75,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s5 = new Song()
                 {
-                    SongId = 1005,
                     SongTitle = "Dior",
                     SongPrice = 1m
                 };
@@ -91,7 +86,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s6 = new Song()
                 {
-                    SongId = 1006,
                     SongTitle = "Yes Indeed",
                     SongPrice = 1m
                 };
@@ -104,7 +98,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s7 = new Song()
                 {
-                    SongId = 1007,
                     SongTitle = "Low Down",
                     SongPrice = 1m
                 };
@@ -115,7 +108,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s8 = new Song()
                 {
-                    SongId = 1008,
                     SongTitle = "Se Voce Nao Quer Passa a Vez",
                     SongPrice = 4m
                 };
@@ -127,7 +119,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s9 = new Song()
                 {
-                    SongId = 1009,
                     SongTitle = "Around the World",
                     SongPrice = 2m
                 };
@@ -140,7 +131,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s10 = new Song()
                 {
-                    SongId = 1010,
                     SongTitle = "Hot In Herre",
                     SongPrice = 3m
                 };
@@ -153,7 +143,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s11 = new Song()
                 {
-                    SongId = 1011,
                     SongTitle = "Temperature",
                     SongPrice = 5m
                 };
@@ -165,7 +154,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s12 = new Song()
                 {
-                    SongId = 1012,
                     SongTitle = "Ela Joga na Hora",
                     SongPrice = 5m
                 };
@@ -177,7 +165,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s13 = new Song()
                 {
-                    SongId = 1013,
                     SongTitle = "Still Think About You",
                     SongPrice = 3m
                 };
@@ -190,7 +177,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s14 = new Song()
                 {
-                    SongId = 1014,
                     SongTitle = "Lovin On Me",
                     SongPrice = 4m
                 };
@@ -201,7 +187,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s15 = new Song()
                 {
-                    SongId = 1015,
                     SongTitle = "Que Se Cuide",
                     SongPrice = 5m
                 };
@@ -213,7 +198,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s16 = new Song()
                 {
-                    SongId = 1016,
                     SongTitle = "Houdini",
                     SongPrice = 4m
                 };
@@ -226,7 +210,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s17 = new Song()
                 {
-                    SongId = 1017,
                     SongTitle = "Check Yo Self - Remix",
                     SongPrice = 4m
                 };
@@ -238,7 +221,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s18 = new Song()
                 {
-                    SongId = 1018,
                     SongTitle = "Another One Bites The Dust - Remastered 2011",
                     SongPrice = 5m
                 };
@@ -253,7 +235,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s19 = new Song()
                 {
-                    SongId = 1019,
                     SongTitle = "Buffalo Soldier",
                     SongPrice = 4m
                 };
@@ -266,7 +247,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s20 = new Song()
                 {
-                    SongId = 1020,
                     SongTitle = "Bad and Boujee (feat. Lil Uzi Vert)",
                     SongPrice = 1m
                 };
@@ -278,7 +258,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s21 = new Song()
                 {
-                    SongId = 1021,
                     SongTitle = "We Paid (feat. 42 Dugg)",
                     SongPrice = 1m
                 };
@@ -290,7 +269,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s22 = new Song()
                 {
-                    SongId = 1022,
                     SongTitle = "Si Antes Te Hubiera Conocido",
                     SongPrice = 2m
                 };
@@ -302,7 +280,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s23 = new Song()
                 {
-                    SongId = 1023,
                     SongTitle = "UK Rap",
                     SongPrice = 4m
                 };
@@ -313,7 +290,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s24 = new Song()
                 {
-                    SongId = 1024,
                     SongTitle = "Moonlight",
                     SongPrice = 2m
                 };
@@ -327,7 +303,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s25 = new Song()
                 {
-                    SongId = 1025,
                     SongTitle = "Billie Jean",
                     SongPrice = 2m
                 };
@@ -340,7 +315,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s26 = new Song()
                 {
-                    SongId = 1026,
                     SongTitle = "Coffin",
                     SongPrice = 1m
                 };
@@ -352,7 +326,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s27 = new Song()
                 {
-                    SongId = 1027,
                     SongTitle = "Faz um Vuk Vuk (Teto Espelhado)",
                     SongPrice = 3m
                 };
@@ -367,7 +340,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s28 = new Song()
                 {
-                    SongId = 1028,
                     SongTitle = "ATLiens",
                     SongPrice = 3m
                 };
@@ -380,7 +352,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s29 = new Song()
                 {
-                    SongId = 1029,
                     SongTitle = "Sprinter",
                     SongPrice = 5m
                 };
@@ -392,7 +363,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s30 = new Song()
                 {
-                    SongId = 1030,
                     SongTitle = "Could You Be Loved",
                     SongPrice = 1m
                 };
@@ -405,7 +375,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s31 = new Song()
                 {
-                    SongId = 1031,
                     SongTitle = "TEFLON DON",
                     SongPrice = 1m
                 };
@@ -417,7 +386,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s32 = new Song()
                 {
-                    SongId = 1032,
                     SongTitle = "one of wun",
                     SongPrice = 3m
                 };
@@ -431,7 +399,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s33 = new Song()
                 {
-                    SongId = 1033,
                     SongTitle = "PERRO NEGRO",
                     SongPrice = 4m
                 };
@@ -445,7 +412,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s34 = new Song()
                 {
-                    SongId = 1034,
                     SongTitle = "Me Porto Bonito",
                     SongPrice = 2m
                 };
@@ -458,7 +424,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s35 = new Song()
                 {
-                    SongId = 1035,
                     SongTitle = "Doja",
                     SongPrice = 3m
                 };
@@ -471,7 +436,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s36 = new Song()
                 {
-                    SongId = 1036,
                     SongTitle = "Family Affair",
                     SongPrice = 4m
                 };
@@ -485,7 +449,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s37 = new Song()
                 {
-                    SongId = 1037,
                     SongTitle = "Without Me",
                     SongPrice = 5m
                 };
@@ -498,7 +461,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s38 = new Song()
                 {
-                    SongId = 1038,
                     SongTitle = "No Heart",
                     SongPrice = 1m
                 };
@@ -512,7 +474,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s39 = new Song()
                 {
-                    SongId = 1039,
                     SongTitle = "The Largest",
                     SongPrice = 3m
                 };
@@ -524,7 +485,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s40 = new Song()
                 {
-                    SongId = 1040,
                     SongTitle = "Hypnotize - 2014 Remaster",
                     SongPrice = 1m
                 };
@@ -538,7 +498,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s41 = new Song()
                 {
-                    SongId = 1041,
                     SongTitle = "Still Not a Player (feat. Joe) - Radio Version",
                     SongPrice = 1m
                 };
@@ -549,7 +508,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s42 = new Song()
                 {
-                    SongId = 1042,
                     SongTitle = "Nada",
                     SongPrice = 4m
                 };
@@ -564,7 +522,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s43 = new Song()
                 {
-                    SongId = 1043,
                     SongTitle = "THE SHADE",
                     SongPrice = 2m
                 };
@@ -576,7 +533,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s44 = new Song()
                 {
-                    SongId = 1044,
                     SongTitle = "Not Like Us",
                     SongPrice = 3m
                 };
@@ -590,7 +546,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s45 = new Song()
                 {
-                    SongId = 1045,
                     SongTitle = "Neighbors",
                     SongPrice = 5m
                 };
@@ -602,7 +557,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s46 = new Song()
                 {
-                    SongId = 1046,
                     SongTitle = "Kiss",
                     SongPrice = 2m
                 };
@@ -614,7 +568,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s47 = new Song()
                 {
-                    SongId = 1047,
                     SongTitle = "JUJU (feat. Shallipopi)",
                     SongPrice = 1m
                 };
@@ -626,7 +579,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s48 = new Song()
                 {
-                    SongId = 1048,
                     SongTitle = "Drip Too Hard (Lil Baby & Gunna)",
                     SongPrice = 4m
                 };
@@ -639,7 +591,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s49 = new Song()
                 {
-                    SongId = 1049,
                     SongTitle = "Insane in the Brain",
                     SongPrice = 3m
                 };
@@ -651,7 +602,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s50 = new Song()
                 {
-                    SongId = 1050,
                     SongTitle = "The Box",
                     SongPrice = 1m
                 };
@@ -663,7 +613,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s51 = new Song()
                 {
-                    SongId = 1051,
                     SongTitle = "Jogadinha do Paqueta",
                     SongPrice = 3m
                 };
@@ -674,7 +623,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s52 = new Song()
                 {
-                    SongId = 1052,
                     SongTitle = "Bumbum granada",
                     SongPrice = 4m
                 };
@@ -685,7 +633,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s53 = new Song()
                 {
-                    SongId = 1053,
                     SongTitle = "Tchikita",
                     SongPrice = 1m
                 };
@@ -696,7 +643,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s54 = new Song()
                 {
-                    SongId = 1054,
                     SongTitle = "Normally (feat. NSG)",
                     SongPrice = 1m
                 };
@@ -708,7 +654,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s55 = new Song()
                 {
-                    SongId = 1055,
                     SongTitle = "Peru",
                     SongPrice = 3m
                 };
@@ -721,7 +666,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s56 = new Song()
                 {
-                    SongId = 1056,
                     SongTitle = "Tu Hablas Espanhol",
                     SongPrice = 5m
                 };
@@ -734,7 +678,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s57 = new Song()
                 {
-                    SongId = 1057,
                     SongTitle = "Abo Nokthula (feat. The Exclusive SA, Scotts Maphuma, Kabelo Sings, Bontle Smith, 2woshort & Stompiiey)",
                     SongPrice = 2m
                 };
@@ -746,7 +689,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s58 = new Song()
                 {
-                    SongId = 1058,
                     SongTitle = "Like Dat",
                     SongPrice = 3m
                 };
@@ -759,7 +701,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s59 = new Song()
                 {
-                    SongId = 1059,
                     SongTitle = "Champagne Shots",
                     SongPrice = 4m
                 };
@@ -773,7 +714,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s60 = new Song()
                 {
-                    SongId = 1060,
                     SongTitle = "GOSSIP",
                     SongPrice = 3m
                 };
@@ -784,7 +724,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s61 = new Song()
                 {
-                    SongId = 1061,
                     SongTitle = "Wahala",
                     SongPrice = 5m
                 };
@@ -797,7 +736,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s62 = new Song()
                 {
-                    SongId = 1062,
                     SongTitle = "Born Wit It (Bumpa Riddim)",
                     SongPrice = 3m
                 };
@@ -809,7 +747,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s63 = new Song()
                 {
-                    SongId = 1063,
                     SongTitle = "Soca Soca",
                     SongPrice = 3m
                 };
@@ -822,7 +759,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s64 = new Song()
                 {
-                    SongId = 1064,
                     SongTitle = "Magician (feat. J Milla & Yung L)",
                     SongPrice = 5m
                 };
@@ -833,7 +769,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s65 = new Song()
                 {
-                    SongId = 1065,
                     SongTitle = "Caesar",
                     SongPrice = 5m
                 };
@@ -846,7 +781,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s66 = new Song()
                 {
-                    SongId = 1066,
                     SongTitle = "Mr. Fete",
                     SongPrice = 4m
                 };
@@ -860,7 +794,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s67 = new Song()
                 {
-                    SongId = 1067,
                     SongTitle = "Shorty",
                     SongPrice = 2m
                 };
@@ -874,7 +807,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s68 = new Song()
                 {
-                    SongId = 1068,
                     SongTitle = "Talibans II",
                     SongPrice = 2m
                 };
@@ -886,7 +818,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s69 = new Song()
                 {
-                    SongId = 1069,
                     SongTitle = "Chaque matin",
                     SongPrice = 3m
                 };
@@ -899,7 +830,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s70 = new Song()
                 {
-                    SongId = 1070,
                     SongTitle = "TESLA BOY (feat. Blaqbonez)",
                     SongPrice = 5m
                 };
@@ -911,7 +841,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s71 = new Song()
                 {
-                    SongId = 1071,
                     SongTitle = "projection",
                     SongPrice = 5m
                 };
@@ -922,7 +851,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s72 = new Song()
                 {
-                    SongId = 1072,
                     SongTitle = "CIEL",
                     SongPrice = 4m
                 };
@@ -935,7 +863,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s73 = new Song()
                 {
-                    SongId = 1073,
                     SongTitle = "Chama o Coveiro",
                     SongPrice = 5m
                 };
@@ -946,7 +873,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s74 = new Song()
                 {
-                    SongId = 1074,
                     SongTitle = "Talk Show",
                     SongPrice = 2m
                 };
@@ -958,7 +884,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s75 = new Song()
                 {
-                    SongId = 1075,
                     SongTitle = "Merco Benz",
                     SongPrice = 2m
                 };
@@ -971,7 +896,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s76 = new Song()
                 {
-                    SongId = 1076,
                     SongTitle = "Buga (Lo Lo Lo)",
                     SongPrice = 4m
                 };
@@ -985,7 +909,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s77 = new Song()
                 {
-                    SongId = 1077,
                     SongTitle = "Nunca Estoy",
                     SongPrice = 1m
                 };
@@ -1000,7 +923,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s78 = new Song()
                 {
-                    SongId = 1078,
                     SongTitle = "Rocking",
                     SongPrice = 1m
                 };
@@ -1011,7 +933,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s79 = new Song()
                 {
-                    SongId = 1079,
                     SongTitle = "DJ",
                     SongPrice = 1m
                 };
@@ -1026,7 +947,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s80 = new Song()
                 {
-                    SongId = 1080,
                     SongTitle = "Iko Iko",
                     SongPrice = 2m
                 };
@@ -1040,7 +960,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s81 = new Song()
                 {
-                    SongId = 1081,
                     SongTitle = "Hey Hou",
                     SongPrice = 5m
                 };
@@ -1052,7 +971,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s82 = new Song()
                 {
-                    SongId = 1082,
                     SongTitle = "El Hijo De Tuta",
                     SongPrice = 2m
                 };
@@ -1064,7 +982,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s83 = new Song()
                 {
-                    SongId = 1083,
                     SongTitle = "Holiday",
                     SongPrice = 4m
                 };
@@ -1078,7 +995,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s84 = new Song()
                 {
-                    SongId = 1084,
                     SongTitle = "REI DO BRASIL",
                     SongPrice = 5m
                 };
@@ -1090,7 +1006,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s85 = new Song()
                 {
-                    SongId = 1085,
                     SongTitle = "Body",
                     SongPrice = 3m
                 };
@@ -1103,7 +1018,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s86 = new Song()
                 {
-                    SongId = 1086,
                     SongTitle = "Mandela",
                     SongPrice = 5m
                 };
@@ -1115,7 +1029,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s87 = new Song()
                 {
-                    SongId = 1087,
                     SongTitle = "Do not forget",
                     SongPrice = 2m
                 };
@@ -1128,7 +1041,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s88 = new Song()
                 {
-                    SongId = 1088,
                     SongTitle = "Jingle Bell",
                     SongPrice = 4m
                 };
@@ -1142,7 +1054,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s89 = new Song()
                 {
-                    SongId = 1089,
                     SongTitle = "Khuphuka",
                     SongPrice = 4m
                 };
@@ -1156,7 +1067,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s90 = new Song()
                 {
-                    SongId = 1090,
                     SongTitle = "Static",
                     SongPrice = 3m
                 };
@@ -1167,7 +1077,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s91 = new Song()
                 {
-                    SongId = 1091,
                     SongTitle = "Milki",
                     SongPrice = 2m
                 };
@@ -1180,7 +1089,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s92 = new Song()
                 {
-                    SongId = 1092,
                     SongTitle = "Colours",
                     SongPrice = 3m
                 };
@@ -1193,7 +1101,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s93 = new Song()
                 {
-                    SongId = 1093,
                     SongTitle = "DIABLITA (feat. YOVNGCHIMI)",
                     SongPrice = 5m
                 };
@@ -1204,7 +1111,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s94 = new Song()
                 {
-                    SongId = 1094,
                     SongTitle = "Bar Breeze",
                     SongPrice = 1m
                 };
@@ -1216,7 +1122,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s95 = new Song()
                 {
-                    SongId = 1095,
                     SongTitle = "Jinja",
                     SongPrice = 2m
                 };
@@ -1227,7 +1132,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s96 = new Song()
                 {
-                    SongId = 1096,
                     SongTitle = "Quest For Coin II",
                     SongPrice = 4m
                 };
@@ -1239,7 +1143,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s97 = new Song()
                 {
-                    SongId = 1097,
                     SongTitle = "Mood (feat. BNXN)",
                     SongPrice = 1m
                 };
@@ -1251,7 +1154,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s98 = new Song()
                 {
-                    SongId = 1098,
                     SongTitle = "Shifting Sands",
                     SongPrice = 2m
                 };
@@ -1263,7 +1165,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s99 = new Song()
                 {
-                    SongId = 1099,
                     SongTitle = "Beam Me Up",
                     SongPrice = 4m
                 };
@@ -1274,7 +1175,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s100 = new Song()
                 {
-                    SongId = 1100,
                     SongTitle = "Call of Duty",
                     SongPrice = 3m
                 };
@@ -1286,7 +1186,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s101 = new Song()
                 {
-                    SongId = 1101,
                     SongTitle = "Childhood Fragments",
                     SongPrice = 5m
                 };
@@ -1297,7 +1196,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s102 = new Song()
                 {
-                    SongId = 1102,
                     SongTitle = "Streatham",
                     SongPrice = 1m
                 };
@@ -1309,7 +1207,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s103 = new Song()
                 {
-                    SongId = 1103,
                     SongTitle = "glow",
                     SongPrice = 1m
                 };
@@ -1323,7 +1220,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s104 = new Song()
                 {
-                    SongId = 1104,
                     SongTitle = "spring is coming",
                     SongPrice = 3m
                 };
@@ -1335,7 +1231,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s105 = new Song()
                 {
-                    SongId = 1105,
                     SongTitle = "Tekky",
                     SongPrice = 4m
                 };
@@ -1349,7 +1244,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s106 = new Song()
                 {
-                    SongId = 1106,
                     SongTitle = "Integration Drop",
                     SongPrice = 3m
                 };
@@ -1361,7 +1255,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s107 = new Song()
                 {
-                    SongId = 1107,
                     SongTitle = "Commit Ballad",
                     SongPrice = 5m
                 };
@@ -1374,7 +1267,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s108 = new Song()
                 {
-                    SongId = 1108,
                     SongTitle = "Section Loop",
                     SongPrice = 2m
                 };
@@ -1387,7 +1279,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s109 = new Song()
                 {
-                    SongId = 1109,
                     SongTitle = "Entity Loop",
                     SongPrice = 5m
                 };
@@ -1399,7 +1290,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s110 = new Song()
                 {
-                    SongId = 1110,
                     SongTitle = "Interface Sprint",
                     SongPrice = 1m
                 };
@@ -1413,7 +1303,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s111 = new Song()
                 {
-                    SongId = 1111,
                     SongTitle = "Index CacheHit",
                     SongPrice = 1m
                 };
@@ -1426,7 +1315,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s112 = new Song()
                 {
-                    SongId = 1112,
                     SongTitle = "UnitTest Nugget",
                     SongPrice = 4m
                 };
@@ -1440,7 +1328,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s113 = new Song()
                 {
-                    SongId = 1113,
                     SongTitle = "PartialView Webhook",
                     SongPrice = 2m
                 };
@@ -1453,7 +1340,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s114 = new Song()
                 {
-                    SongId = 1114,
                     SongTitle = "Partial Release",
                     SongPrice = 5m
                 };
@@ -1468,7 +1354,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s115 = new Song()
                 {
-                    SongId = 1115,
                     SongTitle = "Include Hotfix",
                     SongPrice = 4m
                 };
@@ -1482,7 +1367,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s116 = new Song()
                 {
-                    SongId = 1116,
                     SongTitle = "Tuple Token",
                     SongPrice = 5m
                 };
@@ -1497,7 +1381,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s117 = new Song()
                 {
-                    SongId = 1117,
                     SongTitle = "LeftJoin Endpoint",
                     SongPrice = 4m
                 };
@@ -1510,7 +1393,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s118 = new Song()
                 {
-                    SongId = 1118,
                     SongTitle = "RightJoin Warmup",
                     SongPrice = 2m
                 };
@@ -1522,7 +1404,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s119 = new Song()
                 {
-                    SongId = 1119,
                     SongTitle = "Fixture Loop",
                     SongPrice = 1m
                 };
@@ -1533,7 +1414,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s120 = new Song()
                 {
-                    SongId = 1120,
                     SongTitle = "Scaffold Refactor",
                     SongPrice = 5m
                 };
@@ -1546,7 +1426,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s121 = new Song()
                 {
-                    SongId = 1121,
                     SongTitle = "Mock Endpoint",
                     SongPrice = 2m
                 };
@@ -1559,7 +1438,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s122 = new Song()
                 {
-                    SongId = 1122,
                     SongTitle = "View Deploy",
                     SongPrice = 1m
                 };
@@ -1572,7 +1450,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s123 = new Song()
                 {
-                    SongId = 1123,
                     SongTitle = "TempData Sprint",
                     SongPrice = 4m
                 };
@@ -1583,7 +1460,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s124 = new Song()
                 {
-                    SongId = 1124,
                     SongTitle = "OrderBy Nugget",
                     SongPrice = 4m
                 };
@@ -1595,7 +1471,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s125 = new Song()
                 {
-                    SongId = 1125,
                     SongTitle = "Filter Standup",
                     SongPrice = 2m
                 };
@@ -1608,7 +1483,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s126 = new Song()
                 {
-                    SongId = 1126,
                     SongTitle = "REST Beat",
                     SongPrice = 4m
                 };
@@ -1619,7 +1493,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s127 = new Song()
                 {
-                    SongId = 1127,
                     SongTitle = "Async Anthem",
                     SongPrice = 1m
                 };
@@ -1633,7 +1506,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s128 = new Song()
                 {
-                    SongId = 1128,
                     SongTitle = "Select Jam",
                     SongPrice = 1m
                 };
@@ -1647,7 +1519,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s129 = new Song()
                 {
-                    SongId = 1129,
                     SongTitle = "DbContext Uptime",
                     SongPrice = 4m
                 };
@@ -1660,7 +1531,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s130 = new Song()
                 {
-                    SongId = 1130,
                     SongTitle = "Lambda Bop",
                     SongPrice = 3m
                 };
@@ -1672,7 +1542,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s131 = new Song()
                 {
-                    SongId = 1131,
                     SongTitle = "Dependency Groove",
                     SongPrice = 2m
                 };
@@ -1685,7 +1554,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s132 = new Song()
                 {
-                    SongId = 1132,
                     SongTitle = "ViewData Webhook",
                     SongPrice = 5m
                 };
@@ -1700,7 +1568,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s133 = new Song()
                 {
-                    SongId = 1133,
                     SongTitle = "REST Bop",
                     SongPrice = 5m
                 };
@@ -1711,7 +1578,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s134 = new Song()
                 {
-                    SongId = 1134,
                     SongTitle = "MVC Suite",
                     SongPrice = 5m
                 };
@@ -1723,7 +1589,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s135 = new Song()
                 {
-                    SongId = 1135,
                     SongTitle = "Cascade Overload",
                     SongPrice = 3m
                 };
@@ -1735,7 +1600,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s136 = new Song()
                 {
-                    SongId = 1136,
                     SongTitle = "OuterJoin Standup",
                     SongPrice = 1m
                 };
@@ -1748,7 +1612,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s137 = new Song()
                 {
-                    SongId = 1137,
                     SongTitle = "Async Exception",
                     SongPrice = 5m
                 };
@@ -1760,7 +1623,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s138 = new Song()
                 {
-                    SongId = 1138,
                     SongTitle = "InnerJoin Beat",
                     SongPrice = 5m
                 };
@@ -1772,7 +1634,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s139 = new Song()
                 {
-                    SongId = 1139,
                     SongTitle = "ViewBag Breakpoint",
                     SongPrice = 1m
                 };
@@ -1785,7 +1646,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s140 = new Song()
                 {
-                    SongId = 1140,
                     SongTitle = "Include Cipher",
                     SongPrice = 3m
                 };
@@ -1797,7 +1657,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s141 = new Song()
                 {
-                    SongId = 1141,
                     SongTitle = "Seeding Throughput",
                     SongPrice = 3m
                 };
@@ -1812,7 +1671,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s142 = new Song()
                 {
-                    SongId = 1142,
                     SongTitle = "Delegate Token",
                     SongPrice = 3m
                 };
@@ -1823,7 +1681,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s143 = new Song()
                 {
-                    SongId = 1143,
                     SongTitle = "OuterJoin Beat",
                     SongPrice = 4m
                 };
@@ -1835,7 +1692,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s144 = new Song()
                 {
-                    SongId = 1144,
                     SongTitle = "Section Exception",
                     SongPrice = 3m
                 };
@@ -1846,7 +1702,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s145 = new Song()
                 {
-                    SongId = 1145,
                     SongTitle = "Include Ballad",
                     SongPrice = 4m
                 };
@@ -1857,7 +1712,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s146 = new Song()
                 {
-                    SongId = 1146,
                     SongTitle = "LINQ Backoff",
                     SongPrice = 3m
                 };
@@ -1871,7 +1725,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s147 = new Song()
                 {
-                    SongId = 1147,
                     SongTitle = "DbContext Hotfix",
                     SongPrice = 1m
                 };
@@ -1884,7 +1737,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s148 = new Song()
                 {
-                    SongId = 1148,
                     SongTitle = "Integration Groove",
                     SongPrice = 4m
                 };
@@ -1895,7 +1747,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s149 = new Song()
                 {
-                    SongId = 1149,
                     SongTitle = "InnerJoin Hash",
                     SongPrice = 4m
                 };
@@ -1907,7 +1758,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s150 = new Song()
                 {
-                    SongId = 1150,
                     SongTitle = "Docker Ballad",
                     SongPrice = 1m
                 };
@@ -1919,7 +1769,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s151 = new Song()
                 {
-                    SongId = 1151,
                     SongTitle = "Merge Breakpoint",
                     SongPrice = 2m
                 };
@@ -1932,7 +1781,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s152 = new Song()
                 {
-                    SongId = 1152,
                     SongTitle = "Integration Refactor",
                     SongPrice = 5m
                 };
@@ -1945,7 +1793,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s153 = new Song()
                 {
-                    SongId = 1153,
                     SongTitle = "Generic Backoff",
                     SongPrice = 3m
                 };
@@ -1956,7 +1803,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s154 = new Song()
                 {
-                    SongId = 1154,
                     SongTitle = "Fixture Secret",
                     SongPrice = 2m
                 };
@@ -1969,7 +1815,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s155 = new Song()
                 {
-                    SongId = 1155,
                     SongTitle = "Identity Anthem",
                     SongPrice = 5m
                 };
@@ -1982,7 +1827,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s156 = new Song()
                 {
-                    SongId = 1156,
                     SongTitle = "Scaffold Miss",
                     SongPrice = 4m
                 };
@@ -1994,7 +1838,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s157 = new Song()
                 {
-                    SongId = 1157,
                     SongTitle = "Entity Nugget",
                     SongPrice = 1m
                 };
@@ -2007,7 +1850,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s158 = new Song()
                 {
-                    SongId = 1158,
                     SongTitle = "JWT Salt",
                     SongPrice = 4m
                 };
@@ -2021,7 +1863,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s159 = new Song()
                 {
-                    SongId = 1159,
                     SongTitle = "Git Breakpoint",
                     SongPrice = 2m
                 };
@@ -2033,7 +1874,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s160 = new Song()
                 {
-                    SongId = 1160,
                     SongTitle = "Route Wave",
                     SongPrice = 3m
                 };
@@ -2045,7 +1885,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s161 = new Song()
                 {
-                    SongId = 1161,
                     SongTitle = "PrimaryKey Refactor",
                     SongPrice = 5m
                 };
@@ -2056,7 +1895,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s162 = new Song()
                 {
-                    SongId = 1162,
                     SongTitle = "Rebase Build",
                     SongPrice = 3m
                 };
@@ -2068,7 +1906,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s163 = new Song()
                 {
-                    SongId = 1163,
                     SongTitle = "Swagger Sprint",
                     SongPrice = 5m
                 };
@@ -2082,7 +1919,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s164 = new Song()
                 {
-                    SongId = 1164,
                     SongTitle = "Tuple Bop",
                     SongPrice = 1m
                 };
@@ -2093,7 +1929,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s165 = new Song()
                 {
-                    SongId = 1165,
                     SongTitle = "Include CacheHit",
                     SongPrice = 1m
                 };
@@ -2107,7 +1942,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s166 = new Song()
                 {
-                    SongId = 1166,
                     SongTitle = "Dependency Retry",
                     SongPrice = 4m
                 };
@@ -2119,7 +1953,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s167 = new Song()
                 {
-                    SongId = 1167,
                     SongTitle = "OAuth Salt",
                     SongPrice = 4m
                 };
@@ -2131,7 +1964,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s168 = new Song()
                 {
-                    SongId = 1168,
                     SongTitle = "Task Key",
                     SongPrice = 3m
                 };
@@ -2144,7 +1976,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s169 = new Song()
                 {
-                    SongId = 1169,
                     SongTitle = "UnitTest Debugger",
                     SongPrice = 3m
                 };
@@ -2158,7 +1989,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s170 = new Song()
                 {
-                    SongId = 1170,
                     SongTitle = "IQueryable Build",
                     SongPrice = 1m
                 };
@@ -2171,7 +2001,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s171 = new Song()
                 {
-                    SongId = 1171,
                     SongTitle = "Generic Demo",
                     SongPrice = 2m
                 };
@@ -2182,7 +2011,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s172 = new Song()
                 {
-                    SongId = 1172,
                     SongTitle = "JSON Webhook",
                     SongPrice = 2m
                 };
@@ -2193,7 +2021,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s173 = new Song()
                 {
-                    SongId = 1173,
                     SongTitle = "JWT Breakpoint",
                     SongPrice = 1m
                 };
@@ -2206,7 +2033,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s174 = new Song()
                 {
-                    SongId = 1174,
                     SongTitle = "Abstract Tuning",
                     SongPrice = 4m
                 };
@@ -2218,7 +2044,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s175 = new Song()
                 {
-                    SongId = 1175,
                     SongTitle = "Cascade Wave",
                     SongPrice = 4m
                 };
@@ -2230,7 +2055,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s176 = new Song()
                 {
-                    SongId = 1176,
                     SongTitle = "DbContext Breakpoint",
                     SongPrice = 5m
                 };
@@ -2245,7 +2069,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s177 = new Song()
                 {
-                    SongId = 1177,
                     SongTitle = "Lambda Overload",
                     SongPrice = 3m
                 };
@@ -2257,7 +2080,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s178 = new Song()
                 {
-                    SongId = 1178,
                     SongTitle = "Swagger Bop",
                     SongPrice = 3m
                 };
@@ -2270,7 +2092,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s179 = new Song()
                 {
-                    SongId = 1179,
                     SongTitle = "Abstract Latency",
                     SongPrice = 2m
                 };
@@ -2282,7 +2103,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s180 = new Song()
                 {
-                    SongId = 1180,
                     SongTitle = "JSON Cipher",
                     SongPrice = 2m
                 };
@@ -2294,7 +2114,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s181 = new Song()
                 {
-                    SongId = 1181,
                     SongTitle = "Partial Standup",
                     SongPrice = 4m
                 };
@@ -2307,7 +2126,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s182 = new Song()
                 {
-                    SongId = 1182,
                     SongTitle = "Docker Bop",
                     SongPrice = 3m
                 };
@@ -2322,7 +2140,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s183 = new Song()
                 {
-                    SongId = 1183,
                     SongTitle = "Controller Token",
                     SongPrice = 5m
                 };
@@ -2334,7 +2151,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s184 = new Song()
                 {
-                    SongId = 1184,
                     SongTitle = "Commit Salt",
                     SongPrice = 1m
                 };
@@ -2347,7 +2163,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s185 = new Song()
                 {
-                    SongId = 1185,
                     SongTitle = "Merge Backoff",
                     SongPrice = 3m
                 };
@@ -2360,7 +2175,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s186 = new Song()
                 {
-                    SongId = 1186,
                     SongTitle = "Rebase Retrospective",
                     SongPrice = 1m
                 };
@@ -2373,7 +2187,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s187 = new Song()
                 {
-                    SongId = 1187,
                     SongTitle = "Tuple Uptime",
                     SongPrice = 3m
                 };
@@ -2385,7 +2198,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s188 = new Song()
                 {
-                    SongId = 1188,
                     SongTitle = "C# Debugger",
                     SongPrice = 3m
                 };
@@ -2397,7 +2209,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s189 = new Song()
                 {
-                    SongId = 1189,
                     SongTitle = "PrimaryKey Throttling",
                     SongPrice = 5m
                 };
@@ -2410,7 +2221,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s190 = new Song()
                 {
-                    SongId = 1190,
                     SongTitle = "Delegate Cipher",
                     SongPrice = 5m
                 };
@@ -2421,7 +2231,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s191 = new Song()
                 {
-                    SongId = 1191,
                     SongTitle = "Fixture Token",
                     SongPrice = 3m
                 };
@@ -2433,7 +2242,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s192 = new Song()
                 {
-                    SongId = 1192,
                     SongTitle = "SQL Anthem",
                     SongPrice = 3m
                 };
@@ -2445,7 +2253,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s193 = new Song()
                 {
-                    SongId = 1193,
                     SongTitle = "Razor Timeout",
                     SongPrice = 1m
                 };
@@ -2457,7 +2264,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s194 = new Song()
                 {
-                    SongId = 1194,
                     SongTitle = "Route Jam",
                     SongPrice = 2m
                 };
@@ -2468,7 +2274,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s195 = new Song()
                 {
-                    SongId = 1195,
                     SongTitle = "ThenInclude Pipeline",
                     SongPrice = 1m
                 };
@@ -2481,7 +2286,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s196 = new Song()
                 {
-                    SongId = 1196,
                     SongTitle = "Scaffold Throttling",
                     SongPrice = 5m
                 };
@@ -2494,7 +2298,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s197 = new Song()
                 {
-                    SongId = 1197,
                     SongTitle = "Controller Endpoint",
                     SongPrice = 4m
                 };
@@ -2507,7 +2310,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s198 = new Song()
                 {
-                    SongId = 1198,
                     SongTitle = "Mock Release",
                     SongPrice = 4m
                 };
@@ -2520,7 +2322,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s199 = new Song()
                 {
-                    SongId = 1199,
                     SongTitle = "Partial Debugger",
                     SongPrice = 3m
                 };
@@ -2531,7 +2332,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s200 = new Song()
                 {
-                    SongId = 1200,
                     SongTitle = "Lambda Token",
                     SongPrice = 5m
                 };
@@ -2544,7 +2344,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s201 = new Song()
                 {
-                    SongId = 1201,
                     SongTitle = "Scaffold Blues",
                     SongPrice = 3m
                 };
@@ -2557,7 +2356,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s202 = new Song()
                 {
-                    SongId = 1202,
                     SongTitle = "RazorPage Bop",
                     SongPrice = 3m
                 };
@@ -2571,7 +2369,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s203 = new Song()
                 {
-                    SongId = 1203,
                     SongTitle = "REST Demo",
                     SongPrice = 3m
                 };
@@ -2584,7 +2381,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s204 = new Song()
                 {
-                    SongId = 1204,
                     SongTitle = "Container Wave",
                     SongPrice = 5m
                 };
@@ -2596,7 +2392,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s205 = new Song()
                 {
-                    SongId = 1205,
                     SongTitle = "Git Hash",
                     SongPrice = 4m
                 };
@@ -2609,7 +2404,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s206 = new Song()
                 {
-                    SongId = 1206,
                     SongTitle = "Policy Funk",
                     SongPrice = 3m
                 };
@@ -2622,7 +2416,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s207 = new Song()
                 {
-                    SongId = 1207,
                     SongTitle = "Docker Release",
                     SongPrice = 4m
                 };
@@ -2634,7 +2427,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s208 = new Song()
                 {
-                    SongId = 1208,
                     SongTitle = "Lambda Hotfix",
                     SongPrice = 5m
                 };
@@ -2646,7 +2438,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s209 = new Song()
                 {
-                    SongId = 1209,
                     SongTitle = "Swagger Salt",
                     SongPrice = 1m
                 };
@@ -2657,7 +2448,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s210 = new Song()
                 {
-                    SongId = 1210,
                     SongTitle = "ThenInclude Exception",
                     SongPrice = 2m
                 };
@@ -2671,7 +2461,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s211 = new Song()
                 {
-                    SongId = 1211,
                     SongTitle = "Cookie Banger",
                     SongPrice = 2m
                 };
@@ -2683,7 +2472,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s212 = new Song()
                 {
-                    SongId = 1212,
                     SongTitle = "SessionState Funk",
                     SongPrice = 4m
                 };
@@ -2695,7 +2483,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s213 = new Song()
                 {
-                    SongId = 1213,
                     SongTitle = "Await Suite",
                     SongPrice = 2m
                 };
@@ -2709,7 +2496,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s214 = new Song()
                 {
-                    SongId = 1214,
                     SongTitle = "Filter Drop",
                     SongPrice = 1m
                 };
@@ -2721,7 +2507,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s215 = new Song()
                 {
-                    SongId = 1215,
                     SongTitle = "Bootstrap Wave",
                     SongPrice = 5m
                 };
@@ -2734,7 +2519,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s216 = new Song()
                 {
-                    SongId = 1216,
                     SongTitle = "Role Secret",
                     SongPrice = 4m
                 };
@@ -2747,7 +2531,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s217 = new Song()
                 {
-                    SongId = 1217,
                     SongTitle = "Index Overload",
                     SongPrice = 1m
                 };
@@ -2758,7 +2541,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s218 = new Song()
                 {
-                    SongId = 1218,
                     SongTitle = "Policy Suite",
                     SongPrice = 1m
                 };
@@ -2769,7 +2551,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s219 = new Song()
                 {
-                    SongId = 1219,
                     SongTitle = "OAuth Wave",
                     SongPrice = 1m
                 };
@@ -2780,7 +2561,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s220 = new Song()
                 {
-                    SongId = 1220,
                     SongTitle = "Bootstrap Remix",
                     SongPrice = 2m
                 };
@@ -2792,7 +2572,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s221 = new Song()
                 {
-                    SongId = 1221,
                     SongTitle = "Commit Key",
                     SongPrice = 5m
                 };
@@ -2803,7 +2582,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s222 = new Song()
                 {
-                    SongId = 1222,
                     SongTitle = "Join Backoff",
                     SongPrice = 1m
                 };
@@ -2816,7 +2594,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s223 = new Song()
                 {
-                    SongId = 1223,
                     SongTitle = "Fixture Debugger",
                     SongPrice = 5m
                 };
@@ -2830,7 +2607,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s224 = new Song()
                 {
-                    SongId = 1224,
                     SongTitle = "Role Breakpoint",
                     SongPrice = 5m
                 };
@@ -2842,7 +2618,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s225 = new Song()
                 {
-                    SongId = 1225,
                     SongTitle = "Dependency Patch",
                     SongPrice = 2m
                 };
@@ -2855,7 +2630,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s226 = new Song()
                 {
-                    SongId = 1226,
                     SongTitle = "Fixture Pipeline",
                     SongPrice = 2m
                 };
@@ -2867,7 +2641,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s227 = new Song()
                 {
-                    SongId = 1227,
                     SongTitle = "Partial Wave",
                     SongPrice = 4m
                 };
@@ -2879,7 +2652,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s228 = new Song()
                 {
-                    SongId = 1228,
                     SongTitle = "Cache Refactor",
                     SongPrice = 5m
                 };
@@ -2890,7 +2662,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s229 = new Song()
                 {
-                    SongId = 1229,
                     SongTitle = "OrderBy Refactor",
                     SongPrice = 5m
                 };
@@ -2903,7 +2674,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s230 = new Song()
                 {
-                    SongId = 1230,
                     SongTitle = "TagHelper Demo",
                     SongPrice = 2m
                 };
@@ -2914,7 +2684,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s231 = new Song()
                 {
-                    SongId = 1231,
                     SongTitle = "XML Remix",
                     SongPrice = 4m
                 };
@@ -2925,7 +2694,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s232 = new Song()
                 {
-                    SongId = 1232,
                     SongTitle = "Await CacheHit",
                     SongPrice = 5m
                 };
@@ -2937,7 +2705,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s233 = new Song()
                 {
-                    SongId = 1233,
                     SongTitle = "GroupBy Drop",
                     SongPrice = 5m
                 };
@@ -2949,7 +2716,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s234 = new Song()
                 {
-                    SongId = 1234,
                     SongTitle = "Identity Miss",
                     SongPrice = 2m
                 };
@@ -2961,7 +2727,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s235 = new Song()
                 {
-                    SongId = 1235,
                     SongTitle = "Delegate Remix",
                     SongPrice = 2m
                 };
@@ -2975,7 +2740,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s236 = new Song()
                 {
-                    SongId = 1236,
                     SongTitle = "Controller Funk",
                     SongPrice = 3m
                 };
@@ -2989,7 +2753,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s237 = new Song()
                 {
-                    SongId = 1237,
                     SongTitle = "JSON Release",
                     SongPrice = 2m
                 };
@@ -3000,7 +2763,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s238 = new Song()
                 {
-                    SongId = 1238,
                     SongTitle = "Push Throttling",
                     SongPrice = 4m
                 };
@@ -3013,7 +2775,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s239 = new Song()
                 {
-                    SongId = 1239,
                     SongTitle = "XML CacheHit",
                     SongPrice = 1m
                 };
@@ -3027,7 +2788,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s240 = new Song()
                 {
-                    SongId = 1240,
                     SongTitle = "Dependency Overload",
                     SongPrice = 4m
                 };
@@ -3040,7 +2800,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s241 = new Song()
                 {
-                    SongId = 1241,
                     SongTitle = "ThenInclude Deploy",
                     SongPrice = 2m
                 };
@@ -3053,7 +2812,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s242 = new Song()
                 {
-                    SongId = 1242,
                     SongTitle = "GroupBy Timeout",
                     SongPrice = 4m
                 };
@@ -3065,7 +2823,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s243 = new Song()
                 {
-                    SongId = 1243,
                     SongTitle = "Commit Warmup",
                     SongPrice = 4m
                 };
@@ -3078,7 +2835,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s244 = new Song()
                 {
-                    SongId = 1244,
                     SongTitle = "Mock Secret",
                     SongPrice = 5m
                 };
@@ -3092,7 +2848,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s245 = new Song()
                 {
-                    SongId = 1245,
                     SongTitle = "Git Debugger",
                     SongPrice = 3m
                 };
@@ -3105,7 +2860,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s246 = new Song()
                 {
-                    SongId = 1246,
                     SongTitle = "Select Remix",
                     SongPrice = 3m
                 };
@@ -3117,7 +2871,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s247 = new Song()
                 {
-                    SongId = 1247,
                     SongTitle = "View Bop",
                     SongPrice = 5m
                 };
@@ -3130,7 +2883,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s248 = new Song()
                 {
-                    SongId = 1248,
                     SongTitle = "Route Retry",
                     SongPrice = 1m
                 };
@@ -3143,7 +2895,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s249 = new Song()
                 {
-                    SongId = 1249,
                     SongTitle = "Filter Overload",
                     SongPrice = 3m
                 };
@@ -3157,7 +2908,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s250 = new Song()
                 {
-                    SongId = 1250,
                     SongTitle = "Fixture Nugget",
                     SongPrice = 2m
                 };
@@ -3171,7 +2921,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s251 = new Song()
                 {
-                    SongId = 1251,
                     SongTitle = "Claim Timeout",
                     SongPrice = 4m
                 };
@@ -3184,7 +2933,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s252 = new Song()
                 {
-                    SongId = 1252,
                     SongTitle = "Container Blues",
                     SongPrice = 3m
                 };
@@ -3196,7 +2944,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s253 = new Song()
                 {
-                    SongId = 1253,
                     SongTitle = "TempData Salt",
                     SongPrice = 2m
                 };
@@ -3208,7 +2955,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s254 = new Song()
                 {
-                    SongId = 1254,
                     SongTitle = "Where Backoff",
                     SongPrice = 4m
                 };
@@ -3219,7 +2965,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s255 = new Song()
                 {
-                    SongId = 1255,
                     SongTitle = "Session Pipeline",
                     SongPrice = 5m
                 };
@@ -3231,7 +2976,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s256 = new Song()
                 {
-                    SongId = 1256,
                     SongTitle = "Validation Loop",
                     SongPrice = 2m
                 };
@@ -3243,7 +2987,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s257 = new Song()
                 {
-                    SongId = 1257,
                     SongTitle = "Claim Ballad",
                     SongPrice = 1m
                 };
@@ -3257,7 +3000,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s258 = new Song()
                 {
-                    SongId = 1258,
                     SongTitle = "Cascade Ballad",
                     SongPrice = 2m
                 };
@@ -3268,7 +3010,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s259 = new Song()
                 {
-                    SongId = 1259,
                     SongTitle = "Cache Handshake",
                     SongPrice = 1m
                 };
@@ -3279,7 +3020,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s260 = new Song()
                 {
-                    SongId = 1260,
                     SongTitle = "Container Timeout",
                     SongPrice = 1m
                 };
@@ -3291,7 +3031,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s261 = new Song()
                 {
-                    SongId = 1261,
                     SongTitle = "Session Exception",
                     SongPrice = 1m
                 };
@@ -3305,7 +3044,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s262 = new Song()
                 {
-                    SongId = 1262,
                     SongTitle = "Async Sprint",
                     SongPrice = 4m
                 };
@@ -3318,7 +3056,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s263 = new Song()
                 {
-                    SongId = 1263,
                     SongTitle = "RazorPage Hotfix",
                     SongPrice = 4m
                 };
@@ -3331,7 +3068,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s264 = new Song()
                 {
-                    SongId = 1264,
                     SongTitle = "LeftJoin Beat",
                     SongPrice = 2m
                 };
@@ -3342,7 +3078,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s265 = new Song()
                 {
-                    SongId = 1265,
                     SongTitle = "Partial Jam",
                     SongPrice = 2m
                 };
@@ -3355,7 +3090,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s266 = new Song()
                 {
-                    SongId = 1266,
                     SongTitle = "Async Wave",
                     SongPrice = 2m
                 };
@@ -3369,7 +3103,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s267 = new Song()
                 {
-                    SongId = 1267,
                     SongTitle = "Interface Throughput",
                     SongPrice = 3m
                 };
@@ -3382,7 +3115,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s268 = new Song()
                 {
-                    SongId = 1268,
                     SongTitle = "SessionState Uptime",
                     SongPrice = 5m
                 };
@@ -3396,7 +3128,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s269 = new Song()
                 {
-                    SongId = 1269,
                     SongTitle = "Layout Pipeline",
                     SongPrice = 5m
                 };
@@ -3410,7 +3141,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s270 = new Song()
                 {
-                    SongId = 1270,
                     SongTitle = "Session Flow",
                     SongPrice = 1m
                 };
@@ -3423,7 +3153,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s271 = new Song()
                 {
-                    SongId = 1271,
                     SongTitle = "Policy Loop",
                     SongPrice = 1m
                 };
@@ -3435,7 +3164,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s272 = new Song()
                 {
-                    SongId = 1272,
                     SongTitle = "RightJoin Remix",
                     SongPrice = 2m
                 };
@@ -3446,7 +3174,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s273 = new Song()
                 {
-                    SongId = 1273,
                     SongTitle = "Container Secret",
                     SongPrice = 2m
                 };
@@ -3458,7 +3185,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s274 = new Song()
                 {
-                    SongId = 1274,
                     SongTitle = "Rebase Ballad",
                     SongPrice = 2m
                 };
@@ -3472,7 +3198,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s275 = new Song()
                 {
-                    SongId = 1275,
                     SongTitle = "Integration Warmup",
                     SongPrice = 1m
                 };
@@ -3484,7 +3209,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s276 = new Song()
                 {
-                    SongId = 1276,
                     SongTitle = "Task Refactor",
                     SongPrice = 3m
                 };
@@ -3496,7 +3220,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s277 = new Song()
                 {
-                    SongId = 1277,
                     SongTitle = "Middleware Demo",
                     SongPrice = 3m
                 };
@@ -3509,7 +3232,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s278 = new Song()
                 {
-                    SongId = 1278,
                     SongTitle = "Query Deploy",
                     SongPrice = 3m
                 };
@@ -3520,7 +3242,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s279 = new Song()
                 {
-                    SongId = 1279,
                     SongTitle = "UnitTest Tuning",
                     SongPrice = 2m
                 };
@@ -3535,7 +3256,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s280 = new Song()
                 {
-                    SongId = 1280,
                     SongTitle = "ForeignKey Throughput",
                     SongPrice = 3m
                 };
@@ -3549,7 +3269,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s281 = new Song()
                 {
-                    SongId = 1281,
                     SongTitle = "Pull Anthem",
                     SongPrice = 2m
                 };
@@ -3560,7 +3279,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s282 = new Song()
                 {
-                    SongId = 1282,
                     SongTitle = "OpenID Blues",
                     SongPrice = 5m
                 };
@@ -3572,7 +3290,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s283 = new Song()
                 {
-                    SongId = 1283,
                     SongTitle = "Model Cipher",
                     SongPrice = 4m
                 };
@@ -3583,7 +3300,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s284 = new Song()
                 {
-                    SongId = 1284,
                     SongTitle = "Container Uptime",
                     SongPrice = 4m
                 };
@@ -3596,7 +3312,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s285 = new Song()
                 {
-                    SongId = 1285,
                     SongTitle = "Abstract Sprint",
                     SongPrice = 1m
                 };
@@ -3607,7 +3322,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s286 = new Song()
                 {
-                    SongId = 1286,
                     SongTitle = "InnerJoin Jam",
                     SongPrice = 5m
                 };
@@ -3618,7 +3332,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s287 = new Song()
                 {
-                    SongId = 1287,
                     SongTitle = "Interface Throttling",
                     SongPrice = 5m
                 };
@@ -3630,7 +3343,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s288 = new Song()
                 {
-                    SongId = 1288,
                     SongTitle = "Layout Nonce",
                     SongPrice = 5m
                 };
@@ -3643,7 +3355,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s289 = new Song()
                 {
-                    SongId = 1289,
                     SongTitle = "Commit Secret",
                     SongPrice = 5m
                 };
@@ -3656,7 +3367,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s290 = new Song()
                 {
-                    SongId = 1290,
                     SongTitle = "REST Patch",
                     SongPrice = 4m
                 };
@@ -3668,7 +3378,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s291 = new Song()
                 {
-                    SongId = 1291,
                     SongTitle = "C# Patch",
                     SongPrice = 2m
                 };
@@ -3681,7 +3390,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s292 = new Song()
                 {
-                    SongId = 1292,
                     SongTitle = "ViewData Warmup",
                     SongPrice = 3m
                 };
@@ -3693,7 +3401,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s293 = new Song()
                 {
-                    SongId = 1293,
                     SongTitle = "SessionState Exception",
                     SongPrice = 4m
                 };
@@ -3704,7 +3411,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s294 = new Song()
                 {
-                    SongId = 1294,
                     SongTitle = "Interface Key",
                     SongPrice = 2m
                 };
@@ -3716,7 +3422,6 @@ namespace G6_BevoTunes.Seeding
 
                 Song s295 = new Song()
                 {
-                    SongId = 1295,
                     SongTitle = "Delegate Throughput",
                     SongPrice = 2m
                 };
