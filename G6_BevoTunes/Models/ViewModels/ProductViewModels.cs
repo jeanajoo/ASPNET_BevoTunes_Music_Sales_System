@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Net.Http.Headers;
 
-namespace G6_BevoTunes.Models.ViewModels
+namespace G6_BevoTunes.Models
 {
-    public class SongViewModel
+    public class CreateSongViewModel
     {
         public int SongId { get; set; }
         public string SongTitle { get; set; }
@@ -15,7 +16,7 @@ namespace G6_BevoTunes.Models.ViewModels
         public int PromotionCount { get; set; }
     }
 
-    public class AlbumViewModel
+    public class CreateAlbumViewModel
     {
         public int AlbumId { get; set; }
         public string AlbumName { get; set; }
@@ -23,6 +24,13 @@ namespace G6_BevoTunes.Models.ViewModels
         public string? AlbumCover { get; set; }
         public List<string> ArtistNames { get; set; } = new List<string>();
         public List<string> GenreNames { get; set; } = new List<string>();
-        public List<SongViewModel> Songs { get; set; } = new List<SongViewModel>();
+        public List<CreateSongViewModel> Songs { get; set; } = new List<CreateSongViewModel>();
+    }
+
+    public class ProductsViewModel
+    {
+        public List<Album>? Albums {get; set;}
+
+        public List<Song>? Songs {get; set;}
     }
 }
