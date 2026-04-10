@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace G6_BevoTunes.Controllers
 {
-    [Authorize(Roles = "Admin, Employee")]
     public class ProductsController : Controller
     {
         private readonly AppDbContext _context;
@@ -75,18 +74,18 @@ namespace G6_BevoTunes.Controllers
                 albumQuery = albumQuery.Where(a => a.Genres.Any(g => g.GenreId == svm.Genre));
             }
 
-            // Filter by Price (Songs & Albums only)
-            if (svm.Price != 0)
+            // Filter by ratings
+            if (svm.Rating != 1.0m)
             {
-                if (svm.pb == PriceBound.GreaterThan)
+                if (svm.RatingBound == RatingBound.GreaterThan)
                 {
-                    songQuery = songQuery.Where(s => s.SongPrice >= svm.Price);
-                    albumQuery = albumQuery.Where(a => a.AlbumPrice >= svm.Price);
+                    songQuery = songQuery.Where(s => s.Reviews.Sum(r => r.Rating) >= svm.Rating);
+                    albumQuery = albumQuery.Where(a => a.Reviews.Sum(r => r.Rating) >= svm.Rating);
                 }
                 else
                 {
-                    songQuery = songQuery.Where(s => s.SongPrice <= svm.Price);
-                    albumQuery = albumQuery.Where(a => a.AlbumPrice <= svm.Price);
+                    songQuery = songQuery.Where(s => s.Reviews.Sum(r => r.Rating) <= svm.Rating);
+                    albumQuery = albumQuery.Where(a => a.Reviews.Sum(r => r.Rating) <= svm.Rating);
                 }
             }
 
@@ -109,7 +108,11 @@ namespace G6_BevoTunes.Controllers
 
             /*
                 for artists, I decided to show their songs and albums if a user typed their names in.
-                this might be hella doin' too much but we can talk about it when we meet in person.
+                this might be wrong but we can talk about it when we meet in person.
+                .
+                .
+                .
+                Question: is Qianbo a smart fella or a fart smeller?
             */ 
             List<Song> artistSongs = new List<Song>();
             List<Album> artistAlbums = new List<Album>();
@@ -161,6 +164,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Products/CreateSong
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateSong()
         {
             ViewData["Artists"] = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
@@ -172,6 +176,7 @@ namespace G6_BevoTunes.Controllers
         // POST: Products/CreateSong
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateSong([Bind("SongId,SongTitle,SongPrice")] Song song, int[] selectedArtists, int[] selectedGenres, int[] selectedAlbums)
         {
             if (ModelState.IsValid)
@@ -215,6 +220,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Products/EditSong/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditSong(int? id)
         {
             if (id == null)
@@ -246,6 +252,7 @@ namespace G6_BevoTunes.Controllers
         // POST: Products/EditSong/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditSong(int id, [Bind("SongId,SongTitle,SongPrice")] Song song, int[] selectedArtists, int[] selectedGenres, int[] selectedAlbums)
         {
             if (id != song.SongId)
@@ -324,7 +331,8 @@ namespace G6_BevoTunes.Controllers
             ViewData["Albums"] = new SelectList(await _context.Albums.ToListAsync(), "AlbumId", "AlbumName");
             return View(song);
         }
-        // GET: Products/AlbumDetails/5
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> AlbumDetails(int? id)
         {
             if (id == null)
@@ -347,7 +355,7 @@ namespace G6_BevoTunes.Controllers
             return View(album);
         }
 
-        // GET: Products/CreateAlbum
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateAlbum()
         {
             ViewData["Artists"] = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
@@ -359,6 +367,7 @@ namespace G6_BevoTunes.Controllers
         // POST: Products/CreateAlbum
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateAlbum([Bind("AlbumId,AlbumName,AlbumPrice,AlbumCover")] Album album, int[] selectedArtists, int[] selectedGenres, int[] selectedSongs)
         {
             if (ModelState.IsValid)

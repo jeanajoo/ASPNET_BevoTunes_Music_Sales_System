@@ -34,6 +34,11 @@ namespace G6_BevoTunes.Controllers
             }
 
             var artist = await _context.Artists
+                .Include(s => s.Albums)
+                .Include(s => s.Genres)
+                .Include(s => s.Songs)
+                .Include(s => s.Reviews)
+                .Include(s => s.Promotions)
                 .FirstOrDefaultAsync(m => m.ArtistId == id);
             if (artist == null)
             {

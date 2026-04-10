@@ -6,9 +6,6 @@ public class SearchViewModel
     [Display(Name = "Name:")]
     public String SearchString {get; set;}
     
-    [Display(Name = "Description:")]
-    public String Description {get; set;}
-
     [Display(Name = "Genre:")]
     public Int32 Genre {get; set;}
 
@@ -16,7 +13,10 @@ public class SearchViewModel
     [Range(0, Int32.MaxValue, ErrorMessage="Please Fill in a Valid Number")]
     public Decimal Price {get; set;}
 
-    public PriceBound pb {get; set;}
+    [Range(1.0, 5.0)]
+    public Decimal Rating {get; set;}
+
+    public RatingBound RatingBound {get; set;}
 
     [Display(Name = "Released After:")]
     public DateTime? ReleasedAfter {get; set;}
@@ -33,4 +33,4 @@ public class SearchResultsViewModel
     public List<Album> Albums {get; set;}
 }
 
-public enum PriceBound { GreaterThan, LessThan }
+public enum RatingBound { GreaterThan, LessThan }

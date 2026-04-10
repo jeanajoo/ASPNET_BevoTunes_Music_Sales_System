@@ -11,9 +11,6 @@ namespace G6_BevoTunes.Models
         public List<string> ArtistNames { get; set; } = new List<string>();
         public List<string> GenreNames { get; set; } = new List<string>();
         public List<string> AlbumNames { get; set; } = new List<string>();
-        public int ReviewCount { get; set; }
-        public double AverageRating { get; set; }
-        public int PromotionCount { get; set; }
     }
 
     public class CreateAlbumViewModel
