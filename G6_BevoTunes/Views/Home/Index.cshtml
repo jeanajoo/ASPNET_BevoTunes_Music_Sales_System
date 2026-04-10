@@ -3,6 +3,19 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1 class="display-4">Welcome to BevoTunes</h1>
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <a asp-controller="Products" asp-action="Index" class="btn btn-primary">View Songs/Albums [Missing
+            Artist/Genre]</a>
+            <a asp-controller="Orders" asp-action="Index" class="btn btn-primary">View Orders</a>
+            <a asp-controller="Promotions" asp-action="Index" class="btn btn-primary">View Promotions</a>
+            <a asp-controller="Reviews" asp-action="Index" class="btn btn-primary">View Reviews</a>
+            <a asp-controller="Account" asp-action="List" class="btn btn-primary">View User [X]</a>
+            <a asp-controller="CustCreditCards" asp-action="Index" class="btn btn-primary">View Cards</a>
+        </div>
+    </div>
+
+
+@* Account/User List page
+Artists List page
+Genre List Page *@
