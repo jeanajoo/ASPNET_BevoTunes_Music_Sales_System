@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 //TODO: Change these using statements to match your project
 using G6_BevoTunes.DAL;
@@ -44,57 +45,43 @@ namespace G6_BevoTunes.Controllers
             //if registration data is valid, create a new user on the database
             if (ModelState.IsValid == false)
             {
-                //this is the sad path - something went wrong, 
-                //return the user to the register page to try again
                 return View(rvm);
             }
 
-            //this code maps the RegisterViewModel to the AppUser domain model
+            // This code maps the RegisterViewModel to the AppUser domain model
             AppUser newUser = new AppUser
             {
                 UserName = rvm.Email,
                 Email = rvm.Email,
                 PhoneNumber = rvm.PhoneNumber,
-
-                //TODO: Add the rest of the custom user fields here
-                //FirstName is included as an example
                 FirstName = rvm.FirstName,
                 LastName = rvm.LastName,
+                Address = rvm.Address,
+                ZipCode = rvm.ZipCode
+            }; 
 
-            };
-
-            //create AddUserModel
+            // create AddUserModel
             AddUserModel aum = new AddUserModel()
             {
-                User = newUser,
+                User = newUser, // Now 'newUser' will be recognized
                 Password = rvm.Password,
-
-                //TODO: You will need to change this value if you want to 
-                //add the user to a different role - just specify the role name.
                 RoleName = "Customer"
             };
 
-            //This code uses the AddUser utility to create a new user with the specified password
+            // This code uses the AddUser utility to create a new user
             IdentityResult result = await Utilities.AddUser.AddUserWithRoleAsync(aum, _userManager, _context);
 
-            if (result.Succeeded) //everything is okay
+            if (result.Succeeded) 
             {
-                //NOTE: This code logs the user into the account that they just created
-                //You may or may not want to log a user in directly after they register - check
-                //the business rules!
-                Microsoft.AspNetCore.Identity.SignInResult result2 = await _signInManager.PasswordSignInAsync(rvm.Email, rvm.Password, false, lockoutOnFailure: false);
-
-                //Send the user to the home page
+                await _signInManager.PasswordSignInAsync(rvm.Email, rvm.Password, false, lockoutOnFailure: false);
                 return RedirectToAction("Index", "Home");
             }
-            else  //the add user operation didn't work, and we need to show an error message
+            else  
             {
                 foreach (IdentityError error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-
-                //send user back to page with errors
                 return View(rvm);
             }
         }
@@ -232,5 +219,18 @@ namespace G6_BevoTunes.Controllers
             //send the user back to the home page
             return RedirectToAction("Index", "Home");
         }
+        // Get: /Account/List
+        [AllowAnonymous]
+        public async Task<IActionResult> List()
+        {
+            // This retrieves all users from the database, 
+            // including their current status (Active/Disabled)
+            var users = await _context.Users
+                .OrderBy(u => u.LastName)
+                .ThenBy(u => u.FirstName)
+                .ToListAsync();
+
+            return View(users);
+        }
     }
-}
+ }
