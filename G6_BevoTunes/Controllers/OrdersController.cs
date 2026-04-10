@@ -34,6 +34,13 @@ namespace G6_BevoTunes.Controllers
             }
 
             var order = await _context.Orders
+                .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Song)
+                .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Album)
+                .Include(o => o.Customer)
+                .Include(o => o.Recipient)
+                .Include(o => o.Card)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
             {

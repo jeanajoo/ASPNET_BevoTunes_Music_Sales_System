@@ -79,8 +79,8 @@ namespace G6_BevoTunes.Controllers
             {
                 if (svm.RatingBound == RatingBound.GreaterThan)
                 {
-                    songQuery = songQuery.Where(s => s.Reviews.Sum(r => r.Rating) >= svm.Rating);
-                    albumQuery = albumQuery.Where(a => a.Reviews.Sum(r => r.Rating) >= svm.Rating);
+                    songQuery = songQuery.Where(s => s.AverageRating >= svm.Rating);
+                    albumQuery = albumQuery.Where(a => a.AverageRating >= svm.Rating);
                 }
                 else
                 {
