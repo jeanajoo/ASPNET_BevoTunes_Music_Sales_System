@@ -5,6 +5,7 @@ namespace G6_BevoTunes.Models
 {
     public class Order
     {
+        private Decimal TAX_RATE = 0.0825m;
         public Int32 OrderID { get; set; }
 
         [Display(Name = "Buyer:")]
@@ -24,6 +25,14 @@ namespace G6_BevoTunes.Models
 
         [Display(Name = "Order Status")]
         public OrderStatus OrderStatus { get; set; }
+
+        public Decimal Subtotal { get { return OrderDetails.Sum(od => od.PurchasedPrice); } }
+        [Display(Name = "Sales Tax")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public Decimal SalesTax { get { return Subtotal * TAX_RATE; } }
+        [Display(Name = "Order Total")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public Decimal OrderTotal { get { return Subtotal + SalesTax; } }
     }
 
     public enum OrderStatus
