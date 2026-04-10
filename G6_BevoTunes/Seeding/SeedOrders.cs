@@ -27,7 +27,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o1 = new Order()
                 {
-                    OrderID = 212000,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Michelle" && u.LastName == "Banks"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1010),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Michelle" && u.LastName == "Banks"),
@@ -50,7 +49,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o2 = new Order()
                 {
-                    OrderID = 212001,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
@@ -69,7 +67,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o3 = new Order()
                 {
-                    OrderID = 212002,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
@@ -88,7 +85,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o4 = new Order()
                 {
-                    OrderID = 212003,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Eric" && u.LastName == "Stuart"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1009),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Eric" && u.LastName == "Stuart"),
@@ -105,7 +101,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o5 = new Order()
                 {
-                    OrderID = 212004,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Louis" && u.LastName == "Winthorpe"),
@@ -130,7 +125,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o6 = new Order()
                 {
-                    OrderID = 212005,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Hearn"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1008),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Hearn"),
@@ -147,7 +141,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o7 = new Order()
                 {
-                    OrderID = 212006,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
@@ -166,7 +159,6 @@ namespace G6_BevoTunes.Seeding
 
                 Order o8 = new Order()
                 {
-                    OrderID = 212007,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
@@ -181,268 +173,243 @@ namespace G6_BevoTunes.Seeding
                     Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Without Me"),
                 });
 
-                o8.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 3m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Not Like Us"),
-                });
-
                 Orders.Add(o8);
 
                 Order o9 = new Order()
                 {
-                    OrderID = 212008,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1007),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
-                    OrderStatus = OrderStatus.InCart
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    OrderStatus = OrderStatus.Ordered
                 };
 
-                o9.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 2m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Around the World"),
-                });
+                o9.OrderDate = DateTime.Parse("2026-02-25 00:00:00");
 
                 o9.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 14m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Harder Than Ever")
+                    PurchasedPrice = 3m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Not Like Us"),
                 });
 
                 Orders.Add(o9);
 
                 Order o10 = new Order()
                 {
-                    OrderID = 212009,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    OrderStatus = OrderStatus.Refunded
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1007),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
+                    OrderStatus = OrderStatus.InCart
                 };
-
-                o10.OrderDate = DateTime.Parse("2026-02-26 00:00:00");
 
                 o10.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 5m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Another One Bites The Dust - Remastered 2011"),
+                    PurchasedPrice = 2m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Around the World"),
+                });
+
+                o10.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 14m,
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Harder Than Ever")
                 });
 
                 Orders.Add(o10);
 
                 Order o11 = new Order()
                 {
-                    OrderID = 212010,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1002),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    OrderStatus = OrderStatus.Ordered
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    OrderStatus = OrderStatus.Refunded
                 };
 
                 o11.OrderDate = DateTime.Parse("2026-02-26 00:00:00");
 
                 o11.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 1m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "No Heart"),
-                });
-
-                o11.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 1m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Bad and Boujee (feat. Lil Uzi Vert)"),
+                    PurchasedPrice = 5m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Another One Bites The Dust - Remastered 2011"),
                 });
 
                 Orders.Add(o11);
 
                 Order o12 = new Order()
                 {
-                    OrderID = 212011,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1006),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
-                    OrderStatus = OrderStatus.InCart
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1002),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    OrderStatus = OrderStatus.Ordered
                 };
+
+                o12.OrderDate = DateTime.Parse("2026-02-26 00:00:00");
 
                 o12.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 2m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Me Porto Bonito"),
+                    PurchasedPrice = 1m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "No Heart"),
                 });
 
                 Orders.Add(o12);
 
                 Order o13 = new Order()
                 {
-                    OrderID = 212012,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    OrderStatus = OrderStatus.Refunded
+                    OrderStatus = OrderStatus.Ordered
                 };
 
-                o13.OrderDate = DateTime.Parse("2026-02-27 00:00:00");
+                o13.OrderDate = DateTime.Parse("2026-02-26 00:00:00");
 
                 o13.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 15m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Still Rollin")
+                    PurchasedPrice = 1m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Bad and Boujee (feat. Lil Uzi Vert)"),
                 });
 
                 Orders.Add(o13);
 
                 Order o14 = new Order()
                 {
-                    OrderID = 212013,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1002),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    OrderStatus = OrderStatus.Ordered
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1006),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
+                    OrderStatus = OrderStatus.InCart
                 };
 
-                o14.OrderDate = DateTime.Parse("2026-02-27 00:00:00");
-
                 o14.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 5m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Sprinter"),
-                });
-
-                o14.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 3m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "GOSSIP"),
+                    PurchasedPrice = 2m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Me Porto Bonito"),
                 });
 
                 Orders.Add(o14);
 
                 Order o15 = new Order()
                 {
-                    OrderID = 212014,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    OrderStatus = OrderStatus.Ordered
-                };
-
-                o15.OrderDate = DateTime.Parse("2026-02-27 00:00:00");
-
-                o15.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 1m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Could You Be Loved"),
-                });
-
-                Orders.Add(o15);
-
-                Order o16 = new Order()
-                {
-                    OrderID = 212015,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
-                    OrderStatus = OrderStatus.Refunded
-                };
-
-                o16.OrderDate = DateTime.Parse("2026-02-28 00:00:00");
-
-                o16.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 4m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Check Yo Self - Remix"),
-                });
-
-                Orders.Add(o16);
-
-                Order o17 = new Order()
-                {
-                    OrderID = 212016,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    OrderStatus = OrderStatus.Ordered
-                };
-
-                o17.OrderDate = DateTime.Parse("2026-02-28 00:00:00");
-
-                o17.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 1m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Hypnotize - 2014 Remaster"),
-                });
-
-                o17.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 22m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "The Trinity")
-                });
-
-                Orders.Add(o17);
-
-                Order o18 = new Order()
-                {
-                    OrderID = 212017,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1002),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
-                    OrderStatus = OrderStatus.Ordered
-                };
-
-                o18.OrderDate = DateTime.Parse("2026-02-28 00:00:00");
-
-                o18.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 3m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Still Think About You"),
-                });
-
-                Orders.Add(o18);
-
-                Order o19 = new Order()
-                {
-                    OrderID = 212018,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Joe" && u.LastName == "Nguyen"),
-                    OrderStatus = OrderStatus.Ordered
-                };
-
-                o19.OrderDate = DateTime.Parse("2026-03-01 00:00:00");
-
-                o19.OrderDetails.Add(new OrderDetail()
-                {
-                    PurchasedPrice = 3m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Doja"),
-                });
-
-                Orders.Add(o19);
-
-                Order o20 = new Order()
-                {
-                    OrderID = 212019,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Refunded
                 };
 
-                o20.OrderDate = DateTime.Parse("2026-03-01 00:00:00");
+                o15.OrderDate = DateTime.Parse("2026-02-27 00:00:00");
+
+                o15.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 15m,
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Still Rollin")
+                });
+
+                Orders.Add(o15);
+
+                Order o16 = new Order()
+                {
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1002),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    OrderStatus = OrderStatus.Ordered
+                };
+
+                o16.OrderDate = DateTime.Parse("2026-02-27 00:00:00");
+
+                o16.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 5m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Sprinter"),
+                });
+
+                o16.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 3m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "GOSSIP"),
+                });
+
+                Orders.Add(o16);
+
+                Order o17 = new Order()
+                {
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    OrderStatus = OrderStatus.Ordered
+                };
+
+                o17.OrderDate = DateTime.Parse("2026-02-27 00:00:00");
+
+                o17.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 1m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Could You Be Loved"),
+                });
+
+                Orders.Add(o17);
+
+                Order o18 = new Order()
+                {
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    OrderStatus = OrderStatus.Refunded
+                };
+
+                o18.OrderDate = DateTime.Parse("2026-02-28 00:00:00");
+
+                o18.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 4m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Check Yo Self - Remix"),
+                });
+
+                Orders.Add(o18);
+
+                Order o19 = new Order()
+                {
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    OrderStatus = OrderStatus.Ordered
+                };
+
+                o19.OrderDate = DateTime.Parse("2026-02-28 00:00:00");
+
+                o19.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 1m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Hypnotize - 2014 Remaster"),
+                });
+
+                Orders.Add(o19);
+
+                Order o20 = new Order()
+                {
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1002),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    OrderStatus = OrderStatus.Ordered
+                };
+
+                o20.OrderDate = DateTime.Parse("2026-02-28 00:00:00");
 
                 o20.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 5m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "TESLA BOY (feat. Blaqbonez)"),
+                    PurchasedPrice = 22m,
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "The Trinity")
+                });
+
+                o20.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 3m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Still Think About You"),
                 });
 
                 Orders.Add(o20);
 
                 Order o21 = new Order()
                 {
-                    OrderID = 212020,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Joe" && u.LastName == "Nguyen"),
                     OrderStatus = OrderStatus.Ordered
                 };
 
@@ -451,107 +418,128 @@ namespace G6_BevoTunes.Seeding
                 o21.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 3m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Soca Soca"),
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Doja"),
                 });
 
                 Orders.Add(o21);
 
                 Order o22 = new Order()
                 {
-                    OrderID = 212021,
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                     OrderStatus = OrderStatus.Refunded
                 };
 
-                o22.OrderDate = DateTime.Parse("2026-03-02 00:00:00");
+                o22.OrderDate = DateTime.Parse("2026-03-01 00:00:00");
 
                 o22.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 11m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Please Excuse Me for Being Antisocial")
+                    PurchasedPrice = 5m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "TESLA BOY (feat. Blaqbonez)"),
                 });
 
                 Orders.Add(o22);
 
                 Order o23 = new Order()
                 {
-                    OrderID = 212022,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1007),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1001),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                     OrderStatus = OrderStatus.Ordered
                 };
 
-                o23.OrderDate = DateTime.Parse("2026-03-04 00:00:00");
+                o23.OrderDate = DateTime.Parse("2026-03-01 00:00:00");
 
                 o23.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 2m,
-                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "C# Debugger"),
+                    PurchasedPrice = 3m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Soca Soca"),
                 });
 
                 Orders.Add(o23);
 
                 Order o24 = new Order()
                 {
-                    OrderID = 212023,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1005),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
-                    OrderStatus = OrderStatus.InCart
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1004),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    OrderStatus = OrderStatus.Refunded
                 };
+
+                o24.OrderDate = DateTime.Parse("2026-03-02 00:00:00");
 
                 o24.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 23m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours")
+                    PurchasedPrice = 11m,
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Please Excuse Me for Being Antisocial")
                 });
 
                 Orders.Add(o24);
 
                 Order o25 = new Order()
                 {
-                    OrderID = 212024,
-                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
-                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1005),
-                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
-                    OrderStatus = OrderStatus.InCart
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1007),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
+                    OrderStatus = OrderStatus.Ordered
                 };
+
+                o25.OrderDate = DateTime.Parse("2026-03-04 00:00:00");
 
                 o25.OrderDetails.Add(new OrderDetail()
                 {
-                    PurchasedPrice = 20m,
-                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "The Evil Genius")
+                    PurchasedPrice = 2m,
+                    Song = db.Songs.FirstOrDefault(s => s.SongTitle == "C# Debugger"),
                 });
 
                 Orders.Add(o25);
 
                 Order o26 = new Order()
                 {
-                    OrderID = 212025,
+                    Customer = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
+                    Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1005),
+                    Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
+                    OrderStatus = OrderStatus.InCart
+                };
+
+                o26.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 23m,
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours")
+                });
+
+                o26.OrderDetails.Add(new OrderDetail()
+                {
+                    PurchasedPrice = 20m,
+                    Album = db.Albums.FirstOrDefault(a => a.AlbumName == "The Evil Genius")
+                });
+
+                Orders.Add(o26);
+
+                Order o27 = new Order()
+                {
                     Customer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     Card = db.CustCreditCards.FirstOrDefault(c => c.CustCreditCardID == 1003),
                     Recipient = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                     OrderStatus = OrderStatus.Ordered
                 };
 
-                o26.OrderDate = DateTime.Parse("2026-03-06 00:00:00");
+                o27.OrderDate = DateTime.Parse("2026-03-06 00:00:00");
 
-                o26.OrderDetails.Add(new OrderDetail()
+                o27.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 3m,
                     Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Hot In Herre"),
                 });
 
-                o26.OrderDetails.Add(new OrderDetail()
+                o27.OrderDetails.Add(new OrderDetail()
                 {
                     PurchasedPrice = 3m,
                     Song = db.Songs.FirstOrDefault(s => s.SongTitle == "Ice Ice Baby"),
                 });
 
-                Orders.Add(o26);
+                Orders.Add(o27);
 
 
                 foreach (Order orderToAdd in Orders)

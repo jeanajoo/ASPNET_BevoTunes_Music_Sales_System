@@ -452,8 +452,8 @@ namespace G6_BevoTunes.Migrations
 
                     b.Property<string>("SongTitle")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("SongId");
 

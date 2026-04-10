@@ -19,7 +19,7 @@ namespace G6_BevoTunes.Migrations
                 columns: table => new
                 {
                     AlbumId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "2001, 1"),
                     AlbumName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     AlbumPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AlbumCover = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -34,7 +34,7 @@ namespace G6_BevoTunes.Migrations
                 columns: table => new
                 {
                     ArtistId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "3001, 1"),
                     ArtistName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -91,7 +91,7 @@ namespace G6_BevoTunes.Migrations
                 columns: table => new
                 {
                     GenreId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "4001, 1"),
                     GenreName = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
@@ -119,7 +119,7 @@ namespace G6_BevoTunes.Migrations
                 columns: table => new
                 {
                     SongId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "1001, 1"),
                     SongTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     SongPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
@@ -263,7 +263,7 @@ namespace G6_BevoTunes.Migrations
                 columns: table => new
                 {
                     CustCreditCardID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "1001, 1"),
                     CardNumber = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
                     CardType = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
@@ -523,7 +523,7 @@ namespace G6_BevoTunes.Migrations
                 columns: table => new
                 {
                     OrderID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "212000, 1"),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CardCustCreditCardID = table.Column<int>(type: "int", nullable: false),
                     RecipientId = table.Column<string>(type: "nvarchar(450)", nullable: false),

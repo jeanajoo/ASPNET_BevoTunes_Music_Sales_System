@@ -9,7 +9,7 @@ namespace G6_BevoTunes.Models
 
         [Display(Name = "Song Title")]
         [Required]
-        [StringLength(100, ErrorMessage = "Song title cannot be longer than 100 characters.")]
+        [StringLength(200, ErrorMessage = "Song title cannot be longer than 100 characters.")]
         public string SongTitle { get; set; }
 
         [Display(Name = "Song Price")]

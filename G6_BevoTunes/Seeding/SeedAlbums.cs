@@ -27,7 +27,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a1 = new Album()
                 {
-                    AlbumId = 2001,
                     AlbumName = "Vanilla Ice Is Back! - Hip Hop Classics",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1587731556938-38755b4803a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
@@ -41,7 +40,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a2 = new Album()
                 {
-                    AlbumId = 2002,
                     AlbumName = "Shock Value",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1711054824441-064a99073a0b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
@@ -53,7 +51,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a3 = new Album()
                 {
-                    AlbumId = 2003,
                     AlbumName = "Alligator Bites Never Heal",
                     AlbumPrice = 12m,
                     AlbumCover = "https://images.unsplash.com/photo-1598909688344-fbe5e6d4c869?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
@@ -64,7 +61,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a4 = new Album()
                 {
-                    AlbumId = 2004,
                     AlbumName = "Quality Control: Control The Streets Volume 2",
                     AlbumPrice = 6m,
                     AlbumCover = "https://images.unsplash.com/photo-1632667113863-24e85951b9d3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
@@ -77,7 +73,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a5 = new Album()
                 {
-                    AlbumId = 2005,
                     AlbumName = "Still Rollin",
                     AlbumPrice = 15m,
                     AlbumCover = "https://images.unsplash.com/photo-1590310182704-037fe3509ada?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
@@ -91,7 +86,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a6 = new Album()
                 {
-                    AlbumId = 2006,
                     AlbumName = "Harder Than Ever",
                     AlbumPrice = 14m,
                     AlbumCover = "https://images.unsplash.com/photo-1761814684971-fa0e7fd606e2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
@@ -104,7 +98,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a7 = new Album()
                 {
-                    AlbumId = 2007,
                     AlbumName = "My Turn (Deluxe)",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1579791237963-790a2d836a08?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -117,7 +110,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a8 = new Album()
                 {
-                    AlbumId = 2008,
                     AlbumName = "Se Voce Nao Quer Passa a Vez",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1644855640845-ab57a047320e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -128,7 +120,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a9 = new Album()
                 {
-                    AlbumId = 2009,
                     AlbumName = "Homework",
                     AlbumPrice = 9m,
                     AlbumCover = "https://images.unsplash.com/photo-1737111869062-c96a5514cc08?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -139,7 +130,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a10 = new Album()
                 {
-                    AlbumId = 2010,
                     AlbumName = "Nellyville",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1629923759854-156b88c433aa?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -152,7 +142,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a11 = new Album()
                 {
-                    AlbumId = 2011,
                     AlbumName = "The Trinity",
                     AlbumPrice = 22m,
                     AlbumCover = "https://images.unsplash.com/photo-1612982663544-54e9d6d2818d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -164,7 +153,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a12 = new Album()
                 {
-                    AlbumId = 2012,
                     AlbumName = "Ela Joga na Hora",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1566424190930-2956a3735219?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -176,7 +164,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a13 = new Album()
                 {
-                    AlbumId = 2013,
                     AlbumName = "Artist",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1614283868067-b4e06385bf93?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -191,7 +178,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a14 = new Album()
                 {
-                    AlbumId = 2014,
                     AlbumName = "Lovin On Me",
                     AlbumPrice = 14m,
                     AlbumCover = "https://images.unsplash.com/photo-1693434998054-2784e49ca563?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -204,7 +190,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a15 = new Album()
                 {
-                    AlbumId = 2015,
                     AlbumName = "Que Se Cuide",
                     AlbumPrice = 12m,
                     AlbumCover = "https://images.unsplash.com/photo-1517883074437-df05bd218272?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
@@ -218,7 +203,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a16 = new Album()
                 {
-                    AlbumId = 2016,
                     AlbumName = "Houdini",
                     AlbumPrice = 20m,
                     AlbumCover = "https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXJ0fGVufDB8fDB8fHww"
@@ -231,7 +215,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a17 = new Album()
                 {
-                    AlbumId = 2017,
                     AlbumName = "Bootlegs And B-Sides",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJ0fGVufDB8fDB8fHww"
@@ -242,7 +225,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a18 = new Album()
                 {
-                    AlbumId = 2018,
                     AlbumName = "The Game (Deluxe Remastered Version)",
                     AlbumPrice = 15m,
                     AlbumCover = "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXJ0fGVufDB8fDB8fHww"
@@ -255,7 +237,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a19 = new Album()
                 {
-                    AlbumId = 2019,
                     AlbumName = "Confrontation",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fHww"
@@ -269,7 +250,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a20 = new Album()
                 {
-                    AlbumId = 2020,
                     AlbumName = "Culture",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXJ0fGVufDB8fDB8fHww"
@@ -280,7 +260,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a21 = new Album()
                 {
-                    AlbumId = 2021,
                     AlbumName = "Si Antes Te Hubiera Conocido",
                     AlbumPrice = 21m,
                     AlbumCover = "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXJ0fGVufDB8fDB8fHww"
@@ -292,7 +271,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a22 = new Album()
                 {
-                    AlbumId = 2022,
                     AlbumName = "Split Decision",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -305,7 +283,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a23 = new Album()
                 {
-                    AlbumId = 2023,
                     AlbumName = "?",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -318,7 +295,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a24 = new Album()
                 {
-                    AlbumId = 2024,
                     AlbumName = "Thriller 25 Super Deluxe Edition",
                     AlbumPrice = 10m,
                     AlbumCover = "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -329,7 +305,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a25 = new Album()
                 {
-                    AlbumId = 2025,
                     AlbumName = "Lil Boat 3.5",
                     AlbumPrice = 20m,
                     AlbumCover = "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -341,7 +316,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a26 = new Album()
                 {
-                    AlbumId = 2026,
                     AlbumName = "Faz um Vuk Vuk (Teto Espelhado)",
                     AlbumPrice = 9m,
                     AlbumCover = "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -354,7 +328,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a27 = new Album()
                 {
-                    AlbumId = 2027,
                     AlbumName = "ATLiens",
                     AlbumPrice = 25m,
                     AlbumCover = "https://images.unsplash.com/photo-1577084381380-3b9ea4153664?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -366,7 +339,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a28 = new Album()
                 {
-                    AlbumId = 2028,
                     AlbumName = "Sprinter",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1548811579-017cf2a4268b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -377,7 +349,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a29 = new Album()
                 {
-                    AlbumId = 2029,
                     AlbumName = "Uprising",
                     AlbumPrice = 22m,
                     AlbumCover = "https://images.unsplash.com/photo-1482160549825-59d1b23cb208?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -389,7 +360,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a30 = new Album()
                 {
-                    AlbumId = 2030,
                     AlbumName = "MIXTAPE PLUTO",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1533158326339-7f3cf2404354?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -400,7 +370,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a31 = new Album()
                 {
-                    AlbumId = 2031,
                     AlbumName = "One of Wun",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1602464729960-f95937746b68?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -419,7 +388,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a32 = new Album()
                 {
-                    AlbumId = 2032,
                     AlbumName = "nadie sabe lo que va a pasar manana",
                     AlbumPrice = 15m,
                     AlbumCover = "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -432,7 +400,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a33 = new Album()
                 {
-                    AlbumId = 2033,
                     AlbumName = "Un Verano Sin Ti",
                     AlbumPrice = 14m,
                     AlbumCover = "https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -452,7 +419,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a34 = new Album()
                 {
-                    AlbumId = 2034,
                     AlbumName = "Doja",
                     AlbumPrice = 15m,
                     AlbumCover = "https://images.unsplash.com/photo-1549490349-8643362247b5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -464,7 +430,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a35 = new Album()
                 {
-                    AlbumId = 2035,
                     AlbumName = "No More Drama",
                     AlbumPrice = 19m,
                     AlbumCover = "https://images.unsplash.com/photo-1513909894411-7d7e04c28ecd?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -476,7 +441,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a36 = new Album()
                 {
-                    AlbumId = 2036,
                     AlbumName = "The Eminem Show",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1529154166925-574a0236a4f4?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -489,7 +453,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a37 = new Album()
                 {
-                    AlbumId = 2037,
                     AlbumName = "Savage Mode",
                     AlbumPrice = 23m,
                     AlbumCover = "https://images.unsplash.com/photo-1582561424760-0321d75e81fa?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -501,7 +464,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a38 = new Album()
                 {
-                    AlbumId = 2038,
                     AlbumName = "The Largest",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1576495169018-bd2414046c6b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -515,7 +477,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a39 = new Album()
                 {
-                    AlbumId = 2039,
                     AlbumName = "Life After Death (2014 Remastered Edition)",
                     AlbumPrice = 7m,
                     AlbumCover = "https://images.unsplash.com/photo-1622737133809-d95047b9e673?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -530,7 +491,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a40 = new Album()
                 {
-                    AlbumId = 2040,
                     AlbumName = "Capital Punishment",
                     AlbumPrice = 7m,
                     AlbumCover = "https://images.unsplash.com/photo-1522878308970-972ec5eedc0d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -541,7 +501,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a41 = new Album()
                 {
-                    AlbumId = 2041,
                     AlbumName = "Error 93",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1579762715459-5a068c289fda?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -554,7 +513,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a42 = new Album()
                 {
-                    AlbumId = 2042,
                     AlbumName = "WHO CARES?",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1581850518616-bcb8077a2336?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -566,7 +524,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a43 = new Album()
                 {
-                    AlbumId = 2043,
                     AlbumName = "Not Like Us",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1652172264794-a83fe7c190f3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -579,7 +536,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a44 = new Album()
                 {
-                    AlbumId = 2044,
                     AlbumName = "4 Your Eyez Only",
                     AlbumPrice = 9m,
                     AlbumCover = "https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -591,7 +547,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a45 = new Album()
                 {
-                    AlbumId = 2045,
                     AlbumName = "Parade - Music from the Motion Picture Under the Cherry Moon",
                     AlbumPrice = 20m,
                     AlbumCover = "https://images.unsplash.com/photo-1517697471339-4aa32003c11a?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njd8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -603,7 +558,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a46 = new Album()
                 {
-                    AlbumId = 2046,
                     AlbumName = "JUJU (feat. Shallipopi)",
                     AlbumPrice = 12m,
                     AlbumCover = "https://images.unsplash.com/photo-1558865869-c93f6f8482af?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -615,7 +569,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a47 = new Album()
                 {
-                    AlbumId = 2047,
                     AlbumName = "Drip Harder",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -628,7 +581,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a48 = new Album()
                 {
-                    AlbumId = 2048,
                     AlbumName = "Black Sunday",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1578301978069-45264734cddc?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -640,7 +592,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a49 = new Album()
                 {
-                    AlbumId = 2049,
                     AlbumName = "Please Excuse Me for Being Antisocial",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1569759276108-31b8e7e43e7b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -653,7 +604,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a50 = new Album()
                 {
-                    AlbumId = 2050,
                     AlbumName = "Jogadinha do Paqueta",
                     AlbumPrice = 14m,
                     AlbumCover = "https://images.unsplash.com/photo-1579783902915-f0b0de2c2eb3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -664,7 +614,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a51 = new Album()
                 {
-                    AlbumId = 2051,
                     AlbumName = "Bumbum granada",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1611273651216-29b4f282d36b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -675,7 +624,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a52 = new Album()
                 {
-                    AlbumId = 2052,
                     AlbumName = "Tchikita",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1584278773680-8d940a213dcf?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -689,7 +637,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a53 = new Album()
                 {
-                    AlbumId = 2053,
                     AlbumName = "Normally (feat. NSG)",
                     AlbumPrice = 23m,
                     AlbumCover = "https://images.unsplash.com/photo-1556005693-00fff02f134c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -700,7 +647,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a54 = new Album()
                 {
-                    AlbumId = 2054,
                     AlbumName = "Peru",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -711,7 +657,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a55 = new Album()
                 {
-                    AlbumId = 2055,
                     AlbumName = "Tu Hablas Espanhol",
                     AlbumPrice = 14m,
                     AlbumCover = "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -724,7 +669,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a56 = new Album()
                 {
-                    AlbumId = 2056,
                     AlbumName = "Abo Nokthula",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1554139681-1adb48e035cb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -736,7 +680,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a57 = new Album()
                 {
-                    AlbumId = 2057,
                     AlbumName = "Beyond Infinity",
                     AlbumPrice = 21m,
                     AlbumCover = "https://images.unsplash.com/photo-1529432337323-223e988a90fb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODN8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -749,7 +692,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a58 = new Album()
                 {
-                    AlbumId = 2058,
                     AlbumName = "Local Mvp",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1580136579585-48a5311ee2f7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -762,7 +704,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a59 = new Album()
                 {
-                    AlbumId = 2059,
                     AlbumName = "GOSSIP",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1578301996581-bf7caec556c0?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -773,7 +714,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a60 = new Album()
                 {
-                    AlbumId = 2060,
                     AlbumName = "Wahala",
                     AlbumPrice = 21m,
                     AlbumCover = "https://images.unsplash.com/photo-1747863021551-592cf32359bb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Njd8ZW58MHx8MHx8fDA%3D"
@@ -788,7 +728,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a61 = new Album()
                 {
-                    AlbumId = 2061,
                     AlbumName = "Born Wit It (Bumpa Riddim)",
                     AlbumPrice = 6m,
                     AlbumCover = "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -799,7 +738,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a62 = new Album()
                 {
-                    AlbumId = 2062,
                     AlbumName = "Soca Soca",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -811,7 +749,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a63 = new Album()
                 {
-                    AlbumId = 2063,
                     AlbumName = "Everybody Loves Ice Prince",
                     AlbumPrice = 20m,
                     AlbumCover = "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -824,7 +761,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a64 = new Album()
                 {
-                    AlbumId = 2064,
                     AlbumName = "Caesar",
                     AlbumPrice = 25m,
                     AlbumCover = "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -835,7 +771,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a65 = new Album()
                 {
-                    AlbumId = 2065,
                     AlbumName = "Double M, Vol. 1",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -851,7 +786,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a66 = new Album()
                 {
-                    AlbumId = 2066,
                     AlbumName = "Shorty",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1577084381380-3b9ea4153664?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
@@ -866,7 +800,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a67 = new Album()
                 {
-                    AlbumId = 2067,
                     AlbumName = "Talibans II",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1491466424936-e304919aada7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -877,7 +810,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a68 = new Album()
                 {
-                    AlbumId = 2068,
                     AlbumName = "Chaque matin",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1484950763426-56b5bf172dbb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -893,7 +825,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a69 = new Album()
                 {
-                    AlbumId = 2069,
                     AlbumName = "EZIOKWU",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1503327431567-3ab5e6e79140?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -905,7 +836,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a70 = new Album()
                 {
-                    AlbumId = 2070,
                     AlbumName = "projection",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -916,7 +846,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a71 = new Album()
                 {
-                    AlbumId = 2071,
                     AlbumName = "LA FOLIE DES GRANDEURS",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -928,7 +857,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a72 = new Album()
                 {
-                    AlbumId = 2072,
                     AlbumName = "Chama o Coveiro",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1431440869543-efaf3388c585?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -939,7 +867,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a73 = new Album()
                 {
-                    AlbumId = 2073,
                     AlbumName = "Talk Show",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -950,7 +877,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a74 = new Album()
                 {
-                    AlbumId = 2074,
                     AlbumName = "July Key",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
@@ -963,7 +889,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a75 = new Album()
                 {
-                    AlbumId = 2075,
                     AlbumName = "Buga (Lo Lo Lo)",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1482784160316-6eb046863ece?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -976,7 +901,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a76 = new Album()
                 {
-                    AlbumId = 2076,
                     AlbumName = "Nunca Estoy",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1475598322381-f1b499717dda?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -989,7 +913,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a77 = new Album()
                 {
-                    AlbumId = 2077,
                     AlbumName = "Grit & Lust",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1000,7 +923,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a78 = new Album()
                 {
-                    AlbumId = 2078,
                     AlbumName = "Brut de femme",
                     AlbumPrice = 10m,
                     AlbumCover = "https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1013,7 +935,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a79 = new Album()
                 {
-                    AlbumId = 2079,
                     AlbumName = "The Very Best of The Dixie Cups: Chapel of Love",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1503410759647-41040b696833?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1026,7 +947,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a80 = new Album()
                 {
-                    AlbumId = 2080,
                     AlbumName = "Hey Hou",
                     AlbumPrice = 15m,
                     AlbumCover = "https://images.unsplash.com/photo-1445264918150-66a2371142a2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1040,7 +960,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a81 = new Album()
                 {
-                    AlbumId = 2081,
                     AlbumName = "La Cumbia De Carmelo",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1479030160180-b1860951d696?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1056,7 +975,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a82 = new Album()
                 {
-                    AlbumId = 2082,
                     AlbumName = "Holiday",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1069,7 +987,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a83 = new Album()
                 {
-                    AlbumId = 2083,
                     AlbumName = "REI DO BRASIL",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1081,7 +998,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a84 = new Album()
                 {
-                    AlbumId = 2084,
                     AlbumName = "Body",
                     AlbumPrice = 19m,
                     AlbumCover = "https://images.unsplash.com/photo-1507936580189-3816b4abf640?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1096,7 +1012,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a85 = new Album()
                 {
-                    AlbumId = 2085,
                     AlbumName = "The Evil Genius",
                     AlbumPrice = 20m,
                     AlbumCover = "https://images.unsplash.com/photo-1507187632231-5beb21a654a2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1108,7 +1023,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a86 = new Album()
                 {
-                    AlbumId = 2086,
                     AlbumName = "Do not forget",
                     AlbumPrice = 23m,
                     AlbumCover = "https://images.unsplash.com/photo-1459909633680-206dc5c67abb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1120,7 +1034,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a87 = new Album()
                 {
-                    AlbumId = 2087,
                     AlbumName = "Jingle Bell",
                     AlbumPrice = 6m,
                     AlbumCover = "https://images.unsplash.com/photo-1504288145234-919e7bbc6d19?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1132,7 +1045,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a88 = new Album()
                 {
-                    AlbumId = 2088,
                     AlbumName = "Khuphuka",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1145,7 +1057,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a89 = new Album()
                 {
-                    AlbumId = 2089,
                     AlbumName = "Static",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1443428018053-13da55589fed?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1156,7 +1067,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a90 = new Album()
                 {
-                    AlbumId = 2090,
                     AlbumName = "Milki",
                     AlbumPrice = 22m,
                     AlbumCover = "https://images.unsplash.com/photo-1500754088824-ce0582cfe45f?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1168,7 +1078,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a91 = new Album()
                 {
-                    AlbumId = 2091,
                     AlbumName = "Colours",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1179,7 +1088,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a92 = new Album()
                 {
-                    AlbumId = 2092,
                     AlbumName = "LA PANTERA NEGRA",
                     AlbumPrice = 19m,
                     AlbumCover = "https://images.unsplash.com/photo-1457327289196-f38b88d97147?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1190,7 +1098,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a93 = new Album()
                 {
-                    AlbumId = 2093,
                     AlbumName = "Bar Breeze",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1500073584060-670c36a703f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1202,7 +1109,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a94 = new Album()
                 {
-                    AlbumId = 2094,
                     AlbumName = "Unruly",
                     AlbumPrice = 10m,
                     AlbumCover = "https://images.unsplash.com/photo-1501791187590-9ef2612ba1eb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1213,7 +1119,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a95 = new Album()
                 {
-                    AlbumId = 2095,
                     AlbumName = "Quest for Coin II",
                     AlbumPrice = 12m,
                     AlbumCover = "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1229,7 +1134,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a96 = new Album()
                 {
-                    AlbumId = 2096,
                     AlbumName = "Made In Lagos: Deluxe Edition",
                     AlbumPrice = 23m,
                     AlbumCover = "https://images.unsplash.com/photo-1505699261378-c372af38134c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1241,7 +1145,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a97 = new Album()
                 {
-                    AlbumId = 2097,
                     AlbumName = "Shifting Sands",
                     AlbumPrice = 16m,
                     AlbumCover = "https://images.unsplash.com/photo-1501696461415-6bd6660c6742?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1252,7 +1155,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a98 = new Album()
                 {
-                    AlbumId = 2098,
                     AlbumName = "Beam Me Up",
                     AlbumPrice = 14m,
                     AlbumCover = "https://images.unsplash.com/photo-1490237014491-822aee911b99?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1265,7 +1167,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a99 = new Album()
                 {
-                    AlbumId = 2099,
                     AlbumName = "Time Fragments",
                     AlbumPrice = 18m,
                     AlbumCover = "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1276,7 +1177,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a100 = new Album()
                 {
-                    AlbumId = 2100,
                     AlbumName = "PSYCHODRAMA",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1288,7 +1188,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a101 = new Album()
                 {
-                    AlbumId = 2101,
                     AlbumName = "glow",
                     AlbumPrice = 17m,
                     AlbumCover = "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1300,7 +1199,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a102 = new Album()
                 {
-                    AlbumId = 2102,
                     AlbumName = "spring is coming",
                     AlbumPrice = 10m,
                     AlbumCover = "https://images.unsplash.com/photo-1430876988766-1be68caef0e4?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1311,7 +1209,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a103 = new Album()
                 {
-                    AlbumId = 2103,
                     AlbumName = "Tekky",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1441260038675-7329ab4cc264?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1323,7 +1220,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a104 = new Album()
                 {
-                    AlbumId = 2104,
                     AlbumName = "Midterm Mix",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1480321182142-e77f14b9aa64?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1384,7 +1280,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a105 = new Album()
                 {
-                    AlbumId = 2105,
                     AlbumName = "Office Hours",
                     AlbumPrice = 23m,
                     AlbumCover = "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1446,7 +1341,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a106 = new Album()
                 {
-                    AlbumId = 2106,
                     AlbumName = "Wireframe Weekend",
                     AlbumPrice = 12m,
                     AlbumCover = "https://images.unsplash.com/photo-1579807851425-41def76a2f47?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1513,7 +1407,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a107 = new Album()
                 {
-                    AlbumId = 2107,
                     AlbumName = "Sprint 1",
                     AlbumPrice = 13m,
                     AlbumCover = "https://images.unsplash.com/photo-1466853817435-05b43fe45b39?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1567,7 +1460,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a108 = new Album()
                 {
-                    AlbumId = 2108,
                     AlbumName = "TA Sessions",
                     AlbumPrice = 10m,
                     AlbumCover = "https://images.unsplash.com/photo-1502472584811-0a2f2feb8968?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1630,7 +1522,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a109 = new Album()
                 {
-                    AlbumId = 2109,
                     AlbumName = "Refactor Rhapsody",
                     AlbumPrice = 25m,
                     AlbumCover = "https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1682,7 +1573,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a110 = new Album()
                 {
-                    AlbumId = 2110,
                     AlbumName = "Diagram Dreams",
                     AlbumPrice = 24m,
                     AlbumCover = "https://images.unsplash.com/photo-1469719847081-4757697d117a?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1741,7 +1631,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a111 = new Album()
                 {
-                    AlbumId = 2111,
                     AlbumName = "Final Release",
                     AlbumPrice = 23m,
                     AlbumCover = "https://images.unsplash.com/photo-1464254786740-b97e5420c299?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1793,7 +1682,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a112 = new Album()
                 {
-                    AlbumId = 2112,
                     AlbumName = "Code Freeze",
                     AlbumPrice = 19m,
                     AlbumCover = "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1835,7 +1723,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a113 = new Album()
                 {
-                    AlbumId = 2113,
                     AlbumName = "Bug Bash",
                     AlbumPrice = 11m,
                     AlbumCover = "https://images.unsplash.com/photo-1428447207228-b396f310848b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
@@ -1890,7 +1777,6 @@ namespace G6_BevoTunes.Seeding
 
                 Album a114 = new Album()
                 {
-                    AlbumId = 2114,
                     AlbumName = "Unit Test Utopia",
                     AlbumPrice = 8m,
                     AlbumCover = "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
