@@ -33,8 +33,8 @@ namespace G6_BevoTunes.Controllers
                 .ToListAsync();
 
             List<Album> albums = await _context.Albums
-                // .Include(a => a.Artists)
-                // .Include(a => a.Genres)
+                .Include(a => a.Artists)
+                .Include(a => a.Genres)
                 // .Include(a => a.Songs)
                 // .Include(a => a.Reviews)
                 .ToListAsync();
