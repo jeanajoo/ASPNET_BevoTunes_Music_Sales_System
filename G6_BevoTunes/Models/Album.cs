@@ -33,5 +33,14 @@ namespace G6_BevoTunes.Models
         public List<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
         public List<Promotion> Promotions { get; set; } = new List<Promotion>();
+
+        public Decimal AverageRating 
+        {
+            get
+            {
+                return Reviews.Sum(r => r.Rating);
+            }
+        
+        }
     }
 }
