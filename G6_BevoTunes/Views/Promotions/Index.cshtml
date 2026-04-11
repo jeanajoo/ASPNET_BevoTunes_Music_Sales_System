@@ -39,7 +39,10 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.PromotionId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.PromotionId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PromotionId">Delete</a>
+                @if (item.PromotionType == PromotionType.DISCOUNT)
+                {
+                    <a asp-action="Delete" asp-route-id="@item.PromotionId">Delete</a> <span>|</span>
+                } 
             </td>
         </tr>
 }

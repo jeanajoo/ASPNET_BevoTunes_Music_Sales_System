@@ -10,20 +10,110 @@
     <h4>Order</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.OrderDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OrderDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.OrderStatus)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OrderStatus)
         </dd>
+        @if (Model.Customer != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Customer.FirstName) @Html.DisplayFor(model => model.Customer.LastName)
+            </dd>
+        }
+        @if (Model.Recipient != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipient)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipient.FirstName) @Html.DisplayFor(model => model.Recipient.LastName)
+            </dd>
+        }
+        @if (Model.Card != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Card)
+            </dt>
+            <dd class="col-sm-10">
+                ****@Model.Card.CardNumber?.Substring(Math.Max(0, Model.Card.CardNumber.Length - 4))
+            </dd>
+        }
     </dl>
 </div>
+
+@if (Model.OrderDetails != null && Model.OrderDetails.Count > 0)
+{
+    <h4>Order Items</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>
+                        @if (item.Song != null)
+                        {
+                            <span>Song</span>
+                        }
+                        else if (item.Album != null)
+                        {
+                            <span>Album</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Song != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.Song.SongTitle)
+                        }
+                        else if (item.Album != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.Album.AlbumName)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchasedPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-end"><strong>@Html.DisplayNameFor(model => model.Subtotal)</strong></td>
+                <td>@Html.DisplayFor(model => model.Subtotal)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-end"><strong>@Html.DisplayNameFor(model => model.SalesTax)</strong></td>
+                <td>@Html.DisplayFor(model => model.SalesTax)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-end"><strong>@Html.DisplayNameFor(model => model.OrderTotal)</strong></td>
+                <td><strong>@Html.DisplayFor(model => model.OrderTotal)</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <p class="text-muted">No items in this order.</p>
+}
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.OrderID">Edit</a> |
     <a asp-action="Index">Back to List</a>
