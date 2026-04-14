@@ -90,12 +90,34 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> Create([Bind("ReviewID,Description,Rating,Status")] Review review, int? SelectedSong, 
         int? SelectedAlbum, int? SelectedArtist)
         {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            var ownedSongs = _context.OrderDetails
+                .Where(od => od.Order.Customer.Id == user.Id && od.Song != null)
+                .Select(od => od.Song)
+                .Distinct()
+                .ToList();
+
+            var ownedAlbums = _context.OrderDetails
+                .Where(od => od.Order.Customer.Id == user.Id && od.Album != null)
+                .Select(od => od.Album)
+                .Distinct()
+                .ToList();
+
+            var ownedArtists = _context.OrderDetails
+                .Where(od => od.Order.Customer.Id == user.Id && od.Artist != null)
+                .Select(od => od.Artist)
+                .Distinct()     
+                .ToList();
+                
             if (ModelState.IsValid)
             {
-                AppUser user = await _userManager.GetUserAsync(User);
-                
                 review.Reviewer = user;
                 review.ReviewerID = user.Id;
+                    
+                ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
+                ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumTitle");
+                ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
 
                 if (SelectedSong != null)
                 {
@@ -129,6 +151,11 @@ namespace G6_BevoTunes.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
+            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumTitle");
+            ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
+
             return View(review);
         }
 
