@@ -58,6 +58,7 @@ namespace G6_BevoTunes.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.Status = ReviewStatus.Pending;
                 _context.Add(review);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -149,6 +150,51 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: Reviews/Approve/5
+        public async Task<IActionResult> Approve(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var review = await _context.Reviews.FindAsync(id);
+
+            if (review == null)
+            {
+                return NotFound();
+            }
+
+            review.Status = ReviewStatus.Approve;
+            _context.Update(review);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+                // GET: Reviews/Reject/5
+        public async Task<IActionResult> Reject(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var review = await _context.Reviews.FindAsync(id);
+
+            if (review == null)
+            {
+                return NotFound();
+            }
+
+            review.Status = ReviewStatus.Reject;
+            _context.Update(review);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        
         private bool ReviewExists(int id)
         {
             return _context.Reviews.Any(e => e.ReviewID == id);
