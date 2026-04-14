@@ -1,4 +1,9 @@
+@using System.Security.Claims
 @model IEnumerable<G6_BevoTunes.Models.Review>
+
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
 
 @{
     ViewData["Title"] = "Index";
@@ -37,9 +42,16 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
+                @if (User.IsInRole("Admin") || User.IsInRole("Employee") || item.ReviewerID == userId)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> <span>|</span>
+                }
                 <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a>
+                @if (item.ReviewerID == userId)
+                {
+                <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete Review</a> 
+                }
+
             </td>
         </tr>
 }
