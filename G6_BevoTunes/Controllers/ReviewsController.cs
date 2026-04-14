@@ -73,6 +73,7 @@ namespace G6_BevoTunes.Controllers
                 review.ReviewerID = user.Id;
 
                 review.Status = ReviewStatus.Pending;
+                
                 _context.Add(review);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
