@@ -43,9 +43,16 @@ namespace G6_BevoTunes.Controllers
             return View(promotion);
         }
 
+        private SelectList GetAllSongs() => new SelectList(_context.Songs.OrderBy(s => s.SongTitle), "SongId", "SongTitle");
+        private SelectList GetAllAlbums() => new SelectList(_context.Albums.OrderBy(a => a.AlbumName), "AlbumId", "AlbumName");
+        private SelectList GetAllArtists() => new SelectList(_context.Artists.OrderBy(a => a.ArtistName), "ArtistId", "ArtistName");
+
         // GET: Promotions/Create
         public IActionResult Create()
         {
+            ViewBag.AllSongs = GetAllSongs();
+            ViewBag.AllAlbums = GetAllAlbums();
+            ViewBag.AllArtists = GetAllArtists();
             return View();
         }
 
@@ -54,15 +61,82 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PromotionId,PromotionType,DiscountPrice,PromotionActive")] Promotion promotion)
+        public async Task<IActionResult> Create([Bind("PromotionId,PromotionType,DiscountPrice,PromotionActive")] Promotion promotion, string ProductCategory, int? SelectedProductId)
         {
-            if (ModelState.IsValid)
+            if (ProductCategory == null || SelectedProductId == null)
             {
-                _context.Add(promotion);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", "You must select a product category and a product item.");
             }
-            return View(promotion);
+
+            if (promotion.PromotionType == PromotionType.DISCOUNT && ProductCategory == "Artist")
+            {
+                ModelState.AddModelError("", "Discount promotions can only be applied to Songs or Albums.");
+            }
+
+            if (promotion.PromotionType == PromotionType.DISCOUNT && promotion.DiscountPrice <= 0)
+            {
+                ModelState.AddModelError("DiscountPrice", "Discount price must be greater than zero.");
+            }
+
+            if (promotion.PromotionType != PromotionType.DISCOUNT)
+            {
+                promotion.DiscountPrice = 0;
+                ModelState.Remove("DiscountPrice");
+            }
+
+            if (ProductCategory == "Song")
+            {
+                var song = await _context.Songs.FindAsync(SelectedProductId);
+                if (song != null)
+                {
+                    Promotion existing = _context.Promotions.Include(p => p.Songs).Where(p => p.Songs.Contains(song) && p.PromotionType == promotion.PromotionType).FirstOrDefault();
+                    if (existing != null)
+                    {
+                        ModelState.AddModelError("", "Existing Promotion with Song Exists");
+                    }
+                    promotion.Songs = new List<Song> { song };
+                }
+            }
+            else if (ProductCategory == "Album")
+            {
+                var album = await _context.Albums.FindAsync(SelectedProductId);
+                if (album != null)
+                {
+                    Promotion existing = _context.Promotions.Include(p => p.Albums).Where(p => p.Albums.Contains(album) && p.PromotionType == promotion.PromotionType).FirstOrDefault();
+                    if (existing != null)
+                    {
+                        ModelState.AddModelError("", "Existing Promotion with Album Exists");
+                    }
+                    promotion.Albums = new List<Album> { album };
+                }
+            }
+            else if (ProductCategory == "Artist")
+            {
+                var artist = await _context.Artists.FindAsync(SelectedProductId);
+                if (artist != null)
+                {
+                    Promotion existing = _context.Promotions.Include(p => p.Artists).Where(p => p.Artists.Contains(artist) && p.PromotionType == promotion.PromotionType).FirstOrDefault();
+                    if (existing != null)
+                    {
+                        ModelState.AddModelError("", "Existing Promotion with Artist Exists");
+                    }
+                    promotion.Artists = new List<Artist> { artist };
+                }
+            }
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.AllSongs = GetAllSongs();
+                ViewBag.AllAlbums = GetAllAlbums();
+                ViewBag.AllArtists = GetAllArtists();
+                ViewBag.SelectedProductCategory = ProductCategory;
+                ViewBag.SelectedProductId = SelectedProductId;
+                return View(promotion);
+            }
+
+            _context.Add(promotion);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Promotions/Edit/5
