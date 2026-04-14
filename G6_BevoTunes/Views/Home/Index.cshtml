@@ -4,73 +4,133 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to BevoTunes</h1>
+<div class="text-center mb-5">
+    <h1 class="display-4 font-weight-bold">Welcome to BevoTunes</h1>
+    
+    <div class="mt-3">
+        <a asp-controller="Home" asp-action="MusicRights" class="btn btn-outline-dark">View Music Rights</a>
+    </div>
 </div>
 
 <hr />
 
-<div class="row mt-4">
-    <div class="col-md-4">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Featured Artists</h4>
-            </div>
-            <ul class="list-group list-group-flush">
-                @if (Model.FeaturedArtists != null && Model.FeaturedArtists.Any())
-                {
-                    @foreach (var artist in Model.FeaturedArtists)
+@if (User.Identity.IsAuthenticated)
+{
+    <h2 class="text-center my-4">Today's Featured Picks</h2>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-dark text-white text-center">
+                    <h5 class="mb-0">Featured Songs</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.FeaturedSongs.Any())
                     {
-                        <li class="list-group-item">@artist.ArtistName</li>
-                    }
-                }
-                else
-                {
-                    <li class="list-group-item text-muted">No artists featured today.</li>
-                }
-            </ul>
-        </div>
-    </div>
+                        @foreach (var song in Model.FeaturedSongs)
+                        {
+                            <div class="card mb-4 border-0 bg-transparent"> 
+                                @{ 
+                                    var songCover = song.Albums.FirstOrDefault()?.AlbumCover ?? song.SongImage; 
+                                }
 
-    <div class="col-md-4">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Featured Albums</h4>
-            </div>
-            <ul class="list-group list-group-flush">
-                @if (Model.FeaturedAlbums != null && Model.FeaturedAlbums.Any())
-                {
-                    @foreach (var album in Model.FeaturedAlbums)
-                    {
-                        <li class="list-group-item">@album.AlbumName</li>
+                                @if (!string.IsNullOrEmpty(songCover))
+                                {
+                                    <img src="@songCover" class="card-img-top rounded" alt="@song.SongTitle" 
+                                        style="height: 150px; width: 100%; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="bg-light text-center py-5 rounded" style="height: 150px;">
+                                        <i class="bi bi-music-note" style="font-size: 2rem; color: #dee2e6;"></i>
+                                    </div>
+                                }
+                                <div class="card-body p-2 text-center">
+                                    <h6 class="card-title mb-0 font-weight-bold">@song.SongTitle</h6>
+                                    <p class="card-text small text-muted mb-1">@song.SongPrice.ToString("C")</p>
+                                    <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId" 
+                                    class="btn btn-sm btn-outline-primary border-0">View Details</a>
+                                </div>
+                            </div>
+                        }
                     }
-                }
-                else
-                {
-                    <li class="list-group-item text-muted">No albums featured today.</li>
-                }
-            </ul>
+                    else
+                    {
+                        <p class="text-center text-muted py-4">No songs currently featured.</p>
+                    }
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Featured Songs</h4>
-            </div>
-            <ul class="list-group list-group-flush">
-                @if (Model.FeaturedSongs != null && Model.FeaturedSongs.Any())
-                {
-                    @foreach (var song in Model.FeaturedSongs)
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-dark text-white text-center">
+                    <h5 class="mb-0">Featured Artists</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.FeaturedArtists.Any())
                     {
-                        <li class="list-group-item">@song.SongTitle</li>
+                        @foreach (var artist in Model.FeaturedArtists)
+                        {
+                            <div class="text-center mb-4">
+                                @{ var artistCover = artist.Albums.FirstOrDefault()?.AlbumCover; }
+
+                                @if (!string.IsNullOrEmpty(artistCover))
+                                {
+                                    <img src="@artistCover" alt="@artist.ArtistName" class="rounded-circle shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="rounded-circle bg-secondary d-inline-block shadow-sm" style="width: 100px; height: 100px;"></div>
+                                }
+                                <h6 class="mt-2">@artist.ArtistName</h6>
+                            </div>
+                        }
                     }
-                }
-                else
-                {
-                    <li class="list-group-item text-muted">No songs featured today.</li>
-                }
-            </ul>
+                    else
+                    {
+                        <p class="text-center text-muted">No artists currently featured.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-dark text-white text-center">
+                    <h5 class="mb-0">Featured Albums</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.FeaturedAlbums.Any())
+                    {
+                        @foreach (var album in Model.FeaturedAlbums)
+                        {
+                            <div class="card mb-3 border-0">
+                                @if (!string.IsNullOrEmpty(album.AlbumCover))
+                                {
+                                    <img src="@album.AlbumCover" class="card-img-top rounded shadow-sm" alt="@album.AlbumName" style="height: 150px; object-fit: cover;">
+                                }
+                                <div class="card-body p-2 text-center">
+                                    <h6 class="card-title mb-0">@album.AlbumName</h6>
+                                    <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-link">View Album</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-center text-muted">No albums currently featured.</p>
+                    }
+                </div>
+            </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class="alert alert-warning text-center shadow-sm">
+        <h4>Exclusive Featured Content</h4>
+        <p>Login to see our latest featured artists, albums, and exclusive song deals!</p>
+        <a asp-controller="Home" asp-action="/Account/Login" class="btn btn-warning px-4">Login Now</a>
+    </div>
+}

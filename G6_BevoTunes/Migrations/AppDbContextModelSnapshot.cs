@@ -246,6 +246,9 @@ namespace G6_BevoTunes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"));
 
+                    b.Property<string>("ArtistImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ArtistName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -446,6 +449,9 @@ namespace G6_BevoTunes.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SongId"));
+
+                    b.Property<string>("SongImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("SongPrice")
                         .HasColumnType("decimal(18,2)");
