@@ -1,14 +1,36 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using G6_BevoTunes.Models;
+using G6_BevoTunes.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace G6_BevoTunes.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly AppDbContext _context;
+    public HomeController(AppDbContext context)
     {
-        return View();
+        _context = context;
+    }
+    public async Task<IActionResult> Index()
+    {
+        HomeViewModel hvm = new HomeViewModel();
+
+        List<Promotion> featuredPromo = await _context.Promotions
+            .Include(p => p.Artists)
+            .Include(p => p.Albums)
+            .Include(p => p.Songs)
+            .Where(p => p.PromotionType == PromotionType.FEATURED && p.PromotionActive == true)
+            .ToListAsync();
+
+        foreach (Promotion promo in featuredPromo)
+        {
+            hvm.FeaturedArtists.AddRange(promo.Artists.OrderBy(a => a.ArtistName).ToList());
+            hvm.FeaturedAlbums.AddRange(promo.Albums.OrderBy(a => a.AlbumId).ToList());
+            hvm.FeaturedSongs.AddRange(promo.Songs.OrderBy(s => s.SongId).ToList());
+        }
+        return View(hvm);
     }
 
     public IActionResult Privacy()
