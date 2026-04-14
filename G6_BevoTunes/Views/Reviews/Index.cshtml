@@ -11,7 +11,7 @@
 
 <h1>Index</h1>
 
-<p> @if (User.IsInRole("Customer"))
+<p> @if (User.IsInRole("Customer") && (ViewBag.HasProduct as bool?) == true)
     {
     <a asp-action="Create">Create New</a>
     }
@@ -44,12 +44,12 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @if (User.IsInRole("Admin") || User.IsInRole("Employee") || item.ReviewerID == userId)
+                @if (User.IsInRole("Admin") || User.IsInRole("Employee") || item.Reviewer.Id == userId)
                 {
                     <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> <span>|</span>
                 }
                 <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
-                @if (item.ReviewerID == userId)
+                @if (item.Reviewer.Id == userId)
                 {
                 <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete Review</a> 
                 }

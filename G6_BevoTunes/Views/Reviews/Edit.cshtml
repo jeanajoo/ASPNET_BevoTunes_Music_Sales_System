@@ -24,7 +24,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @if (Model.ReviewerID == userId)
+                @if (Model.Reviewer.Id == userId)
                 {
 
                     <div class="form-group">
