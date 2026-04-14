@@ -2,18 +2,71 @@
 
 @{
     ViewData["Title"] = "Index";
+    Promotion[] FeaturedProducts = Model.Where(p => p.PromotionType == PromotionType.FEATURED).ToArray();
+    Promotion[] DiscountedProducts = Model.Where(p => p.PromotionType == PromotionType.DISCOUNT).ToArray();
 }
 
-<h1>Index</h1>
+<h1>Promotions List</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
+}
+
+
+<h3>Featured Products</h3>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PromotionType)
+                Products
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in FeaturedProducts)
+        {
+            <tr>
+                <td>
+                    @{
+                        if (item.Songs.Count > 0)
+                        {
+                            <span><b>Song:</b> @item.Songs[0].SongTitle</span>
+                        }
+                        else if (item.Albums.Count > 0)
+                        {
+                            <span><b>Album: </b>@item.Albums[0].AlbumName</span>
+                        }
+                        else if (item.Artists.Count > 0)
+                        {
+                            <span><b>Artist:</b> @item.Artists[0].ArtistName</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionActive)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.PromotionId">Details</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PromotionId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Discounted Products</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Products
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DiscountPrice)
@@ -25,26 +78,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PromotionType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiscountPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PromotionActive)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PromotionId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PromotionId">Details</a> |
-                @if (item.PromotionType == PromotionType.DISCOUNT)
-                {
-                    <a asp-action="Delete" asp-route-id="@item.PromotionId">Delete</a> <span>|</span>
-                } 
-            </td>
-        </tr>
-}
+        @foreach (var item in DiscountedProducts)
+        {
+            <tr>
+                <td>
+                    @{
+                        if (item.Songs.Count > 0)
+                        {
+                            <span><b>Song:</b> @item.Songs[0].SongTitle</span>
+                        }
+                        else if (item.Albums.Count > 0)
+                        {
+                            <span><b>Album: </b>@item.Albums[0].AlbumName</span>
+                        }
+                        else if (item.Artists.Count > 0)
+                        {
+                            <span><b>Artist:</b> @item.Artists[0].ArtistName</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionActive)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.PromotionId">Details</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PromotionId">Edit</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -22,7 +22,7 @@ namespace G6_BevoTunes.Controllers
         // GET: Promotions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Promotions.ToListAsync());
+            return View(await _context.Promotions.Include(p => p.Artists).Include(p => p.Albums).Include(p => p.Songs).ToListAsync());
         }
 
         // GET: Promotions/Details/5
