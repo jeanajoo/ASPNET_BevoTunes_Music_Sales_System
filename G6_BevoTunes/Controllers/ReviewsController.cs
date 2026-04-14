@@ -54,6 +54,30 @@ namespace G6_BevoTunes.Controllers
         [Authorize]
         public IActionResult Create()
         {
+            AppUser user = _userManager.GetUserAsync(User).Result;
+
+            var ownedSongs = _context.OrderDetails
+                .Where(od => od.Order.Customer.Id == user.Id && od.Song != null)
+                .Select(od => od.Song)
+                .Distinct()
+                .ToList();
+
+            var ownedAlbums = _context.OrderDetails
+                .Where(od => od.Order.Customer.Id == user.Id && od.Album != null)
+                .Select(od => od.Album)
+                .Distinct()
+                .ToList();
+
+            var ownedArtists = _context.OrderDetails
+                .Where(od => od.Order.Customer.Id == user.Id && od.Artist != null)
+                .Select(od => od.Artist)
+                .Distinct()     
+                .ToList();
+
+            ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
+            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumTitle");
+            ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
+
             return View();
         }
 
@@ -70,12 +94,18 @@ namespace G6_BevoTunes.Controllers
                 AppUser user = await _userManager.GetUserAsync(User);
                 
                 bool ownProduct = _context.Orders
-                .Where(o => o.Customer.Id == user.Id && 
-                o.OrderDetails.Any(od => od.Song != null && od.Song.SongId == review.Song.SongId || 
-                od.Album != null && od.Album.AlbumId == review.Album.AlbumId || 
-                od.Artists != null && od.Artist.ArtistID == review.Artist.ArtistID));
+                    .Any(o => o.Customer.Id == user.Id &&
+                            o.OrderDetails.Any(od =>
+                                (od.Song != null && review.Song != null && od.Song.SongId == review.Song.SongId) ||
+                                (od.Album != null && review.Album != null && od.Album.AlbumId == review.Album.AlbumId) ||
+                                (od.Artist != null && review.Artist != null && od.Artist.ArtistId == review.Artist.ArtistId)
+                            ));
 
-
+                if (!ownProduct)
+                {
+                    return Unauthorized();
+                }
+                
                 review.Reviewer = user;
                 review.ReviewerID = user.Id;
 
