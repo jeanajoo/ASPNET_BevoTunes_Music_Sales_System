@@ -51,7 +51,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Create
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         public IActionResult Create()
         {
             AppUser user = _userManager.GetUserAsync(User).Result;
@@ -86,7 +86,7 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Create([Bind("ReviewID,Description,Rating,Status")] Review review, int? SelectedSong, 
         int? SelectedAlbum, int? SelectedArtist)
         {
@@ -160,6 +160,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Edit/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Edit(int? id)
         {
             
@@ -226,7 +227,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -245,15 +246,15 @@ namespace G6_BevoTunes.Controllers
         }
 
         // POST: Reviews/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var review = await _context.Reviews.FindAsync(id);
-            if (review != null)
+            if (review != null || review.Description != "")
             {
-                review.Description = null;
+                review.Description = "";
             }
 
             await _context.SaveChangesAsync();
