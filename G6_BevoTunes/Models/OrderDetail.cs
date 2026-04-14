@@ -16,9 +16,6 @@ namespace G6_BevoTunes.Models
         [Display(Name = "Song")]
         public Song? Song { get; set; }
 
-        [Display(Name = "Artist")]
-        public Artist? Artist { get; set; }
-
         [Display(Name = "Price")]
         public Decimal PurchasedPrice { get; set; }
     }

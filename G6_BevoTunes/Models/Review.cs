@@ -21,7 +21,6 @@ namespace G6_BevoTunes.Models
 
         [Required]
         public AppUser Reviewer { get; set; }
-        public String ReviewerID { get; set; }
 
         public AppUser? Approver { get; set; }
 
