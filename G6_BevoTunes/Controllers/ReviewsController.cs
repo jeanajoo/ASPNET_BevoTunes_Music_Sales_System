@@ -148,6 +148,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -166,6 +167,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // POST: Reviews/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -173,7 +175,7 @@ namespace G6_BevoTunes.Controllers
             var review = await _context.Reviews.FindAsync(id);
             if (review != null)
             {
-                _context.Reviews.Remove(review);
+                review.Description = null;
             }
 
             await _context.SaveChangesAsync();
@@ -197,6 +199,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             review.Status = ReviewStatus.Approve;
+
             _context.Update(review);
             await _context.SaveChangesAsync();
 
@@ -220,6 +223,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             review.Status = ReviewStatus.Reject;
+
             _context.Update(review);
             await _context.SaveChangesAsync();
 
