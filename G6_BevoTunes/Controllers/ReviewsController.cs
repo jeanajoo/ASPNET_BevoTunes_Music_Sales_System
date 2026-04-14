@@ -87,12 +87,29 @@ namespace G6_BevoTunes.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("ReviewID,Description,Rating,Status")] Review review)
+        public async Task<IActionResult> Create([Bind("ReviewID,Description,Rating,Status")] Review review, int? SelectedSong, 
+        int? SelectedAlbum, int? SelectedArtist)
         {
             if (ModelState.IsValid)
             {
                 AppUser user = await _userManager.GetUserAsync(User);
                 
+                review.Reviewer = user;
+                review.ReviewerID = user.Id;
+
+                if (SelectedSong != null)
+                {
+                    review.Song = _context.Songs.Find(SelectedSong);
+                }
+                else if (SelectedAlbum != null)
+                {
+                    review.Album = _context.Albums.Find(SelectedAlbum);
+                }
+                else if (SelectedArtist != null)
+                {
+                    review.Artist = _context.Artists.Find(SelectedArtist);
+                }
+                                
                 bool ownProduct = _context.Orders
                     .Any(o => o.Customer.Id == user.Id &&
                             o.OrderDetails.Any(od =>
@@ -106,9 +123,6 @@ namespace G6_BevoTunes.Controllers
                     return Unauthorized();
                 }
                 
-                review.Reviewer = user;
-                review.ReviewerID = user.Id;
-
                 review.Status = ReviewStatus.Pending;
 
                 _context.Add(review);
