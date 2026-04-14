@@ -1,0 +1,235 @@
+@model G6_BevoTunes.Models.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-4">Products</h1>
+            <p class="text-muted">Manage BevoTunes catalog - Songs and Albums</p>
+        </div>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <div class="col-md-4 text-end">
+                <a asp-action="CreateSong" class="btn btn-success me-2">
+                    <i class="bi bi-plus-circle"></i> Add Song
+                </a>
+                <a asp-action="CreateAlbum" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Add Album
+                </a>
+            </div>
+        }
+    </div>
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-songs-tab" data-bs-toggle="pill" data-bs-target="#pills-songs"
+                    type="button" role="tab" aria-controls="pills-songs" aria-selected="true">Songs <span
+                class="badge text-bg-light">@(Model.Songs == null ? 0 : Model.Songs.Count)</span></button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-albums-tab" data-bs-toggle="pill" data-bs-target="#pills-albums"
+                        type="button" role="tab" aria-controls="pills-albums" aria-selected="false">Albums <span
+                    class="badge text-bg-light">@(Model.Albums == null ? 0 : Model.Albums.Count)</span></button>
+                </li>
+                @* <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+        </li> *@
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-songs" role="tabpanel" aria-labelledby="pills-songs-tab">
+                    @if (Model.Songs != null && Model.Songs.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Song Title</th>
+                                        <th>Price</th>
+                                        <th>Artists</th>
+                                        <th>Genres</th>
+                                        <th>Albums</th>
+                                        <th style="width: 200px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var song in Model.Songs)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@song.SongTitle</strong>
+                                            </td>
+                                            <td>
+                                                @string.Format("{0:C}", song.SongPrice)
+                                            </td>
+                                            <td>
+                                                @if (song.Artists != null && song.Artists.Any())
+                                                {
+                                                    <div class="badge bg-info">@song.Artists.Count artist(s)</div>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">-</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (song.Genres != null && song.Genres.Any())
+                                                {
+                                                    @foreach (var genre in song.Genres.Take(2))
+                                                    {
+                                                        <span class="badge bg-secondary me-1">@genre.GenreName</span>
+                                                    }
+                                                    @if (song.Genres.Count > 2)
+                                                    {
+                                                        <span class="badge bg-secondary">+@(song.Genres.Count - 2)</span>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">-</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (song.Albums != null && song.Albums.Any())
+                                                {
+                                                    <div class="badge bg-warning">@song.Albums.Count album(s)</div>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">-</span>
+                                                }
+                                            </td>
+                                            <td class="text-center">
+                                                <a asp-action="EditSong" asp-route-id="@song.SongId"
+                                                       class="btn btn-sm btn-warning me-2">
+                                                    <i class="bi bi-pencil"></i> Edit
+                                                </a>
+                                                @* <a asp-action="DeleteSong" asp-route-id="@song.SongId" class="btn btn-sm btn-danger">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </a> *@
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info" role="alert">
+                            <i class="bi bi-info-circle"></i> No songs found. <a asp-action="CreateSong">Create your first song</a>.
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="pills-albums" role="tabpanel" aria-labelledby="pills-albums-tab">
+                    @if (Model.Albums != null && Model.Albums.Any())
+                    {
+                        <div class="row">
+                            @foreach (var album in Model.Albums)
+                            {
+                                <div class="col-md-6 col-lg-4 mb-4">
+                                    <div class="card h-100 shadow-sm">
+                                        @if (!string.IsNullOrEmpty(album.AlbumCover))
+                                        {
+                                            <img src="@album.AlbumCover" class="card-img-top" alt="@album.AlbumName"
+                                                 style="height: 200px; object-fit: cover;">
+                                        }
+                                        else
+                                        {
+                                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                                                 style="height: 200px;">
+                                                <i class="bi bi-collection" style="font-size: 3rem; color: #ccc;"></i>
+                                            </div>
+                                        }
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">@album.AlbumName</h5>
+
+                                            <div class="mb-2">
+                                                <p class="card-text text-muted">
+                                                    <strong>Price:</strong> @string.Format("{0:C}", album.AlbumPrice)
+                                                </p>
+                                            </div>
+
+                                            @if (album.Artists != null && album.Artists.Any())
+                                            {
+                                                <p class="card-text">
+                                                    <strong>Artists:</strong>
+                                                    <br />
+                                                    @foreach (var artist in album.Artists)
+                                                    {
+                                                        <span class="badge bg-info">@artist.ArtistName</span>
+                                                    }
+                                                </p>
+                                            }
+
+                                            @if (album.Genres != null && album.Genres.Any())
+                                            {
+                                                <p class="card-text">
+                                                    <strong>Genres:</strong>
+                                                    <br />
+                                                    @foreach (var genre in album.Genres)
+                                                    {
+                                                        <span class="badge bg-secondary">@genre.GenreName</span>
+                                                    }
+                                                </p>
+                                            }
+
+                                            @if (album.Songs != null && album.Songs.Any())
+                                            {
+                                                <p class="card-text text-muted">
+                                                    <i class="bi bi-music-note"></i> @album.Songs.Count song(s)
+                                                </p>
+                                            }
+                                        </div>
+
+                                        <div class="card-footer bg-white">
+                                            <a asp-action="EditAlbum" asp-route-id="@album.AlbumId" class="btn btn-sm btn-warning me-2">
+                                                <i class="bi bi-pencil"></i> Edit
+                                            </a>
+                                            @* <a asp-action="DeleteAlbum" asp-route-id="@album.AlbumId" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </a> *@
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info" role="alert">
+                            <i class="bi bi-info-circle"></i> No albums found. <a asp-action="CreateAlbum">Create your first
+                            album</a>.
+                        </div>
+                    }
+                </div>
+                @* <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+        *@
+            </div>
+        </div>
+
+        <style>
+            .card {
+                border: 1px solid #dee2e6;
+                border-radius: 0.5rem;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+            }
+
+            .table-hover tbody tr:hover {
+                background-color: #f8f9fa;
+            }
+
+            .nav-tabs .nav-link.active {
+                border-bottom: 3px solid #007bff;
+                font-weight: 600;
+            }
+        </style>

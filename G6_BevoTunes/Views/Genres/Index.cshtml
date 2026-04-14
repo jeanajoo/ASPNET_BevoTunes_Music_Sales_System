@@ -1,0 +1,33 @@
+@model IEnumerable<G6_BevoTunes.Models.Genre>
+
+@{
+    ViewData["Title"] = "All Genres";
+}
+
+<h1>Music Genres</h1>
+
+<p>Total Genres Seeded: @Model.Count()</p>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Genre Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.GenreName)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.GenreId" class="btn btn-info">View Songs</a>
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.GenreId" class="btn btn-warning">Edit</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
