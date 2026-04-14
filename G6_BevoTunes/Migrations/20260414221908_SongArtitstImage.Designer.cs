@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace G6_BevoTunes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260414193446_testing")]
-    partial class testing
+    [Migration("20260414221908_SongArtitstImage")]
+    partial class SongArtitstImage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -249,6 +249,9 @@ namespace G6_BevoTunes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"));
 
+                    b.Property<string>("ArtistImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ArtistName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -351,9 +354,6 @@ namespace G6_BevoTunes.Migrations
                     b.Property<int?>("AlbumId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ArtistId")
-                        .HasColumnType("int");
-
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
@@ -366,8 +366,6 @@ namespace G6_BevoTunes.Migrations
                     b.HasKey("OrderDetailID");
 
                     b.HasIndex("AlbumId");
-
-                    b.HasIndex("ArtistId");
 
                     b.HasIndex("OrderID");
 
@@ -422,7 +420,7 @@ namespace G6_BevoTunes.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("ReviewerID")
+                    b.Property<string>("ReviewerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -440,7 +438,7 @@ namespace G6_BevoTunes.Migrations
 
                     b.HasIndex("ArtistId");
 
-                    b.HasIndex("ReviewerID");
+                    b.HasIndex("ReviewerId");
 
                     b.HasIndex("SongId");
 
@@ -454,6 +452,9 @@ namespace G6_BevoTunes.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SongId"));
+
+                    b.Property<string>("SongImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("SongPrice")
                         .HasColumnType("decimal(18,2)");
@@ -784,10 +785,6 @@ namespace G6_BevoTunes.Migrations
                         .WithMany("OrderDetails")
                         .HasForeignKey("AlbumId");
 
-                    b.HasOne("G6_BevoTunes.Models.Artist", "Artist")
-                        .WithMany()
-                        .HasForeignKey("ArtistId");
-
                     b.HasOne("G6_BevoTunes.Models.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderID")
@@ -799,8 +796,6 @@ namespace G6_BevoTunes.Migrations
                         .HasForeignKey("SongId");
 
                     b.Navigation("Album");
-
-                    b.Navigation("Artist");
 
                     b.Navigation("Order");
 
@@ -824,7 +819,7 @@ namespace G6_BevoTunes.Migrations
 
                     b.HasOne("G6_BevoTunes.Models.AppUser", "Reviewer")
                         .WithMany("Reviews")
-                        .HasForeignKey("ReviewerID")
+                        .HasForeignKey("ReviewerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

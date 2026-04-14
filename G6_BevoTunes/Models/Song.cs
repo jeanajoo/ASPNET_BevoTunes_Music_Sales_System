@@ -17,6 +17,9 @@ namespace G6_BevoTunes.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal SongPrice { get; set; }
 
+        [Display(Name = "Song Image")]
+        public string? SongImage { get; set; }
+
         public List<Album> Albums { get; set; } = new List<Album>();
 
         public List<Artist> Artists { get; set; } = new List<Artist>();
