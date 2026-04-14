@@ -1,18 +1,76 @@
-﻿@{
+﻿@model G6_BevoTunes.Models.HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to BevoTunes</h1>
-    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <a asp-controller="Artists" asp-action="Index" class="btn btn-primary">View Artists</a>
-        <a asp-controller="Genres" asp-action="Index" class="btn btn-primary">View Genres</a>
-        <a asp-controller="Products" asp-action="Index" class="btn btn-primary">View Songs/Albums</a>
-        <a asp-controller="Orders" asp-action="Index" class="btn btn-success">View Orders</a>
-        <a asp-controller="OrderDetails" asp-action="Index" class="btn btn-success">View Order Details</a>
-        <a asp-controller="Promotions" asp-action="Index" class="btn btn-warning">View Promotions</a>
-        <a asp-controller="Reviews" asp-action="Index" class="btn btn-warning">View Reviews</a>
-        <a asp-controller="Account" asp-action="List" class="btn btn-info">View User</a>
-        <a asp-controller="CustCreditCards" asp-action="Index" class="btn btn-info">View Cards</a>
+</div>
+
+<hr />
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Featured Artists</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                @if (Model.FeaturedArtists != null && Model.FeaturedArtists.Any())
+                {
+                    @foreach (var artist in Model.FeaturedArtists)
+                    {
+                        <li class="list-group-item">@artist.ArtistName</li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item text-muted">No artists featured today.</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Featured Albums</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                @if (Model.FeaturedAlbums != null && Model.FeaturedAlbums.Any())
+                {
+                    @foreach (var album in Model.FeaturedAlbums)
+                    {
+                        <li class="list-group-item">@album.AlbumName</li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item text-muted">No albums featured today.</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Featured Songs</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                @if (Model.FeaturedSongs != null && Model.FeaturedSongs.Any())
+                {
+                    @foreach (var song in Model.FeaturedSongs)
+                    {
+                        <li class="list-group-item">@song.SongTitle</li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item text-muted">No songs featured today.</li>
+                }
+            </ul>
+        </div>
     </div>
 </div>
