@@ -51,7 +51,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Create
-        [Authorize(Roles = "Customer")]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -62,12 +62,19 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Customer")]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("ReviewID,Description,Rating,Status")] Review review)
         {
             if (ModelState.IsValid)
             {
                 AppUser user = await _userManager.GetUserAsync(User);
+                
+                bool ownProduct = _context.Orders
+                .Where(o => o.Customer.Id == user.Id && 
+                o.OrderDetails.Any(od => od.Song != null && od.Song.SongId == review.Song.SongId || 
+                od.Album != null && od.Album.AlbumId == review.Album.AlbumId || 
+                od.Artists != null && od.Artist.ArtistID == review.Artist.ArtistID));
+
 
                 review.Reviewer = user;
                 review.ReviewerID = user.Id;
