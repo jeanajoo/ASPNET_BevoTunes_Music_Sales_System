@@ -73,7 +73,7 @@ namespace G6_BevoTunes.Controllers
                 review.ReviewerID = user.Id;
 
                 review.Status = ReviewStatus.Pending;
-                
+
                 _context.Add(review);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -109,11 +109,19 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Edit(int id, [Bind("ReviewID,Description,Rating,Status")] Review review)
         {
             if (id != review.ReviewID)
             {
                 return NotFound();
+            }
+
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            if (review.ReviewerID != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+            {
+                return Unauthorized();
             }
 
             if (ModelState.IsValid)
