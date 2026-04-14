@@ -105,31 +105,20 @@ namespace G6_BevoTunes.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel lvm, string? returnUrl)
         {
-            //if user forgot to include user name or password,
-            //send them back to the login page to try again
-            if (ModelState.IsValid == false)
+            if (ModelState.IsValid == false) return View(lvm);
+
+            var user = await _userManager.FindByEmailAsync(lvm.Email);
+            if (user != null && user.Status == UserStatus.Blocked)
             {
-                Console.WriteLine(ModelState);
+                ModelState.AddModelError("", "Your account has been disabled. Please contact a manager.");
                 return View(lvm);
             }
+            var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, lvm.RememberMe, lockoutOnFailure: false);
 
-            //attempt to sign the user in using the SignInManager
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, lvm.RememberMe, lockoutOnFailure: false);
-
-            //if the login worked, take the user to either the url
-            //they requested OR the homepage if there isn't a specific url
-            if (result.Succeeded)
-            {
-                //return ?? "/" means if returnUrl is null, substitute "/" (home)
-                return Redirect(returnUrl ?? "/");
-            }
-            else //log in was not successful
-            {
-                //add an error to the model to show invalid attempt
-                ModelState.AddModelError("", "Invalid login attempt.");
-                //send user back to login page to try again
-                return View(lvm);
-            }
+            if (result.Succeeded) return Redirect(returnUrl ?? "/");
+            
+            ModelState.AddModelError("", "Invalid login attempt.");
+            return View(lvm);
         }
 
         public IActionResult AccessDenied()
@@ -220,17 +209,74 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction("Index", "Home");
         }
         // Get: /Account/List
-        [AllowAnonymous]
-        public async Task<IActionResult> List()
+        [Authorize(Roles = "Employee,Manager")]
+        public async Task<IActionResult> UserIndex()
         {
-            // This retrieves all users from the database, 
-            // including their current status (Active/Disabled)
-            var users = await _context.Users
-                .OrderBy(u => u.LastName)
-                .ThenBy(u => u.FirstName)
-                .ToListAsync();
-
+            var users = await _userManager.Users.ToListAsync();
             return View(users);
+        }
+        // POST: /Account/ToggleStatus
+        [HttpPost]
+        [Authorize(Roles = "Employee,Manager")]
+        public async Task<IActionResult> ToggleStatus(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            // Toggle logic
+            if (user.Status == UserStatus.Active)
+            {
+                user.Status = UserStatus.Blocked;
+            }
+            else
+            {
+                user.Status = UserStatus.Active;
+            }
+
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("UserIndex"); 
+        }
+
+        // POST: /Account/PromoteToManager
+        [HttpPost]
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> PromoteToManager(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                await _userManager.AddToRoleAsync(user, "Manager");
+                await _userManager.RemoveFromRoleAsync(user, "Employee");
+            }
+            return RedirectToAction(nameof(UserIndex));
+        }
+        [Authorize(Roles = "Employee,Manager")]
+        public IActionResult CreateCustomer() => View();
+
+        [HttpPost]
+        [Authorize(Roles = "Employee,Manager")]
+        public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
+        {
+            if (ModelState.IsValid == false) return View(rvm);
+
+            AppUser newUser = new AppUser {
+                UserName = rvm.Email, Email = rvm.Email, 
+                FirstName = rvm.FirstName, LastName = rvm.LastName,
+                PhoneNumber = rvm.PhoneNumber
+            };
+
+            AddUserModel aum = new AddUserModel {
+                User = newUser, Password = rvm.Password, RoleName = "Customer"
+            };
+
+            IdentityResult result = await Utilities.AddUser.AddUserWithRoleAsync(aum, _userManager, _context);
+
+            if (result.Succeeded) {
+                return RedirectToAction(nameof(UserIndex));
+            }
+            
+            foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
+            return View(rvm);
         }
     }
  }

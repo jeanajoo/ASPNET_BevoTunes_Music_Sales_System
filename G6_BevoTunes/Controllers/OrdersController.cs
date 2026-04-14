@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace G6_BevoTunes.Controllers
 {
     public class OrdersController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
         public OrdersController(AppDbContext context)
         {
@@ -159,6 +162,27 @@ namespace G6_BevoTunes.Controllers
         private bool OrderExists(int id)
         {
             return _context.Orders.Any(e => e.OrderID == id);
+        }
+        [Authorize]
+        public async Task<IActionResult> Checkout()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (user.Status == UserStatus.Blocked)
+            {
+                return View("Error", new string[] { "Your account is disabled. You cannot checkout." });
+            }
+            var order = await _context.Orders
+                                    .Include(o => o.OrderDetails)
+                                    .FirstOrDefaultAsync(o => o.Recipient.UserName == User.Identity.Name 
+                                    && o.OrderStatus == OrderStatus.InCart);
+
+            if (order == null)
+            {
+                return RedirectToAction("Index", "Home"); 
+            }
+
+            return View(order); 
         }
     }
 }
