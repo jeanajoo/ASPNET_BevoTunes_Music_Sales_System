@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
+using Microsoft.AspNetCore.Identity;
 
 namespace G6_BevoTunes.Controllers
 {
@@ -14,9 +17,12 @@ namespace G6_BevoTunes.Controllers
     {
         private readonly AppDbContext _context;
 
-        public ReviewsController(AppDbContext context)
+        private readonly UserManager<AppUser> _userManager;
+
+        public ReviewsController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Reviews
@@ -35,6 +41,7 @@ namespace G6_BevoTunes.Controllers
 
             var review = await _context.Reviews
                 .FirstOrDefaultAsync(m => m.ReviewID == id);
+
             if (review == null)
             {
                 return NotFound();
@@ -44,6 +51,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize(Roles = "Customer")]
         public IActionResult Create()
         {
             return View();
@@ -54,10 +62,16 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Create([Bind("ReviewID,Description,Rating,Status")] Review review)
         {
             if (ModelState.IsValid)
             {
+                AppUser user = await _userManager.GetUserAsync(User);
+
+                review.Reviewer = user;
+                review.ReviewerID = user.Id;
+
                 review.Status = ReviewStatus.Pending;
                 _context.Add(review);
                 await _context.SaveChangesAsync();
@@ -69,12 +83,19 @@ namespace G6_BevoTunes.Controllers
         // GET: Reviews/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
             }
 
             var review = await _context.Reviews.FindAsync(id);
+
+            if (review.ReviewerID != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+            {
+                return Unauthorized();
+            }
+
             if (review == null)
             {
                 return NotFound();
@@ -151,6 +172,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Approve/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Approve(int? id)
         {
             if (id == null)
@@ -172,7 +194,8 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-                // GET: Reviews/Reject/5
+        // GET: Reviews/Reject/5
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Reject(int? id)
         {
             if (id == null)
