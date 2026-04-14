@@ -29,15 +29,15 @@ namespace G6_BevoTunes.Controllers
             try
             {
                 //call the method to seed the roles
-                // SeedGenres.SeedAllGenres(_context);
-                // SeedArtists.SeedAllArtists(_context);
-                // SeedAlbums.SeedAllAlbums(_context);
-                // SeedSongs.SeedAllSongs(_context);
-                // SeedPromotions.SeedAllPromotions(_context);
-                // await SeedRoles.AddAllRoles(_roleManager);
-                // await SeedUsers.SeedAllUsers(_userManager, _context);
-                // SeedCustCreditCards.SeedAllCustCreditCards(_context);
-                // SeedOrders.SeedAllOrders(_context);
+                SeedGenres.SeedAllGenres(_context);
+                SeedArtists.SeedAllArtists(_context);
+                SeedAlbums.SeedAllAlbums(_context);
+                SeedSongs.SeedAllSongs(_context);
+                SeedPromotions.SeedAllPromotions(_context);
+                await SeedRoles.AddAllRoles(_roleManager);
+                await SeedUsers.SeedAllUsers(_userManager, _context);
+                SeedCustCreditCards.SeedAllCustCreditCards(_context);
+                SeedOrders.SeedAllOrders(_context);
                 await SeedReviews.SeedAllReviews(_context, _userManager);
             }
             catch (Exception ex)

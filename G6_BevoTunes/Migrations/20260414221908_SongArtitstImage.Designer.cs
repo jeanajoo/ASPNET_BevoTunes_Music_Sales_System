@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace G6_BevoTunes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260414191717_AddImagesToModels")]
-    partial class AddImagesToModels
+    [Migration("20260414221908_SongArtitstImage")]
+    partial class SongArtitstImage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

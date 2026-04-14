@@ -5,7 +5,7 @@
 namespace G6_BevoTunes.Migrations
 {
     /// <inheritdoc />
-    public partial class AddImageProperties : Migration
+    public partial class SongArtitstImage : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
