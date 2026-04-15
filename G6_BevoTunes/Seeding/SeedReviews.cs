@@ -10,7 +10,7 @@ namespace G6_BevoTunes.Seeding
 {
     public static class SeedReviews
     {
-        public static void SeedAllReviews(AppDbContext db)
+        public async static Task SeedAllReviews(AppDbContext db, UserManager<AppUser> userManager)
         {
             // check to see if all the genres have already been added
             if (db.Reviews.Count() == 12)
@@ -20,6 +20,9 @@ namespace G6_BevoTunes.Seeding
                 throw ex;
             }
             Int32 intReviewsAdded = 0;
+            List<AppUser> customers = [.. await userManager.GetUsersInRoleAsync("Customer")];
+            List<AppUser> adminsNemployees = [.. await userManager.GetUsersInRoleAsync("Admin")];
+            adminsNemployees.AddRange(await userManager.GetUsersInRoleAsync("Employee"));
             try
             {
                 //Create a list of credit cards
@@ -30,10 +33,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Big hook, playful delivery, and a beat that still lands; a fun throwback single.",
                     Rating = 5,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                 };
 
-                r1.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Emily" && u.LastName == "Johnson");
+                r1.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Emily" && u.LastName == "Johnson");
 
                 Song songItem1 = db.Songs.FirstOrDefault(s => s.SongTitle == "Ice Ice Baby");
                 if (songItem1 != null)
@@ -60,10 +63,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Energetic remix with punchy beats; a solid update that keeps the groove fresh.",
                     Rating = 5,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
                 };
 
-                r2.Approver = db.Users.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Smith");
+                r2.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Smith");
 
                 Song songItem2 = db.Songs.FirstOrDefault(s => s.SongTitle == "Bootstrap Remix");
                 if (songItem2 != null)
@@ -90,10 +93,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Catchy and recognizable, even if it leans more on nostalgia than depth.",
                     Rating = 3,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                 };
 
-                r3.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Michael" && u.LastName == "Williams");
+                r3.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Michael" && u.LastName == "Williams");
 
                 Song songItem3 = db.Songs.FirstOrDefault(s => s.SongTitle == "Ice Ice Baby");
                 if (songItem3 != null)
@@ -120,10 +123,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Dark trap energy and cold delivery make this track feel gritty and relentless.",
                     Rating = 4,
                     Status = ReviewStatus.Reject,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
                 };
 
-                r4.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Stephanie" && u.LastName == "Lopez");
+                r4.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Stephanie" && u.LastName == "Lopez");
 
                 Song songItem4 = db.Songs.FirstOrDefault(s => s.SongTitle == "No Heart");
                 if (songItem4 != null)
@@ -150,10 +153,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Club-ready production and an easy chorus make this one reliably entertaining.",
                     Rating = 4,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                 };
 
-                r5.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Sarah" && u.LastName == "Brown");
+                r5.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Sarah" && u.LastName == "Brown");
 
                 Song songItem5 = db.Songs.FirstOrDefault(s => s.SongTitle == "Hot In Herre");
                 if (songItem5 != null)
@@ -180,10 +183,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Catchy hook and confident verses; a defining trap anthem of its era.",
                     Rating = 4,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                 };
 
-                r6.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Lauren" && u.LastName == "Wilson");
+                r6.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Lauren" && u.LastName == "Wilson");
 
                 Song songItem6 = db.Songs.FirstOrDefault(s => s.SongTitle == "Bad and Boujee (feat. Lil Uzi Vert)");
                 if (songItem6 != null)
@@ -210,10 +213,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Iconic bassline and haunting groove; one of pop’s most unforgettable tracks.",
                     Rating = 4,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                 };
 
-                r7.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Ashley" && u.LastName == "Davis");
+                r7.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Ashley" && u.LastName == "Davis");
 
                 Song songItem7 = db.Songs.FirstOrDefault(s => s.SongTitle == "Billie Jean");
                 if (songItem7 != null)
@@ -240,10 +243,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "Sharp lyrics and playful attitude; Eminem at his most entertaining.",
                     Rating = 5,
                     Status = ReviewStatus.Approve,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                 };
 
-                r8.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Lauren" && u.LastName == "Wilson");
+                r8.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Lauren" && u.LastName == "Wilson");
 
                 Song songItem8 = db.Songs.FirstOrDefault(s => s.SongTitle == "Without Me");
                 if (songItem8 != null)
@@ -270,10 +273,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "High-energy production packed with bold beats and flashy collaborations.",
                     Rating = 4,
                     Status = ReviewStatus.Reject,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
                 };
 
-                r9.Approver = db.Users.FirstOrDefault(u => u.FirstName == "Daniel" && u.LastName == "Miller");
+                r9.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "Daniel" && u.LastName == "Miller");
 
                 Song songItem9 = db.Songs.FirstOrDefault(s => s.SongTitle == "Shock Value");
                 if (songItem9 != null)
@@ -300,7 +303,7 @@ namespace G6_BevoTunes.Seeding
                     Description = "Fast-paced and catchy; the back-and-forth delivery keeps the song moving the whole time.",
                     Rating = 4,
                     Status = ReviewStatus.Pending,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
                 };
 
                 Song songItem10 = db.Songs.FirstOrDefault(s => s.SongTitle == "Sprinter");
@@ -328,7 +331,7 @@ namespace G6_BevoTunes.Seeding
                     Description = "Warm groove, strong rhythm, and an easy chorus make this one an instant repeat.",
                     Rating = 5,
                     Status = ReviewStatus.Pending,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                 };
 
                 Song songItem11 = db.Songs.FirstOrDefault(s => s.SongTitle == "Could You Be Loved");
@@ -356,10 +359,10 @@ namespace G6_BevoTunes.Seeding
                     Description = "The hook is memorable, but the track feels repetitive after a few listens.",
                     Rating = 2,
                     Status = ReviewStatus.Reject,
-                    Reviewer = db.Users.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    Reviewer = customers.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
                 };
 
-                r12.Approver = db.Users.FirstOrDefault(u => u.FirstName == "David" && u.LastName == "Jones");
+                r12.Approver = adminsNemployees.FirstOrDefault(u => u.FirstName == "David" && u.LastName == "Jones");
 
                 Song songItem12 = db.Songs.FirstOrDefault(s => s.SongTitle == "Hot In Herre");
                 if (songItem12 != null)

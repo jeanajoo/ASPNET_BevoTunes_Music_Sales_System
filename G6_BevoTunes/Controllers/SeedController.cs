@@ -38,7 +38,7 @@ namespace G6_BevoTunes.Controllers
                 await SeedUsers.SeedAllUsers(_userManager, _context);
                 SeedCustCreditCards.SeedAllCustCreditCards(_context);
                 SeedOrders.SeedAllOrders(_context);
-                SeedReviews.SeedAllReviews(_context);
+                await SeedReviews.SeedAllReviews(_context, _userManager);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             //this is the happy path - seeding worked!
-            return View("Views/Home/Index.cshtml");
+            return Redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         }
         
     }
