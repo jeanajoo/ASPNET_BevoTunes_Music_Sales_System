@@ -4,33 +4,80 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Promotion Details</h1>
+<hr />
 
-<div>
-    <h4>Promotion</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PromotionType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PromotionType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DiscountPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DiscountPrice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PromotionActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PromotionActive)
-        </dd>
-    </dl>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Promotion Details</h4>
+            <div>
+                <div class="card row m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">@Html.DisplayNameFor(model => model.PromotionType)</p>
+                        <h5 class="card-title">@Html.DisplayFor(model => model.PromotionType)</h5>
+                    </div>
+                </div>
+                @if (Model.PromotionType == PromotionType.DISCOUNT)
+                {
+                    <div class="card row m-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <p class="card-text">@Html.DisplayNameFor(model => model.DiscountPrice)</p>
+                            <h5 class="card-title">@Html.DisplayFor(model => model.DiscountPrice)</h5>
+                        </div>
+                    </div>
+                }
+                <div class="card row m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">@Html.DisplayNameFor(model => model.PromotionActive)</p>
+                        <h5 class="card-title">@if(Model.PromotionActive){
+                            <button type="button" class="btn btn-success disabled">Active</button>
+                        }else
+                        {
+                            <button type="button" class="btn btn-danger disabled">Inactive</button>
+                        }
+                    </h5>
+                </div>
+            </div>
+            <h4>Actions</h4>
+            <a asp-action="Edit" asp-route-id="@Model?.PromotionId" class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
+    <div class="col">
+        <h4>Item Details</h4>
+        @{
+            if (Model.Songs.Count > 0)
+            {
+                <div class="card" style="width: 18rem;">
+                    @* <img class="card-img-top" src="" alt="Card image cap"> *@
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Songs[0].SongTitle</h5>
+                        <p class="card-text">Song</p>
+                    </div>
+                </div>
+            }
+            else if (Model.Albums.Count > 0)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@Model.Albums[0].AlbumCover" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Albums[0].AlbumName</h5>
+                        <p class="card-text">Album</p>
+                    </div>
+                </div>
+            }
+            else if (Model.Artists.Count > 0)
+            {
+                <div class="card" style="width: 18rem;">
+                    @* <img class="card-img-top" src="" alt="Card image cap"> *@
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Artists[0].ArtistName</h5>
+                        <p class="card-text">Artist</p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.PromotionId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
