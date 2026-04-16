@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Top Selling Bands Report";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Genre</th>
+                <th>Top Selling Band</th>
+                <th>Song Purchases</th>
+                <th>Song Revenue</th>
+                <th>Album Purchases</th>
+                <th>Album Revenue</th>
+                <th>Total Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ((Genre genre, Tuple<Artist, Int32, Decimal, Int32, Decimal> data)
+                in (Dictionary<Genre, Tuple<Artist, Int32, Decimal, Int32, Decimal>>)ViewBag.ReportData)
+            {
+                <tr>
+                    <td>@genre.GenreName</td>
+                    <td>@data.Item1.ArtistName</td>
+                    <td>@data.Item2</td>
+                    <td>$@data.Item3</td>
+                    <td>@data.Item4</td>
+                    <td>$@data.Item5</td>
+                    <td>$@(data.Item3 + data.Item5)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

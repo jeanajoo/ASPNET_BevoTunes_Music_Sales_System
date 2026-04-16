@@ -89,6 +89,79 @@ namespace G6_BevoTunes.Controllers
 
         public async Task<IActionResult> TopSellingBandsReport()
         {
+            List<Genre> genres = _context.Genres
+                .Include(g => g.Songs).ThenInclude(s => s.OrderDetails)
+                .Include(g => g.Songs).ThenInclude(s => s.Artists)
+                .Include(g => g.Albums).ThenInclude(a => a.OrderDetails)
+                .Include(g => g.Albums).ThenInclude(a => a.Artists)
+                .ToList();
+
+            Dictionary<Genre, Tuple<Artist, Int32, Decimal, Int32, Decimal>> reportData
+                = new Dictionary<Genre, Tuple<Artist, Int32, Decimal, Int32, Decimal>>();
+
+            foreach (Genre genre in genres)
+            {
+                Dictionary<int, Tuple<Artist, Int32, Decimal, Int32, Decimal>> artistData
+                    = new Dictionary<int, Tuple<Artist, Int32, Decimal, Int32, Decimal>>();
+
+                foreach (Song song in genre.Songs)
+                {
+                    foreach (OrderDetail od in song.OrderDetails)
+                    {
+                        foreach (Artist artist in song.Artists)
+                        {
+                            if (artistData.ContainsKey(artist.ArtistId))
+                            {
+                                var prev = artistData[artist.ArtistId];
+                                artistData[artist.ArtistId] = Tuple.Create(
+                                    prev.Item1, prev.Item2 + 1, prev.Item3 + od.PurchasedPrice,
+                                    prev.Item4, prev.Item5);
+                            }
+                            else
+                            {
+                                artistData[artist.ArtistId] = Tuple.Create(artist, 1, od.PurchasedPrice, 0, 0m);
+                            }
+                        }
+                    }
+                }
+
+                foreach (Album album in genre.Albums)
+                {
+                    foreach (OrderDetail od in album.OrderDetails)
+                    {
+                        foreach (Artist artist in album.Artists)
+                        {
+                            if (artistData.ContainsKey(artist.ArtistId))
+                            {
+                                var prev = artistData[artist.ArtistId];
+                                artistData[artist.ArtistId] = Tuple.Create(
+                                    prev.Item1, prev.Item2, prev.Item3,
+                                    prev.Item4 + 1, prev.Item5 + od.PurchasedPrice);
+                            }
+                            else
+                            {
+                                artistData[artist.ArtistId] = Tuple.Create(artist, 0, 0m, 1, od.PurchasedPrice);
+                            }
+                        }
+                    }
+                }
+
+                if (artistData.Count == 0) continue;
+
+                var topEntry = artistData
+                    .OrderByDescending(a => a.Value.Item3 + a.Value.Item5)
+                    .ThenBy(a => a.Value.Item1.ArtistName)
+                    .First();
+
+                reportData[genre] = Tuple.Create(
+                    topEntry.Value.Item1,
+                    topEntry.Value.Item2,
+                    topEntry.Value.Item3,
+                    topEntry.Value.Item4,
+                    topEntry.Value.Item3 + topEntry.Value.Item5);
+            }
+
+            ViewBag.ReportData = reportData;
             return View();
         }
     }
