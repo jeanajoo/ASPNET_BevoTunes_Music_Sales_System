@@ -1,0 +1,136 @@
+@model G6_BevoTunes.Models.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Albums";
+    
+    // Get featured albums (albums with active FEATURED promotions)
+    var featuredAlbums = Model.Albums?
+        .Where(a => a.Promotions?.Any(p => p.PromotionType == PromotionType.FEATURED && p.PromotionActive) ?? false)
+        .ToList() ?? new List<Album>();
+
+    // Get promoted albums (albums with active DISCOUNT promotions)
+    var promotedAlbums = Model.Albums?
+        .Where(a => a.Promotions?.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive) ?? false)
+        .ToList() ?? new List<Album>();
+}
+
+
+
+    <!-- Featured Albums Section -->
+    @if (featuredAlbums.Any())
+    {
+        <div class="mb-5">
+            <h2 class="mb-4"><i class="bi bi-star-fill text-warning"></i> Featured Albums</h2>
+            <div class="row">
+                @foreach (var album in featuredAlbums.Take(6))
+                {
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm border-warning">
+                            <div class="card-body">
+                                <div class="badge bg-warning text-dark mb-2">Featured</div>
+                                <h5 class="card-title">@album.AlbumName</h5>
+                                <p class="card-text">
+                                    <strong>Price:</strong> @string.Format("{0:C}", album.AlbumPrice)
+                                </p>
+                                @if (album.Artists?.Any() ?? false)
+                                {
+                                    <p class="card-text">
+                                        <strong>Artists:</strong>
+                                        @string.Join(", ", album.Artists.Select(a => a.ArtistName).Take(2))
+                                        @if (album.Artists.Count > 2)
+                                        {
+                                            <text>+@(album.Artists.Count - 2)</text>
+                                        }
+                                    </p>
+                                }
+                                @if (album.Genres?.Any() ?? false)
+                                {
+                                    <p class="card-text">
+                                        <strong>Genres:</strong>
+                                        @string.Join(", ", album.Genres.Select(g => g.GenreName).Take(2))
+                                    </p>
+                                }
+                                <div class="mt-3">
+                                    <a asp-controller="Products" asp-action="AlbumDetails" asp-route-id="@album.AlbumId" class="btn btn-sm btn-outline-primary">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <!-- Promoted/Discount Albums Section -->
+    @if (promotedAlbums.Any())
+    {
+        <div class="mb-5">
+            <h2 class="mb-4"><i class="bi bi-tag-fill text-danger"></i> On Promotion</h2>
+            <div class="row">
+                @foreach (var album in promotedAlbums.Take(6))
+                {
+                    var promotion = album.Promotions.FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive);
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm border-danger">
+                            <div class="card-body">
+                                <div class="badge bg-danger mb-2">On Sale</div>
+                                <h5 class="card-title">@album.AlbumName</h5>
+                                <p class="card-text">
+                                    <strong>Original Price:</strong>
+                                    <span class="text-decoration-line-through">@string.Format("{0:C}", album.AlbumPrice)</span>
+                                </p>
+                                @if (promotion != null)
+                                {
+                                    <p class="card-text">
+                                        <strong class="text-danger">Promotion Price:</strong>
+                                        <span class="h5 text-danger">@string.Format("{0:C}", promotion.DiscountPrice)</span>
+                                    </p>
+                                }
+                                @if (album.Artists?.Any() ?? false)
+                                {
+                                    <p class="card-text">
+                                        <strong>Artists:</strong>
+                                        @string.Join(", ", album.Artists.Select(a => a.ArtistName).Take(2))
+                                        @if (album.Artists.Count > 2)
+                                        {
+                                            <text>+@(album.Artists.Count - 2)</text>
+                                        }
+                                    </p>
+                                }
+                                <div class="mt-3">
+                                    <a asp-controller="Products" asp-action="AlbumDetails" asp-route-id="@album.AlbumId" class="btn btn-sm btn-outline-danger">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+
+        <style>
+            .card {
+                border: 1px solid #dee2e6;
+                border-radius: 0.5rem;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+            }
+
+            .table-hover tbody tr:hover {
+                background-color: #f8f9fa;
+            }
+
+            .nav-tabs .nav-link.active {
+                border-bottom: 3px solid #007bff;
+                font-weight: 600;
+            }
+        </style>
