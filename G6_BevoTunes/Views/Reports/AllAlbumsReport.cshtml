@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "All Albums Sold Report";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="card m-2" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-muted">Number of Albums Sold</h5>
+            <h4 class="card-subtitle mb-2 ">@(ViewBag.AlbumSalesCount)</h4>
+        </div>
+    </div>
+    <div class="card m-2" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-muted">Total Sales</h5>
+            <h4 class="card-subtitle mb-2 ">$@(ViewBag.TotalSales)</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Album</th>
+                <th scope="col"># Purchases</th>
+                <th scope="col">Sales Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ((Album album, Tuple<Int32, Decimal> sales) in (Dictionary<Album, Tuple<Int32, Decimal>>)
+                                    ViewBag.AlbumSales)
+            {
+                <tr>
+                    <td>@(album.AlbumName)</td>
+                    <td>@(sales.Item1)</td>
+                    <td>$@(sales.Item2)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
