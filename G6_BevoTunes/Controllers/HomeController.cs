@@ -48,7 +48,9 @@ public class HomeController : Controller
         if (!String.IsNullOrEmpty(searchString))
         {
             mySongs = mySongs.Where(s => s.SongTitle.Contains(searchString) || 
-                                        s.Artists.Any(a => a.ArtistName.Contains(searchString)));
+                                        s.Artists.Any(a => a.ArtistName.Contains(searchString))||
+                                        s.Genres.Any(g => g.GenreName.Contains(searchString)) ||
+                                        s.Albums.Any(al => al.AlbumName.Contains(searchString)));
         }
 
         switch (sortOrder)
