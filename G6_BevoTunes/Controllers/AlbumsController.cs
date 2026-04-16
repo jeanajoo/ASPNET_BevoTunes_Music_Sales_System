@@ -58,9 +58,12 @@ namespace G6_BevoTunes.Controllers
             return View(new Album());
         }
         // GET: Albums/Create
-        public IActionResult Create()
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create()
         {
-            return View();
+            ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
+            ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
+            return View(new Album());
         }
 
         // POST: Albums/Create
@@ -79,6 +82,8 @@ namespace G6_BevoTunes.Controllers
             return View(album);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("AlbumId,AlbumName,AlbumPrice,AlbumCover")] Album album, int[] selectedArtists, int[] selectedGenres, int[] selectedSongs)
         {
@@ -116,9 +121,28 @@ namespace G6_BevoTunes.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag["Artists"] = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
-            ViewBag["Genres"] = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
+            ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
+            ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
             return View(album);
+        }
+
+        // GET: Albums/GetSongsByArtists - API endpoint to get songs by selected artists
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetSongsByArtists(int[] artistIds)
+        {
+            if (artistIds == null || artistIds.Length == 0)
+            {
+                return Json(new List<object>());
+            }
+
+            var songs = await _context.Songs
+                .Where(s => s.Artists.Any(a => artistIds.Contains(a.ArtistId)))
+                .Distinct()
+                .Select(s => new { id = s.SongId, name = s.SongTitle })
+                .ToListAsync();
+
+            return Json(songs);
         }
 
         // POST: Products/CreateAlbum

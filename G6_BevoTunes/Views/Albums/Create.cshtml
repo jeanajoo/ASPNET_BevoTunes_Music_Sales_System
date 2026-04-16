@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-8">
-        <form asp-action="CreateAlbum" method="post">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
             <!-- Album Name -->
@@ -38,13 +38,13 @@
                 <label class="form-label">Artists</label>
                 <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
                     @{
-                        var artists = ViewData["Artists"] as SelectList;
+                        var artists = ViewBag.Artists as SelectList;
                         if (artists != null)
                         {
                             @foreach (var artist in artists)
                             {
                                 <div class="form-check">
-                                    <input type="checkbox" name="selectedArtists" value="@artist.Value" class="form-check-input" id="artist_@artist.Value" />
+                                    <input type="checkbox" name="selectedArtists" value="@artist.Value" class="form-check-input artist-checkbox" id="artist_@artist.Value" />
                                     <label class="form-check-label" for="artist_@artist.Value">
                                         @artist.Text
                                     </label>
@@ -57,10 +57,10 @@
 
             <!-- Genres Selection -->
             <div class="form-group mb-3">
-                <label class="form-label">Genres</label>
+                <label class="form-label">Genres (Optional)</label>
                 <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
                     @{
-                        var genres = ViewData["Genres"] as SelectList;
+                        var genres = ViewBag.Genres as SelectList;
                         if (genres != null)
                         {
                             @foreach (var genre in genres)
@@ -79,23 +79,9 @@
 
             <!-- Songs Selection -->
             <div class="form-group mb-3">
-                <label class="form-label">Songs</label>
-                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
-                    @{
-                        var songs = ViewData["Songs"] as SelectList;
-                        if (songs != null)
-                        {
-                            @foreach (var song in songs)
-                            {
-                                <div class="form-check">
-                                    <input type="checkbox" name="selectedSongs" value="@song.Value" class="form-check-input" id="song_@song.Value" />
-                                    <label class="form-check-label" for="song_@song.Value">
-                                        @song.Text
-                                    </label>
-                                </div>
-                            }
-                        }
-                    }
+                <label class="form-label">Songs from Selected Artists</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;" id="songsContainer">
+                    <p class="text-muted">Select artists above to populate songs list</p>
                 </div>
             </div>
 
@@ -110,4 +96,59 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const artistCheckboxes = document.querySelectorAll('.artist-checkbox');
+            const songsContainer = document.getElementById('songsContainer');
+
+            // Add change event listeners to artist checkboxes
+            artistCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSongs);
+            });
+
+            async function updateSongs() {
+                // Get all selected artist IDs
+                const selectedArtists = Array.from(artistCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                if (selectedArtists.length === 0) {
+                    songsContainer.innerHTML = '<p class="text-muted">Select artists above to populate songs list</p>';
+                    return;
+                }
+
+                try {
+                    // Build query string for artist IDs
+                    const queryString = selectedArtists.map(id => `artistIds=${id}`).join('&');
+                    
+                    const response = await fetch(`/Albums/GetSongsByArtists?${queryString}`);
+                    const songs = await response.json();
+
+                    if (songs.length === 0) {
+                        songsContainer.innerHTML = '<p class="text-muted">No songs found for selected artists</p>';
+                        return;
+                    }
+
+                    // Generate HTML for songs checkboxes
+                    let html = '';
+                    songs.forEach(song => {
+                        html += `
+                            <div class="form-check">
+                                <input type="checkbox" name="selectedSongs" value="${song.id}" class="form-check-input" id="song_${song.id}" />
+                                <label class="form-check-label" for="song_${song.id}">
+                                    ${song.name}
+                                </label>
+                            </div>
+                        `;
+                    });
+                    songsContainer.innerHTML = html;
+                } catch (error) {
+                    console.error('Error fetching songs:', error);
+                    songsContainer.innerHTML = '<p class="text-danger">Error loading songs. Please try again.</p>';
+                }
+            }
+        });
+    </script>
 }
+
