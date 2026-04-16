@@ -1,0 +1,113 @@
+@model G6_BevoTunes.Models.Album
+
+@{
+    ViewData["Title"] = "Create Album";
+}
+
+<h1>Create Album</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="CreateAlbum" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <!-- Album Name -->
+            <div class="form-group mb-3">
+                <label asp-for="AlbumName" class="form-label"></label>
+                <input asp-for="AlbumName" class="form-control" />
+                <span asp-validation-for="AlbumName" class="text-danger"></span>
+            </div>
+
+            <!-- Album Price -->
+            <div class="form-group mb-3">
+                <label asp-for="AlbumPrice" class="form-label"></label>
+                <input asp-for="AlbumPrice" class="form-control" step="0.01" type="number" />
+                <span asp-validation-for="AlbumPrice" class="text-danger"></span>
+            </div>
+
+            <!-- Album Cover URL -->
+            <div class="form-group mb-3">
+                <label asp-for="AlbumCover" class="form-label"></label>
+                <input asp-for="AlbumCover" class="form-control" />
+                <span asp-validation-for="AlbumCover" class="text-danger"></span>
+                <small class="form-text text-muted">Enter a valid URL for the album cover image</small>
+            </div>
+
+            <!-- Artists Selection -->
+            <div class="form-group mb-3">
+                <label class="form-label">Artists</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var artists = ViewData["Artists"] as SelectList;
+                        if (artists != null)
+                        {
+                            @foreach (var artist in artists)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedArtists" value="@artist.Value" class="form-check-input" id="artist_@artist.Value" />
+                                    <label class="form-check-label" for="artist_@artist.Value">
+                                        @artist.Text
+                                    </label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Genres Selection -->
+            <div class="form-group mb-3">
+                <label class="form-label">Genres</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var genres = ViewData["Genres"] as SelectList;
+                        if (genres != null)
+                        {
+                            @foreach (var genre in genres)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedGenres" value="@genre.Value" class="form-check-input" id="genre_@genre.Value" />
+                                    <label class="form-check-label" for="genre_@genre.Value">
+                                        @genre.Text
+                                    </label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Songs Selection -->
+            <div class="form-group mb-3">
+                <label class="form-label">Songs</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var songs = ViewData["Songs"] as SelectList;
+                        if (songs != null)
+                        {
+                            @foreach (var song in songs)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedSongs" value="@song.Value" class="form-check-input" id="song_@song.Value" />
+                                    <label class="form-check-label" for="song_@song.Value">
+                                        @song.Text
+                                    </label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,114 @@
+@model G6_BevoTunes.Models.Song
+
+@{
+    ViewData["Title"] = "Edit Song";
+}
+
+<h1>Edit Song</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="EditSong" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <!-- Song ID (hidden) -->
+            <input type="hidden" asp-for="SongId" />
+
+            <!-- Song Title -->
+            <div class="form-group mb-3">
+                <label asp-for="SongTitle" class="form-label"></label>
+                <input asp-for="SongTitle" class="form-control" />
+                <span asp-validation-for="SongTitle" class="text-danger"></span>
+            </div>
+
+            <!-- Song Price -->
+            <div class="form-group mb-3">
+                <label asp-for="SongPrice" class="form-label"></label>
+                <input asp-for="SongPrice" class="form-control" step="0.01" type="number" />
+                <span asp-validation-for="SongPrice" class="text-danger"></span>
+            </div>
+
+            <!-- Artists Selection -->
+            <div class="form-group mb-3">
+                <label class="form-label">Artists</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var artists = ViewData["Artists"] as SelectList;
+                        var selectedArtists = ViewData["SelectedArtists"] as List<int>;
+                        if (artists != null)
+                        {
+                            @foreach (var artist in artists)
+                            {
+                                var isSelected = selectedArtists != null && selectedArtists.Contains(int.Parse(artist.Value));
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedArtists" value="@artist.Value" class="form-check-input" id="artist_@artist.Value" @(isSelected ? "checked" : "") />
+                                    <label class="form-check-label" for="artist_@artist.Value">
+                                        @artist.Text
+                                    </label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Genres Selection -->
+            <div class="form-group mb-3">
+                <label class="form-label">Genres</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var genres = ViewData["Genres"] as SelectList;
+                        var selectedGenres = ViewData["SelectedGenres"] as List<int>;
+                        if (genres != null)
+                        {
+                            @foreach (var genre in genres)
+                            {
+                                var isSelected = selectedGenres != null && selectedGenres.Contains(int.Parse(genre.Value));
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedGenres" value="@genre.Value" class="form-check-input" id="genre_@genre.Value" @(isSelected ? "checked" : "") />
+                                    <label class="form-check-label" for="genre_@genre.Value">
+                                        @genre.Text
+                                    </label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Albums Selection -->
+            <div class="form-group mb-3">
+                <label class="form-label">Albums</label>
+                <div class="border p-3 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var albums = ViewData["Albums"] as SelectList;
+                        var selectedAlbums = ViewData["SelectedAlbums"] as List<int>;
+                        if (albums != null)
+                        {
+                            @foreach (var album in albums)
+                            {
+                                var isSelected = selectedAlbums != null && selectedAlbums.Contains(int.Parse(album.Value));
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedAlbums" value="@album.Value" class="form-check-input" id="album_@album.Value" @(isSelected ? "checked" : "") />
+                                    <label class="form-check-label" for="album_@album.Value">
+                                        @album.Text
+                                    </label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

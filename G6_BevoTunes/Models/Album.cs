@@ -38,6 +38,10 @@ namespace G6_BevoTunes.Models
         {
             get
             {
+                if (Reviews.Count == 0)
+                {
+                    return -1.0m;
+                }
                 return Reviews.Sum(r => r.Rating);
             }
         
