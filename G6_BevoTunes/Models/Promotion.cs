@@ -21,6 +21,7 @@ namespace G6_BevoTunes.Models
 
         [Display(Name = "Discount Price")]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [Range(0, double.MaxValue, ErrorMessage = "Discount price cannot be negative.")]
         public decimal DiscountPrice { get; set; }
 
         [Display(Name = "Promotion Active")]

@@ -17,9 +17,10 @@ namespace G6_BevoTunes.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
 
-        public OrdersController(AppDbContext context)
+        public OrdersController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Orders

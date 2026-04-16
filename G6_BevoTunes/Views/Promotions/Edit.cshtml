@@ -1,4 +1,5 @@
 @model G6_BevoTunes.Models.Promotion
+@using G6_BevoTunes.Models
 
 @{
     ViewData["Title"] = "Edit";
@@ -15,14 +16,53 @@
             <input type="hidden" asp-for="PromotionId" />
             <div class="form-group">
                 <label asp-for="PromotionType" class="control-label"></label>
-                <select asp-for="PromotionType" class="form-control"
+                <select asp-for="PromotionType" class="form-control" id="PromotionType"
                         asp-items="Html.GetEnumSelectList<PromotionType>()"></select>
                 <span asp-validation-for="PromotionType" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="DiscountPriceGroup">
                 <label asp-for="DiscountPrice" class="control-label"></label>
                 <input asp-for="DiscountPrice" class="form-control" />
                 <span asp-validation-for="DiscountPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Product Category</label>
+                <select name="ProductCategory" class="form-control" id="ProductCategory">
+                    <option value="">-- Select Category --</option>
+                    <option value="Song">Song</option>
+                    <option value="Album">Album</option>
+                    <option value="Artist" id="ArtistOption">Artist</option>
+                </select>
+            </div>
+            <div class="form-group" id="SongGroup" style="display:none;">
+                <label class="control-label">Select a Song</label>
+                <select name="SelectedProductId" class="form-control" id="SongSelect">
+                    <option value="">-- Select a Song --</option>
+                    @foreach (var song in (SelectList)ViewBag.AllSongs)
+                    {
+                        <option value="@song.Value">@song.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group" id="AlbumGroup" style="display:none;">
+                <label class="control-label">Select an Album</label>
+                <select name="SelectedProductId" class="form-control" id="AlbumSelect" disabled>
+                    <option value="">-- Select an Album --</option>
+                    @foreach (var album in (SelectList)ViewBag.AllAlbums)
+                    {
+                        <option value="@album.Value">@album.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group" id="ArtistGroup" style="display:none;">
+                <label class="control-label">Select an Artist</label>
+                <select name="SelectedProductId" class="form-control" id="ArtistSelect" disabled>
+                    <option value="">-- Select an Artist --</option>
+                    @foreach (var artist in (SelectList)ViewBag.AllArtists)
+                    {
+                        <option value="@artist.Value">@artist.Text</option>
+                    }
+                </select>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -42,4 +82,93 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var promoType = document.getElementById('PromotionType');
+            var discountPriceGroup = document.getElementById('DiscountPriceGroup');
+            var productCategory = document.getElementById('ProductCategory');
+            var artistOption = document.getElementById('ArtistOption');
+            var songGroup = document.getElementById('SongGroup');
+            var albumGroup = document.getElementById('AlbumGroup');
+            var artistGroup = document.getElementById('ArtistGroup');
+            var songSelect = document.getElementById('SongSelect');
+            var albumSelect = document.getElementById('AlbumSelect');
+            var artistSelect = document.getElementById('ArtistSelect');
+
+            var initialCategory = '@ViewBag.SelectedProductCategory';
+            var initialProductId = '@ViewBag.SelectedProductId';
+
+            if (initialCategory) {
+                productCategory.value = initialCategory;
+            }
+
+            function updateVisibility() {
+                songGroup.style.display = 'none';
+                albumGroup.style.display = 'none';
+                artistGroup.style.display = 'none';
+                songSelect.disabled = true;
+                albumSelect.disabled = true;
+                artistSelect.disabled = true;
+                songSelect.name = '_unused_song';
+                albumSelect.name = '_unused_album';
+                artistSelect.name = '_unused_artist';
+
+                var selectedCategory = productCategory.value;
+
+                if (selectedCategory === 'Song') {
+                    songGroup.style.display = 'block';
+                    songSelect.disabled = false;
+                    songSelect.name = 'SelectedProductId';
+                } else if (selectedCategory === 'Album') {
+                    albumGroup.style.display = 'block';
+                    albumSelect.disabled = false;
+                    albumSelect.name = 'SelectedProductId';
+                } else if (selectedCategory === 'Artist') {
+                    artistGroup.style.display = 'block';
+                    artistSelect.disabled = false;
+                    artistSelect.name = 'SelectedProductId';
+                }
+            }
+
+            function updatePromoTypeVisibility() {
+                var isDiscount = promoType.value === '1';
+                discountPriceGroup.style.display = isDiscount ? 'block' : 'none';
+                if (isDiscount) {
+                    artistOption.disabled = true;
+                    artistOption.style.display = 'none';
+                    if (productCategory.value === 'Artist') {
+                        productCategory.value = '';
+                    }
+                } else {
+                    artistOption.disabled = false;
+                    artistOption.style.display = '';
+                }
+                updateVisibility();
+            }
+
+            function restoreSelection() {
+                if (initialCategory && initialProductId) {
+                    var select;
+                    if (initialCategory === 'Song') select = songSelect;
+                    else if (initialCategory === 'Album') select = albumSelect;
+                    else if (initialCategory === 'Artist') select = artistSelect;
+
+                    if (select) {
+                        for (var i = 0; i < select.options.length; i++) {
+                            if (select.options[i].value === initialProductId) {
+                                select.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            promoType.addEventListener('change', updatePromoTypeVisibility);
+            productCategory.addEventListener('change', updateVisibility);
+
+            updatePromoTypeVisibility();
+            restoreSelection();
+        });
+    </script>
 }
