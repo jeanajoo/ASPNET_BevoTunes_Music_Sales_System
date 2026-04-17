@@ -110,7 +110,7 @@ namespace G6_BevoTunes.Controllers
             var user = await _userManager.FindByEmailAsync(lvm.Email);
             if (user != null && user.Status == UserStatus.Blocked)
             {
-                ModelState.AddModelError("", "Your account has been disabled. Please contact a manager.");
+                ModelState.AddModelError("", "Your account has been disabled. Please contact a Admin.");
                 return View(lvm);
             }
             var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, lvm.RememberMe, lockoutOnFailure: false);
@@ -209,7 +209,7 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction("Index", "Home");
         }
         // Get: /Account/List
-        [Authorize(Roles = "Employee,Manager")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> UserIndex()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -217,7 +217,7 @@ namespace G6_BevoTunes.Controllers
         }
         // POST: /Account/ToggleStatus
         [HttpPost]
-        [Authorize(Roles = "Employee,Manager")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> ToggleStatus(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -239,22 +239,22 @@ namespace G6_BevoTunes.Controllers
 
         // POST: /Account/PromoteToManager
         [HttpPost]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PromoteToManager(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user != null)
             {
-                await _userManager.AddToRoleAsync(user, "Manager");
+                await _userManager.AddToRoleAsync(user, "Admin");
                 await _userManager.RemoveFromRoleAsync(user, "Employee");
             }
             return RedirectToAction(nameof(UserIndex));
         }
-        [Authorize(Roles = "Employee,Manager")]
+        [Authorize(Roles = "Employee,Admin")]
         public IActionResult CreateCustomer() => View();
 
         [HttpPost]
-        [Authorize(Roles = "Employee,Manager")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
         {
             if (ModelState.IsValid == false) return View(rvm);
