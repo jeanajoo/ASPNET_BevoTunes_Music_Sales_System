@@ -12,6 +12,36 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @{
+                if (Model.Song != null) {
+                    <span>Song:</span>
+                } 
+                else if (Model.Album != null) 
+                {
+                    <span>Album:</span>
+                } 
+                else if (Model.Artist != null) 
+                {
+                    <span>Artist:</span>
+                }
+            }
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                if (Model.Song != null) {
+                    <span> @Model.Song.SongTitle</span>
+                } 
+                else if (Model.Album != null) 
+                {
+                    <span> @Model.Album.AlbumName</span>
+                } 
+                else if (Model.Artist != null) 
+                {
+                    <span> @Model.Artist.ArtistName</span>
+                }
+            }
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class = "col-sm-10">
