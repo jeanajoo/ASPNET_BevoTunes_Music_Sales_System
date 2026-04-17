@@ -44,12 +44,12 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @if (User.IsInRole("Admin") || User.IsInRole("Employee") || item.Reviewer.Id == userId)
+                @if ((User.IsInRole("Admin") || User.IsInRole("Employee") || item.Reviewer.Id == userId) && item.Status != ReviewStatus.Deleted)
                 {
                     <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> <span>|</span>
                 }
                 <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
-                @if (item.Reviewer.Id == userId)
+                @if (User.IsInRole("Customer") && item.Reviewer.Id == userId && item.Status != ReviewStatus.Deleted) 
                 {
                 <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete Review</a> 
                 }

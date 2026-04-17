@@ -35,6 +35,7 @@ namespace G6_BevoTunes.Models
     {
         Pending,
         Approve,
-        Reject
+        Reject,
+        Deleted
     }
 }

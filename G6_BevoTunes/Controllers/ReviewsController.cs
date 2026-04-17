@@ -29,7 +29,18 @@ namespace G6_BevoTunes.Controllers
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reviews.ToListAsync());
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            var ownedSongs = GetOwnedSongs(user);
+            var ownedAlbums = GetOwnedAlbums(user);
+            var ownedArtists = GetOwnedArtists(user);
+
+            ViewBag.hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
+            
+            var userId = _userManager.GetUserId(User);
+
+             return View(await _context.Reviews.Include(r => r.Reviewer).OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+            
         }
 
         // GET: Reviews/Details/5
@@ -53,8 +64,13 @@ namespace G6_BevoTunes.Controllers
 
         private List<Song> GetOwnedSongs(AppUser user)
         {
+            if (user == null)
+                return new List<Song>();
+                
             return _context.OrderDetails
-                .Where(od => od.Order.Customer.Id == user.Id && od.Song != null)
+                .Include(od => od.Order)
+                .Include(od => od.Song)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Song != null)
                 .Select(od => od.Song)
                 .Distinct()
                 .ToList();
@@ -62,8 +78,13 @@ namespace G6_BevoTunes.Controllers
 
         private List<Album> GetOwnedAlbums(AppUser user)
         {
+            if (user == null)
+                return new List<Album>();
+                
             return _context.OrderDetails
-                .Where(od => od.Order.Customer.Id == user.Id && od.Album != null)
+                .Include(od => od.Order)
+                .Include(od => od.Album)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
                 .Select(od => od.Album)
                 .Distinct()
                 .ToList();
@@ -71,8 +92,11 @@ namespace G6_BevoTunes.Controllers
 
         private List<Artist> GetOwnedArtists(AppUser user)
         {
+            if (user == null)
+                return new List<Artist>();
+                
             HashSet<Artist> ownSongsArtists = _context.OrderDetails
-                .Where(od => od.Order.Customer.Id == user.Id && od.Song != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Song != null)
                 .Include(od => od.Song)
                 .ThenInclude(s => s.Artists)
                 .SelectMany(od => od.Song.Artists)
@@ -80,7 +104,7 @@ namespace G6_BevoTunes.Controllers
                 .ToHashSet();
 
             HashSet<Artist> ownAlbumsArtists = _context.OrderDetails
-                .Where(od => od.Order.Customer.Id == user.Id && od.Album != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
                 .Include(od => od.Album)
                 .ThenInclude(s => s.Artists)
                 .SelectMany(od => od.Album.Artists)
@@ -135,7 +159,9 @@ namespace G6_BevoTunes.Controllers
             var ownedArtists = GetOwnedArtists(user);
 
             bool hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
-                
+            
+            ModelState.Remove("Reviewer");
+
             if (ModelState.IsValid)
             {
                 review.Reviewer = user;
@@ -166,8 +192,11 @@ namespace G6_BevoTunes.Controllers
                 
                 review.Status = ReviewStatus.Pending;
 
+                review.Reviewer = user;
+
                 _context.Add(review);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
 
@@ -192,15 +221,19 @@ namespace G6_BevoTunes.Controllers
             var review = await _context.Reviews.Include(r => r.Reviewer)
                 .FirstOrDefaultAsync(r => r.ReviewID == id);
 
-            if (review.Reviewer.Id != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
-            {
-                return Unauthorized();
-            }
-
             if (review == null)
             {
                 return NotFound();
             }
+
+            if (review.Reviewer.Id != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+            {
+                return Unauthorized();
+            } else if(review.Status == ReviewStatus.Deleted)
+            {
+                return Unauthorized();
+            }
+
             return View(review);
         }
 
@@ -217,18 +250,35 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            AppUser user = await _userManager.GetUserAsync(User);
+            var dbReview = await _context.Reviews
+                .Include(r => r.Reviewer)
+                .FirstOrDefaultAsync(r => r.ReviewID == id);
 
-            if (review.Reviewer.Id != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+            if (dbReview == null)
+            {
+                return NotFound();
+            }
+
+            if (dbReview.Reviewer.Id != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+            {
+                return Unauthorized();
+            } else if (review.Status == ReviewStatus.Deleted)
             {
                 return Unauthorized();
             }
+
+            ModelState.Remove("Reviewer");
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(review);
+                    // Update the properties from the form input
+                    dbReview.Description = review.Description;
+                    dbReview.Rating = review.Rating;
+                    dbReview.Status = review.Status;
+
+                    _context.Update(dbReview);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -244,7 +294,7 @@ namespace G6_BevoTunes.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(review);
+            return View(dbReview);
         }
 
         // GET: Reviews/Delete/5
@@ -258,6 +308,12 @@ namespace G6_BevoTunes.Controllers
 
             var review = await _context.Reviews
                 .FirstOrDefaultAsync(m => m.ReviewID == id);
+
+            if (review.Status == ReviewStatus.Deleted)
+            {
+                return Unauthorized();
+            }
+            
             if (review == null)
             {
                 return NotFound();
@@ -273,64 +329,23 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var review = await _context.Reviews.FindAsync(id);
-            if (review != null || review.Description != "")
+
+            if (review.Status == ReviewStatus.Deleted)
+            {
+                return Unauthorized();
+            }
+                        
+            if (review != null && review.Description != "")
             {
                 review.Description = "";
+                review.Status = ReviewStatus.Deleted;
+                _context.Update(review);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Reviews/Approve/5
-        [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Approve(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var review = await _context.Reviews.FindAsync(id);
-
-            if (review == null)
-            {
-                return NotFound();
-            }
-
-            review.Status = ReviewStatus.Approve;
-
-            _context.Update(review);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        // GET: Reviews/Reject/5
-        [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Reject(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var review = await _context.Reviews.FindAsync(id);
-
-            if (review == null)
-            {
-                return NotFound();
-            }
-
-            review.Status = ReviewStatus.Reject;
-
-            _context.Update(review);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        
         private bool ReviewExists(int id)
         {
             return _context.Reviews.Any(e => e.ReviewID == id);
