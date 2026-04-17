@@ -21,17 +21,26 @@
                     <option value="Artist">Artist</option>
                 </select>
             </div>
-            <div id="songDiv" style="display:none">
-                <label>Song</label>
-                @Html.DropDownList("SelectedSong", (SelectList)ViewBag.ownedSongs, "-- Select Song --", new { @class = "form-control" })
-            </div>
-            <div id="albumDiv" style="display:none">
-                <label>Album</label>
-                @Html.DropDownList("SelectedAlbum", (SelectList)ViewBag.ownedAlbums, "-- Select Album --", new { @class = "form-control" })
-            </div>
+                <div id="songDiv" style="display:none">
+                    @if (ViewBag.OwnedSongs != null)
+                    {
+                        <label>Song</label>
+                        @Html.DropDownList("SelectedSong", (SelectList)ViewBag.OwnedSongs, "-- Select Song --", new { @class = "form-control" })
+                    }
+                </div>
+
+                <div id="albumDiv" style="display:none">
+                    @if (ViewBag.OwnedAlbums != null)
+                    {
+                        <label>Album</label>
+                        @Html.DropDownList("SelectedAlbum", (SelectList)ViewBag.OwnedAlbums, "-- Select Album --", new { @class = "form-control" })
+                    }
+                </div>
             <div id="artistDiv" style="display:none">
+                @if (ViewBag.ownedArtists != null){
                 <label>Artist</label>
                 @Html.DropDownList("SelectedArtist", (SelectList)ViewBag.ownedArtists, "-- Select Artist --", new { @class = "form-control" })
+                }
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>

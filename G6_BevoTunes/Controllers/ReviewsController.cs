@@ -134,7 +134,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
-            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumTitle");
+            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
             ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
             ViewBag.HasProduct = hasProduct;
     
@@ -168,7 +168,7 @@ namespace G6_BevoTunes.Controllers
                 // review.ReviewerID = user.Id;
                     
                 ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
-                ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumTitle");
+                ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
                 ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
 
                 if (SelectedSong != null)
@@ -201,7 +201,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
-            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumTitle");
+            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
             ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
             ViewBag.HasProduct = hasProduct;
 
