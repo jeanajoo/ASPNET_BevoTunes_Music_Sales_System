@@ -14,6 +14,7 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Customer, Admin, Employee")]
     public class ReviewsController : Controller
     {
         private readonly AppDbContext _context;
@@ -38,9 +39,17 @@ namespace G6_BevoTunes.Controllers
             ViewBag.hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
             
             var userId = _userManager.GetUserId(User);
-
-             return View(await _context.Reviews.Include(r => r.Reviewer).OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+            if (User.IsInRole("Admin") || User.IsInRole("Employee")) {
+                return View(await _context.Reviews.Include(r => r.Reviewer).
+                Include(r => r.Artist).Include(r => r.Song).Include(r => r.Album)
+                .OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+            }
             
+            return View(await _context.Reviews.Include(r => r.Reviewer).
+                Include(r => r.Artist).Include(r => r.Song).Include(r => r.Album)
+                .Where(r => r.Status == ReviewStatus.Approve || (r.Status == ReviewStatus.Pending && r.Reviewer.Id == userId))
+                .OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+
         }
 
         // GET: Reviews/Details/5
@@ -52,7 +61,8 @@ namespace G6_BevoTunes.Controllers
             }
 
             var review = await _context.Reviews
-                .FirstOrDefaultAsync(m => m.ReviewID == id);
+                .Include(r => r.Song).Include(r => r.Album)
+                .Include(r => r.Artist).FirstOrDefaultAsync(m => m.ReviewID == id);
 
             if (review == null)
             {
@@ -218,8 +228,8 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Reviews.Include(r => r.Reviewer)
-                .FirstOrDefaultAsync(r => r.ReviewID == id);
+            var review = await _context.Reviews.Include(r => r.Reviewer).Include(r => r.Song).Include(r => r.Album)
+                .Include(r => r.Artist).FirstOrDefaultAsync(r => r.ReviewID == id);
 
             if (review == null)
             {
@@ -306,7 +316,8 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Reviews
+            var review = await _context.Reviews.Include(r => r.Song)
+                .Include(r => r.Album).Include(r => r.Artist)
                 .FirstOrDefaultAsync(m => m.ReviewID == id);
 
             if (review.Status == ReviewStatus.Deleted)
