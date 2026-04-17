@@ -39,7 +39,8 @@ namespace G6_BevoTunes.Controllers
             
             var userId = _userManager.GetUserId(User);
 
-            return View(await _context.Reviews.Include(r => r.Reviewer).OrderByDescending(r => r.Reviewer.Id == userId).ToListAsync());
+             return View(await _context.Reviews.Include(r => r.Reviewer).OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+            
         }
 
         // GET: Reviews/Details/5
@@ -228,6 +229,9 @@ namespace G6_BevoTunes.Controllers
             if (review.Reviewer.Id != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
             {
                 return Unauthorized();
+            } else if(review.Status == ReviewStatus.Deleted)
+            {
+                return Unauthorized();
             }
 
             return View(review);
@@ -256,6 +260,9 @@ namespace G6_BevoTunes.Controllers
             }
 
             if (dbReview.Reviewer.Id != _userManager.GetUserId(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+            {
+                return Unauthorized();
+            } else if (review.Status == ReviewStatus.Deleted)
             {
                 return Unauthorized();
             }
@@ -301,6 +308,12 @@ namespace G6_BevoTunes.Controllers
 
             var review = await _context.Reviews
                 .FirstOrDefaultAsync(m => m.ReviewID == id);
+
+            if (review.Status == ReviewStatus.Deleted)
+            {
+                return Unauthorized();
+            }
+            
             if (review == null)
             {
                 return NotFound();
@@ -316,9 +329,17 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var review = await _context.Reviews.FindAsync(id);
+
+            if (review.Status == ReviewStatus.Deleted)
+            {
+                return Unauthorized();
+            }
+                        
             if (review != null && review.Description != "")
             {
                 review.Description = "";
+                review.Status = ReviewStatus.Deleted;
+                _context.Update(review);
             }
 
             await _context.SaveChangesAsync();
