@@ -37,29 +37,65 @@ public class HomeController : Controller
     public async Task<IActionResult> MusicRights(string searchString, string sortOrder)
     {
         String userId = User.Identity.Name;
-        var mySongs = _context.OrderDetails
-            .Include(od => od.Order)
-            .Include(od => od.Song).ThenInclude(s => s.Artists)
-            .Include(od => od.Song).ThenInclude(s => s.Genres)
-            .Include(od => od.Song).ThenInclude(s => s.Albums)
-            .Where(od => od.Order.Recipient.UserName == userId && od.Order.OrderStatus == OrderStatus.Ordered).Select(od => od.Song)
-            .Distinct(); 
+        List<Order> myOrders = await _context.Orders
+            .Where(o => o.Recipient.UserName == userId && o.OrderStatus == OrderStatus.Ordered)
+            .Include(o => o.OrderDetails)
+            .ThenInclude(od => od.Song)
+            .ThenInclude(s => s.Artists)
+            .Include(o => o.OrderDetails)
+            .ThenInclude(od => od.Song)
+            .ThenInclude(s => s.Genres)
+            .Include(o => o.OrderDetails)
+            .ThenInclude(od => od.Album)
+            .ThenInclude(a => a.Songs)
+            .Include(o => o.OrderDetails)
+            .ThenInclude(od => od.Album)
+            .ThenInclude(a => a.Songs)
+            .ThenInclude(s => s.Artists)
+            .Include(o => o.OrderDetails)
+            .ThenInclude(od => od.Album)
+            .ThenInclude(a => a.Songs)
+            .ThenInclude(s => s.Genres)
+            .ToListAsync();
+        
+        List<Song> mySongs = new List<Song>();
+        foreach(Order o in myOrders)
+        {
+            foreach(OrderDetail od in o.OrderDetails)
+            {
+                if(od.Song != null)
+                {
+                    mySongs.Add(od.Song);
+                }
+                 if(od.Album != null)
+                {
+
+                    foreach(Song s in od.Album.Songs)
+                    {
+                        mySongs.Add(s);
+                    }
+                }
+            }
+        }
 
         if (!String.IsNullOrEmpty(searchString))
         {
-            mySongs = mySongs.Where(s => s.SongTitle.Contains(searchString) || 
-                                        s.Artists.Any(a => a.ArtistName.Contains(searchString))||
-                                        s.Genres.Any(g => g.GenreName.Contains(searchString)) ||
-                                        s.Albums.Any(al => al.AlbumName.Contains(searchString)));
+            searchString = searchString.ToLower();
+            mySongs = mySongs.Where(s => s.SongTitle.ToLower().Contains(searchString) || 
+                                        s.Artists.Any(a => a.ArtistName.ToLower().Contains(searchString))||
+                                        s.Genres.Any(g => g.GenreName.ToLower().Contains(searchString)) ||
+                                        s.Albums.Any(al => al.AlbumName.ToLower().Contains(searchString))).ToList();
         }
 
         switch (sortOrder)
         {
-            case "title_desc": mySongs = mySongs.OrderByDescending(s => s.SongTitle); break;
-            case "Artist": mySongs = mySongs.OrderBy(s => s.Artists.FirstOrDefault().ArtistName); break;
-            default: mySongs = mySongs.OrderBy(s => s.SongTitle); break;
+            case "title": mySongs = mySongs.OrderBy(s => s.SongTitle).ToList(); break;
+            case "artist": mySongs = mySongs.OrderBy(s => s.Artists.FirstOrDefault().ArtistName).ToList(); break;
+            case "genre": mySongs = mySongs.OrderBy(s => s.Genres.FirstOrDefault().GenreName).ToList(); break;
+            default: mySongs = mySongs.OrderBy(s => s.SongTitle).ToList(); break;
         }
-        return View(await mySongs.ToListAsync());
+
+        return View(mySongs);
     }
 
     public IActionResult Privacy()
