@@ -22,7 +22,7 @@
                 <td>@Html.DisplayFor(modelItem => item.GenreName)</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.GenreId" class="btn btn-info">View Songs</a>
-                    @if (User.IsInRole("Manager"))
+                    @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.GenreId" class="btn btn-warning">Edit</a>
                     }
