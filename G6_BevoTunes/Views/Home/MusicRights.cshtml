@@ -10,27 +10,30 @@
         </div>
     </form>
 
+    <p>Sort By:</p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+       <a asp-action="MusicRights" asp-route-sortOrder="title" class="btn btn-primary">Title</a>
+       <a asp-action="MusicRights" asp-route-sortOrder="artist" class="btn btn-primary">Artist</a>
+       <a asp-action="MusicRights" asp-route-sortOrder="genre" class="btn btn-primary">Genre</a>
+    </div>
+
     <table class="table table-hover">
-        <thead class="table-dark">
+        <thead>
             <tr>
-                <th><a asp-action="MusicRights" asp-route-sortOrder="title">Title</a></th>
-                <th><a asp-action="MusicRights" asp-route-sortOrder="Artist">Artist</a></th>
+                <th>Title</th>
+                <th>Artist</th>
                 <th>Album</th>
                 <th>Genre</th>
-                <th>Play</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (Song item in Model)
             {
                 <tr>
                     <td>@item.SongTitle</td>
                     <td>@string.Join(", ", item.Artists.Select(a => a.ArtistName))</td>
                     <td>@(item.Albums.FirstOrDefault()?.AlbumName ?? "Single")</td>
                     <td>@string.Join(", ", item.Genres.Select(g => g.GenreName))</td>
-                    <td>
-                        <button class="btn btn-sm btn-success"><i class="bi bi-play-fill"></i></button>
-                    </td>
                 </tr>
             }
         </tbody>
