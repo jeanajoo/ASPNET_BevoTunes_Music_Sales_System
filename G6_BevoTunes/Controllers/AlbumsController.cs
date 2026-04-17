@@ -23,7 +23,12 @@ namespace G6_BevoTunes.Controllers
         // GET: Albums
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Albums.ToListAsync());
+            List<Album> albums = await _context.Albums
+                        .Include(a => a.Artists)
+                        .Include(a => a.Genres)
+                        .Include(a => a.Promotions)
+                        .ToListAsync();
+            return View(albums);
         }
 
         [AllowAnonymous]

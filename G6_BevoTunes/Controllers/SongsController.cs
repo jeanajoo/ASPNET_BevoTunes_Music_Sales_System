@@ -23,7 +23,14 @@ namespace G6_BevoTunes.Controllers
         // GET: Songs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Songs.ToListAsync());
+            List<Song> songs = _context.Songs
+                                .Include(s => s.Artists)
+                                .Include(s => s.Genres)
+                                .Include(s => s.Reviews)
+                                .Include(s => s.Promotions)
+                                .ToList();
+
+            return View(songs);
         }
 
         // GET: Products/SongDetails/5
