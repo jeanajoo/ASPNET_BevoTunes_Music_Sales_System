@@ -22,15 +22,15 @@
                 @{
                     if (Model.Song != null) 
                     {
-                        <span><b>Song:</b> @Model.Song.SongTitle</span>
+                        <span>Song: @Model.Song.SongTitle</span>
                     }
                     else if (Model.Album != null)
                     {
-                        <span><b>Album:</b> @Model.Album.AlbumName</span>
+                        <span>Album: @Model.Album.AlbumName</span>
                     }
                     else if (Model.Artist != null)
                     {
-                        <span><b>Artist:</b> @Model.Artist.ArtistName</span>
+                        <span>Artist: @Model.Artist.ArtistName</span>
                     }
                 }
             <br/>
