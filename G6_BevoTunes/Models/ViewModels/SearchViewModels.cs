@@ -52,7 +52,7 @@ public class ArtistSearchViewModel
     [Display(Name = "Genre:")]
     public Int32 Genre {get; set;}
 
-    [Range(1.0, 5.0)]
+    [Range(0.0, 5.0)]
     public Decimal Rating {get; set;}
 
     public RatingBound RatingBound {get; set;}

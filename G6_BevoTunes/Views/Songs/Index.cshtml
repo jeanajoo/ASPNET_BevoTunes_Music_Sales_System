@@ -1,20 +1,26 @@
-@model G6_BevoTunes.Models.ProductsViewModel
+@model IEnumerable<Song>
 
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Songs";
     
     // Get featured songs (songs with active FEATURED promotions)
-    var featuredSongs = Model.Songs?
-        .Where(s => s.Promotions?.Any(p => p.PromotionType == PromotionType.FEATURED && p.PromotionActive) ?? false)
-        .ToList() ?? new List<Song>();
+    var featuredSongs = Model
+            .Where(s => s.Promotions.Any(p => p.PromotionType == PromotionType.FEATURED && p.PromotionActive))
+            .ToList();
 
     // Get promoted songs (songs with active DISCOUNT promotions)
-    var promotedSongs = Model.Songs?
-        .Where(s => s.Promotions?.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive) ?? false)
-        .ToList() ?? new List<Song>();
+    var promotedSongs = Model
+            .Where(s => s.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive))
+            .ToList();
 }
 
-
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Create New Song
+        </a>
+}
 
     <!-- Featured Songs Section -->
     @if (featuredSongs.Any())
@@ -43,7 +49,7 @@
                                         }
                                     </p>
                                 }
-                                @if (song.Genres?.Any() ?? false)
+                                @if (song.Genres.Count > 0)
                                 {
                                     <p class="card-text">
                                         <strong>Genres:</strong>

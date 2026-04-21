@@ -1,0 +1,72 @@
+@model IEnumerable<G6_BevoTunes.Models.Artist>
+
+@{
+    ViewData["Title"] = "Artist Search Results";
+}
+
+<h1>Artist Search Results</h1>
+
+<p>
+    <a asp-action="SearchArtists" asp-controller="Search" class="btn btn-secondary">New Search</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to All Artists</a>
+</p>
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-info">
+        No artists found matching your search criteria.
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArtistName)
+                </th>
+                <th>Genres</th>
+                <th>Albums</th>
+                <th>Songs</th>
+                <th>Rating</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtistName)
+                </td>
+                <td>
+                    @string.Join(", ", item.Genres.Select(g => g.GenreName))
+                </td>
+                <td>
+                    @item.Albums.Count()
+                </td>
+                <td>
+                    @item.Songs.Count()
+                </td>
+                <td>
+                    @if (item.Reviews.Any())
+                    {
+                        @string.Format("{0:F2}", item.Reviews.Average(r => r.Rating))
+                    }
+                    else
+                    {
+                        <span>No ratings</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ArtistId">Details</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ArtistId">Edit</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

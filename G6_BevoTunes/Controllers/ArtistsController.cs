@@ -16,13 +16,21 @@ namespace G6_BevoTunes.Controllers
 
         public ArtistsController(AppDbContext context)
         {
+
             _context = context;
         }
 
         // GET: Artists
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artists.ToListAsync());
+            List<Artist> artists = await _context.Artists
+                .Include(a => a.Genres)
+                .Include(a => a.Albums)
+                .Include(a => a.Songs)
+                .Include(a => a.Reviews)
+                .ToListAsync();
+        
+            return View(artists);
         }
 
         // GET: Artists/Details/5
