@@ -278,5 +278,34 @@ namespace G6_BevoTunes.Controllers
             foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
             return View(rvm);
         }
+        // GET: /Account/Edit
+        public async Task<IActionResult> Edit(string id)
+        {
+            // 1. Security Check: Only Managers can edit someone else. 
+            // Everyone else can only edit themselves.
+            AppUser userLoggedIn = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (id != userLoggedIn.Id && !User.IsInRole("Admin"))
+            {
+                return View("Error", new string[] { "You do not have permission to edit this profile." });
+            }
+
+            // 2. Find the user to edit
+            AppUser userToEdit = await _userManager.FindByIdAsync(id);
+            if (userToEdit == null) return NotFound();
+
+            // 3. Map to AccountViewModel
+            EditViewModel evm = new EditViewModel
+            {
+                FirstName = userToEdit.FirstName,
+                LastName = userToEdit.LastName,
+                PhoneNumber = userToEdit.PhoneNumber,
+                Address = userToEdit.Address,
+                ZipCode = userToEdit.ZipCode,
+                Email = userToEdit.Email // Usually read-only in the View per rubric
+            };
+
+            return View(evm);
+        }
     }
  }

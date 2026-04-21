@@ -102,4 +102,48 @@ namespace G6_BevoTunes.Models
         public String Email { get; set; }
         public String UserID { get; set; }
     }
+    public class EditViewModel
+    {
+        //NOTE: Here is the property for email
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        //NOTE: Here is the property for phone number
+        [Required(ErrorMessage = "Phone number is required")]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        //TODO: Add any fields that you need for creating a new user
+        //First name is provided as an example
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
+        public String FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
+        public String LastName { get; set; }
+
+        [Required(ErrorMessage = "Address is required.")]
+        [Display(Name = "Address")]
+        public String Address { get; set; }
+
+        [Required(ErrorMessage = "Zip code is required.")]
+        [Display(Name = "Zip Code")]
+        public String ZipCode { get; set; }
+
+        //NOTE: Here is the logic for putting in a password
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
 }
