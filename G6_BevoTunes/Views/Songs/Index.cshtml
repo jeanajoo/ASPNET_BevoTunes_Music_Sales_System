@@ -14,7 +14,13 @@
             .ToList();
 }
 
-
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Create New Song
+        </a>
+}
 
     <!-- Featured Songs Section -->
     @if (featuredSongs.Any())

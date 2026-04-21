@@ -54,14 +54,6 @@ namespace G6_BevoTunes.Controllers
             return View(album);
         }
 
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateAlbum()
-        {
-            ViewBag["Artists"] = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
-            ViewBag["Genres"] = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
-            ViewBag["Songs"] = new SelectList(await _context.Songs.ToListAsync(), "SongId", "SongTitle");
-            return View(new Album());
-        }
         // GET: Albums/Create
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
@@ -69,22 +61,6 @@ namespace G6_BevoTunes.Controllers
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
             ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
             return View(new Album());
-        }
-
-        // POST: Albums/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlbumId,AlbumName,AlbumPrice,AlbumCover")] Album album)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(album);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(album);
         }
 
         [HttpPost]
@@ -151,11 +127,10 @@ namespace G6_BevoTunes.Controllers
         }
 
         // POST: Products/CreateAlbum
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         // GET: Products/EditAlbum/5
-        public async Task<IActionResult> EditAlbum(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -173,12 +148,12 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            ViewBag["Artists"] = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName", album.Artists.Select(a => a.ArtistId));
-            ViewBag["Genres"] = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName", album.Genres.Select(g => g.GenreId));
-            ViewBag["Songs"] = new SelectList(await _context.Songs.ToListAsync(), "SongId", "SongTitle", album.Songs.Select(s => s.SongId));
-            ViewBag["SelectedArtists"] = album.Artists.Select(a => a.ArtistId).ToList();
-            ViewBag["SelectedGenres"] = album.Genres.Select(g => g.GenreId).ToList();
-            ViewBag["SelectedSongs"] = album.Songs.Select(s => s.SongId).ToList();
+            ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName", album.Artists.Select(a => a.ArtistId));
+            ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName", album.Genres.Select(g => g.GenreId));
+            ViewBag.Songs = new SelectList(await _context.Songs.ToListAsync(), "SongId", "SongTitle", album.Songs.Select(s => s.SongId));
+            ViewBag.SelectedArtists = album.Artists.Select(a => a.ArtistId).ToList();
+            ViewBag.SelectedGenres = album.Genres.Select(g => g.GenreId).ToList();
+            ViewBag.SelectedSongs = album.Songs.Select(s => s.SongId).ToList();
 
             return View(album);
         }
@@ -186,6 +161,7 @@ namespace G6_BevoTunes.Controllers
         // POST: Products/EditAlbum/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("AlbumId,AlbumName,AlbumPrice,AlbumCover")] Album album, int[] selectedArtists, int[] selectedGenres, int[] selectedSongs)
         {
             if (id != album.AlbumId)
@@ -260,9 +236,9 @@ namespace G6_BevoTunes.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag["Artists"] = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
-            ViewBag["Genres"] = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
-            ViewBag["Songs"] = new SelectList(await _context.Songs.ToListAsync(), "SongId", "SongTitle");
+            ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
+            ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
+            ViewBag.Songs = new SelectList(await _context.Songs.ToListAsync(), "SongId", "SongTitle");
             return View(album);
         }
 
