@@ -28,6 +28,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews
+        [Authorize(Roles= "Customer, Admin, Employee")]
         public async Task<IActionResult> Index()
         {
             AppUser user = await _userManager.GetUserAsync(User);
@@ -53,6 +54,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews/Details/5
+        [Authorize(Roles= "Customer, Admin, Employee")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
