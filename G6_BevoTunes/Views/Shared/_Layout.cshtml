@@ -33,35 +33,45 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
+                            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                            {
+                                <li>
+                                    <a asp-controller="Account" asp-action="UserIndex" class="nav-link">Manage Users</a>
+                                </li>
+                            }
                             @if (User.IsInRole("Admin"))
                             {
                                 <li>
                                     <a asp-controller="RoleAdmin" asp-action="Index" class="nav-link">Manage Roles</a>
                                 </li>
                                 <li>
-                                    <a asp-controller="Account" asp-action="UserIndex" class="nav-link">Manage Users</a>
-                                </li>
+                                    <a asp-controller="Promotions" asp-action="Index" class="nav-link">Manage Featured
+                                        Items/Discounts</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Reports" asp-action="Index" class="nav-link">View Reports</a>
+                                    </li>
+                                }
                             }
-                        }
-                    </ul>
+                        </ul>
+                    </div>
+                    @await Html.PartialAsync("_LoginPartial")
                 </div>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
 
-    <div class="container">
-        @RenderBody()
-    </div>
+        <div class="container">
+            @RenderBody()
+        </div>
 
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/popper.js/popper.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <script src="~/lib/popper.js/popper.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
-    @RenderSection("Scripts", required: false)
+        @RenderSection("Scripts", required: false)
     
-</body>
+    </body>
 
 </html>
