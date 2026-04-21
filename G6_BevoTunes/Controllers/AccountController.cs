@@ -287,20 +287,21 @@ namespace G6_BevoTunes.Controllers
             return View(rvm);
         }
         // GET: /Account/Edit
+        [Authorize]
         public async Task<IActionResult> Edit(string id)
         {
-            // 1. Security Check: Only Managers can edit someone else. 
-            // Everyone else can only edit themselves.
-            AppUser userLoggedIn = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            if (id != userLoggedIn.Id && !User.IsInRole("Admin"))
+            if (!User.IsInRole("Admin") || !User.IsInRole("Employee"))
             {
                 return View("Error", new string[] { "You do not have permission to edit this profile." });
             }
 
             // 2. Find the user to edit
             AppUser userToEdit = await _userManager.FindByIdAsync(id);
-            if (userToEdit == null) return NotFound();
+            if (userToEdit == null)
+            {
+                return View("Error", new string[] { "You did not specify a profile to edit." });
+            }
 
             // 3. Map to AccountViewModel
             EditViewModel evm = new EditViewModel
@@ -314,50 +315,94 @@ namespace G6_BevoTunes.Controllers
             return View(evm);
         }
         // POST: /Account/Edit
-        [HttpPost]  
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditViewModel evm)
         {
             if (ModelState.IsValid == false) return View(evm);
 
-            AppUser userToUpdate = await _userManager.FindByIdAsync(evm.UserID);
-            
-            // 1. Basic Info Update
+            // 1. Get the user including their existing credit card list
+            // We use .Include to ensure the list is loaded into memory so we can .Clear() it
+            AppUser userToUpdate = await _context.Users
+                .Include(u => u.CreditCards)
+                .FirstOrDefaultAsync(u => u.Id == evm.UserID);
+
+            if (userToUpdate == null) return NotFound();
+
+            // 2. Update Basic Profile Info
             userToUpdate.FirstName = evm.FirstName;
             userToUpdate.LastName = evm.LastName;
             userToUpdate.Address = evm.Address;
             userToUpdate.PhoneNumber = evm.PhoneNumber;
+            // Email is usually kept read-only per rubric, so we don't update it here
 
-            // 2. Credit Card Update (Assume you added CreditCard1/2 to AppUser model)
+            // 3. Handle Credit Cards (Rubric: Max 2 cards)
+            userToUpdate.CreditCards.Clear();
+
+            // Process Card 1
             if (!string.IsNullOrEmpty(evm.CardNumber1))
             {
-                string type = GetCardType(evm.CardNumber1);
-                if (type == "Invalid Card Type") {
-                    ModelState.AddModelError("CardNumber1", "Invalid card number or format.");
-                    return View(evm);
+                string detectedType1 = GetCardType(evm.CardNumber1);
+                if (detectedType1 == "Invalid Card Type")
+                {
+                    ModelState.AddModelError("CardNumber1", "Card 1 is invalid. (Amex=15 digits, others=16 starting with 4, 54, or 6)");
                 }
-                userToUpdate.CustCreditCard1 = evm.CardNumber1;
+                else
+                {
+                    userToUpdate.CreditCards.Add(new CustCreditCard 
+                    { 
+                        CardNumber = evm.CardNumber1, 
+                    });
+                }
             }
 
-            // 3. Password Change (Only if they filled out the fields)
+            // Process Card 2
+            if (!string.IsNullOrEmpty(evm.CardNumber2))
+            {
+                string detectedType2 = GetCardType(evm.CardNumber2);
+                if (detectedType2 == "Invalid Card Type")
+                {
+                    ModelState.AddModelError("CardNumber2", "Card 2 is invalid format.");
+                }
+                else
+                {
+                    userToUpdate.CreditCards.Add(new CustCreditCard 
+                    { 
+                        CardNumber = evm.CardNumber2, 
+                    });
+                }
+            }
+
+            // 4. Handle Password Change (Rubric: Verify with old password)
             if (!string.IsNullOrEmpty(evm.NewPassword))
             {
                 if (string.IsNullOrEmpty(evm.OldPassword))
                 {
                     ModelState.AddModelError("OldPassword", "Current password is required to set a new one.");
-                    return View(evm);
                 }
-
-                var changePass = await _userManager.ChangePasswordAsync(userToUpdate, evm.OldPassword, evm.NewPassword);
-                if (!changePass.Succeeded)
+                else
                 {
-                    foreach (var error in changePass.Errors) ModelState.AddModelError("", error.Description);
-                    return View(evm);
+                    var changePassResult = await _userManager.ChangePasswordAsync(userToUpdate, evm.OldPassword, evm.NewPassword);
+                    if (!changePassResult.Succeeded)
+                    {
+                        foreach (var error in changePassResult.Errors) 
+                            ModelState.AddModelError("", error.Description);
+                    }
                 }
             }
 
-            await _userManager.UpdateAsync(userToUpdate);
-            return RedirectToAction("Index", "Home");
+            // 5. Final validation check
+            if (ModelState.IsValid == false) return View(evm);
+
+            // 6. Save changes to the database
+            var result = await _userManager.UpdateAsync(userToUpdate);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
+            return View(evm);
         }
 
         // credit card type helper method
