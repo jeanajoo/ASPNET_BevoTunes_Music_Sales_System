@@ -72,6 +72,13 @@ namespace G6_BevoTunes.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UserIndexViewModel
+    {
+        public List<AppUser> Customers { get; set; } = new List<AppUser>();
+        public List<AppUser> Employees { get; set; } = new List<AppUser>();
+        public List<AppUser> Managers { get; set; } = new List<AppUser>();
+    }
+
     //NOTE: This is the view model used to allow the user to 
     //change their password
     public class ChangePasswordViewModel

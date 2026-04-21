@@ -212,8 +212,16 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> UserIndex()
         {
-            var users = await _userManager.Users.ToListAsync();
-            return View(users);
+            UserIndexViewModel uivm = new UserIndexViewModel();
+            uivm.Customers = [.. await _userManager.GetUsersInRoleAsync("Customer")];
+
+            if (User.IsInRole("Admin"))
+            {
+                uivm.Employees = [.. await _userManager.GetUsersInRoleAsync("Employee")];
+                uivm.Managers = [.. await _userManager.GetUsersInRoleAsync("Admin")];
+            }
+            
+            return View(uivm);
         }
         // POST: /Account/ToggleStatus
         [HttpPost]

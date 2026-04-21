@@ -29,15 +29,15 @@
                     {
                         @foreach (var song in Model.FeaturedSongs)
                         {
-                            <div class="card mb-4 border-0 bg-transparent"> 
-                                @{ 
-                                    var songCover = song.Albums.FirstOrDefault()?.AlbumCover ?? song.SongImage; 
+                            <div class="card mb-4 border-0 bg-transparent">
+                                @{
+                                    var songCover = song.Albums.FirstOrDefault()?.AlbumCover ?? song.SongImage;
                                 }
 
                                 @if (!string.IsNullOrEmpty(songCover))
                                 {
-                                    <img src="@songCover" class="card-img-top rounded" alt="@song.SongTitle" 
-                                        style="height: 150px; width: 100%; object-fit: cover;">
+                                    <img src="@songCover" class="card-img-top rounded" alt="@song.SongTitle"
+                                         style="height: 150px; width: 100%; object-fit: cover;">
                                 }
                                 else
                                 {
@@ -48,8 +48,8 @@
                                 <div class="card-body p-2 text-center">
                                     <h6 class="card-title mb-0 font-weight-bold">@song.SongTitle</h6>
                                     <p class="card-text small text-muted mb-1">@song.SongPrice.ToString("C")</p>
-                                    <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId" 
-                                    class="btn btn-sm btn-outline-primary border-0">View Details</a>
+                                    <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId"
+                                       class="btn btn-sm btn-outline-primary border-0">View Details</a>
                                 </div>
                             </div>
                         }
@@ -73,15 +73,19 @@
                         @foreach (var artist in Model.FeaturedArtists)
                         {
                             <div class="text-center mb-4">
-                                @{ var artistCover = artist.Albums.FirstOrDefault()?.AlbumCover; }
+                                @{
+                                    var artistCover = artist.Albums.FirstOrDefault()?.AlbumCover;
+                                }
 
                                 @if (!string.IsNullOrEmpty(artistCover))
                                 {
-                                    <img src="@artistCover" alt="@artist.ArtistName" class="rounded-circle shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
+                                    <img src="@artistCover" alt="@artist.ArtistName" class="rounded-circle shadow-sm"
+                                         style="width: 100px; height: 100px; object-fit: cover;">
                                 }
                                 else
                                 {
-                                    <div class="rounded-circle bg-secondary d-inline-block shadow-sm" style="width: 100px; height: 100px;"></div>
+                                    <div class="rounded-circle bg-secondary d-inline-block shadow-sm"
+                                         style="width: 100px; height: 100px;"></div>
                                 }
                                 <h6 class="mt-2">@artist.ArtistName</h6>
                             </div>
@@ -108,11 +112,13 @@
                             <div class="card mb-3 border-0">
                                 @if (!string.IsNullOrEmpty(album.AlbumCover))
                                 {
-                                    <img src="@album.AlbumCover" class="card-img-top rounded shadow-sm" alt="@album.AlbumName" style="height: 150px; object-fit: cover;">
+                                    <img src="@album.AlbumCover" class="card-img-top rounded shadow-sm" alt="@album.AlbumName"
+                                         style="height: 150px; object-fit: cover;">
                                 }
                                 <div class="card-body p-2 text-center">
                                     <h6 class="card-title mb-0">@album.AlbumName</h6>
-                                    <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-link">View Album</a>
+                                    <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId"
+                                       class="btn btn-sm btn-link">View Album</a>
                                 </div>
                             </div>
                         }
@@ -131,6 +137,6 @@ else
     <div class="alert alert-warning text-center shadow-sm">
         <h4>Exclusive Featured Content</h4>
         <p>Login to see our latest featured artists, albums, and exclusive song deals!</p>
-        <a asp-controller="Home" asp-action="/Account/Login" class="btn btn-warning px-4">Login Now</a>
+        <a asp-controller="Account" asp-action="Login" class="btn btn-warning px-4">Login Now</a>
     </div>
 }
