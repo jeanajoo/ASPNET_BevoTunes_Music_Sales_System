@@ -148,9 +148,9 @@ namespace G6_BevoTunes.Controllers
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName", song.Artists.Select(a => a.ArtistId));
             ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName", song.Genres.Select(g => g.GenreId));
             ViewBag.Albums = new SelectList(await _context.Albums.ToListAsync(), "AlbumId", "AlbumName", song.Albums.Select(a => a.AlbumId));
-            ViewBag.SelectedArtists = song.Artists.Select(a => a.ArtistId).ToList();
-            ViewBag.SelectedGenres = song.Genres.Select(g => g.GenreId).ToList();
-            ViewBag.SelectedAlbums = song.Albums.Select(a => a.AlbumId).ToList();
+            ViewData["SelectedArtists"] = song.Artists.Select(a => a.ArtistId).ToList();
+            ViewData["SelectedGenres"] = song.Genres.Select(g => g.GenreId).ToList();
+            ViewData["SelectedAlbums"] = song.Albums.Select(a => a.AlbumId).ToList();
 
             return View(song);
         }
@@ -235,6 +235,9 @@ namespace G6_BevoTunes.Controllers
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
             ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
             ViewBag.Albums = new SelectList(await _context.Albums.ToListAsync(), "AlbumId", "AlbumName");
+            ViewData["SelectedArtists"] = selectedArtists != null ? selectedArtists.ToList() : new List<int>();
+            ViewData["SelectedGenres"] = selectedGenres != null ? selectedGenres.ToList() : new List<int>();
+            ViewData["SelectedAlbums"] = selectedAlbums != null ? selectedAlbums.ToList() : new List<int>();
             return View(song);
         }
 

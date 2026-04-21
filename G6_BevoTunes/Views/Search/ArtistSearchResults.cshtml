@@ -62,7 +62,7 @@ else
                     <a asp-action="Details" asp-route-id="@item.ArtistId">Details</a>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.ArtistId">Edit</a>
+                        <a asp-controller="Artists" asp-action="Edit" asp-route-id="@item.ArtistId">Edit</a>
                     }
                 </td>
             </tr>

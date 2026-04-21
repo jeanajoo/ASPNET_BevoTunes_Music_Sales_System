@@ -1,24 +1,178 @@
 @model G6_BevoTunes.Models.Artist
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Artist Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.ArtistName</h1>
 
-<div>
-    <h4>Artist</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ArtistName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ArtistName)
-        </dd>
-    </dl>
+<div class="row mb-4">
+    <div class="col-md-3">
+        @if (!string.IsNullOrEmpty(Model.ArtistImage))
+        {
+            <img src="@Model.ArtistImage" alt="@Model.ArtistName" class="img-fluid rounded" style="max-width: 300px;" />
+        }
+        else
+        {
+            <div class="alert alert-info">No image available</div>
+        }
+    </div>
+    <div class="col-md-9">
+        <div class="mb-3">
+            <h5>Artist Information</h5>
+            <p><strong>Name:</strong> @Model.ArtistName</p>
+        </div>
+
+        <!-- Genres Section -->
+        @if (Model.Genres.Any())
+        {
+            <div class="mb-3">
+                <h5>Genres</h5>
+                <div>
+                    @foreach (var genre in Model.Genres)
+                    {
+                        <span class="badge bg-secondary me-2">@genre.GenreName</span>
+                    }
+                </div>
+            </div>
+        }
+
+        <!-- Quick Stats -->
+        <div class="mb-3">
+            <p><strong>Total Songs:</strong> @Model.Songs.Count()</p>
+            <p><strong>Total Albums:</strong> @Model.Albums.Count()</p>
+            <p><strong>Average Rating:</strong> 
+                @{
+                    var approvedReviews = Model.Reviews.Where(r => r.Status == ReviewStatus.Approve).ToList();
+                    decimal avgRating = approvedReviews.Any() ? (decimal)approvedReviews.Average(r => r.Rating) : 0;
+                }
+                @(approvedReviews.Any() ? avgRating.ToString("F2") : "No ratings yet") / 5
+            </p>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ArtistId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<!-- Songs Section -->
+@if (Model.Songs.Any())
+{
+    <div class="mb-4">
+        <h3>Songs</h3>
+        <div class="row">
+            @foreach (var song in Model.Songs)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(song.SongImage))
+                        {
+                            <img src="@song.SongImage" class="card-img-top" alt="@song.SongTitle" />
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@song.SongTitle</h5>
+                            <p class="card-text">
+                                <strong>Price:</strong> @song.SongPrice.ToString("C")
+                            </p>
+                            <p class="card-text">
+                                <strong>Average Rating:</strong> 
+                                @{
+                                    var songApprovedReviews = song.Reviews.Where(r => r.Status == ReviewStatus.Approve).ToList();
+                                    decimal songAvgRating = songApprovedReviews.Any() ? (decimal)songApprovedReviews.Average(r => r.Rating) : 0;
+                                }
+                                @(songApprovedReviews.Any() ? songAvgRating.ToString("F2") : "No ratings") / 5
+                            </p>
+                            <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<!-- Albums Section -->
+@if (Model.Albums.Any())
+{
+    <div class="mb-4">
+        <h3>Albums</h3>
+        <div class="row">
+            @foreach (var album in Model.Albums)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(album.AlbumCover))
+                        {
+                            <img src="@album.AlbumCover" class="card-img-top" alt="@album.AlbumName" style="height: 250px; object-fit: cover;" />
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@album.AlbumName</h5>
+                            <p class="card-text">
+                                <strong>Price:</strong> @album.AlbumPrice.ToString("C")
+                            </p>
+                            <p class="card-text">
+                                <strong>Songs:</strong> @album.Songs.Count()
+                            </p>
+                            <p class="card-text">
+                                <strong>Average Rating:</strong>
+                                @{
+                                    var albumApprovedReviews = album.Reviews.Where(r => r.Status == ReviewStatus.Approve).ToList();
+                                    decimal albumAvgRating = albumApprovedReviews.Any() ? (decimal)albumApprovedReviews.Average(r => r.Rating) : 0;
+                                }
+                                @(albumApprovedReviews.Any() ? albumAvgRating.ToString("F2") : "No ratings") / 5
+                            </p>
+                            <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<!-- Reviews Section -->
+@if (Model.Reviews.Any(r => r.Status == ReviewStatus.Approve))
+{
+    <div class="mb-4">
+        <h3>Reviews & Ratings</h3>
+        <div class="row">
+            @foreach (var review in Model.Reviews.Where(r => r.Status == ReviewStatus.Approve).OrderByDescending(r => r.ReviewID))
+            {
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title">@review.Reviewer?.UserName ?? "Anonymous"</h5>
+                                    <div class="mb-2">
+                                        @for (int i = 0; i < review.Rating; i++)
+                                        {
+                                            <span class="text-warning">★</span>
+                                        }
+                                        @for (int i = review.Rating; i < 5; i++)
+                                        {
+                                            <span class="text-muted">☆</span>
+                                        }
+                                        <span class="ms-2">(@review.Rating.0 / 5.0)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text">@review.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else if (Model.Reviews.Any())
+{
+    <div class="alert alert-info">
+        Reviews are pending approval.
+    </div>
+}
+
+<div class="mb-3">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.ArtistId" class="btn btn-warning">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Back to Artists</a>
 </div>

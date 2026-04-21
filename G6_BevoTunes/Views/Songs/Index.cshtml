@@ -20,6 +20,9 @@
         <a asp-action="Create" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Create New Song
         </a>
+        <a asp-controller="Albums" asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Create New Album
+        </a>
     </p>
 }
 
@@ -107,7 +110,7 @@
                                     </p>
                                 }
                                 <div class="mt-3">
-                                    <a asp-controller="Products" asp-action="SongDetails" asp-route-id="@song.SongId" class="btn btn-sm btn-outline-danger">
+                                    <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId" class="btn btn-sm btn-outline-danger">
                                         View Details
                                     </a>
                                 </div>
