@@ -64,8 +64,13 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var orderDetail = await _context.OrderDetails
+            var orderDetail = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
+                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(s => s.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
                 .FirstOrDefaultAsync(m => m.OrderDetailID == id);
+
             if (orderDetail == null)
             {
                 return NotFound();
