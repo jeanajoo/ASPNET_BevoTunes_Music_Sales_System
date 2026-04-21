@@ -301,11 +301,77 @@ namespace G6_BevoTunes.Controllers
                 LastName = userToEdit.LastName,
                 PhoneNumber = userToEdit.PhoneNumber,
                 Address = userToEdit.Address,
-                ZipCode = userToEdit.ZipCode,
-                Email = userToEdit.Email // Usually read-only in the View per rubric
             };
 
             return View(evm);
+        }
+        // POST: /Account/Edit
+        [HttpPost]  
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditViewModel evm)
+        {
+            if (ModelState.IsValid == false) return View(evm);
+
+            AppUser userToUpdate = await _userManager.FindByIdAsync(evm.UserID);
+            
+            // 1. Basic Info Update
+            userToUpdate.FirstName = evm.FirstName;
+            userToUpdate.LastName = evm.LastName;
+            userToUpdate.Address = evm.Address;
+            userToUpdate.PhoneNumber = evm.PhoneNumber;
+
+            // 2. Credit Card Update (Assume you added CreditCard1/2 to AppUser model)
+            if (!string.IsNullOrEmpty(evm.CardNumber1))
+            {
+                string type = GetCardType(evm.CardNumber1);
+                if (type == "Invalid Card Type") {
+                    ModelState.AddModelError("CardNumber1", "Invalid card number or format.");
+                    return View(evm);
+                }
+                userToUpdate.CustCreditCard1 = evm.CardNumber1;
+            }
+
+            // 3. Password Change (Only if they filled out the fields)
+            if (!string.IsNullOrEmpty(evm.NewPassword))
+            {
+                if (string.IsNullOrEmpty(evm.OldPassword))
+                {
+                    ModelState.AddModelError("OldPassword", "Current password is required to set a new one.");
+                    return View(evm);
+                }
+
+                var changePass = await _userManager.ChangePasswordAsync(userToUpdate, evm.OldPassword, evm.NewPassword);
+                if (!changePass.Succeeded)
+                {
+                    foreach (var error in changePass.Errors) ModelState.AddModelError("", error.Description);
+                    return View(evm);
+                }
+            }
+
+            await _userManager.UpdateAsync(userToUpdate);
+            return RedirectToAction("Index", "Home");
+        }
+
+        // credit card type helper method
+        private string GetCardType(string cardNumber)
+        {
+            if (string.IsNullOrEmpty(cardNumber)) return "None";
+            
+            string cleanNumber = cardNumber.Replace("-", "").Replace(" ", "");
+
+            if (cleanNumber.Length == 15 && cleanNumber.StartsWith("3"))
+            {
+                return "American Express";
+            }
+            
+            if (cleanNumber.Length == 16)
+            {
+                if (cleanNumber.StartsWith("4")) return "Visa";
+                if (cleanNumber.StartsWith("54")) return "MasterCard";
+                if (cleanNumber.StartsWith("6")) return "Discover";
+            }
+
+            return "Invalid Card Type";
         }
     }
  }
