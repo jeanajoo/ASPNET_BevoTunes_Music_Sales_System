@@ -1,9 +1,10 @@
+@using System.Configuration
+@using Microsoft.CodeAnalysis.CSharp.Syntax
 @model IEnumerable<G6_BevoTunes.Models.OrderDetail>
 
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1>Index</h1>
 
 <p>
@@ -13,19 +14,125 @@
     <thead>
         <tr>
             <th>
+                <label>Product</label>
+            </th>
+            <th>
+                <label>Artists</label>
+            </th>
+            <th>
+                <label>Average Rating</label>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PurchasedPrice)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
+        var discount = item.Song?.Promotions?
+            .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT)
+            ?? item.Album?.Promotions?
+            .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT);
+
+        decimal savings = 0;
+
+        if (discount != null)
+        {
+            savings = item.PurchasedPrice - discount.DiscountPrice;
+        }
+
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PurchasedPrice)
+            @{ 
+                if (item.Song != null){
+                     <span><b>Song: </b></span>@Html.DisplayFor(modelItem => item.Song.SongTitle)
+                     if(item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+                     {
+                        <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.PurchasedPrice),
+                            but with our discounts you SAVED @savings.ToString("C")</small>
+                     }
+                }
+                else if (item.Album != null){
+                    <span><b>Album: </b></span>@Html.DisplayFor(modelItem => item.Album.AlbumName)
+                    if(item.Album.Promotions != null && item.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+                    {
+                        <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.PurchasedPrice),
+                            but with our discounts you SAVED @savings.ToString("C")</small>
+                    }
+                }
+            }
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderDetailID">Edit</a> |
+                @if (item.Song != null && item.Song.Artists != null)
+                {
+                    @if (item.Song.Artists.Count < 3)
+                    {
+                        @foreach (var artist in item.Song.Artists)
+                        {
+                            <span>@artist.ArtistName</span>
+                        }
+                    }
+                    else {
+                        @foreach (var artist in item.Song.Artists.Take(3))
+                        {
+                            <span>@artist.ArtistName</span>
+                        }
+                        <span>...... </span><span>@item.Song.Artists.Last().ArtistName</span>
+                    }                       
+                }
+                else if (item.Album != null && item.Album.Artists != null)
+                {
+                    @if (item.Album.Artists.Count < 3)
+                    {
+                        @foreach (var artist in item.Album.Artists)
+                        {
+                            <span>@artist.ArtistName</span>
+                        }
+                    }
+                    else {
+                        @foreach (var artist in item.Album.Artists.Take(3))
+                        {
+                            <span>@artist.ArtistName</span><span>, </span>
+                        }
+                        <span>...... </span><span>@item.Album.Artists.Last().ArtistName</span>      
+                    }                       
+                }
+            </td> 
+            <td>
+                @if (item.Song != null && item.Song.Reviews != null && item.Song.Reviews.Any()) 
+                {
+                    <span>
+                        @item.Song.Reviews.Average(r => r.Rating).ToString("F1")
+                    </span>
+                } 
+                else if (item.Album != null && item.Album.Reviews != null && item.Album.Reviews.Any())
+                {
+                    <span>
+                        @item.Album.Reviews.Average(r => r.Rating).ToString("F1")
+                    </span>
+                }
+                else
+                {
+                    <span>No reviews yet</span>
+                }
+            </td>
+            <td>
+                @if(item.Song != null && item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT)){
+                    <span>@item.Song.Promotions.FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT)?.DiscountPrice.ToString("C")</span>
+                }
+                else if(item.Album != null && item.Album.Promotions != null && item.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+                {
+                    <span>@item.Album.Promotions.FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT)?.DiscountPrice.ToString("C")</span>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.PurchasedPrice)
+                }
+            </td>
+            <td>
+                @* <a asp-action="Edit" asp-route-id="@item.OrderDetailID">Edit</a> | *@
                 <a asp-action="Details" asp-route-id="@item.OrderDetailID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.OrderDetailID">Delete</a>
             </td>
@@ -33,3 +140,27 @@
 }
     </tbody>
 </table>
+<br/>
+<br/>
+<br/>
+<div class="row justify-content-end">
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <td><b>Subtotal</b></td>
+                <td>@Model.FirstOrDefault()?.Order?.Subtotal.ToString("C")</td>
+            </tr>
+            <tr>
+                <td><b>Sales Tax</b></td>
+                <td>@Model.FirstOrDefault()?.Order?.SalesTax.ToString("C")</td>
+            </tr>
+            <tr>
+                <td><b>Total</b></td>
+                <td>@Model.FirstOrDefault()?.Order?.OrderTotal.ToString("C")</td>
+            </tr>
+        </table>
+        <div class="text-end">
+            <a asp-action="Checkout" class="btn btn-primary">Checkout</a>
+        </div>
+    </div>
+</div>
