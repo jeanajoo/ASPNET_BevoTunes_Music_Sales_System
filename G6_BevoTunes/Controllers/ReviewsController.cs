@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.AspNetCore.Identity;
 using System.Diagnostics.Eventing.Reader;
+using NuGet.Protocol;
 
 namespace G6_BevoTunes.Controllers
 {
@@ -84,7 +85,8 @@ namespace G6_BevoTunes.Controllers
             return _context.OrderDetails
                 .Include(od => od.Order)
                 .Include(od => od.Song)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Song != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Song != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Select(od => od.Song)
                 .Distinct()
                 .ToList();
@@ -99,7 +101,8 @@ namespace G6_BevoTunes.Controllers
                 .Include(od => od.Order)
                 .Include(od => od.Album)
                 .ThenInclude(a => a.Songs)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .SelectMany(od => od.Album.Songs)
                 .Distinct()
                 .ToList();
@@ -113,7 +116,8 @@ namespace G6_BevoTunes.Controllers
             return _context.OrderDetails
                 .Include(od => od.Order)
                 .Include(od => od.Album)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Select(od => od.Album)
                 .Distinct()
                 .ToList();
@@ -125,7 +129,8 @@ namespace G6_BevoTunes.Controllers
                 return new List<Artist>();
                 
             HashSet<Artist> ownSongsArtists = _context.OrderDetails
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Song != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Song != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Include(od => od.Song)
                 .ThenInclude(s => s.Artists)
                 .SelectMany(od => od.Song.Artists)
@@ -133,7 +138,8 @@ namespace G6_BevoTunes.Controllers
                 .ToHashSet();
 
             HashSet<Artist> ownAlbumsArtists = _context.OrderDetails
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Include(od => od.Album)
                 .ThenInclude(s => s.Artists)
                 .SelectMany(od => od.Album.Artists)
