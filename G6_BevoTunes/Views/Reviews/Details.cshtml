@@ -53,6 +53,21 @@
             @Html.DisplayFor(model => model.Rating)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reviewer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Reviewer.FirstName @Model.Reviewer.LastName
+        </dd>
+        @if (Model.Approver != null )
+        {
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Approver)
+            </dt>
+            <dd class = "col-sm-10">
+                @Model.Approver.FirstName @Model.Approver.LastName
+            </dd>
+        }
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Status)
         </dt>
         <dd class = "col-sm-10">
