@@ -38,9 +38,13 @@
 
         decimal savings = 0;
 
-        if (discount != null)
+        if (discount != null && item.Song != null)
         {
-            savings = item.PurchasedPrice - discount.DiscountPrice;
+            savings = item.Song.SongPrice - discount.DiscountPrice;
+        }
+        else if (discount != null && item.Album != null)
+        {
+            savings = item.Album.AlbumPrice - discount.DiscountPrice;
         }
 
         <tr>
@@ -50,7 +54,7 @@
                      <span><b>Song: </b></span>@Html.DisplayFor(modelItem => item.Song.SongTitle)
                      if(item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
                      {
-                        <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.PurchasedPrice),
+                        <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.Song.SongPrice),
                             but with our discounts you SAVED @savings.ToString("C")</small>
                      }
                 }
@@ -58,7 +62,7 @@
                     <span><b>Album: </b></span>@Html.DisplayFor(modelItem => item.Album.AlbumName)
                     if(item.Album.Promotions != null && item.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
                     {
-                        <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.PurchasedPrice),
+                        <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.Album.AlbumPrice),
                             but with our discounts you SAVED @savings.ToString("C")</small>
                     }
                 }
@@ -119,7 +123,7 @@
                 }
             </td>
             <td>
-                @if(item.Song != null && item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT)){
+                @* @if(item.Song != null && item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT)){
                     <span>@item.Song.Promotions.FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT)?.DiscountPrice.ToString("C")</span>
                 }
                 else if(item.Album != null && item.Album.Promotions != null && item.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
@@ -128,8 +132,9 @@
                 }
                 else
                 {
-                    @Html.DisplayFor(modelItem => item.PurchasedPrice)
-                }
+                    @item.PurchasedPrice.ToString("C")
+                } *@
+                @item.PurchasedPrice.ToString("C")
             </td>
             <td>
                 @* <a asp-action="Edit" asp-route-id="@item.OrderDetailID">Edit</a> | *@
