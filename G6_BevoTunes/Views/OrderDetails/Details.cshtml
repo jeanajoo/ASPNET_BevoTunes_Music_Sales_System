@@ -3,11 +3,23 @@
 @{
     ViewData["Title"] = "Order Detail";
     var discount = Model.Song?.Promotions?
-        .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT)
+        .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
         ?? Model.Album?.Promotions?
-        .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT);
-    decimal savings = discount != null ? Model.PurchasedPrice - discount.DiscountPrice : 0;
+        .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true);
+    
+    decimal savings = 0;
+    
+    if (Model.Song != null)
+    {
+        savings = discount != null ? Model.Song.SongPrice - discount.DiscountPrice : 0;
+    }
+    else if (Model.Album != null)
+    {
+        savings = discount != null ? Model.Album.AlbumPrice - discount.DiscountPrice : 0;
+    }
 }
+
+
 
 <h1>Order Detail</h1>
 
@@ -79,7 +91,13 @@
         <div class="col-md-4">
             <div class="card p-3">
                 <h5>Pricing</h5>
-                <p><b>Original Price: </b>@Model.PurchasedPrice.ToString("C")</p>
+                @if (Model.Song != null){
+                    <p><b>Original Price: </b>@Model.Song.SongPrice.ToString("C")</p>
+                }
+                else if (Model.Album != null)
+                {
+                    <p><b>Original Price: </b>@Model..ToString("C")</p>
+                }
 
                 @if (discount != null)
                 {
