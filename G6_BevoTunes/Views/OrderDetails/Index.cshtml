@@ -32,9 +32,9 @@
 @foreach (var item in Model) 
 {
         var discount = item.Song?.Promotions?
-            .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT)
+            .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
             ?? item.Album?.Promotions?
-            .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT);
+            .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true);
 
         decimal savings = 0;
 
@@ -52,7 +52,7 @@
             @{ 
                 if (item.Song != null){
                      <span><b>Song: </b></span>@Html.DisplayFor(modelItem => item.Song.SongTitle)
-                     if(item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+                     if(item.Song.Promotions != null && item.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
                      {
                         <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.Song.SongPrice),
                             but with our discounts you SAVED @savings.ToString("C")</small>
@@ -60,7 +60,7 @@
                 }
                 else if (item.Album != null){
                     <span><b>Album: </b></span>@Html.DisplayFor(modelItem => item.Album.AlbumName)
-                    if(item.Album.Promotions != null && item.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+                    if(item.Album.Promotions != null && item.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
                     {
                         <small class="text-muted d-block">The Original price was @Html.DisplayFor(modelItem => item.Album.AlbumPrice),
                             but with our discounts you SAVED @savings.ToString("C")</small>
@@ -165,7 +165,7 @@
             </tr>
         </table>
         <div class="text-end">
-            <a asp-action="Checkout" class="btn btn-primary">Checkout</a>
+            <a asp-action="Checkout" class="btn btn-primary" asp-route-id="@Model?.FirstOrDefault()?.OrderDetailID">Checkout</a>
         </div>
     </div>
 </div>
