@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Authorization;
+using G6_BevoTunes.Utilities;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Customer")]
     public class CustCreditCardsController : Controller
     {
         private readonly AppDbContext _context;
@@ -22,7 +25,8 @@ namespace G6_BevoTunes.Controllers
         // GET: CustCreditCards
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CustCreditCards.ToListAsync());
+            List<CustCreditCard> custCreditCards = await _context.CustCreditCards.Where(cc => cc.User.UserName == User.Identity.Name).ToListAsync();
+            return View(custCreditCards);
         }
 
         // GET: CustCreditCards/Details/5
@@ -54,8 +58,36 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustCreditCardID,CardNumber,CardType")] CustCreditCard custCreditCard)
+        public async Task<IActionResult> Create([Bind("CardNumber")] CustCreditCard custCreditCard)
         {
+            custCreditCard.User = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            ModelState.Clear();
+            if (custCreditCard.CardNumber.Length == 15)
+            {
+                custCreditCard.CardType = CardType.Amex;
+            } 
+            else if (custCreditCard.CardNumber.StartsWith("54"))
+            {
+                custCreditCard.CardType = CardType.MasterCard;
+            }
+            else if (custCreditCard.CardNumber.StartsWith("4"))
+            {
+                custCreditCard.CardType = CardType.Visa;
+            }
+            else if (custCreditCard.CardNumber.StartsWith("6"))
+            {
+                custCreditCard.CardType = CardType.Discover;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Card Type cannot be recognised");
+            }
+            if (_context.CustCreditCards.Where(cc => cc.User.UserName == User.Identity.Name).Count() >= 2)
+            {
+                ModelState.AddModelError("", "You have reached the maximum number of card allowed to be stored");
+            }
+            
+            TryValidateModel(custCreditCard);
             if (ModelState.IsValid)
             {
                 _context.Add(custCreditCard);
