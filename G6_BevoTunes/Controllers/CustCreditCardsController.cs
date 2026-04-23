@@ -118,13 +118,35 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustCreditCardID,CardNumber,CardType")] CustCreditCard custCreditCard)
+        public async Task<IActionResult> Edit(int id, [Bind("CustCreditCardID,CardNumber")] CustCreditCard custCreditCard)
         {
             if (id != custCreditCard.CustCreditCardID)
             {
                 return NotFound();
             }
-
+            ModelState.Clear();
+            custCreditCard.User = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            if (custCreditCard.CardNumber.Length == 15)
+            {
+                custCreditCard.CardType = CardType.Amex;
+            } 
+            else if (custCreditCard.CardNumber.StartsWith("54"))
+            {
+                custCreditCard.CardType = CardType.MasterCard;
+            }
+            else if (custCreditCard.CardNumber.StartsWith("4"))
+            {
+                custCreditCard.CardType = CardType.Visa;
+            }
+            else if (custCreditCard.CardNumber.StartsWith("6"))
+            {
+                custCreditCard.CardType = CardType.Discover;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Card Type cannot be recognised");
+            }
+            TryValidateModel(custCreditCard);
             if (ModelState.IsValid)
             {
                 try
