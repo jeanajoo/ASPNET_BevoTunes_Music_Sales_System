@@ -25,7 +25,7 @@ namespace G6_BevoTunes.Controllers
         // GET: CustCreditCards
         public async Task<IActionResult> Index()
         {
-            List<CustCreditCard> custCreditCards = await _context.CustCreditCards.Where(cc => cc.User.UserName == User.Identity.Name).ToListAsync();
+            List<CustCreditCard> custCreditCards = await _context.CustCreditCards.Where(cc => cc.User.UserName == User.Identity.Name && cc.ActiveStatus == true).ToListAsync();
             return View(custCreditCards);
         }
 
@@ -86,6 +86,7 @@ namespace G6_BevoTunes.Controllers
             {
                 ModelState.AddModelError("", "You have reached the maximum number of card allowed to be stored");
             }
+            custCreditCard.ActiveStatus = true;
             
             TryValidateModel(custCreditCard);
             if (ModelState.IsValid)
@@ -146,6 +147,7 @@ namespace G6_BevoTunes.Controllers
             {
                 ModelState.AddModelError("", "Card Type cannot be recognised");
             }
+            custCreditCard.ActiveStatus = true;
             TryValidateModel(custCreditCard);
             if (ModelState.IsValid)
             {
@@ -196,7 +198,7 @@ namespace G6_BevoTunes.Controllers
             var custCreditCard = await _context.CustCreditCards.FindAsync(id);
             if (custCreditCard != null)
             {
-                _context.CustCreditCards.Remove(custCreditCard);
+                custCreditCard.ActiveStatus = false;
             }
 
             await _context.SaveChangesAsync();

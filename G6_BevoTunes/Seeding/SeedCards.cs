@@ -30,7 +30,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "5402487911641970",
                     CardType = CardType.MasterCard,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Christopher" && u.LastName == "Baker"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c1);
 
@@ -38,7 +39,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "4040646714659780",
                     CardType = CardType.Visa,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Margaret" && u.LastName == "Garcia"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c2);
 
@@ -46,7 +48,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "561479481465379",
                     CardType = CardType.Amex,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Clent" && u.LastName == "Tucker"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c3);
 
@@ -54,7 +57,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "5469290013187490",
                     CardType = CardType.MasterCard,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Olivier" && u.LastName == "Saint-Jean"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c4);
 
@@ -62,7 +66,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "6011485978941640",
                     CardType = CardType.Discover,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Wendy" && u.LastName == "Chang"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c5);
 
@@ -70,7 +75,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "4584794615342670",
                     CardType = CardType.Visa,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Jennifer" && u.LastName == "MacLeod"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c6);
 
@@ -78,7 +84,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "6767489513462640",
                     CardType = CardType.Discover,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Tesa" && u.LastName == "Freeley"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c7);
 
@@ -86,7 +93,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "865146254978453",
                     CardType = CardType.Amex,
-                    User = customers.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Hearn")
+                    User = customers.FirstOrDefault(u => u.FirstName == "John" && u.LastName == "Hearn"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c8);
 
@@ -94,7 +102,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "5489761548972350",
                     CardType = CardType.MasterCard,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Eric" && u.LastName == "Stuart")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Eric" && u.LastName == "Stuart"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c9);
 
@@ -102,7 +111,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     CardNumber = "4011798411664850",
                     CardType = CardType.Visa,
-                    User = customers.FirstOrDefault(u => u.FirstName == "Michelle" && u.LastName == "Banks")
+                    User = customers.FirstOrDefault(u => u.FirstName == "Michelle" && u.LastName == "Banks"),
+                    ActiveStatus = true
                 };
                 CustCreditCards.Add(c10);
 
