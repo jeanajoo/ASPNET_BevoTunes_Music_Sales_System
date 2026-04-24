@@ -225,18 +225,21 @@ namespace G6_BevoTunes.Controllers
             
             return View(uivm);
         }
+        // POST: /Account/ToggleStatus
         [HttpPost]
-        [Authorize(Roles = "Admin,Employee")]
-        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> ToggleStatus(string id)
         {
-           var user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _userManager.FindByIdAsync(id);
+
             if (user == null) return NotFound();
+
+            bool IsCustomer = await _userManager.IsInRoleAsync(user, "Customer");
 
             // Toggle logic
             if (user.Status == UserStatus.Active)
             {
-                user.Status = UserStatus.Blocked;
+                user.Status = IsCustomer ? UserStatus.Deleted : UserStatus.Blocked;
             }
             else
             {
@@ -272,15 +275,12 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
         {
-            if (!ModelState.IsValid) return View(rvm);
+            if (ModelState.IsValid == false) return View(rvm);
 
             AppUser newUser = new AppUser {
-                Email = rvm.Email, 
+                UserName = rvm.Email, Email = rvm.Email, 
                 FirstName = rvm.FirstName, LastName = rvm.LastName,
-                PhoneNumber = rvm.PhoneNumber,
-                Address = rvm.Address,
-                ZipCode = rvm.ZipCode,
-                LockoutEnabled = false
+                PhoneNumber = rvm.PhoneNumber
             };
 
             AddUserModel aum = new AddUserModel {
