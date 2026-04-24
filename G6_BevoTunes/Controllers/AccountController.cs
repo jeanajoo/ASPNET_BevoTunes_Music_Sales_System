@@ -225,13 +225,16 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> ToggleStatus(string id)
         {
-            var user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _userManager.FindByIdAsync(id);
+
             if (user == null) return NotFound();
+
+            bool IsCustomer = await _userManager.IsInRoleAsync(user, "Customer");
 
             // Toggle logic
             if (user.Status == UserStatus.Active)
             {
-                user.Status = UserStatus.Blocked;
+                user.Status = IsCustomer ? UserStatus.Deleted : UserStatus.Blocked;
             }
             else
             {
