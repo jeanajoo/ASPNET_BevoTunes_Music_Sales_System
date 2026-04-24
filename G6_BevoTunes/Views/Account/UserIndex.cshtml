@@ -6,6 +6,12 @@
 
 <h1>User Directory</h1>
 
+<div class="mb-4">
+    <a asp-action="CreateCustomer" asp-controller="Account" class="btn btn-success">
+        + Create New Customer Profile
+    </a>
+</div>
+
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" id="pills-customers-tab" data-bs-toggle="pill" data-bs-target="#pills-customers"
@@ -49,14 +55,26 @@
                         <td>@Html.DisplayFor(modelItem => item.LastName)</td>
                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
                         <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            @if (item.Status == UserStatus.Deleted)
+                            {
+                                <span class="badge bg-warning text-dark">Disabled (No Checkout)</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
                         <td>
                             <a asp-action="Edit" asp-controller="Account" asp-route-id="@item.Id"
                                class="btn btn-warning btn-sm">Modify</a>
                             
                             @* Added Toggle Status for rubric requirement *@
                             <form asp-action="ToggleStatus" asp-route-id="@item.Id" method="post" style="display:inline">
-                                <button type="submit" class="btn btn-danger btn-sm">Toggle Status</button>
+                                <button type="submit"
+                                        class="btn @(item.Status == UserStatus.Deleted ? "btn-outline-success" : "btn-danger") btn-sm">
+                                    @(item.Status == UserStatus.Deleted ? "Activate" : "Disable")
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -85,14 +103,26 @@
                         <td>@Html.DisplayFor(modelItem => item.LastName)</td>
                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
                         <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            @if (item.Status == UserStatus.Blocked)
+                            {
+                                <span class="badge bg-dark text-white">Blocked (Fired)</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
                         <td>
                             <a asp-action="Edit" asp-controller="Account" asp-route-id="@item.Id"
                                class="btn btn-warning btn-sm">Modify</a>
                             
                             @* Added Toggle Status for rubric requirement *@
                             <form asp-action="ToggleStatus" asp-route-id="@item.Id" method="post" style="display:inline">
-                                <button type="submit" class="btn btn-danger btn-sm">Toggle Status</button>
+                                <button type="submit"
+                                        class="btn @(item.Status == UserStatus.Blocked ? "btn-success" : "btn-danger") btn-sm">
+                                    @(item.Status == UserStatus.Blocked ? "Re-hire" : "Block/Fire")
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -123,12 +153,25 @@
                         <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         <td>
+                            @if (item.Status == UserStatus.Blocked)
+                            {
+                                <span class="badge bg-dark text-white">Blocked (Fired)</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
+                        <td>
                             <a asp-action="Edit" asp-controller="Account" asp-route-id="@item.Id"
                                class="btn btn-warning btn-sm">Modify</a>
                             
                             @* Added Toggle Status for rubric requirement *@
                             <form asp-action="ToggleStatus" asp-route-id="@item.Id" method="post" style="display:inline">
-                                <button type="submit" class="btn btn-danger btn-sm">Toggle Status</button>
+                                <button type="submit"
+                                        class="btn @(item.Status == UserStatus.Blocked ? "btn-success" : "btn-danger") btn-sm">
+                                    @(item.Status == UserStatus.Blocked ? "Re-hire" : "Block/Fire")
+                                </button>
                             </form>
                         </td>
                     </tr>

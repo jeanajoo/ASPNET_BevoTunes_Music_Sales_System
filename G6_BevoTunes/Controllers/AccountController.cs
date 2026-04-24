@@ -275,12 +275,15 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
         {
-            if (ModelState.IsValid == false) return View(rvm);
+            if (!ModelState.IsValid) return View(rvm);
 
             AppUser newUser = new AppUser {
-                UserName = rvm.Email, Email = rvm.Email, 
+                Email = rvm.Email, 
                 FirstName = rvm.FirstName, LastName = rvm.LastName,
-                PhoneNumber = rvm.PhoneNumber
+                PhoneNumber = rvm.PhoneNumber,
+                Address = rvm.Address,
+                ZipCode = rvm.ZipCode,
+                Status = UserStatus.Active
             };
 
             AddUserModel aum = new AddUserModel {
