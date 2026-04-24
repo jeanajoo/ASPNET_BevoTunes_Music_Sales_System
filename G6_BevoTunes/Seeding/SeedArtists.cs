@@ -28,6 +28,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a1 = new Artist()
                 {
                     ArtistName = "Vanilla Ice",
+                    IsActive = true
                 };
                 a1.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a1.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -36,6 +37,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a2 = new Artist()
                 {
                     ArtistName = "Timbaland",
+                    IsActive = true
                 };
                 a2.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a2.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -44,6 +46,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a3 = new Artist()
                 {
                     ArtistName = "Doechii",
+                    IsActive = true
                 };
                 a3.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a3);
@@ -51,6 +54,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a4 = new Artist()
                 {
                     ArtistName = "Quality Control",
+                    IsActive = true
                 };
                 a4.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a4.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -60,6 +64,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a5 = new Artist()
                 {
                     ArtistName = "Shubh",
+                    IsActive = true
                 };
                 a5.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a5.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -68,6 +73,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a6 = new Artist()
                 {
                     ArtistName = "Lil Baby",
+                    IsActive = true
                 };
                 a6.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a6.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -80,6 +86,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a7 = new Artist()
                 {
                     ArtistName = "Mc Delux",
+                    IsActive = true
                 };
                 a7.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a7.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -88,6 +95,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a8 = new Artist()
                 {
                     ArtistName = "Daft Punk",
+                    IsActive = true
                 };
                 a8.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 Artists.Add(a8);
@@ -95,6 +103,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a9 = new Artist()
                 {
                     ArtistName = "Nelly",
+                    IsActive = true
                 };
                 a9.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a9.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -104,6 +113,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a10 = new Artist()
                 {
                     ArtistName = "Sean Paul",
+                    IsActive = true
                 };
                 a10.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a10.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -112,6 +122,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a11 = new Artist()
                 {
                     ArtistName = "Mc Pogba",
+                    IsActive = true
                 };
                 a11.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a11.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -120,6 +131,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a12 = new Artist()
                 {
                     ArtistName = "A Boogie Wit da Hoodie",
+                    IsActive = true
                 };
                 a12.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a12.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -128,6 +140,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a13 = new Artist()
                 {
                     ArtistName = "Jack Harlow",
+                    IsActive = true
                 };
                 a13.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 Artists.Add(a13);
@@ -135,6 +148,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a14 = new Artist()
                 {
                     ArtistName = "Luis R Conriquez",
+                    IsActive = true
                 };
                 a14.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 Artists.Add(a14);
@@ -142,6 +156,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a15 = new Artist()
                 {
                     ArtistName = "Eminem",
+                    IsActive = true
                 };
                 a15.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a15.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -153,6 +168,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a16 = new Artist()
                 {
                     ArtistName = "Ice Cube",
+                    IsActive = true
                 };
                 a16.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a16);
@@ -160,6 +176,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a17 = new Artist()
                 {
                     ArtistName = "Queen",
+                    IsActive = true
                 };
                 a17.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a17.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -169,6 +186,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a18 = new Artist()
                 {
                     ArtistName = "Bob Marley & The Wailers",
+                    IsActive = true
                 };
                 a18.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
                 a18.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -178,6 +196,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a19 = new Artist()
                 {
                     ArtistName = "Migos",
+                    IsActive = true
                 };
                 a19.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a19);
@@ -185,6 +204,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a20 = new Artist()
                 {
                     ArtistName = "KAROL G",
+                    IsActive = true
                 };
                 a20.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a20.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -193,6 +213,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a21 = new Artist()
                 {
                     ArtistName = "Dave",
+                    IsActive = true
                 };
                 a21.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a21.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -202,6 +223,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a22 = new Artist()
                 {
                     ArtistName = "XXXTENTACION",
+                    IsActive = true
                 };
                 a22.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a22.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -211,6 +233,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a23 = new Artist()
                 {
                     ArtistName = "Michael Jackson",
+                    IsActive = true
                 };
                 a23.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 Artists.Add(a23);
@@ -218,6 +241,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a24 = new Artist()
                 {
                     ArtistName = "Lil Yachty",
+                    IsActive = true
                 };
                 a24.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a24.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -226,6 +250,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a25 = new Artist()
                 {
                     ArtistName = "MC Kevin o Chris",
+                    IsActive = true
                 };
                 a25.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a25.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -235,6 +260,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a26 = new Artist()
                 {
                     ArtistName = "Outkast",
+                    IsActive = true
                 };
                 a26.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a26.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -243,6 +269,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a27 = new Artist()
                 {
                     ArtistName = "Future",
+                    IsActive = true
                 };
                 a27.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a27);
@@ -250,6 +277,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a28 = new Artist()
                 {
                     ArtistName = "Gunna",
+                    IsActive = true
                 };
                 a28.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a28.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -258,6 +286,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a29 = new Artist()
                 {
                     ArtistName = "Bad Bunny",
+                    IsActive = true
                 };
                 a29.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a29.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -269,6 +298,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a30 = new Artist()
                 {
                     ArtistName = "Central Cee",
+                    IsActive = true
                 };
                 a30.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a30.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -277,6 +307,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a31 = new Artist()
                 {
                     ArtistName = "Mary J. Blige",
+                    IsActive = true
                 };
                 a31.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 a31.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -285,6 +316,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a32 = new Artist()
                 {
                     ArtistName = "21 Savage",
+                    IsActive = true
                 };
                 a32.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a32.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -293,6 +325,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a33 = new Artist()
                 {
                     ArtistName = "BigXthaPlug",
+                    IsActive = true
                 };
                 a33.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a33.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -301,6 +334,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a34 = new Artist()
                 {
                     ArtistName = "The Notorious B.I.G.",
+                    IsActive = true
                 };
                 a34.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a34.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -309,6 +343,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a35 = new Artist()
                 {
                     ArtistName = "Big Pun",
+                    IsActive = true
                 };
                 a35.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a35);
@@ -316,6 +351,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a36 = new Artist()
                 {
                     ArtistName = "Cazzu",
+                    IsActive = true
                 };
                 a36.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a36.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -325,6 +361,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a37 = new Artist()
                 {
                     ArtistName = "Rex Orange County",
+                    IsActive = true
                 };
                 a37.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a37.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -333,6 +370,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a38 = new Artist()
                 {
                     ArtistName = "Kendrick Lamar",
+                    IsActive = true
                 };
                 a38.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a38.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -342,6 +380,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a39 = new Artist()
                 {
                     ArtistName = "J. Cole",
+                    IsActive = true
                 };
                 a39.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a39.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -350,6 +389,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a40 = new Artist()
                 {
                     ArtistName = "Prince",
+                    IsActive = true
                 };
                 a40.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a40.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -358,6 +398,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a41 = new Artist()
                 {
                     ArtistName = "Smur Lee",
+                    IsActive = true
                 };
                 a41.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a41.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -366,6 +407,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a42 = new Artist()
                 {
                     ArtistName = "Cypress Hill",
+                    IsActive = true
                 };
                 a42.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a42.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -374,6 +416,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a43 = new Artist()
                 {
                     ArtistName = "Roddy Ricch",
+                    IsActive = true
                 };
                 a43.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 Artists.Add(a43);
@@ -381,6 +424,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a44 = new Artist()
                 {
                     ArtistName = "Mc Rf",
+                    IsActive = true
                 };
                 a44.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 Artists.Add(a44);
@@ -388,6 +432,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a45 = new Artist()
                 {
                     ArtistName = "MC's Zaac",
+                    IsActive = true
                 };
                 a45.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 Artists.Add(a45);
@@ -395,6 +440,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a46 = new Artist()
                 {
                     ArtistName = "Jul",
+                    IsActive = true
                 };
                 a46.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 Artists.Add(a46);
@@ -402,6 +448,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a47 = new Artist()
                 {
                     ArtistName = "JAE5",
+                    IsActive = true
                 };
                 a47.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a47);
@@ -409,6 +456,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a48 = new Artist()
                 {
                     ArtistName = "Fireboy DML",
+                    IsActive = true
                 };
                 a48.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 Artists.Add(a48);
@@ -416,6 +464,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a49 = new Artist()
                 {
                     ArtistName = "TNK MusiQ",
+                    IsActive = true
                 };
                 a49.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a49.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -424,6 +473,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a50 = new Artist()
                 {
                     ArtistName = "Lil Frosh",
+                    IsActive = true
                 };
                 a50.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a50.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -433,6 +483,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a51 = new Artist()
                 {
                     ArtistName = "Saint",
+                    IsActive = true
                 };
                 a51.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a51.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -442,6 +493,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a52 = new Artist()
                 {
                     ArtistName = "Killloane",
+                    IsActive = true
                 };
                 a52.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a52);
@@ -449,6 +501,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a53 = new Artist()
                 {
                     ArtistName = "Naira Marley",
+                    IsActive = true
                 };
                 a53.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a53.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -459,6 +512,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a54 = new Artist()
                 {
                     ArtistName = "Alison Hinds",
+                    IsActive = true
                 };
                 a54.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 Artists.Add(a54);
@@ -466,6 +520,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a55 = new Artist()
                 {
                     ArtistName = "MC Mazzie",
+                    IsActive = true
                 };
                 a55.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a55.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -474,6 +529,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a56 = new Artist()
                 {
                     ArtistName = "Ice Prince",
+                    IsActive = true
                 };
                 a56.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a56);
@@ -481,6 +537,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a57 = new Artist()
                 {
                     ArtistName = "Inventor Ace",
+                    IsActive = true
                 };
                 a57.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a57);
@@ -488,6 +545,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a58 = new Artist()
                 {
                     ArtistName = "Machel Montano",
+                    IsActive = true
                 };
                 a58.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a58.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -497,6 +555,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a59 = new Artist()
                 {
                     ArtistName = "Jerry Di",
+                    IsActive = true
                 };
                 a59.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a59.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -505,6 +564,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a60 = new Artist()
                 {
                     ArtistName = "Burna Boy",
+                    IsActive = true
                 };
                 a60.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a60);
@@ -512,6 +572,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a61 = new Artist()
                 {
                     ArtistName = "Key Largo",
+                    IsActive = true
                 };
                 a61.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a61.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -522,6 +583,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a62 = new Artist()
                 {
                     ArtistName = "ODUMODUBLVCK",
+                    IsActive = true
                 };
                 a62.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a62.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -530,6 +592,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a63 = new Artist()
                 {
                     ArtistName = "love_eight",
+                    IsActive = true
                 };
                 a63.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a63);
@@ -537,6 +600,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a64 = new Artist()
                 {
                     ArtistName = "HOUDI",
+                    IsActive = true
                 };
                 a64.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a64.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -545,6 +609,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a65 = new Artist()
                 {
                     ArtistName = "Humble Francis",
+                    IsActive = true
                 };
                 a65.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a65);
@@ -552,6 +617,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a66 = new Artist()
                 {
                     ArtistName = "Kizz Daniel",
+                    IsActive = true
                 };
                 a66.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a66.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -561,6 +627,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a67 = new Artist()
                 {
                     ArtistName = "C. Tangana",
+                    IsActive = true
                 };
                 a67.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a67.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -570,6 +637,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a68 = new Artist()
                 {
                     ArtistName = "Zinoleesky",
+                    IsActive = true
                 };
                 a68.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 Artists.Add(a68);
@@ -577,6 +645,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a69 = new Artist()
                 {
                     ArtistName = "Diam's",
+                    IsActive = true
                 };
                 a69.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a69.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -586,6 +655,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a70 = new Artist()
                 {
                     ArtistName = "The Dixie Cups",
+                    IsActive = true
                 };
                 a70.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 a70.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -595,6 +665,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a71 = new Artist()
                 {
                     ArtistName = "DJ Guih Da ZO",
+                    IsActive = true
                 };
                 a71.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 Artists.Add(a71);
@@ -602,6 +673,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a72 = new Artist()
                 {
                     ArtistName = "La Chanchona De Tito Mira",
+                    IsActive = true
                 };
                 a72.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a72.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -610,6 +682,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a73 = new Artist()
                 {
                     ArtistName = "Problem Child",
+                    IsActive = true
                 };
                 a73.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a73.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -619,6 +692,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a74 = new Artist()
                 {
                     ArtistName = "Seek",
+                    IsActive = true
                 };
                 a74.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a74.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -627,6 +701,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a75 = new Artist()
                 {
                     ArtistName = "Mr Eazi",
+                    IsActive = true
                 };
                 a75.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a75.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -635,6 +710,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a76 = new Artist()
                 {
                     ArtistName = "Perry Goldfish",
+                    IsActive = true
                 };
                 a76.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a76.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -643,6 +719,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a77 = new Artist()
                 {
                     ArtistName = "MC Teteu",
+                    IsActive = true
                 };
                 a77.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a77.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -651,6 +728,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a78 = new Artist()
                 {
                     ArtistName = "Royal MusiQ",
+                    IsActive = true
                 };
                 a78.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a78.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -660,6 +738,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a79 = new Artist()
                 {
                     ArtistName = "2JtheRichest",
+                    IsActive = true
                 };
                 a79.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a79);
@@ -667,6 +746,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a80 = new Artist()
                 {
                     ArtistName = "Akapellah",
+                    IsActive = true
                 };
                 a80.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a80.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -675,6 +755,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a81 = new Artist()
                 {
                     ArtistName = "Kid AlpHa",
+                    IsActive = true
                 };
                 a81.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 Artists.Add(a81);
@@ -682,6 +763,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a82 = new Artist()
                 {
                     ArtistName = "Myke Towers",
+                    IsActive = true
                 };
                 a82.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 Artists.Add(a82);
@@ -689,6 +771,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a83 = new Artist()
                 {
                     ArtistName = "Hammocks & Lime",
+                    IsActive = true
                 };
                 a83.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a83.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -697,6 +780,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a84 = new Artist()
                 {
                     ArtistName = "Olamide",
+                    IsActive = true
                 };
                 a84.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a84);
@@ -704,6 +788,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a85 = new Artist()
                 {
                     ArtistName = "Ezra Collective",
+                    IsActive = true
                 };
                 a85.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a85.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -712,6 +797,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a86 = new Artist()
                 {
                     ArtistName = "Wizkid",
+                    IsActive = true
                 };
                 a86.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a86.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -720,6 +806,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a87 = new Artist()
                 {
                     ArtistName = "G:sson",
+                    IsActive = true
                 };
                 a87.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a87);
@@ -727,6 +814,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a88 = new Artist()
                 {
                     ArtistName = "Adam Space",
+                    IsActive = true
                 };
                 a88.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a88);
@@ -734,6 +822,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a89 = new Artist()
                 {
                     ArtistName = "LoFi Waiter",
+                    IsActive = true
                 };
                 a89.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a89);
@@ -741,6 +830,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a90 = new Artist()
                 {
                     ArtistName = "low&slow",
+                    IsActive = true
                 };
                 a90.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a90.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -749,6 +839,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a91 = new Artist()
                 {
                     ArtistName = "jaackson",
+                    IsActive = true
                 };
                 a91.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a91);
@@ -756,6 +847,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a92 = new Artist()
                 {
                     ArtistName = "Chip",
+                    IsActive = true
                 };
                 a92.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a92.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -764,6 +856,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a93 = new Artist()
                 {
                     ArtistName = "Tee Hacker",
+                    IsActive = true
                 };
                 a93.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 Artists.Add(a93);
@@ -771,6 +864,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a94 = new Artist()
                 {
                     ArtistName = "Beta Tester",
+                    IsActive = true
                 };
                 a94.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a94.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -782,6 +876,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a95 = new Artist()
                 {
                     ArtistName = "Alpha Ninja",
+                    IsActive = true
                 };
                 a95.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a95.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -790,6 +885,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a96 = new Artist()
                 {
                     ArtistName = "Tee Model",
+                    IsActive = true
                 };
                 a96.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a96.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -798,6 +894,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a97 = new Artist()
                 {
                     ArtistName = "Em Debugger",
+                    IsActive = true
                 };
                 a97.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 a97.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -809,6 +906,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a98 = new Artist()
                 {
                     ArtistName = "Tee Coder",
+                    IsActive = true
                 };
                 a98.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 a98.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -818,6 +916,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a99 = new Artist()
                 {
                     ArtistName = "Alpha Mapper",
+                    IsActive = true
                 };
                 a99.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a99.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -827,6 +926,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a100 = new Artist()
                 {
                     ArtistName = "Elle Hacker",
+                    IsActive = true
                 };
                 a100.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a100.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -838,6 +938,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a101 = new Artist()
                 {
                     ArtistName = "Are Ninja",
+                    IsActive = true
                 };
                 a101.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a101.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -847,6 +948,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a102 = new Artist()
                 {
                     ArtistName = "Beta Model",
+                    IsActive = true
                 };
                 a102.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a102.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -858,6 +960,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a103 = new Artist()
                 {
                     ArtistName = "Dee Tester",
+                    IsActive = true
                 };
                 a103.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a103.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -869,6 +972,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a104 = new Artist()
                 {
                     ArtistName = "Dee Builder",
+                    IsActive = true
                 };
                 a104.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a104.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -878,6 +982,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a105 = new Artist()
                 {
                     ArtistName = "Are Dev",
+                    IsActive = true
                 };
                 a105.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a105.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -888,6 +993,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a106 = new Artist()
                 {
                     ArtistName = "Elle Dev",
+                    IsActive = true
                 };
                 a106.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 Artists.Add(a106);
@@ -895,6 +1001,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a107 = new Artist()
                 {
                     ArtistName = "Bee Architect",
+                    IsActive = true
                 };
                 a107.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a107.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -907,6 +1014,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a108 = new Artist()
                 {
                     ArtistName = "Em Hacker",
+                    IsActive = true
                 };
                 a108.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a108.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -918,6 +1026,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a109 = new Artist()
                 {
                     ArtistName = "Jay Debugger",
+                    IsActive = true
                 };
                 a109.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a109.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -926,6 +1035,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a110 = new Artist()
                 {
                     ArtistName = "Why View",
+                    IsActive = true
                 };
                 a110.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 a110.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -936,6 +1046,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a111 = new Artist()
                 {
                     ArtistName = "Tee View",
+                    IsActive = true
                 };
                 a111.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
                 a111.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -944,6 +1055,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a112 = new Artist()
                 {
                     ArtistName = "Gamma Builder",
+                    IsActive = true
                 };
                 a112.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a112.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -952,6 +1064,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a113 = new Artist()
                 {
                     ArtistName = "Zee Mapper",
+                    IsActive = true
                 };
                 a113.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a113.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -960,6 +1073,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a114 = new Artist()
                 {
                     ArtistName = "Dee Architect",
+                    IsActive = true
                 };
                 a114.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a114);
@@ -967,6 +1081,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a115 = new Artist()
                 {
                     ArtistName = "Why Coder",
+                    IsActive = true
                 };
                 a115.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a115.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -980,6 +1095,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a116 = new Artist()
                 {
                     ArtistName = "Dee View",
+                    IsActive = true
                 };
                 a116.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a116.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -990,6 +1106,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a117 = new Artist()
                 {
                     ArtistName = "Elle Architect",
+                    IsActive = true
                 };
                 a117.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a117.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1001,6 +1118,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a118 = new Artist()
                 {
                     ArtistName = "Beta Coder",
+                    IsActive = true
                 };
                 a118.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 Artists.Add(a118);
@@ -1008,6 +1126,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a119 = new Artist()
                 {
                     ArtistName = "Why Model",
+                    IsActive = true
                 };
                 a119.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a119.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -1018,6 +1137,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a120 = new Artist()
                 {
                     ArtistName = "Zee View",
+                    IsActive = true
                 };
                 a120.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a120.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -1030,6 +1150,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a121 = new Artist()
                 {
                     ArtistName = "Kay-Tee Hacker",
+                    IsActive = true
                 };
                 a121.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 Artists.Add(a121);
@@ -1037,6 +1158,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a122 = new Artist()
                 {
                     ArtistName = "Alpha Builder",
+                    IsActive = true
                 };
                 a122.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a122.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1047,6 +1169,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a123 = new Artist()
                 {
                     ArtistName = "Zee Dev",
+                    IsActive = true
                 };
                 a123.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a123.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -1057,6 +1180,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a124 = new Artist()
                 {
                     ArtistName = "Elle Model",
+                    IsActive = true
                 };
                 a124.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a124.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -1066,6 +1190,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a125 = new Artist()
                 {
                     ArtistName = "Kay Tester",
+                    IsActive = true
                 };
                 a125.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a125.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -1077,6 +1202,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a126 = new Artist()
                 {
                     ArtistName = "Pro Hacker",
+                    IsActive = true
                 };
                 a126.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 a126.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1086,6 +1212,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a127 = new Artist()
                 {
                     ArtistName = "Beta Hacker",
+                    IsActive = true
                 };
                 a127.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 Artists.Add(a127);
@@ -1093,6 +1220,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a128 = new Artist()
                 {
                     ArtistName = "Kay Dev",
+                    IsActive = true
                 };
                 a128.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a128);
@@ -1100,6 +1228,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a129 = new Artist()
                 {
                     ArtistName = "Pro Mapper",
+                    IsActive = true
                 };
                 a129.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a129.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -1110,6 +1239,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a130 = new Artist()
                 {
                     ArtistName = "Gamma Coder",
+                    IsActive = true
                 };
                 a130.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a130.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -1119,6 +1249,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a131 = new Artist()
                 {
                     ArtistName = "Beta Architect",
+                    IsActive = true
                 };
                 a131.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a131.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -1133,6 +1264,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a132 = new Artist()
                 {
                     ArtistName = "Em View",
+                    IsActive = true
                 };
                 a132.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 a132.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -1144,6 +1276,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a133 = new Artist()
                 {
                     ArtistName = "Kay Builder",
+                    IsActive = true
                 };
                 a133.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a133.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -1152,6 +1285,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a134 = new Artist()
                 {
                     ArtistName = "Dee Hacker",
+                    IsActive = true
                 };
                 a134.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
                 a134.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -1161,6 +1295,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a135 = new Artist()
                 {
                     ArtistName = "Kay Ninja",
+                    IsActive = true
                 };
                 a135.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
                 a135.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -1169,6 +1304,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a136 = new Artist()
                 {
                     ArtistName = "Pro Controller",
+                    IsActive = true
                 };
                 a136.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 Artists.Add(a136);
@@ -1176,6 +1312,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a137 = new Artist()
                 {
                     ArtistName = "Beta Mapper",
+                    IsActive = true
                 };
                 a137.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a137.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -1184,6 +1321,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a138 = new Artist()
                 {
                     ArtistName = "Jay Dev",
+                    IsActive = true
                 };
                 a138.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 a138.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -1192,6 +1330,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a139 = new Artist()
                 {
                     ArtistName = "Bee Coder",
+                    IsActive = true
                 };
                 a139.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 Artists.Add(a139);
@@ -1199,6 +1338,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a140 = new Artist()
                 {
                     ArtistName = "Pro Model",
+                    IsActive = true
                 };
                 a140.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
                 a140.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -1208,6 +1348,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a141 = new Artist()
                 {
                     ArtistName = "Bee Controller",
+                    IsActive = true
                 };
                 a141.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 Artists.Add(a141);
@@ -1215,6 +1356,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a142 = new Artist()
                 {
                     ArtistName = "Alpha Debugger",
+                    IsActive = true
                 };
                 a142.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a142.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -1224,6 +1366,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a143 = new Artist()
                 {
                     ArtistName = "Bee Hacker",
+                    IsActive = true
                 };
                 a143.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
                 a143.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1234,6 +1377,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a144 = new Artist()
                 {
                     ArtistName = "Are Architect",
+                    IsActive = true
                 };
                 a144.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
                 a144.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -1242,6 +1386,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a145 = new Artist()
                 {
                     ArtistName = "Zee Builder",
+                    IsActive = true
                 };
                 a145.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 a145.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -1251,6 +1396,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a146 = new Artist()
                 {
                     ArtistName = "Are Hacker",
+                    IsActive = true
                 };
                 a146.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a146.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -1261,6 +1407,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a147 = new Artist()
                 {
                     ArtistName = "Bee Ninja",
+                    IsActive = true
                 };
                 a147.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
                 Artists.Add(a147);
@@ -1268,6 +1415,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a148 = new Artist()
                 {
                     ArtistName = "Gamma Controller",
+                    IsActive = true
                 };
                 a148.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a148.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -1276,6 +1424,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a149 = new Artist()
                 {
                     ArtistName = "Tee Mapper",
+                    IsActive = true
                 };
                 a149.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 Artists.Add(a149);
@@ -1283,6 +1432,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a150 = new Artist()
                 {
                     ArtistName = "Gamma Model",
+                    IsActive = true
                 };
                 a150.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 Artists.Add(a150);
@@ -1290,6 +1440,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a151 = new Artist()
                 {
                     ArtistName = "Kay-Tee Mapper",
+                    IsActive = true
                 };
                 a151.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
                 a151.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -1298,6 +1449,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a152 = new Artist()
                 {
                     ArtistName = "Elle Controller",
+                    IsActive = true
                 };
                 a152.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a152.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -1306,6 +1458,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a153 = new Artist()
                 {
                     ArtistName = "Dee Coder",
+                    IsActive = true
                 };
                 a153.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a153.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1315,6 +1468,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a154 = new Artist()
                 {
                     ArtistName = "Why Builder",
+                    IsActive = true
                 };
                 a154.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a154.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -1323,6 +1477,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a155 = new Artist()
                 {
                     ArtistName = "Jay Coder",
+                    IsActive = true
                 };
                 a155.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a155);
@@ -1330,6 +1485,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a156 = new Artist()
                 {
                     ArtistName = "Beta View",
+                    IsActive = true
                 };
                 a156.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
                 a156.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -1339,6 +1495,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a157 = new Artist()
                 {
                     ArtistName = "Tee Builder",
+                    IsActive = true
                 };
                 a157.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a157.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1351,6 +1508,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a158 = new Artist()
                 {
                     ArtistName = "Jay Controller",
+                    IsActive = true
                 };
                 a158.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
                 a158.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -1361,6 +1519,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a159 = new Artist()
                 {
                     ArtistName = "Pro Dev",
+                    IsActive = true
                 };
                 a159.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
                 Artists.Add(a159);
@@ -1368,6 +1527,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a160 = new Artist()
                 {
                     ArtistName = "Kay-Tee Architect",
+                    IsActive = true
                 };
                 a160.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 Artists.Add(a160);
@@ -1375,6 +1535,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a161 = new Artist()
                 {
                     ArtistName = "Zee Hacker",
+                    IsActive = true
                 };
                 a161.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a161.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1383,6 +1544,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a162 = new Artist()
                 {
                     ArtistName = "Tee Architect",
+                    IsActive = true
                 };
                 a162.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 Artists.Add(a162);
@@ -1390,6 +1552,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a163 = new Artist()
                 {
                     ArtistName = "Pro Coder",
+                    IsActive = true
                 };
                 a163.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a163.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -1399,6 +1562,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a164 = new Artist()
                 {
                     ArtistName = "Kay-Tee View",
+                    IsActive = true
                 };
                 a164.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a164.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -1408,6 +1572,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a165 = new Artist()
                 {
                     ArtistName = "Em Builder",
+                    IsActive = true
                 };
                 a165.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a165.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -1418,6 +1583,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a166 = new Artist()
                 {
                     ArtistName = "Kay View",
+                    IsActive = true
                 };
                 a166.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a166.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -1426,6 +1592,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a167 = new Artist()
                 {
                     ArtistName = "Beta Builder",
+                    IsActive = true
                 };
                 a167.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 a167.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -1436,6 +1603,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a168 = new Artist()
                 {
                     ArtistName = "Alpha Coder",
+                    IsActive = true
                 };
                 a168.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a168.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1446,6 +1614,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a169 = new Artist()
                 {
                     ArtistName = "Bee View",
+                    IsActive = true
                 };
                 a169.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a169.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -1455,6 +1624,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a170 = new Artist()
                 {
                     ArtistName = "Elle View",
+                    IsActive = true
                 };
                 a170.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
                 a170.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1464,6 +1634,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a171 = new Artist()
                 {
                     ArtistName = "Kay Mapper",
+                    IsActive = true
                 };
                 a171.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 a171.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -1473,6 +1644,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a172 = new Artist()
                 {
                     ArtistName = "Elle Tester",
+                    IsActive = true
                 };
                 a172.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 Artists.Add(a172);
@@ -1480,6 +1652,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a173 = new Artist()
                 {
                     ArtistName = "Bee Mapper",
+                    IsActive = true
                 };
                 a173.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a173.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
@@ -1491,6 +1664,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a174 = new Artist()
                 {
                     ArtistName = "Bee Model",
+                    IsActive = true
                 };
                 a174.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 Artists.Add(a174);
@@ -1498,6 +1672,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a175 = new Artist()
                 {
                     ArtistName = "Kay-Tee Dev",
+                    IsActive = true
                 };
                 a175.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a175.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -1508,6 +1683,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a176 = new Artist()
                 {
                     ArtistName = "Why Ninja",
+                    IsActive = true
                 };
                 a176.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a176.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -1517,6 +1693,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a177 = new Artist()
                 {
                     ArtistName = "Jay Mapper",
+                    IsActive = true
                 };
                 a177.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a177.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -1525,6 +1702,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a178 = new Artist()
                 {
                     ArtistName = "Em Dev",
+                    IsActive = true
                 };
                 a178.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a178);
@@ -1532,6 +1710,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a179 = new Artist()
                 {
                     ArtistName = "Are Controller",
+                    IsActive = true
                 };
                 a179.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 a179.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -1540,6 +1719,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a180 = new Artist()
                 {
                     ArtistName = "Dee Model",
+                    IsActive = true
                 };
                 a180.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 Artists.Add(a180);
@@ -1547,6 +1727,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a181 = new Artist()
                 {
                     ArtistName = "Why Architect",
+                    IsActive = true
                 };
                 a181.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 Artists.Add(a181);
@@ -1554,6 +1735,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a182 = new Artist()
                 {
                     ArtistName = "Why Tester",
+                    IsActive = true
                 };
                 a182.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
                 Artists.Add(a182);
@@ -1561,6 +1743,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a183 = new Artist()
                 {
                     ArtistName = "Bee Debugger",
+                    IsActive = true
                 };
                 a183.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a183.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -1569,6 +1752,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a184 = new Artist()
                 {
                     ArtistName = "Em Controller",
+                    IsActive = true
                 };
                 a184.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a184.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -1577,6 +1761,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a185 = new Artist()
                 {
                     ArtistName = "Kay-Tee Builder",
+                    IsActive = true
                 };
                 a185.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 Artists.Add(a185);
@@ -1584,6 +1769,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a186 = new Artist()
                 {
                     ArtistName = "Are Builder",
+                    IsActive = true
                 };
                 a186.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a186.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -1593,6 +1779,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a187 = new Artist()
                 {
                     ArtistName = "Beta Ninja",
+                    IsActive = true
                 };
                 a187.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a187.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -1601,6 +1788,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a188 = new Artist()
                 {
                     ArtistName = "Are Mapper",
+                    IsActive = true
                 };
                 a188.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a188.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -1611,6 +1799,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a189 = new Artist()
                 {
                     ArtistName = "Kay Debugger",
+                    IsActive = true
                 };
                 a189.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 a189.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -1620,6 +1809,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a190 = new Artist()
                 {
                     ArtistName = "Kay Controller",
+                    IsActive = true
                 };
                 a190.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
                 a190.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -1629,6 +1819,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a191 = new Artist()
                 {
                     ArtistName = "Jay Tester",
+                    IsActive = true
                 };
                 a191.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 a191.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -1639,6 +1830,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a192 = new Artist()
                 {
                     ArtistName = "Dee Debugger",
+                    IsActive = true
                 };
                 a192.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a192.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -1648,6 +1840,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a193 = new Artist()
                 {
                     ArtistName = "Elle Debugger",
+                    IsActive = true
                 };
                 a193.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
                 Artists.Add(a193);
@@ -1655,6 +1848,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a194 = new Artist()
                 {
                     ArtistName = "Zee Tester",
+                    IsActive = true
                 };
                 a194.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 Artists.Add(a194);
@@ -1662,6 +1856,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a195 = new Artist()
                 {
                     ArtistName = "Why Mapper",
+                    IsActive = true
                 };
                 a195.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 a195.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -1671,6 +1866,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a196 = new Artist()
                 {
                     ArtistName = "Are Model",
+                    IsActive = true
                 };
                 a196.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a196.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -1679,6 +1875,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a197 = new Artist()
                 {
                     ArtistName = "Gamma Dev",
+                    IsActive = true
                 };
                 a197.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 Artists.Add(a197);
@@ -1686,6 +1883,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a198 = new Artist()
                 {
                     ArtistName = "Em Coder",
+                    IsActive = true
                 };
                 a198.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 a198.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -1694,6 +1892,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a199 = new Artist()
                 {
                     ArtistName = "Elle Builder",
+                    IsActive = true
                 };
                 a199.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a199.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -1703,6 +1902,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a200 = new Artist()
                 {
                     ArtistName = "Gamma Debugger",
+                    IsActive = true
                 };
                 a200.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a200.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -1711,6 +1911,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a201 = new Artist()
                 {
                     ArtistName = "Zee Model",
+                    IsActive = true
                 };
                 a201.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
                 a201.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -1720,6 +1921,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a202 = new Artist()
                 {
                     ArtistName = "Tee Tester",
+                    IsActive = true
                 };
                 a202.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "classroom"));
                 Artists.Add(a202);
@@ -1727,6 +1929,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a203 = new Artist()
                 {
                     ArtistName = "Jay Model",
+                    IsActive = true
                 };
                 a203.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
                 a203.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -1735,6 +1938,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a204 = new Artist()
                 {
                     ArtistName = "Tee Debugger",
+                    IsActive = true
                 };
                 a204.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
                 a204.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -1743,6 +1947,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a205 = new Artist()
                 {
                     ArtistName = "Bee Tester",
+                    IsActive = true
                 };
                 a205.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
                 Artists.Add(a205);
@@ -1750,6 +1955,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a206 = new Artist()
                 {
                     ArtistName = "Kay Coder",
+                    IsActive = true
                 };
                 a206.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 Artists.Add(a206);
@@ -1757,6 +1963,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a207 = new Artist()
                 {
                     ArtistName = "Kay-Tee Controller",
+                    IsActive = true
                 };
                 a207.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
                 Artists.Add(a207);
@@ -1764,6 +1971,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a208 = new Artist()
                 {
                     ArtistName = "Elle Mapper",
+                    IsActive = true
                 };
                 a208.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
                 Artists.Add(a208);
@@ -1771,6 +1979,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a209 = new Artist()
                 {
                     ArtistName = "Are View",
+                    IsActive = true
                 };
                 a209.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
                 a209.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -1779,6 +1988,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a210 = new Artist()
                 {
                     ArtistName = "Alpha View",
+                    IsActive = true
                 };
                 a210.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
                 Artists.Add(a210);
@@ -1786,6 +1996,7 @@ namespace G6_BevoTunes.Seeding
                 Artist a211 = new Artist()
                 {
                     ArtistName = "Bee Builder",
+                    IsActive = true
                 };
                 a211.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
                 Artists.Add(a211);

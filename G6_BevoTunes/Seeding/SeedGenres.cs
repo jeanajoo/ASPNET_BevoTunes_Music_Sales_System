@@ -25,52 +25,52 @@ namespace G6_BevoTunes.Seeding
                 //Create a list of languages
                 List<Genre> Genres = new List<Genre>();
 
-                Genre g1 = new Genre() { GenreName = "pop" };
+                Genre g1 = new Genre() { GenreName = "pop", IsActive = true };
                 Genres.Add(g1);
 
-                Genre g2 = new Genre() { GenreName = "hip-hop" };
+                Genre g2 = new Genre() { GenreName = "hip-hop", IsActive = true };
                 Genres.Add(g2);
 
-                Genre g3 = new Genre() { GenreName = "arabic" };
+                Genre g3 = new Genre() { GenreName = "arabic", IsActive = true };
                 Genres.Add(g3);
 
-                Genre g4 = new Genre() { GenreName = "brazilian" };
+                Genre g4 = new Genre() { GenreName = "brazilian", IsActive = true };
                 Genres.Add(g4);
 
-                Genre g5 = new Genre() { GenreName = "electronic" };
+                Genre g5 = new Genre() { GenreName = "electronic", IsActive = true };
                 Genres.Add(g5);
 
-                Genre g6 = new Genre() { GenreName = "gaming" };
+                Genre g6 = new Genre() { GenreName = "gaming", IsActive = true };
                 Genres.Add(g6);
 
-                Genre g7 = new Genre() { GenreName = "latin" };
+                Genre g7 = new Genre() { GenreName = "latin", IsActive = true };
                 Genres.Add(g7);
 
-                Genre g8 = new Genre() { GenreName = "rock" };
+                Genre g8 = new Genre() { GenreName = "rock", IsActive = true };
                 Genres.Add(g8);
 
-                Genre g9 = new Genre() { GenreName = "reggae" };
+                Genre g9 = new Genre() { GenreName = "reggae", IsActive = true };
                 Genres.Add(g9);
 
-                Genre g10 = new Genre() { GenreName = "r&b" };
+                Genre g10 = new Genre() { GenreName = "r&b", IsActive = true };
                 Genres.Add(g10);
 
-                Genre g11 = new Genre() { GenreName = "afrobeats" };
+                Genre g11 = new Genre() { GenreName = "afrobeats", IsActive = true };
                 Genres.Add(g11);
 
-                Genre g12 = new Genre() { GenreName = "ambient" };
+                Genre g12 = new Genre() { GenreName = "ambient", IsActive = true };
                 Genres.Add(g12);
 
-                Genre g13 = new Genre() { GenreName = "soca" };
+                Genre g13 = new Genre() { GenreName = "soca", IsActive = true };
                 Genres.Add(g13);
 
-                Genre g14 = new Genre() { GenreName = "lofi" };
+                Genre g14 = new Genre() { GenreName = "lofi", IsActive = true };
                 Genres.Add(g14);
 
-                Genre g15 = new Genre() { GenreName = "world" };
+                Genre g15 = new Genre() { GenreName = "world", IsActive = true };
                 Genres.Add(g15);
 
-                Genre g16 = new Genre() { GenreName = "classroom" };
+                Genre g16 = new Genre() { GenreName = "classroom", IsActive = true };
                 Genres.Add(g16);
 
                 foreach (Genre genreToAdd in Genres)

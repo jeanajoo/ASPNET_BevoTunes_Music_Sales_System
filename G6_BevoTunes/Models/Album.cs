@@ -22,6 +22,8 @@ namespace G6_BevoTunes.Models
         [Url]
         public string? AlbumCover { get; set; }
 
+        public Boolean IsActive { get; set; } = true;
+
         public List<Artist> Artists { get; set; } = new List<Artist>();
 
         public List<Genre> Genres { get; set; } = new List<Genre>();

@@ -28,7 +28,8 @@ namespace G6_BevoTunes.Seeding
                 Song s1 = new Song()
                 {
                     SongTitle = "Ice Ice Baby",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s1.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Vanilla Ice Is Back! - Hip Hop Classics"));
                 s1.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Vanilla Ice"));
@@ -39,7 +40,8 @@ namespace G6_BevoTunes.Seeding
                 Song s2 = new Song()
                 {
                     SongTitle = "Give It To Me",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s2.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Shock Value"));
                 s2.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -52,7 +54,8 @@ namespace G6_BevoTunes.Seeding
                 Song s3 = new Song()
                 {
                     SongTitle = "NISSAN ALTIMA",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s3.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Alligator Bites Never Heal"));
                 s3.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Doechii"));
@@ -62,7 +65,8 @@ namespace G6_BevoTunes.Seeding
                 Song s4 = new Song()
                 {
                     SongTitle = "Baby (Lil Baby feat. DaBaby)",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s4.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Quality Control: Control The Streets Volume 2"));
                 s4.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "La Cumbia De Carmelo"));
@@ -76,7 +80,8 @@ namespace G6_BevoTunes.Seeding
                 Song s5 = new Song()
                 {
                     SongTitle = "Dior",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s5.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Still Rollin"));
                 s5.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Shubh"));
@@ -87,7 +92,8 @@ namespace G6_BevoTunes.Seeding
                 Song s6 = new Song()
                 {
                     SongTitle = "Yes Indeed",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s6.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Harder Than Ever"));
                 s6.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
@@ -99,7 +105,8 @@ namespace G6_BevoTunes.Seeding
                 Song s7 = new Song()
                 {
                     SongTitle = "Low Down",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s7.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "My Turn (Deluxe)"));
                 s7.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
@@ -109,7 +116,8 @@ namespace G6_BevoTunes.Seeding
                 Song s8 = new Song()
                 {
                     SongTitle = "Se Voce Nao Quer Passa a Vez",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s8.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Se Voce Nao Quer Passa a Vez"));
                 s8.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Please Excuse Me for Being Antisocial"));
@@ -120,7 +128,8 @@ namespace G6_BevoTunes.Seeding
                 Song s9 = new Song()
                 {
                     SongTitle = "Around the World",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s9.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Homework"));
                 s9.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -132,7 +141,8 @@ namespace G6_BevoTunes.Seeding
                 Song s10 = new Song()
                 {
                     SongTitle = "Hot In Herre",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s10.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Nellyville"));
                 s10.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Nelly"));
@@ -144,7 +154,8 @@ namespace G6_BevoTunes.Seeding
                 Song s11 = new Song()
                 {
                     SongTitle = "Temperature",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s11.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Trinity"));
                 s11.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Sean Paul"));
@@ -155,7 +166,8 @@ namespace G6_BevoTunes.Seeding
                 Song s12 = new Song()
                 {
                     SongTitle = "Ela Joga na Hora",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s12.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Ela Joga na Hora"));
                 s12.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Pogba"));
@@ -166,7 +178,8 @@ namespace G6_BevoTunes.Seeding
                 Song s13 = new Song()
                 {
                     SongTitle = "Still Think About You",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s13.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Artist"));
                 s13.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -178,7 +191,8 @@ namespace G6_BevoTunes.Seeding
                 Song s14 = new Song()
                 {
                     SongTitle = "Lovin On Me",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s14.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Lovin On Me"));
                 s14.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jack Harlow"));
@@ -188,7 +202,8 @@ namespace G6_BevoTunes.Seeding
                 Song s15 = new Song()
                 {
                     SongTitle = "Que Se Cuide",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s15.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Que Se Cuide"));
                 s15.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -199,7 +214,8 @@ namespace G6_BevoTunes.Seeding
                 Song s16 = new Song()
                 {
                     SongTitle = "Houdini",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s16.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Houdini"));
                 s16.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Eminem"));
@@ -211,7 +227,8 @@ namespace G6_BevoTunes.Seeding
                 Song s17 = new Song()
                 {
                     SongTitle = "Check Yo Self - Remix",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s17.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bootlegs And B-Sides"));
                 s17.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -222,7 +239,8 @@ namespace G6_BevoTunes.Seeding
                 Song s18 = new Song()
                 {
                     SongTitle = "Another One Bites The Dust - Remastered 2011",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s18.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Game (Deluxe Remastered Version)"));
                 s18.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -236,7 +254,8 @@ namespace G6_BevoTunes.Seeding
                 Song s19 = new Song()
                 {
                     SongTitle = "Buffalo Soldier",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s19.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Confrontation"));
                 s19.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Body"));
@@ -248,7 +267,8 @@ namespace G6_BevoTunes.Seeding
                 Song s20 = new Song()
                 {
                     SongTitle = "Bad and Boujee (feat. Lil Uzi Vert)",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s20.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Culture"));
                 s20.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Tu Hablas Espanhol"));
@@ -259,7 +279,8 @@ namespace G6_BevoTunes.Seeding
                 Song s21 = new Song()
                 {
                     SongTitle = "We Paid (feat. 42 Dugg)",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s21.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "My Turn (Deluxe)"));
                 s21.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
@@ -270,7 +291,8 @@ namespace G6_BevoTunes.Seeding
                 Song s22 = new Song()
                 {
                     SongTitle = "Si Antes Te Hubiera Conocido",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s22.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Si Antes Te Hubiera Conocido"));
                 s22.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "KAROL G"));
@@ -281,7 +303,8 @@ namespace G6_BevoTunes.Seeding
                 Song s23 = new Song()
                 {
                     SongTitle = "UK Rap",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s23.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Split Decision"));
                 s23.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dave"));
@@ -291,7 +314,8 @@ namespace G6_BevoTunes.Seeding
                 Song s24 = new Song()
                 {
                     SongTitle = "Moonlight",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s24.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "?"));
                 s24.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Un Verano Sin Ti"));
@@ -304,7 +328,8 @@ namespace G6_BevoTunes.Seeding
                 Song s25 = new Song()
                 {
                     SongTitle = "Billie Jean",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s25.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Thriller 25 Super Deluxe Edition"));
                 s25.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -316,7 +341,8 @@ namespace G6_BevoTunes.Seeding
                 Song s26 = new Song()
                 {
                     SongTitle = "Coffin",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s26.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Lil Boat 3.5"));
                 s26.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Yachty"));
@@ -327,7 +353,8 @@ namespace G6_BevoTunes.Seeding
                 Song s27 = new Song()
                 {
                     SongTitle = "Faz um Vuk Vuk (Teto Espelhado)",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s27.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Faz um Vuk Vuk (Teto Espelhado)"));
                 s27.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -341,7 +368,8 @@ namespace G6_BevoTunes.Seeding
                 Song s28 = new Song()
                 {
                     SongTitle = "ATLiens",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s28.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "ATLiens"));
                 s28.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Hey Hou"));
@@ -353,7 +381,8 @@ namespace G6_BevoTunes.Seeding
                 Song s29 = new Song()
                 {
                     SongTitle = "Sprinter",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s29.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprinter"));
                 s29.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -364,7 +393,8 @@ namespace G6_BevoTunes.Seeding
                 Song s30 = new Song()
                 {
                     SongTitle = "Could You Be Loved",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s30.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Uprising"));
                 s30.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -376,7 +406,8 @@ namespace G6_BevoTunes.Seeding
                 Song s31 = new Song()
                 {
                     SongTitle = "TEFLON DON",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s31.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "MIXTAPE PLUTO"));
                 s31.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -387,7 +418,8 @@ namespace G6_BevoTunes.Seeding
                 Song s32 = new Song()
                 {
                     SongTitle = "one of wun",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s32.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "One of Wun"));
                 s32.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -400,7 +432,8 @@ namespace G6_BevoTunes.Seeding
                 Song s33 = new Song()
                 {
                     SongTitle = "PERRO NEGRO",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s33.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "nadie sabe lo que va a pasar manana"));
                 s33.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -413,7 +446,8 @@ namespace G6_BevoTunes.Seeding
                 Song s34 = new Song()
                 {
                     SongTitle = "Me Porto Bonito",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s34.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Un Verano Sin Ti"));
                 s34.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bad Bunny"));
@@ -425,7 +459,8 @@ namespace G6_BevoTunes.Seeding
                 Song s35 = new Song()
                 {
                     SongTitle = "Doja",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s35.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Doja"));
                 s35.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -437,7 +472,8 @@ namespace G6_BevoTunes.Seeding
                 Song s36 = new Song()
                 {
                     SongTitle = "Family Affair",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s36.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "No More Drama"));
                 s36.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Life After Death (2014 Remastered Edition)"));
@@ -450,7 +486,8 @@ namespace G6_BevoTunes.Seeding
                 Song s37 = new Song()
                 {
                     SongTitle = "Without Me",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s37.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Eminem Show"));
                 s37.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Eminem"));
@@ -462,7 +499,8 @@ namespace G6_BevoTunes.Seeding
                 Song s38 = new Song()
                 {
                     SongTitle = "No Heart",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s38.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Savage Mode"));
                 s38.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wahala"));
@@ -475,7 +513,8 @@ namespace G6_BevoTunes.Seeding
                 Song s39 = new Song()
                 {
                     SongTitle = "The Largest",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s39.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Largest"));
                 s39.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "BigXthaPlug"));
@@ -486,7 +525,8 @@ namespace G6_BevoTunes.Seeding
                 Song s40 = new Song()
                 {
                     SongTitle = "Hypnotize - 2014 Remaster",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s40.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Life After Death (2014 Remastered Edition)"));
                 s40.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -499,7 +539,8 @@ namespace G6_BevoTunes.Seeding
                 Song s41 = new Song()
                 {
                     SongTitle = "Still Not a Player (feat. Joe) - Radio Version",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s41.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Capital Punishment"));
                 s41.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Big Pun"));
@@ -509,7 +550,8 @@ namespace G6_BevoTunes.Seeding
                 Song s42 = new Song()
                 {
                     SongTitle = "Nada",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s42.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Error 93"));
                 s42.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "One of Wun"));
@@ -523,7 +565,8 @@ namespace G6_BevoTunes.Seeding
                 Song s43 = new Song()
                 {
                     SongTitle = "THE SHADE",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s43.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "WHO CARES?"));
                 s43.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Rex Orange County"));
@@ -534,7 +577,8 @@ namespace G6_BevoTunes.Seeding
                 Song s44 = new Song()
                 {
                     SongTitle = "Not Like Us",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s44.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Not Like Us"));
                 s44.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Shorty"));
@@ -547,7 +591,8 @@ namespace G6_BevoTunes.Seeding
                 Song s45 = new Song()
                 {
                     SongTitle = "Neighbors",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s45.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "4 Your Eyez Only"));
                 s45.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "J. Cole"));
@@ -558,7 +603,8 @@ namespace G6_BevoTunes.Seeding
                 Song s46 = new Song()
                 {
                     SongTitle = "Kiss",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s46.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Parade - Music from the Motion Picture Under the Cherry Moon"));
                 s46.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Prince"));
@@ -569,7 +615,8 @@ namespace G6_BevoTunes.Seeding
                 Song s47 = new Song()
                 {
                     SongTitle = "JUJU (feat. Shallipopi)",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s47.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "JUJU (feat. Shallipopi)"));
                 s47.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Smur Lee"));
@@ -580,7 +627,8 @@ namespace G6_BevoTunes.Seeding
                 Song s48 = new Song()
                 {
                     SongTitle = "Drip Too Hard (Lil Baby & Gunna)",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s48.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Drip Harder"));
                 s48.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
@@ -592,7 +640,8 @@ namespace G6_BevoTunes.Seeding
                 Song s49 = new Song()
                 {
                     SongTitle = "Insane in the Brain",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s49.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Black Sunday"));
                 s49.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Cypress Hill"));
@@ -603,7 +652,8 @@ namespace G6_BevoTunes.Seeding
                 Song s50 = new Song()
                 {
                     SongTitle = "The Box",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s50.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Please Excuse Me for Being Antisocial"));
                 s50.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Vanilla Ice Is Back! - Hip Hop Classics"));
@@ -614,7 +664,8 @@ namespace G6_BevoTunes.Seeding
                 Song s51 = new Song()
                 {
                     SongTitle = "Jogadinha do Paqueta",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s51.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Jogadinha do Paqueta"));
                 s51.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Rf"));
@@ -624,7 +675,8 @@ namespace G6_BevoTunes.Seeding
                 Song s52 = new Song()
                 {
                     SongTitle = "Bumbum granada",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s52.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bumbum granada"));
                 s52.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC's Zaac"));
@@ -634,7 +686,8 @@ namespace G6_BevoTunes.Seeding
                 Song s53 = new Song()
                 {
                     SongTitle = "Tchikita",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s53.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Tchikita"));
                 s53.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jul"));
@@ -644,7 +697,8 @@ namespace G6_BevoTunes.Seeding
                 Song s54 = new Song()
                 {
                     SongTitle = "Normally (feat. NSG)",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s54.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Normally (feat. NSG)"));
                 s54.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -655,7 +709,8 @@ namespace G6_BevoTunes.Seeding
                 Song s55 = new Song()
                 {
                     SongTitle = "Peru",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s55.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Peru"));
                 s55.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Still Rollin"));
@@ -667,7 +722,8 @@ namespace G6_BevoTunes.Seeding
                 Song s56 = new Song()
                 {
                     SongTitle = "Tu Hablas Espanhol",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s56.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Tu Hablas Espanhol"));
                 s56.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Confrontation"));
@@ -679,7 +735,8 @@ namespace G6_BevoTunes.Seeding
                 Song s57 = new Song()
                 {
                     SongTitle = "Abo Nokthula (feat. The Exclusive SA, Scotts Maphuma, Kabelo Sings, Bontle Smith, 2woshort & Stompiiey)",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s57.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Abo Nokthula"));
                 s57.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "TNK MusiQ"));
@@ -690,7 +747,8 @@ namespace G6_BevoTunes.Seeding
                 Song s58 = new Song()
                 {
                     SongTitle = "Like Dat",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s58.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Beyond Infinity"));
                 s58.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Frosh"));
@@ -702,7 +760,8 @@ namespace G6_BevoTunes.Seeding
                 Song s59 = new Song()
                 {
                     SongTitle = "Champagne Shots",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s59.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Local Mvp"));
                 s59.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -715,7 +774,8 @@ namespace G6_BevoTunes.Seeding
                 Song s60 = new Song()
                 {
                     SongTitle = "GOSSIP",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s60.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "GOSSIP"));
                 s60.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Killloane"));
@@ -725,7 +785,8 @@ namespace G6_BevoTunes.Seeding
                 Song s61 = new Song()
                 {
                     SongTitle = "Wahala",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s61.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wahala"));
                 s61.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Naira Marley"));
@@ -737,7 +798,8 @@ namespace G6_BevoTunes.Seeding
                 Song s62 = new Song()
                 {
                     SongTitle = "Born Wit It (Bumpa Riddim)",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s62.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Born Wit It (Bumpa Riddim)"));
                 s62.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -748,7 +810,8 @@ namespace G6_BevoTunes.Seeding
                 Song s63 = new Song()
                 {
                     SongTitle = "Soca Soca",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s63.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Soca Soca"));
                 s63.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -760,7 +823,8 @@ namespace G6_BevoTunes.Seeding
                 Song s64 = new Song()
                 {
                     SongTitle = "Magician (feat. J Milla & Yung L)",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s64.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Everybody Loves Ice Prince"));
                 s64.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Ice Prince"));
@@ -770,7 +834,8 @@ namespace G6_BevoTunes.Seeding
                 Song s65 = new Song()
                 {
                     SongTitle = "Caesar",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s65.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Caesar"));
                 s65.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -782,7 +847,8 @@ namespace G6_BevoTunes.Seeding
                 Song s66 = new Song()
                 {
                     SongTitle = "Mr. Fete",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s66.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Double M, Vol. 1"));
                 s66.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -795,7 +861,8 @@ namespace G6_BevoTunes.Seeding
                 Song s67 = new Song()
                 {
                     SongTitle = "Shorty",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s67.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Shorty"));
                 s67.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -808,7 +875,8 @@ namespace G6_BevoTunes.Seeding
                 Song s68 = new Song()
                 {
                     SongTitle = "Talibans II",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s68.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Talibans II"));
                 s68.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -819,7 +887,8 @@ namespace G6_BevoTunes.Seeding
                 Song s69 = new Song()
                 {
                     SongTitle = "Chaque matin",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s69.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Chaque matin"));
                 s69.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Key Largo"));
@@ -831,7 +900,8 @@ namespace G6_BevoTunes.Seeding
                 Song s70 = new Song()
                 {
                     SongTitle = "TESLA BOY (feat. Blaqbonez)",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s70.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "EZIOKWU"));
                 s70.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "ODUMODUBLVCK"));
@@ -842,7 +912,8 @@ namespace G6_BevoTunes.Seeding
                 Song s71 = new Song()
                 {
                     SongTitle = "projection",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s71.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "projection"));
                 s71.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "love_eight"));
@@ -852,7 +923,8 @@ namespace G6_BevoTunes.Seeding
                 Song s72 = new Song()
                 {
                     SongTitle = "CIEL",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s72.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "LA FOLIE DES GRANDEURS"));
                 s72.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Chaque matin"));
@@ -864,7 +936,8 @@ namespace G6_BevoTunes.Seeding
                 Song s73 = new Song()
                 {
                     SongTitle = "Chama o Coveiro",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s73.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Chama o Coveiro"));
                 s73.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Delux"));
@@ -874,7 +947,8 @@ namespace G6_BevoTunes.Seeding
                 Song s74 = new Song()
                 {
                     SongTitle = "Talk Show",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s74.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Talk Show"));
                 s74.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -885,7 +959,8 @@ namespace G6_BevoTunes.Seeding
                 Song s75 = new Song()
                 {
                     SongTitle = "Merco Benz",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s75.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "July Key"));
                 s75.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Key Largo"));
@@ -897,7 +972,8 @@ namespace G6_BevoTunes.Seeding
                 Song s76 = new Song()
                 {
                     SongTitle = "Buga (Lo Lo Lo)",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s76.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Buga (Lo Lo Lo)"));
                 s76.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -910,7 +986,8 @@ namespace G6_BevoTunes.Seeding
                 Song s77 = new Song()
                 {
                     SongTitle = "Nunca Estoy",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s77.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Nunca Estoy"));
                 s77.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Un Verano Sin Ti"));
@@ -924,7 +1001,8 @@ namespace G6_BevoTunes.Seeding
                 Song s78 = new Song()
                 {
                     SongTitle = "Rocking",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s78.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Grit & Lust"));
                 s78.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Zinoleesky"));
@@ -934,7 +1012,8 @@ namespace G6_BevoTunes.Seeding
                 Song s79 = new Song()
                 {
                     SongTitle = "DJ",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s79.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Brut de femme"));
                 s79.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -948,7 +1027,8 @@ namespace G6_BevoTunes.Seeding
                 Song s80 = new Song()
                 {
                     SongTitle = "Iko Iko",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s80.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Very Best of The Dixie Cups: Chapel of Love"));
                 s80.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -961,7 +1041,8 @@ namespace G6_BevoTunes.Seeding
                 Song s81 = new Song()
                 {
                     SongTitle = "Hey Hou",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s81.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Hey Hou"));
                 s81.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Un Verano Sin Ti"));
@@ -972,7 +1053,8 @@ namespace G6_BevoTunes.Seeding
                 Song s82 = new Song()
                 {
                     SongTitle = "El Hijo De Tuta",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s82.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "La Cumbia De Carmelo"));
                 s82.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "La Chanchona De Tito Mira"));
@@ -983,7 +1065,8 @@ namespace G6_BevoTunes.Seeding
                 Song s83 = new Song()
                 {
                     SongTitle = "Holiday",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s83.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Holiday"));
                 s83.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Que Se Cuide"));
@@ -996,7 +1079,8 @@ namespace G6_BevoTunes.Seeding
                 Song s84 = new Song()
                 {
                     SongTitle = "REI DO BRASIL",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s84.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "REI DO BRASIL"));
                 s84.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Seek"));
@@ -1007,7 +1091,8 @@ namespace G6_BevoTunes.Seeding
                 Song s85 = new Song()
                 {
                     SongTitle = "Body",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s85.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Body"));
                 s85.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "One of Wun"));
@@ -1019,7 +1104,8 @@ namespace G6_BevoTunes.Seeding
                 Song s86 = new Song()
                 {
                     SongTitle = "Mandela",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s86.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Evil Genius"));
                 s86.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mr Eazi"));
@@ -1030,7 +1116,8 @@ namespace G6_BevoTunes.Seeding
                 Song s87 = new Song()
                 {
                     SongTitle = "Do not forget",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s87.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Do not forget"));
                 s87.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Tchikita"));
@@ -1042,7 +1129,8 @@ namespace G6_BevoTunes.Seeding
                 Song s88 = new Song()
                 {
                     SongTitle = "Jingle Bell",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s88.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Jingle Bell"));
                 s88.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -1055,7 +1143,8 @@ namespace G6_BevoTunes.Seeding
                 Song s89 = new Song()
                 {
                     SongTitle = "Khuphuka",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s89.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Khuphuka"));
                 s89.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -1068,7 +1157,8 @@ namespace G6_BevoTunes.Seeding
                 Song s90 = new Song()
                 {
                     SongTitle = "Static",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s90.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Static"));
                 s90.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "2JtheRichest"));
@@ -1078,7 +1168,8 @@ namespace G6_BevoTunes.Seeding
                 Song s91 = new Song()
                 {
                     SongTitle = "Milki",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s91.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Milki"));
                 s91.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -1090,7 +1181,8 @@ namespace G6_BevoTunes.Seeding
                 Song s92 = new Song()
                 {
                     SongTitle = "Colours",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s92.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Colours"));
                 s92.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -1102,7 +1194,8 @@ namespace G6_BevoTunes.Seeding
                 Song s93 = new Song()
                 {
                     SongTitle = "DIABLITA (feat. YOVNGCHIMI)",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s93.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "LA PANTERA NEGRA"));
                 s93.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Myke Towers"));
@@ -1112,7 +1205,8 @@ namespace G6_BevoTunes.Seeding
                 Song s94 = new Song()
                 {
                     SongTitle = "Bar Breeze",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s94.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bar Breeze"));
                 s94.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Hammocks & Lime"));
@@ -1123,7 +1217,8 @@ namespace G6_BevoTunes.Seeding
                 Song s95 = new Song()
                 {
                     SongTitle = "Jinja",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s95.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unruly"));
                 s95.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Olamide"));
@@ -1133,7 +1228,8 @@ namespace G6_BevoTunes.Seeding
                 Song s96 = new Song()
                 {
                     SongTitle = "Quest For Coin II",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s96.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Quest for Coin II"));
                 s96.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Ezra Collective"));
@@ -1144,7 +1240,8 @@ namespace G6_BevoTunes.Seeding
                 Song s97 = new Song()
                 {
                     SongTitle = "Mood (feat. BNXN)",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s97.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Made In Lagos: Deluxe Edition"));
                 s97.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Wizkid"));
@@ -1155,7 +1252,8 @@ namespace G6_BevoTunes.Seeding
                 Song s98 = new Song()
                 {
                     SongTitle = "Shifting Sands",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s98.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Shifting Sands"));
                 s98.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Split Decision"));
@@ -1166,7 +1264,8 @@ namespace G6_BevoTunes.Seeding
                 Song s99 = new Song()
                 {
                     SongTitle = "Beam Me Up",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s99.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Beam Me Up"));
                 s99.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Adam Space"));
@@ -1176,7 +1275,8 @@ namespace G6_BevoTunes.Seeding
                 Song s100 = new Song()
                 {
                     SongTitle = "Call of Duty",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s100.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Grit & Lust"));
                 s100.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Everybody Loves Ice Prince"));
@@ -1187,7 +1287,8 @@ namespace G6_BevoTunes.Seeding
                 Song s101 = new Song()
                 {
                     SongTitle = "Childhood Fragments",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s101.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Time Fragments"));
                 s101.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "LoFi Waiter"));
@@ -1197,7 +1298,8 @@ namespace G6_BevoTunes.Seeding
                 Song s102 = new Song()
                 {
                     SongTitle = "Streatham",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s102.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "PSYCHODRAMA"));
                 s102.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dave"));
@@ -1208,7 +1310,8 @@ namespace G6_BevoTunes.Seeding
                 Song s103 = new Song()
                 {
                     SongTitle = "glow",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s103.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "glow"));
                 s103.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Double M, Vol. 1"));
@@ -1221,7 +1324,8 @@ namespace G6_BevoTunes.Seeding
                 Song s104 = new Song()
                 {
                     SongTitle = "spring is coming",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s104.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "spring is coming"));
                 s104.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -1232,7 +1336,8 @@ namespace G6_BevoTunes.Seeding
                 Song s105 = new Song()
                 {
                     SongTitle = "Tekky",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s105.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Tekky"));
                 s105.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "The Largest"));
@@ -1245,7 +1350,8 @@ namespace G6_BevoTunes.Seeding
                 Song s106 = new Song()
                 {
                     SongTitle = "Integration Drop",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s106.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s106.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -1256,7 +1362,8 @@ namespace G6_BevoTunes.Seeding
                 Song s107 = new Song()
                 {
                     SongTitle = "Commit Ballad",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s107.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s107.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -1268,7 +1375,8 @@ namespace G6_BevoTunes.Seeding
                 Song s108 = new Song()
                 {
                     SongTitle = "Section Loop",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s108.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s108.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -1280,7 +1388,8 @@ namespace G6_BevoTunes.Seeding
                 Song s109 = new Song()
                 {
                     SongTitle = "Entity Loop",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s109.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s109.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Tee Model"));
@@ -1291,7 +1400,8 @@ namespace G6_BevoTunes.Seeding
                 Song s110 = new Song()
                 {
                     SongTitle = "Interface Sprint",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s110.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s110.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -1304,7 +1414,8 @@ namespace G6_BevoTunes.Seeding
                 Song s111 = new Song()
                 {
                     SongTitle = "Index CacheHit",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s111.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s111.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -1316,7 +1427,8 @@ namespace G6_BevoTunes.Seeding
                 Song s112 = new Song()
                 {
                     SongTitle = "UnitTest Nugget",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s112.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s112.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1329,7 +1441,8 @@ namespace G6_BevoTunes.Seeding
                 Song s113 = new Song()
                 {
                     SongTitle = "PartialView Webhook",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s113.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s113.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Elle Hacker"));
@@ -1341,7 +1454,8 @@ namespace G6_BevoTunes.Seeding
                 Song s114 = new Song()
                 {
                     SongTitle = "Partial Release",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s114.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s114.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -1355,7 +1469,8 @@ namespace G6_BevoTunes.Seeding
                 Song s115 = new Song()
                 {
                     SongTitle = "Include Hotfix",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s115.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s115.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -1368,7 +1483,8 @@ namespace G6_BevoTunes.Seeding
                 Song s116 = new Song()
                 {
                     SongTitle = "Tuple Token",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s116.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s116.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -1382,7 +1498,8 @@ namespace G6_BevoTunes.Seeding
                 Song s117 = new Song()
                 {
                     SongTitle = "LeftJoin Endpoint",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s117.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s117.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -1394,7 +1511,8 @@ namespace G6_BevoTunes.Seeding
                 Song s118 = new Song()
                 {
                     SongTitle = "RightJoin Warmup",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s118.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s118.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -1405,7 +1523,8 @@ namespace G6_BevoTunes.Seeding
                 Song s119 = new Song()
                 {
                     SongTitle = "Fixture Loop",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s119.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s119.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Elle Dev"));
@@ -1415,7 +1534,8 @@ namespace G6_BevoTunes.Seeding
                 Song s120 = new Song()
                 {
                     SongTitle = "Scaffold Refactor",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s120.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s120.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -1427,7 +1547,8 @@ namespace G6_BevoTunes.Seeding
                 Song s121 = new Song()
                 {
                     SongTitle = "Mock Endpoint",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s121.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s121.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -1439,7 +1560,8 @@ namespace G6_BevoTunes.Seeding
                 Song s122 = new Song()
                 {
                     SongTitle = "View Deploy",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s122.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s122.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -1451,7 +1573,8 @@ namespace G6_BevoTunes.Seeding
                 Song s123 = new Song()
                 {
                     SongTitle = "TempData Sprint",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s123.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s123.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why View"));
@@ -1461,7 +1584,8 @@ namespace G6_BevoTunes.Seeding
                 Song s124 = new Song()
                 {
                     SongTitle = "OrderBy Nugget",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s124.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s124.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Tee View"));
@@ -1472,7 +1596,8 @@ namespace G6_BevoTunes.Seeding
                 Song s125 = new Song()
                 {
                     SongTitle = "Filter Standup",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s125.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s125.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1484,7 +1609,8 @@ namespace G6_BevoTunes.Seeding
                 Song s126 = new Song()
                 {
                     SongTitle = "REST Beat",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s126.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s126.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Em Hacker"));
@@ -1494,7 +1620,8 @@ namespace G6_BevoTunes.Seeding
                 Song s127 = new Song()
                 {
                     SongTitle = "Async Anthem",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s127.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s127.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -1507,7 +1634,8 @@ namespace G6_BevoTunes.Seeding
                 Song s128 = new Song()
                 {
                     SongTitle = "Select Jam",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s128.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s128.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -1520,7 +1648,8 @@ namespace G6_BevoTunes.Seeding
                 Song s129 = new Song()
                 {
                     SongTitle = "DbContext Uptime",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s129.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s129.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -1532,7 +1661,8 @@ namespace G6_BevoTunes.Seeding
                 Song s130 = new Song()
                 {
                     SongTitle = "Lambda Bop",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s130.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s130.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Coder"));
@@ -1543,7 +1673,8 @@ namespace G6_BevoTunes.Seeding
                 Song s131 = new Song()
                 {
                     SongTitle = "Dependency Groove",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s131.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s131.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -1555,7 +1686,8 @@ namespace G6_BevoTunes.Seeding
                 Song s132 = new Song()
                 {
                     SongTitle = "ViewData Webhook",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s132.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s132.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -1569,7 +1701,8 @@ namespace G6_BevoTunes.Seeding
                 Song s133 = new Song()
                 {
                     SongTitle = "REST Bop",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s133.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s133.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Coder"));
@@ -1579,7 +1712,8 @@ namespace G6_BevoTunes.Seeding
                 Song s134 = new Song()
                 {
                     SongTitle = "MVC Suite",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s134.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s134.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -1590,7 +1724,8 @@ namespace G6_BevoTunes.Seeding
                 Song s135 = new Song()
                 {
                     SongTitle = "Cascade Overload",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s135.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s135.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Model"));
@@ -1601,7 +1736,8 @@ namespace G6_BevoTunes.Seeding
                 Song s136 = new Song()
                 {
                     SongTitle = "OuterJoin Standup",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s136.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s136.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -1613,7 +1749,8 @@ namespace G6_BevoTunes.Seeding
                 Song s137 = new Song()
                 {
                     SongTitle = "Async Exception",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s137.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s137.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -1624,7 +1761,8 @@ namespace G6_BevoTunes.Seeding
                 Song s138 = new Song()
                 {
                     SongTitle = "InnerJoin Beat",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s138.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s138.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1635,7 +1773,8 @@ namespace G6_BevoTunes.Seeding
                 Song s139 = new Song()
                 {
                     SongTitle = "ViewBag Breakpoint",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s139.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s139.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -1647,7 +1786,8 @@ namespace G6_BevoTunes.Seeding
                 Song s140 = new Song()
                 {
                     SongTitle = "Include Cipher",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s140.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s140.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -1658,7 +1798,8 @@ namespace G6_BevoTunes.Seeding
                 Song s141 = new Song()
                 {
                     SongTitle = "Seeding Throughput",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s141.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s141.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -1672,7 +1813,8 @@ namespace G6_BevoTunes.Seeding
                 Song s142 = new Song()
                 {
                     SongTitle = "Delegate Token",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s142.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s142.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Coder"));
@@ -1682,7 +1824,8 @@ namespace G6_BevoTunes.Seeding
                 Song s143 = new Song()
                 {
                     SongTitle = "OuterJoin Beat",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s143.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s143.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Pro Hacker"));
@@ -1693,7 +1836,8 @@ namespace G6_BevoTunes.Seeding
                 Song s144 = new Song()
                 {
                     SongTitle = "Section Exception",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s144.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s144.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Beta Hacker"));
@@ -1703,7 +1847,8 @@ namespace G6_BevoTunes.Seeding
                 Song s145 = new Song()
                 {
                     SongTitle = "Include Ballad",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s145.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s145.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay Dev"));
@@ -1713,7 +1858,8 @@ namespace G6_BevoTunes.Seeding
                 Song s146 = new Song()
                 {
                     SongTitle = "LINQ Backoff",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s146.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s146.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1726,7 +1872,8 @@ namespace G6_BevoTunes.Seeding
                 Song s147 = new Song()
                 {
                     SongTitle = "DbContext Hotfix",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s147.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s147.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Pro Mapper"));
@@ -1738,7 +1885,8 @@ namespace G6_BevoTunes.Seeding
                 Song s148 = new Song()
                 {
                     SongTitle = "Integration Groove",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s148.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s148.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gamma Coder"));
@@ -1748,7 +1896,8 @@ namespace G6_BevoTunes.Seeding
                 Song s149 = new Song()
                 {
                     SongTitle = "InnerJoin Hash",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s149.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s149.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Beta Architect"));
@@ -1759,7 +1908,8 @@ namespace G6_BevoTunes.Seeding
                 Song s150 = new Song()
                 {
                     SongTitle = "Docker Ballad",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s150.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s150.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Em View"));
@@ -1770,7 +1920,8 @@ namespace G6_BevoTunes.Seeding
                 Song s151 = new Song()
                 {
                     SongTitle = "Merge Breakpoint",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s151.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s151.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1782,7 +1933,8 @@ namespace G6_BevoTunes.Seeding
                 Song s152 = new Song()
                 {
                     SongTitle = "Integration Refactor",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s152.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s152.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -1794,7 +1946,8 @@ namespace G6_BevoTunes.Seeding
                 Song s153 = new Song()
                 {
                     SongTitle = "Generic Backoff",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s153.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s153.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dee Hacker"));
@@ -1804,7 +1957,8 @@ namespace G6_BevoTunes.Seeding
                 Song s154 = new Song()
                 {
                     SongTitle = "Fixture Secret",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s154.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s154.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -1816,7 +1970,8 @@ namespace G6_BevoTunes.Seeding
                 Song s155 = new Song()
                 {
                     SongTitle = "Identity Anthem",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s155.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s155.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -1828,7 +1983,8 @@ namespace G6_BevoTunes.Seeding
                 Song s156 = new Song()
                 {
                     SongTitle = "Scaffold Miss",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s156.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s156.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Model"));
@@ -1839,7 +1995,8 @@ namespace G6_BevoTunes.Seeding
                 Song s157 = new Song()
                 {
                     SongTitle = "Entity Nugget",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s157.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s157.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1851,7 +2008,8 @@ namespace G6_BevoTunes.Seeding
                 Song s158 = new Song()
                 {
                     SongTitle = "JWT Salt",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s158.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s158.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -1864,7 +2022,8 @@ namespace G6_BevoTunes.Seeding
                 Song s159 = new Song()
                 {
                     SongTitle = "Git Breakpoint",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s159.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s159.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -1875,7 +2034,8 @@ namespace G6_BevoTunes.Seeding
                 Song s160 = new Song()
                 {
                     SongTitle = "Route Wave",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s160.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s160.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Pro Model"));
@@ -1886,7 +2046,8 @@ namespace G6_BevoTunes.Seeding
                 Song s161 = new Song()
                 {
                     SongTitle = "PrimaryKey Refactor",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s161.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s161.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dee Hacker"));
@@ -1896,7 +2057,8 @@ namespace G6_BevoTunes.Seeding
                 Song s162 = new Song()
                 {
                     SongTitle = "Rebase Build",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s162.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s162.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -1907,7 +2069,8 @@ namespace G6_BevoTunes.Seeding
                 Song s163 = new Song()
                 {
                     SongTitle = "Swagger Sprint",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s163.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s163.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -1920,7 +2083,8 @@ namespace G6_BevoTunes.Seeding
                 Song s164 = new Song()
                 {
                     SongTitle = "Tuple Bop",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s164.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s164.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gamma Coder"));
@@ -1930,7 +2094,8 @@ namespace G6_BevoTunes.Seeding
                 Song s165 = new Song()
                 {
                     SongTitle = "Include CacheHit",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s165.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s165.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -1943,7 +2108,8 @@ namespace G6_BevoTunes.Seeding
                 Song s166 = new Song()
                 {
                     SongTitle = "Dependency Retry",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s166.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s166.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -1954,7 +2120,8 @@ namespace G6_BevoTunes.Seeding
                 Song s167 = new Song()
                 {
                     SongTitle = "OAuth Salt",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s167.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s167.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -1965,7 +2132,8 @@ namespace G6_BevoTunes.Seeding
                 Song s168 = new Song()
                 {
                     SongTitle = "Task Key",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s168.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s168.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -1977,7 +2145,8 @@ namespace G6_BevoTunes.Seeding
                 Song s169 = new Song()
                 {
                     SongTitle = "UnitTest Debugger",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s169.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s169.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -1990,7 +2159,8 @@ namespace G6_BevoTunes.Seeding
                 Song s170 = new Song()
                 {
                     SongTitle = "IQueryable Build",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s170.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s170.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -2002,7 +2172,8 @@ namespace G6_BevoTunes.Seeding
                 Song s171 = new Song()
                 {
                     SongTitle = "Generic Demo",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s171.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s171.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dee Hacker"));
@@ -2012,7 +2183,8 @@ namespace G6_BevoTunes.Seeding
                 Song s172 = new Song()
                 {
                     SongTitle = "JSON Webhook",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s172.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s172.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Zee Builder"));
@@ -2022,7 +2194,8 @@ namespace G6_BevoTunes.Seeding
                 Song s173 = new Song()
                 {
                     SongTitle = "JWT Breakpoint",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s173.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s173.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2034,7 +2207,8 @@ namespace G6_BevoTunes.Seeding
                 Song s174 = new Song()
                 {
                     SongTitle = "Abstract Tuning",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s174.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s174.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -2045,7 +2219,8 @@ namespace G6_BevoTunes.Seeding
                 Song s175 = new Song()
                 {
                     SongTitle = "Cascade Wave",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s175.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s175.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gamma Controller"));
@@ -2056,7 +2231,8 @@ namespace G6_BevoTunes.Seeding
                 Song s176 = new Song()
                 {
                     SongTitle = "DbContext Breakpoint",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s176.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s176.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -2070,7 +2246,8 @@ namespace G6_BevoTunes.Seeding
                 Song s177 = new Song()
                 {
                     SongTitle = "Lambda Overload",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s177.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s177.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -2081,7 +2258,8 @@ namespace G6_BevoTunes.Seeding
                 Song s178 = new Song()
                 {
                     SongTitle = "Swagger Bop",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s178.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s178.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2093,7 +2271,8 @@ namespace G6_BevoTunes.Seeding
                 Song s179 = new Song()
                 {
                     SongTitle = "Abstract Latency",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s179.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s179.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2104,7 +2283,8 @@ namespace G6_BevoTunes.Seeding
                 Song s180 = new Song()
                 {
                     SongTitle = "JSON Cipher",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s180.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s180.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2115,7 +2295,8 @@ namespace G6_BevoTunes.Seeding
                 Song s181 = new Song()
                 {
                     SongTitle = "Partial Standup",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s181.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s181.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -2127,7 +2308,8 @@ namespace G6_BevoTunes.Seeding
                 Song s182 = new Song()
                 {
                     SongTitle = "Docker Bop",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s182.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s182.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2141,7 +2323,8 @@ namespace G6_BevoTunes.Seeding
                 Song s183 = new Song()
                 {
                     SongTitle = "Controller Token",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s183.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s183.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -2152,7 +2335,8 @@ namespace G6_BevoTunes.Seeding
                 Song s184 = new Song()
                 {
                     SongTitle = "Commit Salt",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s184.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s184.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -2164,7 +2348,8 @@ namespace G6_BevoTunes.Seeding
                 Song s185 = new Song()
                 {
                     SongTitle = "Merge Backoff",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s185.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s185.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -2176,7 +2361,8 @@ namespace G6_BevoTunes.Seeding
                 Song s186 = new Song()
                 {
                     SongTitle = "Rebase Retrospective",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s186.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s186.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -2188,7 +2374,8 @@ namespace G6_BevoTunes.Seeding
                 Song s187 = new Song()
                 {
                     SongTitle = "Tuple Uptime",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s187.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s187.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -2199,7 +2386,8 @@ namespace G6_BevoTunes.Seeding
                 Song s188 = new Song()
                 {
                     SongTitle = "C# Debugger",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s188.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s188.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Builder"));
@@ -2210,7 +2398,8 @@ namespace G6_BevoTunes.Seeding
                 Song s189 = new Song()
                 {
                     SongTitle = "PrimaryKey Throttling",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s189.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s189.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2222,7 +2411,8 @@ namespace G6_BevoTunes.Seeding
                 Song s190 = new Song()
                 {
                     SongTitle = "Delegate Cipher",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s190.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s190.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jay Coder"));
@@ -2232,7 +2422,8 @@ namespace G6_BevoTunes.Seeding
                 Song s191 = new Song()
                 {
                     SongTitle = "Fixture Token",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s191.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s191.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2243,7 +2434,8 @@ namespace G6_BevoTunes.Seeding
                 Song s192 = new Song()
                 {
                     SongTitle = "SQL Anthem",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s192.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s192.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Zee Builder"));
@@ -2254,7 +2446,8 @@ namespace G6_BevoTunes.Seeding
                 Song s193 = new Song()
                 {
                     SongTitle = "Razor Timeout",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s193.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s193.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Tee Builder"));
@@ -2265,7 +2458,8 @@ namespace G6_BevoTunes.Seeding
                 Song s194 = new Song()
                 {
                     SongTitle = "Route Jam",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s194.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s194.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jay Controller"));
@@ -2275,7 +2469,8 @@ namespace G6_BevoTunes.Seeding
                 Song s195 = new Song()
                 {
                     SongTitle = "ThenInclude Pipeline",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s195.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s195.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -2287,7 +2482,8 @@ namespace G6_BevoTunes.Seeding
                 Song s196 = new Song()
                 {
                     SongTitle = "Scaffold Throttling",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s196.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s196.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -2299,7 +2495,8 @@ namespace G6_BevoTunes.Seeding
                 Song s197 = new Song()
                 {
                     SongTitle = "Controller Endpoint",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s197.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s197.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -2311,7 +2508,8 @@ namespace G6_BevoTunes.Seeding
                 Song s198 = new Song()
                 {
                     SongTitle = "Mock Release",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s198.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s198.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -2323,7 +2521,8 @@ namespace G6_BevoTunes.Seeding
                 Song s199 = new Song()
                 {
                     SongTitle = "Partial Debugger",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s199.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s199.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Tee Architect"));
@@ -2333,7 +2532,8 @@ namespace G6_BevoTunes.Seeding
                 Song s200 = new Song()
                 {
                     SongTitle = "Lambda Token",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s200.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s200.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -2345,7 +2545,8 @@ namespace G6_BevoTunes.Seeding
                 Song s201 = new Song()
                 {
                     SongTitle = "Scaffold Blues",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s201.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s201.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -2357,7 +2558,8 @@ namespace G6_BevoTunes.Seeding
                 Song s202 = new Song()
                 {
                     SongTitle = "RazorPage Bop",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s202.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s202.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2370,7 +2572,8 @@ namespace G6_BevoTunes.Seeding
                 Song s203 = new Song()
                 {
                     SongTitle = "REST Demo",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s203.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s203.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay-Tee View"));
@@ -2382,7 +2585,8 @@ namespace G6_BevoTunes.Seeding
                 Song s204 = new Song()
                 {
                     SongTitle = "Container Wave",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s204.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s204.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2393,7 +2597,8 @@ namespace G6_BevoTunes.Seeding
                 Song s205 = new Song()
                 {
                     SongTitle = "Git Hash",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s205.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s205.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2405,7 +2610,8 @@ namespace G6_BevoTunes.Seeding
                 Song s206 = new Song()
                 {
                     SongTitle = "Policy Funk",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s206.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s206.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -2417,7 +2623,8 @@ namespace G6_BevoTunes.Seeding
                 Song s207 = new Song()
                 {
                     SongTitle = "Docker Release",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s207.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s207.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay View"));
@@ -2428,7 +2635,8 @@ namespace G6_BevoTunes.Seeding
                 Song s208 = new Song()
                 {
                     SongTitle = "Lambda Hotfix",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s208.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s208.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Hacker"));
@@ -2439,7 +2647,8 @@ namespace G6_BevoTunes.Seeding
                 Song s209 = new Song()
                 {
                     SongTitle = "Swagger Salt",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s209.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s209.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Beta Builder"));
@@ -2449,7 +2658,8 @@ namespace G6_BevoTunes.Seeding
                 Song s210 = new Song()
                 {
                     SongTitle = "ThenInclude Exception",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s210.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s210.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -2462,7 +2672,8 @@ namespace G6_BevoTunes.Seeding
                 Song s211 = new Song()
                 {
                     SongTitle = "Cookie Banger",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s211.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s211.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Alpha Coder"));
@@ -2473,7 +2684,8 @@ namespace G6_BevoTunes.Seeding
                 Song s212 = new Song()
                 {
                     SongTitle = "SessionState Funk",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s212.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s212.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -2484,7 +2696,8 @@ namespace G6_BevoTunes.Seeding
                 Song s213 = new Song()
                 {
                     SongTitle = "Await Suite",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s213.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s213.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -2497,7 +2710,8 @@ namespace G6_BevoTunes.Seeding
                 Song s214 = new Song()
                 {
                     SongTitle = "Filter Drop",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s214.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s214.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -2508,7 +2722,8 @@ namespace G6_BevoTunes.Seeding
                 Song s215 = new Song()
                 {
                     SongTitle = "Bootstrap Wave",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s215.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s215.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Elle View"));
@@ -2520,7 +2735,8 @@ namespace G6_BevoTunes.Seeding
                 Song s216 = new Song()
                 {
                     SongTitle = "Role Secret",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s216.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s216.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -2532,7 +2748,8 @@ namespace G6_BevoTunes.Seeding
                 Song s217 = new Song()
                 {
                     SongTitle = "Index Overload",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s217.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s217.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Elle Tester"));
@@ -2542,7 +2759,8 @@ namespace G6_BevoTunes.Seeding
                 Song s218 = new Song()
                 {
                     SongTitle = "Policy Suite",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s218.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s218.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Mapper"));
@@ -2552,7 +2770,8 @@ namespace G6_BevoTunes.Seeding
                 Song s219 = new Song()
                 {
                     SongTitle = "OAuth Wave",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s219.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s219.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Model"));
@@ -2562,7 +2781,8 @@ namespace G6_BevoTunes.Seeding
                 Song s220 = new Song()
                 {
                     SongTitle = "Bootstrap Remix",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s220.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s220.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Alpha Builder"));
@@ -2573,7 +2793,8 @@ namespace G6_BevoTunes.Seeding
                 Song s221 = new Song()
                 {
                     SongTitle = "Commit Key",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s221.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s221.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Em View"));
@@ -2583,7 +2804,8 @@ namespace G6_BevoTunes.Seeding
                 Song s222 = new Song()
                 {
                     SongTitle = "Join Backoff",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s222.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s222.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -2595,7 +2817,8 @@ namespace G6_BevoTunes.Seeding
                 Song s223 = new Song()
                 {
                     SongTitle = "Fixture Debugger",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s223.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s223.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -2608,7 +2831,8 @@ namespace G6_BevoTunes.Seeding
                 Song s224 = new Song()
                 {
                     SongTitle = "Role Breakpoint",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s224.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s224.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Ninja"));
@@ -2619,7 +2843,8 @@ namespace G6_BevoTunes.Seeding
                 Song s225 = new Song()
                 {
                     SongTitle = "Dependency Patch",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s225.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s225.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -2631,7 +2856,8 @@ namespace G6_BevoTunes.Seeding
                 Song s226 = new Song()
                 {
                     SongTitle = "Fixture Pipeline",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s226.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s226.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2642,7 +2868,8 @@ namespace G6_BevoTunes.Seeding
                 Song s227 = new Song()
                 {
                     SongTitle = "Partial Wave",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s227.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s227.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Ninja"));
@@ -2653,7 +2880,8 @@ namespace G6_BevoTunes.Seeding
                 Song s228 = new Song()
                 {
                     SongTitle = "Cache Refactor",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s228.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s228.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Are Controller"));
@@ -2663,7 +2891,8 @@ namespace G6_BevoTunes.Seeding
                 Song s229 = new Song()
                 {
                     SongTitle = "OrderBy Refactor",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s229.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s229.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Elle Hacker"));
@@ -2675,7 +2904,8 @@ namespace G6_BevoTunes.Seeding
                 Song s230 = new Song()
                 {
                     SongTitle = "TagHelper Demo",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s230.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s230.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dee Model"));
@@ -2685,7 +2915,8 @@ namespace G6_BevoTunes.Seeding
                 Song s231 = new Song()
                 {
                     SongTitle = "XML Remix",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s231.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s231.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Why Architect"));
@@ -2695,7 +2926,8 @@ namespace G6_BevoTunes.Seeding
                 Song s232 = new Song()
                 {
                     SongTitle = "Await CacheHit",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s232.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s232.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2706,7 +2938,8 @@ namespace G6_BevoTunes.Seeding
                 Song s233 = new Song()
                 {
                     SongTitle = "GroupBy Drop",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s233.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s233.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Beta Tester"));
@@ -2717,7 +2950,8 @@ namespace G6_BevoTunes.Seeding
                 Song s234 = new Song()
                 {
                     SongTitle = "Identity Miss",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s234.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s234.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Debugger"));
@@ -2728,7 +2962,8 @@ namespace G6_BevoTunes.Seeding
                 Song s235 = new Song()
                 {
                     SongTitle = "Delegate Remix",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s235.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s235.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2741,7 +2976,8 @@ namespace G6_BevoTunes.Seeding
                 Song s236 = new Song()
                 {
                     SongTitle = "Controller Funk",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s236.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s236.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -2754,7 +2990,8 @@ namespace G6_BevoTunes.Seeding
                 Song s237 = new Song()
                 {
                     SongTitle = "JSON Release",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s237.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s237.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay-Tee Builder"));
@@ -2764,7 +3001,8 @@ namespace G6_BevoTunes.Seeding
                 Song s238 = new Song()
                 {
                     SongTitle = "Push Throttling",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s238.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s238.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -2776,7 +3014,8 @@ namespace G6_BevoTunes.Seeding
                 Song s239 = new Song()
                 {
                     SongTitle = "XML CacheHit",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s239.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s239.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -2789,7 +3028,8 @@ namespace G6_BevoTunes.Seeding
                 Song s240 = new Song()
                 {
                     SongTitle = "Dependency Overload",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s240.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s240.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Are Builder"));
@@ -2801,7 +3041,8 @@ namespace G6_BevoTunes.Seeding
                 Song s241 = new Song()
                 {
                     SongTitle = "ThenInclude Deploy",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s241.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s241.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Tee Builder"));
@@ -2813,7 +3054,8 @@ namespace G6_BevoTunes.Seeding
                 Song s242 = new Song()
                 {
                     SongTitle = "GroupBy Timeout",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s242.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s242.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -2824,7 +3066,8 @@ namespace G6_BevoTunes.Seeding
                 Song s243 = new Song()
                 {
                     SongTitle = "Commit Warmup",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s243.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s243.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
@@ -2836,7 +3079,8 @@ namespace G6_BevoTunes.Seeding
                 Song s244 = new Song()
                 {
                     SongTitle = "Mock Secret",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s244.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s244.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -2849,7 +3093,8 @@ namespace G6_BevoTunes.Seeding
                 Song s245 = new Song()
                 {
                     SongTitle = "Git Debugger",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s245.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s245.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -2861,7 +3106,8 @@ namespace G6_BevoTunes.Seeding
                 Song s246 = new Song()
                 {
                     SongTitle = "Select Remix",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s246.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s246.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Beta Model"));
@@ -2872,7 +3118,8 @@ namespace G6_BevoTunes.Seeding
                 Song s247 = new Song()
                 {
                     SongTitle = "View Bop",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s247.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s247.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -2884,7 +3131,8 @@ namespace G6_BevoTunes.Seeding
                 Song s248 = new Song()
                 {
                     SongTitle = "Route Retry",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s248.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s248.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay Debugger"));
@@ -2896,7 +3144,8 @@ namespace G6_BevoTunes.Seeding
                 Song s249 = new Song()
                 {
                     SongTitle = "Filter Overload",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s249.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s249.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -2909,7 +3158,8 @@ namespace G6_BevoTunes.Seeding
                 Song s250 = new Song()
                 {
                     SongTitle = "Fixture Nugget",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s250.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s250.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -2922,7 +3172,8 @@ namespace G6_BevoTunes.Seeding
                 Song s251 = new Song()
                 {
                     SongTitle = "Claim Timeout",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s251.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s251.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -2934,7 +3185,8 @@ namespace G6_BevoTunes.Seeding
                 Song s252 = new Song()
                 {
                     SongTitle = "Container Blues",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s252.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s252.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Zee View"));
@@ -2945,7 +3197,8 @@ namespace G6_BevoTunes.Seeding
                 Song s253 = new Song()
                 {
                     SongTitle = "TempData Salt",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s253.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s253.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -2956,7 +3209,8 @@ namespace G6_BevoTunes.Seeding
                 Song s254 = new Song()
                 {
                     SongTitle = "Where Backoff",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s254.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s254.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Are Controller"));
@@ -2966,7 +3220,8 @@ namespace G6_BevoTunes.Seeding
                 Song s255 = new Song()
                 {
                     SongTitle = "Session Pipeline",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s255.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s255.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -2977,7 +3232,8 @@ namespace G6_BevoTunes.Seeding
                 Song s256 = new Song()
                 {
                     SongTitle = "Validation Loop",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s256.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s256.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -2988,7 +3244,8 @@ namespace G6_BevoTunes.Seeding
                 Song s257 = new Song()
                 {
                     SongTitle = "Claim Ballad",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s257.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s257.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -3001,7 +3258,8 @@ namespace G6_BevoTunes.Seeding
                 Song s258 = new Song()
                 {
                     SongTitle = "Cascade Ballad",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s258.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s258.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Are Model"));
@@ -3011,7 +3269,8 @@ namespace G6_BevoTunes.Seeding
                 Song s259 = new Song()
                 {
                     SongTitle = "Cache Handshake",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s259.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s259.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gamma Dev"));
@@ -3021,7 +3280,8 @@ namespace G6_BevoTunes.Seeding
                 Song s260 = new Song()
                 {
                     SongTitle = "Container Timeout",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s260.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
                 s260.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Alpha Coder"));
@@ -3032,7 +3292,8 @@ namespace G6_BevoTunes.Seeding
                 Song s261 = new Song()
                 {
                     SongTitle = "Session Exception",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s261.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s261.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -3045,7 +3306,8 @@ namespace G6_BevoTunes.Seeding
                 Song s262 = new Song()
                 {
                     SongTitle = "Async Sprint",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s262.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s262.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -3057,7 +3319,8 @@ namespace G6_BevoTunes.Seeding
                 Song s263 = new Song()
                 {
                     SongTitle = "RazorPage Hotfix",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s263.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s263.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
@@ -3069,7 +3332,8 @@ namespace G6_BevoTunes.Seeding
                 Song s264 = new Song()
                 {
                     SongTitle = "LeftJoin Beat",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s264.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s264.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Mapper"));
@@ -3079,7 +3343,8 @@ namespace G6_BevoTunes.Seeding
                 Song s265 = new Song()
                 {
                     SongTitle = "Partial Jam",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s265.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s265.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Architect"));
@@ -3091,7 +3356,8 @@ namespace G6_BevoTunes.Seeding
                 Song s266 = new Song()
                 {
                     SongTitle = "Async Wave",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s266.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s266.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
@@ -3104,7 +3370,8 @@ namespace G6_BevoTunes.Seeding
                 Song s267 = new Song()
                 {
                     SongTitle = "Interface Throughput",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s267.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s267.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
@@ -3116,7 +3383,8 @@ namespace G6_BevoTunes.Seeding
                 Song s268 = new Song()
                 {
                     SongTitle = "SessionState Uptime",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s268.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s268.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -3129,7 +3397,8 @@ namespace G6_BevoTunes.Seeding
                 Song s269 = new Song()
                 {
                     SongTitle = "Layout Pipeline",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s269.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s269.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -3142,7 +3411,8 @@ namespace G6_BevoTunes.Seeding
                 Song s270 = new Song()
                 {
                     SongTitle = "Session Flow",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s270.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s270.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -3154,7 +3424,8 @@ namespace G6_BevoTunes.Seeding
                 Song s271 = new Song()
                 {
                     SongTitle = "Policy Loop",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s271.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s271.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -3165,7 +3436,8 @@ namespace G6_BevoTunes.Seeding
                 Song s272 = new Song()
                 {
                     SongTitle = "RightJoin Remix",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s272.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s272.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Are Model"));
@@ -3175,7 +3447,8 @@ namespace G6_BevoTunes.Seeding
                 Song s273 = new Song()
                 {
                     SongTitle = "Container Secret",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s273.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s273.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -3186,7 +3459,8 @@ namespace G6_BevoTunes.Seeding
                 Song s274 = new Song()
                 {
                     SongTitle = "Rebase Ballad",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s274.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s274.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -3199,7 +3473,8 @@ namespace G6_BevoTunes.Seeding
                 Song s275 = new Song()
                 {
                     SongTitle = "Integration Warmup",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s275.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s275.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -3210,7 +3485,8 @@ namespace G6_BevoTunes.Seeding
                 Song s276 = new Song()
                 {
                     SongTitle = "Task Refactor",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s276.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s276.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -3221,7 +3497,8 @@ namespace G6_BevoTunes.Seeding
                 Song s277 = new Song()
                 {
                     SongTitle = "Middleware Demo",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s277.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s277.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jay Controller"));
@@ -3233,7 +3510,8 @@ namespace G6_BevoTunes.Seeding
                 Song s278 = new Song()
                 {
                     SongTitle = "Query Deploy",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s278.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Final Release"));
                 s278.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jay Model"));
@@ -3243,7 +3521,8 @@ namespace G6_BevoTunes.Seeding
                 Song s279 = new Song()
                 {
                     SongTitle = "UnitTest Tuning",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s279.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s279.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
@@ -3257,7 +3536,8 @@ namespace G6_BevoTunes.Seeding
                 Song s280 = new Song()
                 {
                     SongTitle = "ForeignKey Throughput",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s280.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s280.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
@@ -3270,7 +3550,8 @@ namespace G6_BevoTunes.Seeding
                 Song s281 = new Song()
                 {
                     SongTitle = "Pull Anthem",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s281.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s281.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee Tester"));
@@ -3280,7 +3561,8 @@ namespace G6_BevoTunes.Seeding
                 Song s282 = new Song()
                 {
                     SongTitle = "OpenID Blues",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s282.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s282.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -3291,7 +3573,8 @@ namespace G6_BevoTunes.Seeding
                 Song s283 = new Song()
                 {
                     SongTitle = "Model Cipher",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s283.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Diagram Dreams"));
                 s283.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay Coder"));
@@ -3301,7 +3584,8 @@ namespace G6_BevoTunes.Seeding
                 Song s284 = new Song()
                 {
                     SongTitle = "Container Uptime",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s284.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Refactor Rhapsody"));
                 s284.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Em Hacker"));
@@ -3313,7 +3597,8 @@ namespace G6_BevoTunes.Seeding
                 Song s285 = new Song()
                 {
                     SongTitle = "Abstract Sprint",
-                    SongPrice = 1m
+                    SongPrice = 1m,
+                    IsActive = true
                 };
                 s285.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s285.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay-Tee Controller"));
@@ -3323,7 +3608,8 @@ namespace G6_BevoTunes.Seeding
                 Song s286 = new Song()
                 {
                     SongTitle = "InnerJoin Jam",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s286.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
                 s286.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bee View"));
@@ -3333,7 +3619,8 @@ namespace G6_BevoTunes.Seeding
                 Song s287 = new Song()
                 {
                     SongTitle = "Interface Throttling",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s287.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s287.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
@@ -3344,7 +3631,8 @@ namespace G6_BevoTunes.Seeding
                 Song s288 = new Song()
                 {
                     SongTitle = "Layout Nonce",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s288.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s288.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -3356,7 +3644,8 @@ namespace G6_BevoTunes.Seeding
                 Song s289 = new Song()
                 {
                     SongTitle = "Commit Secret",
-                    SongPrice = 5m
+                    SongPrice = 5m,
+                    IsActive = true
                 };
                 s289.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
                 s289.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Unit Test Utopia"));
@@ -3368,7 +3657,8 @@ namespace G6_BevoTunes.Seeding
                 Song s290 = new Song()
                 {
                     SongTitle = "REST Patch",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s290.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s290.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kay Mapper"));
@@ -3379,7 +3669,8 @@ namespace G6_BevoTunes.Seeding
                 Song s291 = new Song()
                 {
                     SongTitle = "C# Patch",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s291.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Sprint 1"));
                 s291.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Wireframe Weekend"));
@@ -3391,7 +3682,8 @@ namespace G6_BevoTunes.Seeding
                 Song s292 = new Song()
                 {
                     SongTitle = "ViewData Warmup",
-                    SongPrice = 3m
+                    SongPrice = 3m,
+                    IsActive = true
                 };
                 s292.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
                 s292.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
@@ -3402,7 +3694,8 @@ namespace G6_BevoTunes.Seeding
                 Song s293 = new Song()
                 {
                     SongTitle = "SessionState Exception",
-                    SongPrice = 4m
+                    SongPrice = 4m,
+                    IsActive = true
                 };
                 s293.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "TA Sessions"));
                 s293.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Alpha View"));
@@ -3412,7 +3705,8 @@ namespace G6_BevoTunes.Seeding
                 Song s294 = new Song()
                 {
                     SongTitle = "Interface Key",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s294.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Office Hours"));
                 s294.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Midterm Mix"));
@@ -3423,7 +3717,8 @@ namespace G6_BevoTunes.Seeding
                 Song s295 = new Song()
                 {
                     SongTitle = "Delegate Throughput",
-                    SongPrice = 2m
+                    SongPrice = 2m,
+                    IsActive = true
                 };
                 s295.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Code Freeze"));
                 s295.Albums.Add(db.Albums.FirstOrDefault(a => a.AlbumName == "Bug Bash"));
