@@ -230,29 +230,19 @@ namespace G6_BevoTunes.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ToggleStatus(string id)
         {
-            var user = await _userManager.FindByIdAsync(id);
+           var user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
 
-            var roles = await _userManager.GetRolesAsync(user);
-
-            // 1. BLOCKED LOGIC: For Employees/Admins (Blocked from Login)
-            if (roles.Contains("Employee") || roles.Contains("Admin"))
+            // Toggle logic
+            if (user.Status == UserStatus.Active)
             {
-                if (user.LockoutEnd == null || user.LockoutEnd < DateTime.Now)
-                {
-                    await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.MaxValue);
-                }
-                else
-                {
-                    // Re-hire / Unblock
-                    await _userManager.SetLockoutEndDateAsync(user, null);
-                }
+                user.Status = UserStatus.Blocked;
             }
-            // 2. DISABLED LOGIC: For Customers (Rubric: Login OK, but no checkout)
             else
             {
-                user.LockoutEnabled = !user.LockoutEnabled;
+                user.Status = UserStatus.Active;
             }
+            
             var result = await _userManager.UpdateAsync(user);
             
             if (result.Succeeded)
