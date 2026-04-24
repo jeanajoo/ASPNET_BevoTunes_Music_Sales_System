@@ -10,6 +10,8 @@ using G6_BevoTunes.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration.UserSecrets;
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Manage.Internal;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace G6_BevoTunes.Controllers
 {
@@ -230,25 +232,140 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OrderDetailExists(int id)
-        {
-            return _context.OrderDetails.Any(e => e.OrderDetailID == id);
-        }
-
         [HttpGet]
         [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Checkout(int id)
         {
+            AppUser user = await _userManager.GetUserAsync(User);
 
+            var ordered_items = await _context.OrderDetails.Include(od => od.Order)
+            .Include(od => od.Song).ThenInclude(s => s.Promotions)
+            .Include(od => od.Album).ThenInclude(a => a.Promotions)
+            .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync();
+
+            var cust_card = await _context.OrderDetails.Include(od => od.Order)
+            .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+                 od.Order.Customer != null &&
+                 od.Order.Customer.Id == user.Id).ToListAsync();
+
+            var credit_card = cust_card
+                .SelectMany(od => od.Order.Customer.CreditCards)
+                .DistinctBy(c => c.CustCreditCardID)
+                .ToList();
+
+            var creditCardItems = credit_card.Select(c => new {
+                c.CustCreditCardID,
+                Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                }).ToList();
+
+            creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+
+            ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+            
+            return View(ordered_items);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int SelectedCard, CustCreditCard newCard)
+        {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+                var ordered_items = await _context.OrderDetails
+                    .Include(od => od.Order)
+                    .Include(od => od.Song).ThenInclude(s => s.Promotions)
+                    .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                    .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+                    .ToListAsync();
+
+            if (SelectedCard == 0)
+            {
+                ModelState.Clear();
+                TryValidateModel(newCard);
+                ModelState.Remove("User"); 
+                ModelState.Remove("UserId");
+
+                if (!Enum.IsDefined(typeof(CardType), newCard.CardType))
+                {
+                    ModelState.AddModelError("newCard.CardType", "Please select a card type.");
+                }
+                
+                Console.WriteLine($"CardType value: '{newCard.CardType}'");
+                Console.WriteLine($"CardType defined: {Enum.IsDefined(typeof(CardType), newCard.CardType)}");
+
+                if (!ModelState.IsValid)
+                {
+                    var cust_card = await _context.OrderDetails.Include(od => od.Order)
+                        .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+                        od.Order.Customer != null &&
+                        od.Order.Customer.Id == user.Id).ToListAsync();
+
+                    var credit_card = cust_card
+                        .SelectMany(od => od.Order.Customer.CreditCards)
+                        .DistinctBy(c => c.CustCreditCardID)
+                        .ToList();
+
+                    var creditCardItems = credit_card.Select(c => new {
+                        c.CustCreditCardID,
+                        Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                        }).ToList();
+
+                    creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+                    ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+
+                    return View("Checkout", ordered_items);
+                }
+            }
+
+            return RedirectToAction("Index", "OrderDetails");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> PurchaseAsGift ()
+        {
             return View();
         }
 
         [HttpPost]
         [Authorize(Roles = "Customer, Admin, Employee")]
-        public async Task<IActionResult> Checkout(int id, OrderDetail orderDetail)
+        public async Task<IActionResult> PurchaseAsGift (string RecipientEmail)
         {
-            return View();
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            if (string.IsNullOrWhiteSpace(RecipientEmail))
+            {
+                ModelState.AddModelError("RecipientEmail", "Recipient Email is required");
+            }
+
+            var userEmails = await _userManager.Users
+            .Select(u => u.Email).ToListAsync();
+
+            if (!userEmails.Contains(RecipientEmail))
+            {
+                ModelState.AddModelError("RecipientEmail", "Recipient Email/Account not found");
+            }
+
+            if (user.Email == RecipientEmail)
+            {
+                ModelState.AddModelError("RecipientEmail", "Cannot Gift an Order to Yourself");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var recipient = await _userManager.FindByEmailAsync(RecipientEmail);
+
+            var orderdetail = await _context.OrderDetails.ToListAsync();
+
+            return RedirectToAction("Checkout", "OrderDetails");
         }
 
+        private bool OrderDetailExists(int id)
+        {
+            return _context.OrderDetails.Any(e => e.OrderDetailID == id);
+        }
     }
 }

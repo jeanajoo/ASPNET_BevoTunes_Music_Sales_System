@@ -179,6 +179,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Artists/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -199,6 +200,7 @@ namespace G6_BevoTunes.Controllers
         // POST: Artists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var artist = await _context.Artists.FindAsync(id);

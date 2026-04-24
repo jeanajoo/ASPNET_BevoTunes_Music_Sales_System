@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class GenresController : Controller
     {
         private readonly AppDbContext _context;
@@ -44,6 +46,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Genres/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +57,7 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("GenreId,GenreName")] Genre genre)
         {
             if (ModelState.IsValid)
@@ -117,6 +121,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Genres/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +142,7 @@ namespace G6_BevoTunes.Controllers
         // POST: Genres/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var genre = await _context.Genres.FindAsync(id);
