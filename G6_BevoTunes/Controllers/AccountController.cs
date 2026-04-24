@@ -330,7 +330,7 @@ namespace G6_BevoTunes.Controllers
                 userToUpdate.LastName = evm.LastName;
             }
 
-            if (User.IsInRole("Manager"))
+            if (User.IsInRole("Admin"))
             {
                 userToUpdate.Email = evm.Email;
                 userToUpdate.UserName = evm.Email; // Keep UserName in sync
@@ -356,7 +356,7 @@ namespace G6_BevoTunes.Controllers
                 // Re-fetch to ensure we have the latest data
                 var freshUser = await _userManager.FindByIdAsync(evm.UserID);
 
-                if ((User.IsInRole("Manager") || User.IsInRole("Employee")) && evm.UserID != loggedInUser.Id)
+                if ((User.IsInRole("Admin") || User.IsInRole("Employee")) && evm.UserID != loggedInUser.Id)
                 {
                     // 1. Check if they have a password to remove
                     var hasPassword = await _userManager.HasPasswordAsync(freshUser);
