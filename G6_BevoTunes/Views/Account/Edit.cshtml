@@ -1,0 +1,141 @@
+@model G6_BevoTunes.Models.EditViewModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+
+@{
+    ViewData["Title"] = "Edit Profile";
+    // Get the ID of the person currently logged in
+    var loggedInUserId = UserManager.GetUserId(User);
+    
+    // Check if the person logged in is editing THEIR OWN profile
+    bool isEditingSelf = Model.UserID == loggedInUserId;
+}
+
+<h2>Edit Profile</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="UserID" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <h4>Personal Information</h4>
+    
+    @* EMPLOYEES editing THEMSELVES cannot change names *@
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" readonly="@(User.IsInRole("Employee") && isEditingSelf ? "readonly" : null)" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" readonly="@(User.IsInRole("Employee") && isEditingSelf ? "readonly" : null)" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        @if (User.IsInRole("Manager"))
+        {
+            <input asp-for="Email" class="form-control" />
+        }
+        else
+        {
+            <input asp-for="Email" class="form-control" readonly />
+        }
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="ZipCode"></label>
+            <input asp-for="ZipCode" id="txtZipCode" class="form-control" placeholder="Enter Zip Code" />
+            <span asp-validation-for="ZipCode" class="text-danger"></span>
+        </div>
+        @* <div class="form-group col-md-4">
+            <label asp-for="City"></label>
+            <input asp-for="City" id="txtCity" class="form-control" readonly />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="State"></label>
+            <input asp-for="State" id="txtState" class="form-control" readonly />
+        </div> *@
+    </div>
+
+    <hr />
+    <h4>Change Password</h4>
+    <div class="alert alert-info">Only fill this out if you wish to change the password.</div>
+
+    @* RUBRIC: If editing self, MUST provide old password *@
+    @if (isEditingSelf)
+    {
+        <div class="form-group">
+            <label asp-for="OldPassword"></label>
+            <input asp-for="OldPassword" class="form-control" type="password" />
+            <span asp-validation-for="OldPassword" class="text-danger"></span>
+            <small class="text-muted">Current password is required to save changes to your own account.</small>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">Administrative Mode: Old password not required to reset customer password.</div>
+    }
+
+    <div class="form-group">
+        <label asp-for="NewPassword"></label>
+        <input asp-for="NewPassword" class="form-control" type="password" />
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-control" type="password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <hr />
+    <h4>Payment Methods</h4>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Edit Payment Options</button>
+        <a asp-action="Index" asp-controller="CustCreditCards" class="btn btn-secondary">Manage Credit Cards</a>
+    </div>
+
+    <div class="mt-4 mb-5">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById("txtZipCode").addEventListener("change", function () {
+            var zip = this.value;
+            if (zip.length === 5) {
+                fetch("https://api.zippopotam.us/us/" + zip)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Zip not found');
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById("txtCity").value = data.places[0]["place name"];
+                        document.getElementById("txtState").value = data.places[0]["state abbreviation"];
+                    })
+                    .catch(error => {
+                        alert("Invalid Zip Code.");
+                    });
+            }
+        });
+    </script>
+}

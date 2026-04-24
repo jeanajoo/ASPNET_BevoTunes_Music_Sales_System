@@ -17,6 +17,12 @@ namespace G6_BevoTunes.Models
 
         [Display(Name = "Address")]
         public String Address { get; set; }
+        
+        // [Display(Name = "City")]
+        // public string? City { get; set; }
+
+        // [Display(Name = "State")]
+        // public string? State { get; set; }
 
         [Display(Name = "Zip Code")]
         public String ZipCode { get; set; }

@@ -72,6 +72,13 @@ namespace G6_BevoTunes.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UserIndexViewModel
+    {
+        public List<AppUser> Customers { get; set; } = new List<AppUser>();
+        public List<AppUser> Employees { get; set; } = new List<AppUser>();
+        public List<AppUser> Managers { get; set; } = new List<AppUser>();
+    }
+
     //NOTE: This is the view model used to allow the user to 
     //change their password
     public class ChangePasswordViewModel
@@ -101,5 +108,62 @@ namespace G6_BevoTunes.Models
         public String UserName { get; set; }
         public String Email { get; set; }
         public String UserID { get; set; }
+
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String Address { get; set; }
+        public String ZipCode { get; set; }
+        public String PhoneNumber { get; set; }
+    }
+    public class EditViewModel
+    {
+        public string UserID { get; set; }
+
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [EmailAddress]
+        public string Email { get; set; } 
+
+        [Required(ErrorMessage = "Address is required.")]
+        public string Address { get; set; }
+    
+        // public string? City { get; set; }
+        // public string? State { get; set; }
+
+        [Display(Name = "Zip Code")]
+        [Required(ErrorMessage = "Zip code is required.")]
+        public String ZipCode { get; set; }
+
+        [Required(ErrorMessage = "Phone number is required.")]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        // Password fields
+        [DataType(DataType.Password)]
+        [Display(Name = "Current Password")]
+        public string? OldPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
+        public string? NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm New Password")]
+        [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
+        public string? ConfirmPassword { get; set; }
+
+        // Credit Card 1
+        [Display(Name = "Credit Card 1")]
+        public string? CardNumber1 { get; set; }
+
+        // Credit Card 2
+        [Display(Name = "Credit Card 2")]
+        public string? CardNumber2 { get; set; }
     }
 }

@@ -4,11 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Your Credit Cards</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (Model.Count() < 2)
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Add New Card</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -22,20 +26,21 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CardNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CardType)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CustCreditCardID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CustCreditCardID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustCreditCardID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardType)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.CustCreditCardID">Edit</a>
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.CustCreditCardID">Details</a>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CustCreditCardID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

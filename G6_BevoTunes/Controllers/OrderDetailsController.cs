@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Customer, Admin, Employee")]
     public class OrderDetailsController : Controller
     {
         private readonly AppDbContext _context;
@@ -27,15 +28,23 @@ namespace G6_BevoTunes.Controllers
 
         private void GetPurchasePrice(OrderDetail orderDetail)
         {
-            if (orderDetail.Song != null && orderDetail.Song?.Promotions!= null && orderDetail.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+            if (orderDetail.Song != null && orderDetail.Song?.Promotions!= null && orderDetail.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
             {
                 orderDetail.PurchasedPrice = orderDetail.Song.Promotions
                 .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
             }
-            else if (orderDetail.Album != null && orderDetail.Album?.Promotions!= null && orderDetail.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT))
+            else if (orderDetail.Album != null && orderDetail.Album?.Promotions!= null && orderDetail.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
             {
                 orderDetail.PurchasedPrice = orderDetail.Album.Promotions
                 .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+            }
+            else if (orderDetail.Song != null)
+            {
+                orderDetail.PurchasedPrice = orderDetail.Song.SongPrice;
+            }
+            else if (orderDetail.Album != null)
+            {
+                orderDetail.PurchasedPrice = orderDetail.Album.AlbumPrice;
             }
         }
 
@@ -88,6 +97,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: OrderDetails/Details/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -120,6 +130,7 @@ namespace G6_BevoTunes.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderDetailID,PurchasedPrice")] OrderDetail orderDetail)
         {
@@ -184,6 +195,8 @@ namespace G6_BevoTunes.Controllers
         // }
 
         // GET: OrderDetails/Delete/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -202,6 +215,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // POST: OrderDetails/Delete/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -220,5 +234,21 @@ namespace G6_BevoTunes.Controllers
         {
             return _context.OrderDetails.Any(e => e.OrderDetailID == id);
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int id)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int id, OrderDetail orderDetail)
+        {
+            return View();
+        }
+
     }
 }

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize (Roles = "Admin")]
     public class PromotionsController : Controller
     {
         private readonly AppDbContext _context;

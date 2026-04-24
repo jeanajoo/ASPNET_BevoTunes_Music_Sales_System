@@ -141,6 +141,11 @@ namespace G6_BevoTunes.Controllers
             ivm.HasPassword = true;
             ivm.UserID = user.Id;
             ivm.UserName = user.UserName;
+            ivm.FirstName = user.FirstName;
+            ivm.LastName = user.LastName;
+            ivm.Address = user.Address;
+            ivm.ZipCode = user.ZipCode;
+            ivm.PhoneNumber = user.PhoneNumber;
 
             //send data to the view
             return View(ivm);
@@ -154,9 +159,6 @@ namespace G6_BevoTunes.Controllers
         {
             return View();
         }
-
-
-
         // POST: /Account/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -212,29 +214,52 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> UserIndex()
         {
-            var users = await _userManager.Users.ToListAsync();
-            return View(users);
+            UserIndexViewModel uivm = new UserIndexViewModel();
+            uivm.Customers = [.. await _userManager.GetUsersInRoleAsync("Customer")];
+
+            if (User.IsInRole("Admin"))
+            {
+                uivm.Employees = [.. await _userManager.GetUsersInRoleAsync("Employee")];
+                uivm.Managers = [.. await _userManager.GetUsersInRoleAsync("Admin")];
+            }
+            
+            return View(uivm);
         }
-        // POST: /Account/ToggleStatus
         [HttpPost]
-        [Authorize(Roles = "Employee,Admin")]
+        [Authorize(Roles = "Admin,Employee")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ToggleStatus(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
 
-            // Toggle logic
-            if (user.Status == UserStatus.Active)
+            var roles = await _userManager.GetRolesAsync(user);
+
+            // 1. BLOCKED LOGIC: For Employees/Admins (Blocked from Login)
+            if (roles.Contains("Employee") || roles.Contains("Admin"))
             {
-                user.Status = UserStatus.Blocked;
+                if (user.LockoutEnd == null || user.LockoutEnd < DateTime.Now)
+                {
+                    await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.MaxValue);
+                }
+                else
+                {
+                    // Re-hire / Unblock
+                    await _userManager.SetLockoutEndDateAsync(user, null);
+                }
             }
+            // 2. DISABLED LOGIC: For Customers (Rubric: Login OK, but no checkout)
             else
             {
-                user.Status = UserStatus.Active;
+                user.LockoutEnabled = !user.LockoutEnabled;
             }
-
-            await _userManager.UpdateAsync(user);
-            return RedirectToAction("UserIndex"); 
+            var result = await _userManager.UpdateAsync(user);
+            
+            if (result.Succeeded)
+            {
+                return RedirectToAction("UserIndex", new { message = "User status updated successfully." });
+            }
+            return RedirectToAction("UserIndex", new { error = "Failed to update user status." });
         }
 
         // POST: /Account/PromoteToManager
@@ -257,12 +282,15 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
         {
-            if (ModelState.IsValid == false) return View(rvm);
+            if (!ModelState.IsValid) return View(rvm);
 
             AppUser newUser = new AppUser {
-                UserName = rvm.Email, Email = rvm.Email, 
+                Email = rvm.Email, 
                 FirstName = rvm.FirstName, LastName = rvm.LastName,
-                PhoneNumber = rvm.PhoneNumber
+                PhoneNumber = rvm.PhoneNumber,
+                Address = rvm.Address,
+                ZipCode = rvm.ZipCode,
+                LockoutEnabled = false
             };
 
             AddUserModel aum = new AddUserModel {
@@ -278,5 +306,108 @@ namespace G6_BevoTunes.Controllers
             foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
             return View(rvm);
         }
+        // GET: /Account/Edit
+        [Authorize]
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (id == null) return NotFound();
+
+            AppUser userToEdit = await _context.Users
+                .Include(u => u.CreditCards)
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (userToEdit == null) return NotFound();
+
+            // Mapping the data to the ViewModel
+            EditViewModel evm = new EditViewModel
+            {
+                UserID = userToEdit.Id,
+                FirstName = userToEdit.FirstName,
+                LastName = userToEdit.LastName, 
+                Email = userToEdit.Email,
+                PhoneNumber = userToEdit.PhoneNumber,
+                Address = userToEdit.Address,
+                ZipCode = userToEdit.ZipCode,
+            };
+
+            return View(evm);
+        }
+
+        // POST: /Account/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditViewModel evm)
+        {
+            if (!ModelState.IsValid) return View(evm);
+
+            // 1. Get the user from the database
+            AppUser userToUpdate = await _userManager.FindByIdAsync(evm.UserID);
+            AppUser loggedInUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (userToUpdate == null) return NotFound();
+
+            // 2. Update Profile Fields (Name, Address, etc.)
+            if (!(User.IsInRole("Employee") && userToUpdate.Id == loggedInUser.Id))
+            {
+                userToUpdate.FirstName = evm.FirstName;
+                userToUpdate.LastName = evm.LastName;
+            }
+
+            if (User.IsInRole("Admin"))
+            {
+                userToUpdate.Email = evm.Email;
+                userToUpdate.UserName = evm.Email; // Keep UserName in sync
+            }
+
+            userToUpdate.PhoneNumber = evm.PhoneNumber;
+            userToUpdate.Address = evm.Address;
+            userToUpdate.ZipCode = evm.ZipCode;
+            // userToUpdate.City = evm.City;
+            // userToUpdate.State = evm.State;
+
+            // 3. Save the Profile Changes first
+            var updateResult = await _userManager.UpdateAsync(userToUpdate);
+            if (!updateResult.Succeeded)
+            {
+                foreach (var error in updateResult.Errors) ModelState.AddModelError("", error.Description);
+                return View(evm);
+            }
+
+            // 4. PASSWORD CHANGE (If requested)
+            if (!string.IsNullOrWhiteSpace(evm.NewPassword))
+            {
+                // Re-fetch to ensure we have the latest data
+                var freshUser = await _userManager.FindByIdAsync(evm.UserID);
+
+                if ((User.IsInRole("Admin") || User.IsInRole("Employee")) && evm.UserID != loggedInUser.Id)
+                {
+                    // 1. Check if they have a password to remove
+                    var hasPassword = await _userManager.HasPasswordAsync(freshUser);
+                    if (hasPassword)
+                    {
+                        var removeResult = await _userManager.RemovePasswordAsync(freshUser);
+                        if (!removeResult.Succeeded)
+                        {
+                            foreach (var error in removeResult.Errors) ModelState.AddModelError("", error.Description);
+                            return View(evm);
+                        }
+                    }
+
+                    // 2. Add the NEW password
+                    var addResult = await _userManager.AddPasswordAsync(freshUser, evm.NewPassword);
+                    if (!addResult.Succeeded)
+                    {
+                        // If the password is too simple (e.g., no capital letter), it fails here
+                        foreach (var error in addResult.Errors) ModelState.AddModelError("", error.Description);
+                        return View(evm);
+                    }
+
+                    // 3. Sync the Security Stamp
+                    await _userManager.UpdateSecurityStampAsync(freshUser);
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
     }
- }
+}
