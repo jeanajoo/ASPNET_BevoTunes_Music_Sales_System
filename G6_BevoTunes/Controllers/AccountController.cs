@@ -57,7 +57,8 @@ namespace G6_BevoTunes.Controllers
                 FirstName = rvm.FirstName,
                 LastName = rvm.LastName,
                 Address = rvm.Address,
-                ZipCode = rvm.ZipCode
+                ZipCode = rvm.ZipCode,
+                Status = UserStatus.Active
             }; 
 
             // create AddUserModel
@@ -278,9 +279,11 @@ namespace G6_BevoTunes.Controllers
             if (!ModelState.IsValid) return View(rvm);
 
             AppUser newUser = new AppUser {
-                Email = rvm.Email, 
-                FirstName = rvm.FirstName, LastName = rvm.LastName,
+                UserName = rvm.Email,
+                Email = rvm.Email,
                 PhoneNumber = rvm.PhoneNumber,
+                FirstName = rvm.FirstName,
+                LastName = rvm.LastName,
                 Address = rvm.Address,
                 ZipCode = rvm.ZipCode,
                 Status = UserStatus.Active
