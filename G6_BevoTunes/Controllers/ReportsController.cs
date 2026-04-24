@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ReportsController : Controller
     {
         private readonly AppDbContext _context;

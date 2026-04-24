@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace G6_BevoTunes.Controllers
 {
-    [Authorize (Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class PromotionsController : Controller
     {
         private readonly AppDbContext _context;
