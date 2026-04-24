@@ -113,23 +113,44 @@ namespace G6_BevoTunes.Models
     {
         public string UserID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        [EmailAddress]
         public string Email { get; set; } 
 
-        [Required]
+        [Required(ErrorMessage = "Address is required.")]
         public string Address { get; set; }
-        [Required]
+    
+        // public string? City { get; set; }
+        // public string? State { get; set; }
+
+        [Display(Name = "Zip Code")]
+        [Required(ErrorMessage = "Zip code is required.")]
+        public String ZipCode { get; set; }
+
+        [Required(ErrorMessage = "Phone number is required.")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         // Password fields
         [DataType(DataType.Password)]
+        [Display(Name = "Current Password")]
         public string? OldPassword { get; set; }
 
         [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
         public string? NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm New Password")]
+        [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
+        public string? ConfirmPassword { get; set; }
 
         // Credit Card 1
         [Display(Name = "Credit Card 1")]
