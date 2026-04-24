@@ -225,29 +225,41 @@ namespace G6_BevoTunes.Controllers
             
             return View(uivm);
         }
-        // POST: /Account/ToggleStatus
         [HttpPost]
-        [Authorize(Roles = "Employee,Admin")]
+        [Authorize(Roles = "Admin,Employee")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ToggleStatus(string id)
         {
-            AppUser user = await _userManager.FindByIdAsync(id);
-
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
 
-            bool IsCustomer = await _userManager.IsInRoleAsync(user, "Customer");
+            var roles = await _userManager.GetRolesAsync(user);
 
-            // Toggle logic
-            if (user.Status == UserStatus.Active)
+            // 1. BLOCKED LOGIC: For Employees/Admins (Blocked from Login)
+            if (roles.Contains("Employee") || roles.Contains("Admin"))
             {
-                user.Status = IsCustomer ? UserStatus.Deleted : UserStatus.Blocked;
+                if (user.LockoutEnd == null || user.LockoutEnd < DateTime.Now)
+                {
+                    await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.MaxValue);
+                }
+                else
+                {
+                    // Re-hire / Unblock
+                    await _userManager.SetLockoutEndDateAsync(user, null);
+                }
             }
+            // 2. DISABLED LOGIC: For Customers (Rubric: Login OK, but no checkout)
             else
             {
-                user.Status = UserStatus.Active;
+                user.LockoutEnabled = !user.LockoutEnabled;
             }
-
-            await _userManager.UpdateAsync(user);
-            return RedirectToAction("UserIndex"); 
+            var result = await _userManager.UpdateAsync(user);
+            
+            if (result.Succeeded)
+            {
+                return RedirectToAction("UserIndex", new { message = "User status updated successfully." });
+            }
+            return RedirectToAction("UserIndex", new { error = "Failed to update user status." });
         }
 
         // POST: /Account/PromoteToManager
@@ -270,12 +282,15 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
         {
-            if (ModelState.IsValid == false) return View(rvm);
+            if (!ModelState.IsValid) return View(rvm);
 
             AppUser newUser = new AppUser {
-                UserName = rvm.Email, Email = rvm.Email, 
+                Email = rvm.Email, 
                 FirstName = rvm.FirstName, LastName = rvm.LastName,
-                PhoneNumber = rvm.PhoneNumber
+                PhoneNumber = rvm.PhoneNumber,
+                Address = rvm.Address,
+                ZipCode = rvm.ZipCode,
+                LockoutEnabled = false
             };
 
             AddUserModel aum = new AddUserModel {
