@@ -26,7 +26,12 @@ namespace G6_BevoTunes.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Orders.ToListAsync());
+            var orders = _context.Orders.AsQueryable();
+            if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+            {
+                orders = orders.Where(o => o.Customer.UserName == User.Identity.Name);
+            }
+            return View(await orders.ToListAsync());
         }
 
         // GET: Orders/Details/5

@@ -1,7 +1,7 @@
 @model G6_BevoTunes.Models.Album
 
 @{
-    ViewData["Title"] = "Album Details";
+    ViewData["Title"] = "Details";
 }
 
 <h1>@Model.AlbumName</h1>
@@ -185,6 +185,9 @@
 </div>
 
 <div class="mt-4">
-    <a asp-action="Edit" asp-route-id="@Model?.AlbumId" class="btn btn-primary">Edit</a>
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.AlbumId" class="btn btn-warning">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Back to Albums</a>
 </div>

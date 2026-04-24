@@ -12,6 +12,8 @@ public class CustCreditCard
     public CardType CardType {get; set;}
     
     public AppUser User {get; set;}
+
+    public bool ActiveStatus {get; set;}
 }
 
 public enum CardType

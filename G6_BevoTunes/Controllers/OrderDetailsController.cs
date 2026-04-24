@@ -7,25 +7,97 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Customer, Admin, Employee")]
     public class OrderDetailsController : Controller
     {
         private readonly AppDbContext _context;
 
-        public OrderDetailsController(AppDbContext context)
+        private readonly UserManager<AppUser> _userManager;
+
+        public OrderDetailsController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
+        private void GetPurchasePrice(OrderDetail orderDetail)
+        {
+            if (orderDetail.Song != null && orderDetail.Song?.Promotions!= null && orderDetail.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+            {
+                orderDetail.PurchasedPrice = orderDetail.Song.Promotions
+                .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+            }
+            else if (orderDetail.Album != null && orderDetail.Album?.Promotions!= null && orderDetail.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+            {
+                orderDetail.PurchasedPrice = orderDetail.Album.Promotions
+                .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+            }
+            else if (orderDetail.Song != null)
+            {
+                orderDetail.PurchasedPrice = orderDetail.Song.SongPrice;
+            }
+            else if (orderDetail.Album != null)
+            {
+                orderDetail.PurchasedPrice = orderDetail.Album.AlbumPrice;
+            }
+        }
+
+        [Authorize(Roles = "Customer, Admin, Employee")]
         // GET: OrderDetails
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrderDetails.ToListAsync());
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            if (User.IsInRole("Customer"))
+            {
+                var orderDetails = await _context.OrderDetails
+                .Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Order).ThenInclude(o => o.Customer)
+                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+                .ToListAsync();
+
+                foreach (var orderDetail in orderDetails)
+                {
+                    GetPurchasePrice(orderDetail);
+                }
+
+                await _context.SaveChangesAsync();
+
+                return View(await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists)
+                .Include(od => od.Song).ThenInclude(s => s.Reviews)
+                .Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews)
+                .Include(od => od.Order).ThenInclude(o => o.Customer)
+                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync());
+            } 
+
+            else if (User.IsInRole("Admin") || User.IsInRole("Employee")) 
+            {
+                var allOrder = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
+                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(s => s.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
+                .ThenInclude(o => o.Customer).ToListAsync();
+
+                return View(allOrder);
+            }
+
+            return Unauthorized();
+
         }
 
         // GET: OrderDetails/Details/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,8 +105,13 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var orderDetail = await _context.OrderDetails
+            var orderDetail = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
+                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(s => s.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
                 .FirstOrDefaultAsync(m => m.OrderDetailID == id);
+
             if (orderDetail == null)
             {
                 return NotFound();
@@ -53,6 +130,7 @@ namespace G6_BevoTunes.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderDetailID,PurchasedPrice")] OrderDetail orderDetail)
         {
@@ -65,58 +143,60 @@ namespace G6_BevoTunes.Controllers
             return View(orderDetail);
         }
 
-        // GET: OrderDetails/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        // // GET: OrderDetails/Edit/5
+        // public async Task<IActionResult> Edit(int? id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            var orderDetail = await _context.OrderDetails.FindAsync(id);
-            if (orderDetail == null)
-            {
-                return NotFound();
-            }
-            return View(orderDetail);
-        }
+        //     var orderDetail = await _context.OrderDetails.FindAsync(id);
+        //     if (orderDetail == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return View(orderDetail);
+        // }
 
-        // POST: OrderDetails/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderDetailID,PurchasedPrice")] OrderDetail orderDetail)
-        {
-            if (id != orderDetail.OrderDetailID)
-            {
-                return NotFound();
-            }
+        // // POST: OrderDetails/Edit/5
+        // // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Edit(int id, [Bind("OrderDetailID,PurchasedPrice")] OrderDetail orderDetail)
+        // {
+        //     if (id != orderDetail.OrderDetailID)
+        //     {
+        //         return NotFound();
+        //     }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(orderDetail);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OrderDetailExists(orderDetail.OrderDetailID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(orderDetail);
-        }
+        //     if (ModelState.IsValid)
+        //     {
+        //         try
+        //         {
+        //             _context.Update(orderDetail);
+        //             await _context.SaveChangesAsync();
+        //         }
+        //         catch (DbUpdateConcurrencyException)
+        //         {
+        //             if (!OrderDetailExists(orderDetail.OrderDetailID))
+        //             {
+        //                 return NotFound();
+        //             }
+        //             else
+        //             {
+        //                 throw;
+        //             }
+        //         }
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(orderDetail);
+        // }
 
         // GET: OrderDetails/Delete/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +215,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // POST: OrderDetails/Delete/5
+        [Authorize(Roles = "Customer, Admin, Employee")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -153,5 +234,21 @@ namespace G6_BevoTunes.Controllers
         {
             return _context.OrderDetails.Any(e => e.OrderDetailID == id);
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int id)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int id, OrderDetail orderDetail)
+        {
+            return View();
+        }
+
     }
 }

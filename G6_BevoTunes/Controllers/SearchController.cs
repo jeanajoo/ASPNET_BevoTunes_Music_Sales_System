@@ -53,20 +53,20 @@ namespace G6_BevoTunes.Controllers
             return View();
         }
 
-                public async Task<IActionResult> SearchAlbums()
+        public async Task<IActionResult> SearchAlbums()
         {
             ViewBag.AllGenres = GetAllGenresList();
             return View();
         }
 
-                public async Task<IActionResult> SearchSongs()
+        public async Task<IActionResult> SearchSongs()
         {
             ViewBag.AllGenres = GetAllGenresList();
             return View();
         }
 
         // Album Search
-        public async Task<IActionResult> DisplaySearchResults(AlbumSearchViewModel asvm)
+        public async Task<IActionResult> DisplayAlbumSearchResults(AlbumSearchViewModel asvm)
         {
             var albumQuery = _context.Albums.AsQueryable();
             var artistQuery = _context.Artists.AsQueryable();
@@ -90,15 +90,15 @@ namespace G6_BevoTunes.Controllers
             }
 
             // Filter by ratings
-            if (asvm.Rating != 1.0m)
+            if (asvm.Rating != 0.0m)
             {
                 if (asvm.RatingBound == RatingBound.GreaterThan)
                 {
-                    albumQuery = albumQuery.Where(a => a.AverageRating >= asvm.Rating);
+                    albumQuery = albumQuery.Where(a => (decimal)a.Reviews.Average(r => r.Rating) >= asvm.Rating);
                 }
                 else
                 {
-                    albumQuery = albumQuery.Where(a => a.Reviews.Sum(r => r.Rating) <= asvm.Rating);
+                    albumQuery = albumQuery.Where(a => (decimal)a.Reviews.Average(r => r.Rating) <= asvm.Rating);
                 }
             }
 
@@ -110,11 +110,14 @@ namespace G6_BevoTunes.Controllers
                             .Include(s => s.Promotions)
                             .ToList();
 
-            return View("Index", results);
+            ProductsViewModel pvm = new ProductsViewModel();
+            pvm.Albums = results;
+
+            return View("Index", pvm);
         }
         
         // Song Search
-        public Task<IActionResult> DisplaySearchResults(SongSearchViewModel ssvm)
+        public Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm)
         {
             var songQuery = _context.Songs.AsQueryable();
 
@@ -143,15 +146,15 @@ namespace G6_BevoTunes.Controllers
             }
 
             // Filter by ratings
-            if (ssvm.Rating != 1.0m)
+            if (ssvm.Rating != 0.0m)
             {
                 if (ssvm.RatingBound == RatingBound.GreaterThan)
                 {
-                    songQuery = songQuery.Where(s => s.AverageRating >= ssvm.Rating);
+                    songQuery = songQuery.Where(s => (decimal)s.Reviews.Average(r => r.Rating) >= ssvm.Rating);
                 }
                 else
                 {
-                    songQuery = songQuery.Where(s => s.Reviews.Sum(r => r.Rating) <= ssvm.Rating);
+                    songQuery = songQuery.Where(s => (decimal)s.Reviews.Average(r => r.Rating) >= ssvm.Rating);
                 }
             }
 
@@ -164,11 +167,14 @@ namespace G6_BevoTunes.Controllers
                             .Include(s => s.Promotions)
                             .ToList();
 
-            return Task.FromResult<IActionResult>(View("Index", results));
+            ProductsViewModel pvm = new ProductsViewModel();
+            pvm.Songs = results;
+
+            return Task.FromResult<IActionResult>(View("Index", pvm));
         }
 
         // Artist Search
-        public Task<IActionResult> DisplaySearchResults(ArtistSearchViewModel asvm)
+        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm)
         {
             var artistQuery = _context.Artists.AsQueryable();
 
@@ -185,34 +191,41 @@ namespace G6_BevoTunes.Controllers
             }
 
             // Filter by ratings
-            if (asvm.Rating != 1.0m)
+            if (asvm.Rating != 0.0m)
             {
                 if (asvm.RatingBound == RatingBound.GreaterThan)
                 {
-                    artistQuery = artistQuery.Where(ar => ar.Reviews.Sum(r => r.Rating) >= asvm.Rating);
+                    artistQuery = artistQuery.Where(ar => (decimal)ar.Reviews.Average(r => r.Rating) >= asvm.Rating);
                 }
                 else
                 {
-                    artistQuery = artistQuery.Where(ar => ar.Reviews.Sum(r => r.Rating) <= asvm.Rating);
+                    artistQuery = artistQuery.Where(ar => (decimal)ar.Reviews.Average(r => r.Rating) <= asvm.Rating);
                 }
             }
 
             // Execute query
-            var results = artistQuery
+            var results = await artistQuery
                             .Include(ar => ar.Genres)
                             .Include(ar => ar.Albums)
                             .Include(ar => ar.Songs)
                             .Include(ar => ar.Reviews)
-                            .ToList();
+                            .ToListAsync();
 
-            return Task.FromResult<IActionResult>(View("Index", results));
+            return View("ArtistSearchResults", results);
+        }
+
+        // Artist Search Results
+        public IActionResult ArtistSearchResults(IEnumerable<Artist> artists)
+        {
+            return View(artists);
         } 
 
         private SelectList GetAllGenresList()
         {
             List<Genre> genres = _context.Genres.ToList();
+            genres.OrderBy(m => m.GenreId);
 
-            return new SelectList(genres);
+            return new SelectList(genres, "GenreId", "GenreName");
         }
         
 

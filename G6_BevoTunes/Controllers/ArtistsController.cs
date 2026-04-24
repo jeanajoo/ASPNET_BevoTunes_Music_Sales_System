@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace G6_BevoTunes.Controllers
 {
@@ -16,13 +17,21 @@ namespace G6_BevoTunes.Controllers
 
         public ArtistsController(AppDbContext context)
         {
+
             _context = context;
         }
 
         // GET: Artists
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artists.ToListAsync());
+            List<Artist> artists = await _context.Artists
+                .Include(a => a.Genres)
+                .Include(a => a.Albums)
+                .Include(a => a.Songs)
+                .Include(a => a.Reviews)
+                .ToListAsync();
+        
+            return View(artists);
         }
 
         // GET: Artists/Details/5
@@ -35,9 +44,14 @@ namespace G6_BevoTunes.Controllers
 
             var artist = await _context.Artists
                 .Include(s => s.Albums)
+                    .ThenInclude(a => a.Reviews)
+                    .ThenInclude(r => r.Reviewer)
                 .Include(s => s.Genres)
                 .Include(s => s.Songs)
+                    .ThenInclude(s => s.Reviews)
+                    .ThenInclude(r => r.Reviewer)
                 .Include(s => s.Reviews)
+                    .ThenInclude(r => r.Reviewer)
                 .Include(s => s.Promotions)
                 .FirstOrDefaultAsync(m => m.ArtistId == id);
             if (artist == null)
@@ -49,8 +63,10 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Artists/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
+            ViewBag.AllGenres = GetAllGenresList();
             return View();
         }
 
@@ -59,18 +75,30 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArtistId,ArtistName")] Artist artist)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create([Bind("ArtistId,ArtistName")] Artist artist, int[] selectedGenres)
         {
             if (ModelState.IsValid)
             {
+                // Add selected genres to artist
+                if (selectedGenres != null && selectedGenres.Length > 0)
+                {
+                    var genres = await _context.Genres
+                        .Where(g => selectedGenres.Contains(g.GenreId))
+                        .ToListAsync();
+                    artist.Genres = genres;
+                }
+
                 _context.Add(artist);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.AllGenres = GetAllGenresList();
             return View(artist);
         }
 
         // GET: Artists/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,11 +106,15 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var artist = await _context.Artists.FindAsync(id);
+            var artist = await _context.Artists
+                .Include(a => a.Genres)
+                .FirstOrDefaultAsync(a => a.ArtistId == id);
             if (artist == null)
             {
                 return NotFound();
             }
+            ViewBag.AllGenres = GetAllGenresList();
+            ViewData["SelectedGenres"] = artist.Genres.Select(g => g.GenreId).ToList();
             return View(artist);
         }
 
@@ -91,7 +123,8 @@ namespace G6_BevoTunes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArtistId,ArtistName")] Artist artist)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int id, [Bind("ArtistId,ArtistName")] Artist artist, int[] selectedGenres)
         {
             if (id != artist.ArtistId)
             {
@@ -102,7 +135,29 @@ namespace G6_BevoTunes.Controllers
             {
                 try
                 {
-                    _context.Update(artist);
+                    var existingArtist = await _context.Artists
+                        .Include(a => a.Genres)
+                        .FirstOrDefaultAsync(a => a.ArtistId == id);
+
+                    if (existingArtist == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Update basic properties
+                    existingArtist.ArtistName = artist.ArtistName;
+
+                    // Update genres
+                    existingArtist.Genres.Clear();
+                    if (selectedGenres != null && selectedGenres.Length > 0)
+                    {
+                        var genres = await _context.Genres
+                            .Where(g => selectedGenres.Contains(g.GenreId))
+                            .ToListAsync();
+                        existingArtist.Genres = genres;
+                    }
+
+                    _context.Update(existingArtist);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -118,6 +173,8 @@ namespace G6_BevoTunes.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.AllGenres = GetAllGenresList();
+            ViewData["SelectedGenres"] = artist.Genres.Select(g => g.GenreId).ToList();
             return View(artist);
         }
 
@@ -152,6 +209,14 @@ namespace G6_BevoTunes.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        private SelectList GetAllGenresList()
+        {
+            List<Genre> genres = _context.Genres.ToList();
+            genres.OrderBy(m => m.GenreId);
+
+            return new SelectList(genres, "GenreId", "GenreName");
         }
 
         private bool ArtistExists(int id)

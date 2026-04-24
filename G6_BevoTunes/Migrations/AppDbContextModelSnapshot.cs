@@ -267,6 +267,9 @@ namespace G6_BevoTunes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustCreditCardID"));
 
+                    b.Property<bool>("ActiveStatus")
+                        .HasColumnType("bit");
+
                     b.Property<string>("CardNumber")
                         .IsRequired()
                         .HasMaxLength(16)

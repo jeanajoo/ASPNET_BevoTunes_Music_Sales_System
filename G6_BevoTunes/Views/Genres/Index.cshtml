@@ -1,18 +1,21 @@
 @model IEnumerable<G6_BevoTunes.Models.Genre>
 
 @{
-    ViewData["Title"] = "All Genres";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Music Genres</h1>
+<h1>Index</h1>
 
-<p>Total Genres Seeded: @Model.Count()</p>
-
-<table class="table table-hover">
-    <thead class="thead-dark">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
         <tr>
-            <th>Genre Name</th>
-            <th>Actions</th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreName)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>

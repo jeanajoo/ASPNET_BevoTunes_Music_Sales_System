@@ -1,0 +1,118 @@
+@model G6_BevoTunes.Models.OrderDetail
+
+@{
+    ViewData["Title"] = "Order Detail";
+    var discount = Model.Song?.Promotions?
+        .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
+        ?? Model.Album?.Promotions?
+        .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true);
+    
+    decimal savings = 0;
+    
+    if (Model.Song != null)
+    {
+        savings = discount != null ? Model.Song.SongPrice - discount.DiscountPrice : 0;
+    }
+    else if (Model.Album != null)
+    {
+        savings = discount != null ? Model.Album.AlbumPrice - discount.DiscountPrice : 0;
+    }
+}
+
+
+
+<h1>Order Detail</h1>
+
+<div class="card p-4">
+    <div class="row">
+        <div class="col-md-8">
+
+            @if (Model.Song != null)
+            {
+                <h3><b>Song: </b>@Model.Song.SongTitle</h3>
+
+                @if (Model.Song.Artists != null && Model.Song.Artists.Any())
+                {
+                    <p><b>Artists: </b>
+                        @string.Join(", ", Model.Song.Artists.Select(a => a.ArtistName))
+                    </p>
+                }
+
+                @if (Model.Song.Reviews != null && Model.Song.Reviews.Any())
+                {
+                    <p><b>Average Rating: </b>@Model.Song.Reviews.Average(r => r.Rating).ToString("F1")</p>
+                    <h5>Reviews</h5>
+                    <ul class="list-group mb-3">
+                        @foreach (var review in Model.Song.Reviews)
+                        {
+                            <li class="list-group-item">
+                                <b>@review.Rating/5</b> — @review.Description
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">No reviews yet.</p>
+                }
+            }
+            else if (Model.Album != null)
+            {
+                <h3><b>Album: </b>@Model.Album.AlbumName</h3>
+
+                @if (Model.Album.Artists != null && Model.Album.Artists.Any())
+                {
+                    <p><b>Artists: </b>
+                        @string.Join(", ", Model.Album.Artists.Select(a => a.ArtistName))
+                    </p>
+                }
+
+                @if (Model.Album.Reviews != null && Model.Album.Reviews.Any())
+                {
+                    <p><b>Average Rating: </b>@Model.Album.Reviews.Average(r => r.Rating).ToString("F1")</p>
+                    <h5>Reviews</h5>
+                    <ul class="list-group mb-3">
+                        @foreach (var review in Model.Album.Reviews)
+                        {
+                            <li class="list-group-item">
+                                <b>@review.Rating/5</b> — @review.Description
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">No reviews yet.</p>
+                }
+            }
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>Pricing</h5>
+                @if (Model.Song != null){
+                    <p><b>Original Price: </b>@Model.Song.SongPrice.ToString("C")</p>
+                }
+                else if (Model.Album != null)
+                {
+                    <p><b>Original Price: </b>@Model..ToString("C")</p>
+                }
+
+                @if (discount != null)
+                {
+                    <p><b>Discounted Price: </b>@discount.DiscountPrice.ToString("C")</p>
+                    <p class="text-success"><b>You Save: </b>@savings.ToString("C")</p>
+                }
+                else
+                {
+                    <p class="text-muted">No promotions applied.</p>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br />
+<a asp-action="Index" class="btn btn-secondary">Back to Cart</a>

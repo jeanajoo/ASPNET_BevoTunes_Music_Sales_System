@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.AspNetCore.Identity;
 using System.Diagnostics.Eventing.Reader;
+using NuGet.Protocol;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Customer, Admin, Employee")]
     public class ReviewsController : Controller
     {
         private readonly AppDbContext _context;
@@ -27,6 +29,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: Reviews
+        [Authorize(Roles= "Customer, Admin, Employee")]
         public async Task<IActionResult> Index()
         {
             AppUser user = await _userManager.GetUserAsync(User);
@@ -38,12 +41,21 @@ namespace G6_BevoTunes.Controllers
             ViewBag.hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
             
             var userId = _userManager.GetUserId(User);
-
-             return View(await _context.Reviews.Include(r => r.Reviewer).OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+            if (User.IsInRole("Admin") || User.IsInRole("Employee")) {
+                return View(await _context.Reviews.Include(r => r.Reviewer).
+                Include(r => r.Artist).Include(r => r.Song).Include(r => r.Album)
+                .OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+            }
             
+            return View(await _context.Reviews.Include(r => r.Reviewer).
+                Include(r => r.Artist).Include(r => r.Song).Include(r => r.Album)
+                .Where(r => r.Status == ReviewStatus.Approve || (r.Status == ReviewStatus.Pending && r.Reviewer.Id == userId))
+                .OrderByDescending(r => r.Reviewer.Id == userId).ThenBy(r => r.Status).ToListAsync());
+
         }
 
         // GET: Reviews/Details/5
+        [Authorize(Roles= "Customer, Admin, Employee")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,7 +64,10 @@ namespace G6_BevoTunes.Controllers
             }
 
             var review = await _context.Reviews
-                .FirstOrDefaultAsync(m => m.ReviewID == id);
+                .Include(r => r.Reviewer)
+                .Include(r => r.Approver)
+                .Include(r => r.Song).Include(r => r.Album)
+                .Include(r => r.Artist).FirstOrDefaultAsync(m => m.ReviewID == id);
 
             if (review == null)
             {
@@ -70,8 +85,25 @@ namespace G6_BevoTunes.Controllers
             return _context.OrderDetails
                 .Include(od => od.Order)
                 .Include(od => od.Song)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Song != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Song != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Select(od => od.Song)
+                .Distinct()
+                .ToList();
+        }
+
+        private List<Song> GetOwnedAlbumSongs (AppUser user)
+        {
+            if (user == null)
+                return new List<Song>();
+
+            return _context.OrderDetails
+                .Include(od => od.Order)
+                .Include(od => od.Album)
+                .ThenInclude(a => a.Songs)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
+                .SelectMany(od => od.Album.Songs)
                 .Distinct()
                 .ToList();
         }
@@ -84,7 +116,8 @@ namespace G6_BevoTunes.Controllers
             return _context.OrderDetails
                 .Include(od => od.Order)
                 .Include(od => od.Album)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Select(od => od.Album)
                 .Distinct()
                 .ToList();
@@ -96,7 +129,8 @@ namespace G6_BevoTunes.Controllers
                 return new List<Artist>();
                 
             HashSet<Artist> ownSongsArtists = _context.OrderDetails
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Song != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Song != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Include(od => od.Song)
                 .ThenInclude(s => s.Artists)
                 .SelectMany(od => od.Song.Artists)
@@ -104,7 +138,8 @@ namespace G6_BevoTunes.Controllers
                 .ToHashSet();
 
             HashSet<Artist> ownAlbumsArtists = _context.OrderDetails
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id && od.Album != null)
+                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Include(od => od.Album)
                 .ThenInclude(s => s.Artists)
                 .SelectMany(od => od.Album.Artists)
@@ -125,6 +160,8 @@ namespace G6_BevoTunes.Controllers
             var ownedAlbums = GetOwnedAlbums(user);
 
             var ownedArtists = GetOwnedArtists(user);
+
+            var ownedAlbumSongs = GetOwnedAlbumSongs(user);
             
             bool hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
 
@@ -133,7 +170,9 @@ namespace G6_BevoTunes.Controllers
                 return Unauthorized();
             }
 
-            ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
+            var allSongs = ownedSongs.Union(ownedAlbumSongs).ToList();
+
+            ViewBag.OwnedSongs = new SelectList(allSongs, "SongId", "SongTitle");
             ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
             ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
             ViewBag.HasProduct = hasProduct;
@@ -158,8 +197,12 @@ namespace G6_BevoTunes.Controllers
 
             var ownedArtists = GetOwnedArtists(user);
 
+            var ownedAlbumSongs = GetOwnedAlbumSongs(user);
+
             bool hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
             
+            var allSongs = ownedSongs.Union(ownedAlbumSongs).ToList();
+
             ModelState.Remove("Reviewer");
 
             if (ModelState.IsValid)
@@ -167,7 +210,7 @@ namespace G6_BevoTunes.Controllers
                 review.Reviewer = user;
                 // review.ReviewerID = user.Id;
                     
-                ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
+                ViewBag.OwnedSongs = new SelectList(allSongs, "SongId", "SongTitle");
                 ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
                 ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
 
@@ -200,7 +243,7 @@ namespace G6_BevoTunes.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.OwnedSongs = new SelectList(ownedSongs, "SongId", "SongTitle");
+            ViewBag.OwnedSongs = new SelectList(allSongs, "SongId", "SongTitle");
             ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
             ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
             ViewBag.HasProduct = hasProduct;
@@ -218,8 +261,8 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Reviews.Include(r => r.Reviewer)
-                .FirstOrDefaultAsync(r => r.ReviewID == id);
+            var review = await _context.Reviews.Include(r => r.Reviewer).Include(r => r.Song).Include(r => r.Album)
+                .Include(r => r.Artist).FirstOrDefaultAsync(r => r.ReviewID == id);
 
             if (review == null)
             {
@@ -306,7 +349,8 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Reviews
+            var review = await _context.Reviews.Include(r => r.Song)
+                .Include(r => r.Album).Include(r => r.Artist)
                 .FirstOrDefaultAsync(m => m.ReviewID == id);
 
             if (review.Status == ReviewStatus.Deleted)

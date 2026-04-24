@@ -23,7 +23,14 @@ namespace G6_BevoTunes.Controllers
         // GET: Songs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Songs.ToListAsync());
+            List<Song> songs = _context.Songs
+                                .Include(s => s.Artists)
+                                .Include(s => s.Genres)
+                                .Include(s => s.Reviews)
+                                .Include(s => s.Promotions)
+                                .ToList();
+
+            return View(songs);
         }
 
         // GET: Products/SongDetails/5
@@ -73,14 +80,17 @@ namespace G6_BevoTunes.Controllers
                 {
                     var artists = await _context.Artists
                         .Where(a => selectedArtists.Contains(a.ArtistId)
-                                    && !a.Songs.Select(s => s.SongTitle).Contains(song.SongTitle))
+                                    && a.Songs.Select(s => s.SongTitle).Contains(song.SongTitle))
                         .ToListAsync();
                     
                     // after checking that there is an artist which made the song with the same title,
                     // return the view with a relevant error message
-                    if (artists.Count < selectedArtists.Length) 
+                    if (artists.Count > 0) 
                     {
-                        ModelState.AddModelError("Artists", "An artist cannot have more than one song with the same title");
+                        ModelState.AddModelError(String.Empty, "An artist cannot have more than one song with the same title");
+                        ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
+                        ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
+                        ViewBag.Albums = new SelectList(await _context.Albums.ToListAsync(), "AlbumId", "AlbumName");
                         return View(song);
                     }
                     song.Artists = artists;
@@ -138,9 +148,9 @@ namespace G6_BevoTunes.Controllers
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName", song.Artists.Select(a => a.ArtistId));
             ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName", song.Genres.Select(g => g.GenreId));
             ViewBag.Albums = new SelectList(await _context.Albums.ToListAsync(), "AlbumId", "AlbumName", song.Albums.Select(a => a.AlbumId));
-            ViewBag.SelectedArtists = song.Artists.Select(a => a.ArtistId).ToList();
-            ViewBag.SelectedGenres = song.Genres.Select(g => g.GenreId).ToList();
-            ViewBag.SelectedAlbums = song.Albums.Select(a => a.AlbumId).ToList();
+            ViewData["SelectedArtists"] = song.Artists.Select(a => a.ArtistId).ToList();
+            ViewData["SelectedGenres"] = song.Genres.Select(g => g.GenreId).ToList();
+            ViewData["SelectedAlbums"] = song.Albums.Select(a => a.AlbumId).ToList();
 
             return View(song);
         }
@@ -225,6 +235,9 @@ namespace G6_BevoTunes.Controllers
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
             ViewBag.Genres = new SelectList(await _context.Genres.ToListAsync(), "GenreId", "GenreName");
             ViewBag.Albums = new SelectList(await _context.Albums.ToListAsync(), "AlbumId", "AlbumName");
+            ViewData["SelectedArtists"] = selectedArtists != null ? selectedArtists.ToList() : new List<int>();
+            ViewData["SelectedGenres"] = selectedGenres != null ? selectedGenres.ToList() : new List<int>();
+            ViewData["SelectedAlbums"] = selectedAlbums != null ? selectedAlbums.ToList() : new List<int>();
             return View(song);
         }
 

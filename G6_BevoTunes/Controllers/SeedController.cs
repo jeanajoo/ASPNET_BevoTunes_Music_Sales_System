@@ -36,8 +36,8 @@ namespace G6_BevoTunes.Controllers
                 SeedPromotions.SeedAllPromotions(_context);
                 await SeedRoles.AddAllRoles(_roleManager);
                 await SeedUsers.SeedAllUsers(_userManager, _context);
-                SeedCustCreditCards.SeedAllCustCreditCards(_context);
-                SeedOrders.SeedAllOrders(_context);
+                await SeedCustCreditCards.SeedAllCustCreditCards(_context, _userManager);
+                await SeedOrders.SeedAllOrders(_context, _userManager);
                 await SeedReviews.SeedAllReviews(_context, _userManager);
             }
             catch (Exception ex)
