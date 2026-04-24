@@ -141,6 +141,11 @@ namespace G6_BevoTunes.Controllers
             ivm.HasPassword = true;
             ivm.UserID = user.Id;
             ivm.UserName = user.UserName;
+            ivm.FirstName = user.FirstName;
+            ivm.LastName = user.LastName;
+            ivm.Address = user.Address;
+            ivm.ZipCode = user.ZipCode;
+            ivm.PhoneNumber = user.PhoneNumber;
 
             //send data to the view
             return View(ivm);
