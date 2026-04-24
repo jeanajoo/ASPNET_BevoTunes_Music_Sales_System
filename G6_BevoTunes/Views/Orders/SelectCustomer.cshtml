@@ -1,0 +1,67 @@
+@model List<G6_BevoTunes.Models.AppUser>
+
+@{
+    ViewData["Title"] = "Select Customer for Order";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1>Select a Customer</h1>
+            <p class="text-muted">Choose a customer to place an order on their behalf</p>
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Username</th>
+                                <th style="width: 150px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var customer in Model)
+                            {
+                                <tr>
+                                    <td>@customer.FirstName</td>
+                                    <td>@customer.LastName</td>
+                                    <td>@customer.Email</td>
+                                    <td>@customer.UserName</td>
+                                    <td>
+                                        <a asp-action="SetCustomerContext" asp-route-customerId="@customer.Id" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-check-circle"></i> Select
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle"></i> No customers found.
+                </div>
+            }
+
+            <div class="mt-4">
+                <a asp-controller="Orders" asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Cancel
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

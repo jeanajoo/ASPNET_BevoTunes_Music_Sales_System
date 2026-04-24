@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using G6_BevoTunes.DAL;
 using G6_BevoTunes.Models;
 using Microsoft.AspNetCore.Authorization;
