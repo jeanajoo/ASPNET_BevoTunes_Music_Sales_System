@@ -1,0 +1,23 @@
+@using Microsoft.AspNetCore.Razor.Language
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IEnumerable<G6_BevoTunes.Models.OrderDetail>
+
+<form asp-action="PurchaseAsGift" method="post">
+
+    @Html.ValidationSummary(excludePropertyErrors: true, "", new { @class = "text-danger" })
+
+<h5>Purchase As a Gift</h5>
+<br/>
+    <div class="mb-2 col-md-4">
+        <label>Recipient Email</label>
+        <input type="text" name="RecipientEmail" class="form-control" />
+        <span class="text-danger">@Html.ValidationMessage("RecipientEmail")</span>
+    </div>
+    <br/>
+    <div class="d-flex justify-content-start">
+        <button type="submit" class="btn btn-primary">
+            Confirm Order
+        </button>
+    </div>
+</form>
