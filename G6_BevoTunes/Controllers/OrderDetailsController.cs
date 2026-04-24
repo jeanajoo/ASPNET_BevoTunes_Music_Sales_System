@@ -232,7 +232,7 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-         [HttpGet]
+        [HttpGet]
         [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Checkout(int id)
         {
@@ -357,8 +357,6 @@ namespace G6_BevoTunes.Controllers
             }
 
             var recipient = await _userManager.FindByEmailAsync(RecipientEmail);
-
-            Order.Recipient = recipient;
 
             var orderdetail = await _context.OrderDetails.ToListAsync();
 

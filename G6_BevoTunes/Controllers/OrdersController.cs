@@ -24,6 +24,28 @@ namespace G6_BevoTunes.Controllers
             _userManager = userManager;
         }
 
+        private void GetPurchasePrice(OrderDetail orderDetail)
+        {
+            if (orderDetail.Song != null && orderDetail.Song?.Promotions!= null && orderDetail.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+            {
+                orderDetail.PurchasedPrice = orderDetail.Song.Promotions
+                .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+            }
+            else if (orderDetail.Album != null && orderDetail.Album?.Promotions!= null && orderDetail.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+            {
+                orderDetail.PurchasedPrice = orderDetail.Album.Promotions
+                .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+            }
+            else if (orderDetail.Song != null)
+            {
+                orderDetail.PurchasedPrice = orderDetail.Song.SongPrice;
+            }
+            else if (orderDetail.Album != null)
+            {
+                orderDetail.PurchasedPrice = orderDetail.Album.AlbumPrice;
+            }
+        }
+
         // GET: Orders
         public async Task<IActionResult> Index()
         {
@@ -38,26 +60,71 @@ namespace G6_BevoTunes.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            if (User.IsInRole("Customer"))
+            {
+                var orderDetails = await _context.OrderDetails
+                .Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Order).ThenInclude(o => o.Customer)
+                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+                .ToListAsync();
+
+                foreach (var orderDetail in orderDetails)
+                {
+                    GetPurchasePrice(orderDetail);
+                }
+
+                await _context.SaveChangesAsync();
+
+                return View(await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists)
+                .Include(od => od.Song).ThenInclude(s => s.Reviews)
+                .Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews)
+                .Include(od => od.Order).ThenInclude(o => o.Customer)
+                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync());
+            } 
+
+            else if (User.IsInRole("Admin") || User.IsInRole("Employee")) 
+            {
+                var allOrder = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
+                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(s => s.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
+                .ThenInclude(o => o.Customer).ToListAsync();
+
+                return View(allOrder);
+            }
+
+            return Unauthorized();
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> OrderDetails(int? id)
+        {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .Include(o => o.OrderDetails)
-                    .ThenInclude(od => od.Song)
-                .Include(o => o.OrderDetails)
-                    .ThenInclude(od => od.Album)
-                .Include(o => o.Customer)
-                .Include(o => o.Recipient)
-                .Include(o => o.Card)
-                .FirstOrDefaultAsync(m => m.OrderID == id);
-            if (order == null)
+            var orderDetail = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
+                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(od => od.Album).ThenInclude(s => s.Artists)
+                .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
+                .FirstOrDefaultAsync(m => m.OrderDetailID == id);
+
+            if (orderDetail == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(orderDetail);
         }
 
         // GET: Orders/Create
@@ -413,6 +480,174 @@ namespace G6_BevoTunes.Controllers
 
             return View(order); 
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int id)
+        {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            var ordered_items = await _context.OrderDetails.Include(od => od.Order)
+            .Include(od => od.Song).ThenInclude(s => s.Promotions)
+            .Include(od => od.Album).ThenInclude(a => a.Promotions)
+            .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync();
+
+            var cust_card = await _context.OrderDetails.Include(od => od.Order)
+            .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+                 od.Order.Customer != null &&
+                 od.Order.Customer.Id == user.Id).ToListAsync();
+
+            var credit_card = cust_card
+                .SelectMany(od => od.Order.Customer.CreditCards)
+                .DistinctBy(c => c.CustCreditCardID)
+                .ToList();
+
+            var creditCardItems = credit_card.Select(c => new {
+                c.CustCreditCardID,
+                Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                }).ToList();
+
+            creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+
+            ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+            
+            return View(ordered_items);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int SelectedCard, CustCreditCard newCard)
+        {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+                var ordered_items = await _context.OrderDetails
+                    .Include(od => od.Order)
+                    .Include(od => od.Song).ThenInclude(s => s.Promotions)
+                    .Include(od => od.Album).ThenInclude(a => a.Promotions)
+                    .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+                    .ToListAsync();
+
+            if (SelectedCard == 0)
+            {
+                ModelState.Clear();
+                TryValidateModel(newCard);
+                ModelState.Remove("User"); 
+                ModelState.Remove("UserId");
+
+                if (!Enum.IsDefined(typeof(CardType), newCard.CardType))
+                {
+                    ModelState.AddModelError("newCard.CardType", "Please select a card type.");
+                }
+                
+                if (user.Status != UserStatus.Active)
+                {
+                    ModelState.AddModelError("", "Buyer account is not active.");
+                }
+
+
+                if (!ModelState.IsValid)
+                {
+                    var cust_card = await _context.OrderDetails.Include(od => od.Order)
+                        .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+                        od.Order.Customer != null &&
+                        od.Order.Customer.Id == user.Id).ToListAsync();
+
+                    var credit_card = cust_card
+                        .SelectMany(od => od.Order.Customer.CreditCards)
+                        .DistinctBy(c => c.CustCreditCardID)
+                        .ToList();
+
+                    var creditCardItems = credit_card.Select(c => new {
+                        c.CustCreditCardID,
+                        Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                        }).ToList();
+
+                    creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+                    ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+
+                    return View("Checkout", ordered_items);
+                }
+            }
+            
+            if (user.Status != UserStatus.Active)
+            {
+                ModelState.AddModelError("", "Buyer account is not active.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var cust_card = await _context.OrderDetails.Include(od => od.Order)
+                        .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+                        od.Order.Customer != null &&
+                        od.Order.Customer.Id == user.Id).ToListAsync();
+
+                    var credit_card = cust_card
+                        .SelectMany(od => od.Order.Customer.CreditCards)
+                        .DistinctBy(c => c.CustCreditCardID)
+                        .ToList();
+
+                    var creditCardItems = credit_card.Select(c => new {
+                        c.CustCreditCardID,
+                        Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                        }).ToList();
+
+                    creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+                    ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+
+                    return View("Checkout", ordered_items);
+            }
+            return RedirectToAction("Details", "Orders");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> PurchaseAsGift ()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> PurchaseAsGift (string RecipientEmail, Order order)
+        {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            if (string.IsNullOrWhiteSpace(RecipientEmail))
+            {
+                ModelState.AddModelError("RecipientEmail", "Recipient Email is required");
+            }
+
+            var userEmails = await _userManager.Users
+            .Select(u => u.Email).ToListAsync();
+
+            if (!userEmails.Contains(RecipientEmail))
+            {
+                ModelState.AddModelError("RecipientEmail", "Recipient Email/Account not found");
+            }
+
+            if (user.Email == RecipientEmail)
+            {
+                ModelState.AddModelError("RecipientEmail", "Cannot Gift an Order to Yourself");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var recipient = await _userManager.FindByEmailAsync(RecipientEmail);
+
+            if (recipient != null)
+            {
+            order.Recipient = recipient;
+            }
+            
+            var orderdetail = await _context.OrderDetails.ToListAsync();
+
+            return RedirectToAction("Checkout", "OrderDetails");
+        }
+
+
 
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> SelectCustomer()

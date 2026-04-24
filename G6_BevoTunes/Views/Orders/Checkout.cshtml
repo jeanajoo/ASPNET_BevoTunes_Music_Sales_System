@@ -1,0 +1,127 @@
+@using Microsoft.AspNetCore.Razor.Language
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IEnumerable<G6_BevoTunes.Models.OrderDetail>
+
+<h1>Checkout</h1>
+
+<form asp-action="Checkout" method="post">
+
+     @Html.ValidationSummary(excludePropertyErrors: true, "", new { @class = "text-danger" })
+
+    <ul class="list-group" style="max-width: 300px;">
+        <h5>Your Order</h5>
+        @foreach (var item in Model)
+        {
+            var discount = item.Song?.Promotions?
+                .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
+                ?? item.Album?.Promotions?
+                .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true);
+
+            <li class="list-group-item d-flex justify-content-between">
+                <span>
+                    @if (item.Song != null)
+                    {
+                        <b>Song:</b> @item.Song.SongTitle
+                    }
+                    else if (item.Album != null)
+                    {
+                        <b>Album:</b> @item.Album.AlbumName
+                    }
+                </span>
+                <span>
+                    @if (discount != null && item.Song != null){
+                        <span>The original price was @item.Song.SongPrice</span><span class="text-danger">On sale! @item.PurchasedPrice.ToString("C")</span>
+                    }
+                    else if (discount != null && item.Album != null){
+                        <span>The original price was @item.Album.AlbumPrice</span><span class="text-danger">On sale! @item.PurchasedPrice.ToString("C")</span>
+                    }
+                    else
+                    {
+                        @item.PurchasedPrice.ToString("C")
+                    }
+                </span>
+            </li>
+        }
+    </ul>
+    <br />
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" style="max-width: 300px;">
+            Please try again. @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        </div>
+    }
+    <div>
+        @Html.DropDownList("SelectedCard", (SelectList)ViewBag.creditCards, new { id = "cardDropdown", onchange = "toggleNewCard(this)" })
+
+        <div id="newCardForm" style="display:none; max-width:300px;" class="mt-3">
+            <div class="mb-2">
+                <label>Card Number</label>
+                <input type="text" class="form-control" name="newCard.CardNumber" maxlength="16"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                <span class="text-danger">@Html.ValidationMessage("newCard.CardNumber")</span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row justify-content-end">
+        <div class="col-md-4">
+            <table class="table">
+                <tr>
+                    <td><b>Subtotal</b></td>
+                    <td>@Model.FirstOrDefault()?.Order?.Subtotal.ToString("C")</td>
+                </tr>
+                <tr>
+                    <td><b>Sales Tax</b></td>
+                    <td>@Model.FirstOrDefault()?.Order?.SalesTax.ToString("C")</td>
+                </tr>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td>@Model.FirstOrDefault()?.Order?.OrderTotal.ToString("C")</td>
+                </tr>
+            </table>
+                <div class="text-end">
+                    <a asp-action="PurchaseAsGift" class="btn btn-primary">
+                        Purchase as a Gift
+                    </a>
+                </div>
+            <br/>
+            <div class="text-end">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <button type="submit" class="btn btn-primary">Confirm Order</button>
+            </div>
+            <br/>
+            <div class="d-flex justify-content-end">
+                <a asp-action="Details" class="btn btn-secondary">
+                    Back to Cart
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    function toggleNewCard(select) {
+        const form = document.getElementById("newCardForm");
+        const inputs = form.querySelectorAll("input, select");
+        
+        if (select.value === "0") {
+            form.style.display = "block";
+            inputs.forEach(i => i.disabled = false);
+        } else {
+            form.style.display = "none";
+            inputs.forEach(i => i.disabled = true);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("newCardForm");
+        form.querySelectorAll("input, select").forEach(i => i.disabled = true);
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
