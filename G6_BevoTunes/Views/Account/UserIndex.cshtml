@@ -1,4 +1,4 @@
-@model IEnumerable<G6_BevoTunes.Models.AppUser>
+@model G6_BevoTunes.Models.UserIndexViewModel
 
 @{
     ViewData["Title"] = "User Directory";
@@ -6,27 +6,134 @@
 
 <h1>User Directory</h1>
 
-<p>
-    Total Seeded Users: @Model.Count()
-</p>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-customers-tab" data-bs-toggle="pill" data-bs-target="#pills-customers"
+                type="button" role="tab" aria-controls="pills-customers" aria-selected="true">
+            Customers <span class="badge badge-info">@Model.Customers.Count()</span>
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-employees-tab" data-bs-toggle="pill" data-bs-target="#pills-employees"
+                type="button" role="tab" aria-controls="pills-employees" aria-selected="false">
+            Employees <span class="badge badge-info">@Model.Employees.Count()</span>
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-managers-tab" data-bs-toggle="pill" data-bs-target="#pills-managers"
+                type="button" role="tab" aria-controls="pills-managers" aria-selected="false">
+            Managers <span class="badge badge-info">@Model.Managers.Count()</span>
+        </button>
+    </li>
+</ul>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-            <td>@Html.DisplayFor(modelItem => item.Email)</td>
-            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="tab-content" id="pills-tabContent">
+    @* CUSTOMERS TAB *@
+    <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Customers)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Account" asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">Modify</a>
+                            
+                            @* Added Toggle Status for rubric requirement *@
+                            <form asp-action="ToggleStatus" asp-route-id="@item.Id" method="post" style="display:inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Toggle Status</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @* EMPLOYEES TAB *@
+    <div class="tab-pane fade" id="pills-employees" role="tabpanel" aria-labelledby="pills-employees-tab">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Employees)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Account" asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">Modify</a>
+                            
+                            @* Added Toggle Status for rubric requirement *@
+                            <form asp-action="ToggleStatus" asp-route-id="@item.Id" method="post" style="display:inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Toggle Status</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @* MANAGERS TAB *@
+    <div class="tab-pane fade" id="pills-managers" role="tabpanel" aria-labelledby="pills-managers-tab">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Managers)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Account" asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">Modify</a>
+                            
+                            @* Added Toggle Status for rubric requirement *@
+                            <form asp-action="ToggleStatus" asp-route-id="@item.Id" method="post" style="display:inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Toggle Status</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

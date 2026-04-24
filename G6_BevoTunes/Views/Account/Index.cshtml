@@ -1,23 +1,40 @@
 ﻿@model IndexViewModel
 @{
-    ViewBag.Title = "Change Password";
+    ViewBag.Title = "Account Profile";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Manage your account settings</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>User Name:</dt>
-        <dd>@Model.UserName</dd>
+    
+    <dl class="row">
 
-        <dt>Email:</dt>
-        <dd>@Model.Email</dd>
+        <dt class="col-sm-3">Email Address:</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
 
-        <dt>Password:</dt>
-        <dd>
-            [@Html.ActionLink("Change your password", "ChangePassword")]
+        <dt class="col-sm-3">Account Actions:</dt>
+        <dd class="col-sm-9">
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <a asp-action="Edit" asp-controller="Account" asp-route-id="@Model.UserID" class="btn btn-outline-primary">
+                        Edit Profile Information
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="ChangePassword" asp-controller="Account" class="btn btn-outline-warning">
+                        Change Password
+                    </a>
+                </li>
+            </ul>
         </dd>
     </dl>
 </div>
+
+@if (Context.Request.Query.ContainsKey("message"))
+{
+    <div class="alert alert-success mt-3">
+        @Context.Request.Query["message"]
+    </div>
+}
