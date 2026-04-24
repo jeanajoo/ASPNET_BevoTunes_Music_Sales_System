@@ -2,11 +2,54 @@
 
 @{
     ViewData["Title"] = "Products";
+    // Preserve TempData across requests
+    if (TempData["SelectedCustomerId"] != null)
+    {
+        TempData.Keep("SelectedCustomerId");
+        TempData.Keep("SelectedCustomerEmail");
+    }
 }
 
-<a asp-action="SearchArtists" class="btn btn-success">Lookup Artists!</a>
-<a asp-action="SearchAlbums" class="btn btn-success">Lookup Albums!</a>
-<a asp-action="SearchSongs" class="btn btn-success">Lookup Songs!</a>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if ((User.IsInRole("Admin") || User.IsInRole("Employee")) && TempData["SelectedCustomerId"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Customer Mode Active:</strong> You are ordering for @TempData["SelectedCustomerEmail"].
+        <a asp-controller="Orders" asp-action="ClearCustomerContext" class="btn btn-sm btn-outline-info ms-2">
+            <i class="bi bi-x-circle"></i> Switch Customer
+        </a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <a asp-action="SearchArtists" class="btn btn-success">Lookup Artists!</a>
+        <a asp-action="SearchAlbums" class="btn btn-success">Lookup Albums!</a>
+        <a asp-action="SearchSongs" class="btn btn-success">Lookup Songs!</a>
+    </div>
+    @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Employee")))
+    {
+        <a asp-controller="Orders" asp-action="SelectCustomer" class="btn btn-info">
+            <i class="bi bi-person-check"></i> @(TempData["SelectedCustomerId"] != null ? "Switch Customer" : "Select Customer")
+        </a>
+    }
+</div>
 
 <div class="container mt-5">
     <div class="row mb-4">
@@ -102,19 +145,29 @@
                                                     <span class="text-muted">-</span>
                                                 }
                                             </td>
-                                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                            {
                                             <td class="text-center">
-                                                <a asp-controller="Songs" asp-action="Edit" asp-route-id="@song.SongId"
-                                                       class="btn btn-sm btn-warning me-2">
-                                                    <i class="bi bi-pencil"></i> Edit
-                                                </a>
-                                                <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId"
-                                                       class="btn btn-sm btn-info">
-                                                    <i class="bi bi-info-circle"></i> Details
-                                                </a>
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    @if (User.IsInRole("Customer") || ((User.IsInRole("Admin") || User.IsInRole("Employee")) && TempData["SelectedCustomerId"] != null))
+                                                    {
+                                                        <a asp-controller="Orders" asp-action="AddSongToCart" asp-route-id="@song.SongId"
+                                                               class="btn btn-sm btn-success me-2">
+                                                            <i class="bi bi-cart-plus"></i> Add to Cart
+                                                        </a>
+                                                    }
+                                                    @if (User.IsInRole("Admin"))
+                                                    {
+                                                        <a asp-controller="Songs" asp-action="Edit" asp-route-id="@song.SongId"
+                                                               class="btn btn-sm btn-warning me-2">
+                                                            <i class="bi bi-pencil"></i> Edit
+                                                        </a>
+                                                        <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId"
+                                                               class="btn btn-sm btn-info">
+                                                            <i class="bi bi-info-circle"></i> Details
+                                                        </a>
+                                                    }
+                                                }
                                             </td>
-                                            }
                                         </tr>
                                     }
                                 </tbody>
@@ -190,14 +243,23 @@
                                             }
                                         </div>
                                         <div class="card-footer bg-white">
-                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                        {
-                                            <a asp-controller="Albums" asp-action="Edit" asp-route-id="@album.AlbumId" class="btn btn-sm btn-warning me-2">
-                                                <i class="bi bi-pencil"></i> Edit
-                                            </a>
-                                        }
-                                            <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-warning me-2">
-                                                <i class="bi bi-pencil"></i> Details
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                @if (User.IsInRole("Customer") || ((User.IsInRole("Admin") || User.IsInRole("Employee")) && TempData["SelectedCustomerId"] != null))
+                                                {
+                                                    <a asp-controller="Orders" asp-action="AddAlbumToCart" asp-route-id="@album.AlbumId" class="btn btn-sm btn-success me-2">
+                                                        <i class="bi bi-cart-plus"></i> Add to Cart
+                                                    </a>
+                                                }
+                                                @if (User.IsInRole("Admin"))
+                                                {
+                                                    <a asp-controller="Albums" asp-action="Edit" asp-route-id="@album.AlbumId" class="btn btn-sm btn-warning me-2">
+                                                        <i class="bi bi-pencil"></i> Edit
+                                                    </a>
+                                                }
+                                            }
+                                            <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-info me-2">
+                                                <i class="bi bi-info-circle"></i> Details
                                             </a>
                                         </div>
                                     </div>

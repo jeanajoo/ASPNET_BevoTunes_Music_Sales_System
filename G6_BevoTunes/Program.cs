@@ -17,8 +17,8 @@ builder.Services.AddControllersWithViews();
 
 //TODO: Add database on Azure so you have a connection string
 //TODO: (For HW3 and beyond) Add a connection string here once you have created it on Azure
-// String connectionString = "Server=tcp:sp26hongwang3.database.windows.net,1433;Initial Catalog=spGroup6FinalProject;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-String connectionString = "Server=tcp:sp26hongwang3.database.windows.net,1433;Initial Catalog=SP26hongwangLINQ;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+String connectionString = "Server=tcp:sp26hongwang3.database.windows.net,1433;Initial Catalog=spGroup6FinalProject;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+// String connectionString = "Server=tcp:sp26hongwang3.database.windows.net,1433;Initial Catalog=SP26hongwangLINQ;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 //Configure the context to use SQL Server -- this is needed for EF Core to work
 //TODO: (For HW3 and beyond) Uncomment this line once you have a connection string
