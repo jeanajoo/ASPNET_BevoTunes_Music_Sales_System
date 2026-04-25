@@ -1,15 +1,12 @@
 @using System.Configuration
 @using Microsoft.CodeAnalysis.CSharp.Syntax
-@model IEnumerable<G6_BevoTunes.Models.OrderDetail>
+@model G6_BevoTunes.Models.Order
 
 @{
     ViewData["Title"] = "Index";
 }
 <h1>Shopping Cart</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -23,13 +20,13 @@
                 <label>Average Rating</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurchasedPrice)
+                 <label>Purchased Price</label>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) 
+@foreach (var item in Model.OrderDetails) 
 {
         var discount = item.Song?.Promotions?
             .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
@@ -153,15 +150,15 @@
         <table class="table">
             <tr>
                 <td><b>Subtotal</b></td>
-                <td>@Model.FirstOrDefault()?.Order?.Subtotal.ToString("C")</td>
+                <td>@Model.Subtotal.ToString("C")</td>
             </tr>
             <tr>
                 <td><b>Sales Tax</b></td>
-                <td>@Model.FirstOrDefault()?.Order?.SalesTax.ToString("C")</td>
+                <td>@Model.SalesTax.ToString("C")</td>
             </tr>
             <tr>
                 <td><b>Total</b></td>
-                <td>@Model.FirstOrDefault()?.Order?.OrderTotal.ToString("C")</td>
+                <td>@Model.OrderTotal.ToString("C")</td>
             </tr>
         </table>
             <div class="d-flex justify-content-end">
@@ -170,8 +167,11 @@
                 </a>
             </div>
         <br/>
+        @if(Model.OrderDetails.Count() > 0)
+        {
         <div class="text-end">
-            <a asp-action="Checkout" class="btn btn-primary" asp-route-id="@Model?.FirstOrDefault()?.OrderDetailID">Checkout</a>
+            <a asp-action="Checkout" class="btn btn-primary" asp-route-id="@Model.OrderID">Checkout</a>
         </div>
+        }
     </div>
 </div>

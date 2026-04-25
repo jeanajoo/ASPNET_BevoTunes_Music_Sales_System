@@ -10,6 +10,7 @@ using G6_BevoTunes.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Security.Cryptography;
 
 namespace G6_BevoTunes.Controllers
 {
@@ -60,6 +61,27 @@ namespace G6_BevoTunes.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if(id != null)
+            {
+                Order order = _context.Orders.Where(o => o.OrderID == id)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Artists)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Reviews)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Artists)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Reviews)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Order).ThenInclude(o => o.Customer)
+                .FirstOrDefault();
+
+                if (order == null)
+                {
+                    return NotFound();
+                }
+                
+                return View(order);
+
+            }
+
             AppUser user = await _userManager.GetUserAsync(User);
             String selectedCustomerId = TempData["SelectedCustomerId"]?.ToString();
 
@@ -84,12 +106,9 @@ namespace G6_BevoTunes.Controllers
                         Customer = user,
                         Recipient = user,
                         OrderStatus = OrderStatus.InCart,
-                        OrderDate = DateTime.Now
                     };
-                   
-
-                    Int32 res = _context.SaveChanges();
-                    Console.WriteLine(res);
+                    _context.Orders.Add(currentCart);
+                    _context.SaveChanges();
                 }
 
                 currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == currentCustomerId && o.OrderStatus == OrderStatus.InCart);
@@ -788,6 +807,210 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Admin, Employee, Customer")]
         public async Task<IActionResult> Confirm ()
         {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            var currentOrder = await _context.Orders.Include(o => o.Customer).Include(o => o.Recipient)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Genres)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Genres)
+                .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+
+            currentOrder.OrderDate = DateTime.Now;
+            currentOrder.OrderStatus = OrderStatus.Ordered;
+
+            await _context.SaveChangesAsync();
+
+            Genre recommend_genre = null;
+
+            foreach (var item in currentOrder.OrderDetails)
+            {
+                if (item.Song?.Genres != null && item.Song.Genres.Any())
+                {
+                    recommend_genre = item.Song.Genres.First();
+                }
+                else if (item.Album?.Genres != null && item.Album.Genres.Any())
+                {
+                    recommend_genre = item.Album.Genres.First();
+                }
+            }
+
+            Artist recomendedArtist = _context.Artists.Include(a => a.Songs).Include(a => a.Albums)
+                .Where(a => a.Genres.Contains(recommend_genre)).OrderByDescending(a => a.Reviews.Average(r => r.Rating)).FirstOrDefault();
+            
+            Int32 songCount = recomendedArtist.Songs.Count();
+            Int32 albumCount = recomendedArtist.Albums.Count();
+            Int32 totalCount = songCount + albumCount;
+
+            Int32 randomPick = RandomNumberGenerator.GetInt32(totalCount);
+            Song recommend_song = null;
+            Album recommend_album = null;
+            if(randomPick < songCount)
+            {
+                recommend_song = recomendedArtist.Songs[randomPick];
+            }
+            else
+            {
+                recommend_album = recomendedArtist.Albums[randomPick - songCount];
+            }
+
+
+            if (currentOrder.Customer.Id != currentOrder.Recipient.Id)
+            {
+                string subject = String.Format("Dear {0} {1}, Your order [#{2}] for {3} {4} is successful", currentOrder.Customer.FirstName, currentOrder.Customer.LastName, currentOrder.OrderID, currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName);
+                string body = String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+                await EmailController.SendEmailAsync("", subject, body);
+
+                subject = String.Format("Dear {0} {1}, You have recieved a Order [#{2}] from {3} {4}", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID,currentOrder.Customer.FirstName, currentOrder.Customer.LastName);
+                body = String.Format("This gift consist of: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+                body += "</table> \n We also recommend the ";
+
+                if(recommend_album != null)
+                {
+                    body += String.Format("album: {0} that may interest you.", recommend_album.AlbumName);
+                }
+
+                if(recommend_song != null)
+                {
+                    body += String.Format("song: {0} that may interest you.", recommend_song.SongTitle);
+                }
+                await EmailController.SendEmailAsync("", subject, body);
+            }
+            else
+            {
+                string subject = String.Format("Dear {0} {1}, your purchase Order [#{2}] is successful", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID);
+                string body = String.Format("This order consist of: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+                body += "</table> \n We also recommend the ";
+
+                if(recommend_album != null)
+                {
+                    body += String.Format("album: {0} that may interest you.", recommend_album.AlbumName);
+                }
+
+                if(recommend_song != null)
+                {
+                    body += String.Format("song: {0} that may interest you.", recommend_song.SongTitle);
+                }
+                await EmailController.SendEmailAsync("", subject, body);
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin, Employee, Customer")]
+        public async Task<IActionResult> Refund (int? orderID)
+        {
+            var currentOrder = await _context.Orders
+                .Include(o => o.Customer).Include(o => o.Recipient)
+                .Include(o => o.OrderDetails).ThenInclude(o => o.Song)
+                .Include(o => o.OrderDetails).ThenInclude(o => o.Album)
+                .Where(o => o.OrderID == orderID)
+                .FirstOrDefaultAsync();
+
+            return View(currentOrder);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin, Employee, Customer")]
+        public async Task<IActionResult> CancellOrder (int? orderID)
+        {
+            if (orderID == null)
+            {
+                NotFound();
+            }
+
+            var currentOrder = await _context.Orders
+                .Include(o => o.Customer).Include(o => o.Recipient)
+                .Include(o => o.OrderDetails).ThenInclude(o => o.Song)
+                .Include(o => o.OrderDetails).ThenInclude(o => o.Album)
+                .Where(o => o.OrderID == orderID)
+                .FirstOrDefaultAsync();
+
+            currentOrder?.OrderStatus = OrderStatus.Refunded;
+
+            await _context.SaveChangesAsync();
+
+            var currentSong = currentOrder?.OrderDetails
+                .Where(od => od.Song != null)
+                .Select(od => od.Song)
+                .ToList();
+            
+            var currentAlbum = currentOrder?.OrderDetails
+                .Where(od => od.Album != null)
+                .Select(od => od.Album)
+                .ToList();
+
+            if (currentOrder?.Recipient.Id != currentOrder?.Customer.Id)
+            {
+            string subject = String.Format("Dear {0} {1}, Your order [#{2}] for {3} {4} has been successful Refunded", currentOrder.Customer.FirstName, currentOrder.Customer.LastName, currentOrder.OrderID, currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName);
+            string body = String.Format("The following items from the order you have refunded has been removed from the recipient's account: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+            await EmailController.SendEmailAsync("", subject, body);
+
+            subject = String.Format("Dear {0} {1}, Your order [#{2}] from {3} {4} has been successful Refunded", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID, currentOrder.Customer.FirstName, currentOrder.Customer.LastName);
+            body = String.Format("The following items from the order you have refunded has been removed from your account: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+            await EmailController.SendEmailAsync("", subject, body);
+
+            }
+            else
+            {
+            string subject = String.Format("Dear {0} {1}, Your order [#{2}] has been successful Refunded", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID);
+            string body = String.Format("The following items from the order you have refunded has been removed from your account: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+            await EmailController.SendEmailAsync("", subject, body);
+            }
             return View();
         }
 
