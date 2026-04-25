@@ -420,6 +420,32 @@ namespace G6_BevoTunes.Controllers
                     // 3. Sync the Security Stamp
                     await _userManager.UpdateSecurityStampAsync(freshUser);
                 }
+
+                if (evm.UserID == loggedInUser.Id)
+                {
+                    var result = await _userManager.ChangePasswordAsync(loggedInUser, evm.OldPassword, evm.NewPassword);
+
+                    //if the attempt to change the password worked
+                    if (result.Succeeded)
+                    {
+                        //sign in the user with the new password
+                        await _signInManager.SignInAsync(loggedInUser, isPersistent: false);
+
+                        //send the user back to the home page
+                        return RedirectToAction("Index", "Account");
+                    }
+                    else //attempt to change the password didn't work
+                    {
+                        //Add all the errors from the result to the model state
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+
+                        //send the user back to the change password page to try again
+                        return View(evm);
+                    }
+                }
             }
 
             return RedirectToAction("Index", "Account");
