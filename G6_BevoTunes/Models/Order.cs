@@ -12,7 +12,7 @@ namespace G6_BevoTunes.Models
         public AppUser Customer { get; set; }
 
         [Display(Name = "Using Card:")]
-        public CustCreditCard Card { get; set; }
+        public CustCreditCard? Card { get; set; }
 
         [Display(Name = "Recipient")]
         public AppUser Recipient { get; set; }

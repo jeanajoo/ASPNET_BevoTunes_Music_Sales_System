@@ -1,14 +1,17 @@
 @model IEnumerable<G6_BevoTunes.Models.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Order History";
 }
 
 <h1>Index</h1>
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
+    <p>
+    <a asp-action="Create">Create Order For Customer</a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -18,12 +21,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.OrderStatus)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            @if (@item.OrderStatus == OrderStatus.Ordered){
             <td>
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
@@ -31,10 +34,9 @@
                 @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
+                <a asp-action="Refund" asp-route-id="@item.OrderID">Refund</a> 
             </td>
+            }
         </tr>
 }
     </tbody>

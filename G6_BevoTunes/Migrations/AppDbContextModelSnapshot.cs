@@ -324,7 +324,7 @@ namespace G6_BevoTunes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int>("CardCustCreditCardID")
+                    b.Property<int?>("CardCustCreditCardID")
                         .HasColumnType("int");
 
                     b.Property<string>("CustomerId")
@@ -768,9 +768,7 @@ namespace G6_BevoTunes.Migrations
                 {
                     b.HasOne("G6_BevoTunes.Models.CustCreditCard", "Card")
                         .WithMany()
-                        .HasForeignKey("CardCustCreditCardID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CardCustCreditCardID");
 
                     b.HasOne("G6_BevoTunes.Models.AppUser", "Customer")
                         .WithMany("Orders")
