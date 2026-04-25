@@ -462,6 +462,9 @@ namespace G6_BevoTunes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SongId"));
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("SongImage")
                         .HasColumnType("nvarchar(max)");
 

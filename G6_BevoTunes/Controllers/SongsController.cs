@@ -110,7 +110,7 @@ namespace G6_BevoTunes.Controllers
                 {
                     var albums = await _context.Albums
                         .Where(a => selectedAlbums.Contains(a.AlbumId))
-                        .ToListAsync();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    .ToListAsync();
                     song.Albums = albums;
                 }
 
