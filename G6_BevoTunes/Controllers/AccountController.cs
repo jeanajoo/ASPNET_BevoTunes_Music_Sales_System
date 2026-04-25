@@ -75,6 +75,7 @@ namespace G6_BevoTunes.Controllers
             if (result.Succeeded) 
             {
                 await _signInManager.PasswordSignInAsync(rvm.Email, rvm.Password, false, lockoutOnFailure: false);
+                await EmailController.SendEmailAsync("", String.Format("Your account registration is successful, {0} {1}", newUser.FirstName, newUser.LastName), String.Format("Welcome to BevoTunes! This message was intended for {0}", newUser.Email));
                 return RedirectToAction("Index", "Home");
             }
             else  
@@ -309,6 +310,10 @@ namespace G6_BevoTunes.Controllers
             IdentityResult result = await Utilities.AddUser.AddUserWithRoleAsync(aum, _userManager, _context);
 
             if (result.Succeeded) {
+                if (role == "Customer")
+                {
+                    await EmailController.SendEmailAsync("", String.Format("Your account registration by an employee is successful, {0} {1}", newUser.FirstName, newUser.LastName), String.Format("Welcome to BevoTunes! This message was intended for {0}", newUser.Email));
+                }
                 return RedirectToAction(nameof(UserIndex));
             }
             

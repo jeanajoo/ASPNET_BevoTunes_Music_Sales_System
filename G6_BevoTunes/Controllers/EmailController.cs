@@ -27,7 +27,7 @@ namespace G6_BevoTunes.Controllers
         {
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("mis333ksp26group6@gmail.com", "grumble-Crisping-pushover6-Buxom-Imprint-5Scoop-3cannon-Daydream"),
+                Credentials = new NetworkCredential("mis333ksp26group6@gmail.com", "vszkqzbwszwlhghd"),
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 EnableSsl = true
             };
@@ -35,7 +35,7 @@ namespace G6_BevoTunes.Controllers
             MailMessage mail = new MailMessage
             {
                 From = new MailAddress("mis333ksp26group6@gmail.com", "BevoTunes"),
-                Subject = "[Team 6]" + subject,
+                Subject = "Team 6:  " + subject,
                 Body = body,
                 IsBodyHtml = true
             };
