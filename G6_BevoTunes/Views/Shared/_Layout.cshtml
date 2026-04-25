@@ -33,10 +33,26 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
+                            @if (User.IsInRole("Customer"))
+                            {
+                                <li>
+                                    <a asp-controller="Home" asp-action="MusicRights" class="nav-link">View Music Rights</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Orders" asp-action="Index" class="nav-link">View Orders</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Orders" asp-action="Index" class="nav-link">View Cart</a>
+                                </li>
+                            }
+
                             @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
                             {
                                 <li>
                                     <a asp-controller="Account" asp-action="UserIndex" class="nav-link">Manage Users</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Orders" asp-action="Index" class="nav-link">Manage Orders</a>
                                 </li>
                             }
                             @if (User.IsInRole("Admin"))

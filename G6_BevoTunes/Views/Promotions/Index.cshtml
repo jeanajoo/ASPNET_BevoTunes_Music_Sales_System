@@ -50,7 +50,14 @@
                     }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PromotionActive)
+                    @if (item.PromotionActive)
+                    {
+                        <button type="button" class="btn btn-success disabled">Active</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-danger disabled">Inactive</button>
+                    }
                 </td>
                 <td>
                     <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.PromotionId">Details</a>
@@ -101,7 +108,14 @@
                     @Html.DisplayFor(modelItem => item.DiscountPrice)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PromotionActive)
+                    @if (item.PromotionActive)
+                    {
+                        <button type="button" class="btn btn-success disabled">Active</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-danger disabled">Inactive</button>
+                    }
                 </td>
                 <td>
                     <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.PromotionId">Details</a>
