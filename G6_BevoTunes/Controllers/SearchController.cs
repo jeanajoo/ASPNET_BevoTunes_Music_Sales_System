@@ -92,9 +92,9 @@ namespace G6_BevoTunes.Controllers
             }
 
             // Filter by Genre; we probably have to set up the "null" or all genres value, or be lazy and set to null
-            if (asvm.Genre != 0)
+            if (asvm != null && asvm.Genres.Count > 0)
             {
-                albumQuery = albumQuery.Where(a => a.Genres.Any(g => g.GenreId == asvm.Genre && g.IsActive));
+                albumQuery = albumQuery.Where(a => a.Genres.Any(g => asvm.Genres.Contains(g.GenreId) && g.IsActive));
             }
 
             // Filter by ratings
@@ -125,7 +125,7 @@ namespace G6_BevoTunes.Controllers
         }
         
         // Song Search
-        public Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm, int[] selectedGenres, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
+        public Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
             if (!string.IsNullOrEmpty(SelectedCustomerId))
             {
@@ -150,9 +150,9 @@ namespace G6_BevoTunes.Controllers
                 songQuery = songQuery.Where(s => s.Artists.Any(ar => ar.ArtistName.Contains(ssvm.ArtistName) && ar.IsActive));
             }
 
-            if (selectedGenres != null && selectedGenres.Length > 0)
+            if (ssvm.Genres != null && ssvm.Genres.Count > 0)
             {
-                songQuery = songQuery.Where(s => s.Genres.Any(g => selectedGenres.Contains(g.GenreId)));
+                songQuery = songQuery.Where(s => s.Genres.Any(g => ssvm.Genres.Contains(g.GenreId)));
             }
 
             if (ssvm.Rating != 0.0m)
@@ -198,9 +198,9 @@ namespace G6_BevoTunes.Controllers
             }
 
             // Filter by Genre
-            if (asvm.Genre != 0)
+            if (asvm.Genres != null && asvm.Genres.Count > 0)
             {
-                artistQuery = artistQuery.Where(ar => ar.Genres.Any(g => g.GenreId == asvm.Genre && g.IsActive));
+                artistQuery = artistQuery.Where(ar => ar.Genres.Any(g => asvm.Genres.Contains(g.GenreId) && g.IsActive));
             }
 
             // Filter by ratings

@@ -311,7 +311,7 @@ namespace G6_BevoTunes.Controllers
             if (_context.Orders
                             .Include(o => o.OrderDetails)
                             .Include(o => o.Recipient)
-                            .Where(o => o.Recipient.Email == targetUser.Email)
+                            .Where(o => o.Recipient.Id == targetUser.Id)
                             .Any(o => o.OrderDetails
                                             .Any(od => od.Song != null && 
                                                                         od.Song.SongId == song.SongId)))
@@ -348,18 +348,20 @@ namespace G6_BevoTunes.Controllers
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
             }
-
-            var orderDetail = new OrderDetail
+            else
             {
-                Order = order,
-                Song = song,
-                PurchasedPrice = song.SongPrice
-            };
+                var orderDetail = new OrderDetail
+                {
+                    Order = order,
+                    Song = song,
+                    PurchasedPrice = song.SongPrice
+                };
 
-            order.OrderDetails.Add(orderDetail);
+                order.OrderDetails.Add(orderDetail);
 
-            _context.OrderDetails.Add(orderDetail);
-            await _context.SaveChangesAsync();
+                _context.OrderDetails.Add(orderDetail);
+                await _context.SaveChangesAsync();
+            }
 
             TempData["SuccessMessage"] = "Song added to cart successfully.";
             TempData["OrderId"] = order.OrderID;
@@ -451,9 +453,10 @@ namespace G6_BevoTunes.Controllers
 
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
-            }
-
-            var orderDetail = new OrderDetail
+            } else
+            {
+                
+                            var orderDetail = new OrderDetail
             {
                 Order = order,
                 Album = album,
@@ -464,6 +467,7 @@ namespace G6_BevoTunes.Controllers
 
             _context.OrderDetails.Add(orderDetail);
             await _context.SaveChangesAsync();
+            }
 
             TempData["SuccessMessage"] = "Album added to cart successfully.";
             TempData["OrderId"] = order.OrderID;
@@ -662,6 +666,7 @@ namespace G6_BevoTunes.Controllers
                     await _context.SaveChangesAsync();
 
             }
+            TempData["RecipientId"] = order.Recipient.Id;
             return View("ConfirmCheckout", order);
         }
 
@@ -902,14 +907,13 @@ namespace G6_BevoTunes.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin, Employee, Customer")]
-        public async Task<IActionResult> Confirm ()
+        public async Task<IActionResult> Confirm()
         {
-            AppUser user = await _userManager.GetUserAsync(User);
-
+            String recipientId = TempData["RecipientId"]?.ToString();
             var currentOrder = await _context.Orders.Include(o => o.Customer).Include(o => o.Recipient)
                 .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Genres)
                 .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Genres)
-                .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+                .FirstOrDefaultAsync(o => o.Customer.Id == recipientId && o.OrderStatus == OrderStatus.InCart);
 
             currentOrder.OrderDate = DateTime.Now;
             currentOrder.OrderStatus = OrderStatus.Ordered;

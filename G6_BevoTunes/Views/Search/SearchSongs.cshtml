@@ -35,7 +35,7 @@
 
             <!-- Genre Selection -->
             <div class="form-group mb-3">
-                <label asp-for="Genre" class="form-label"></label>
+                <label asp-for="Genres" class="form-label"></label>
                     @if (ViewBag.AllGenres != null)
                     {
                         @foreach (var genre in (SelectList)ViewBag.AllGenres)
@@ -53,7 +53,7 @@
                         }
                     }
                 </select>
-                <span asp-validation-for="Genre" class="text-danger"></span>
+                <span asp-validation-for="Genres" class="text-danger"></span>
             </div>
 
             <!-- Rating Filter -->
