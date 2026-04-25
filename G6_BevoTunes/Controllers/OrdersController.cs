@@ -324,6 +324,7 @@ namespace G6_BevoTunes.Controllers
                                     .Include(o => o.OrderDetails)
                                     .FirstOrDefaultAsync(o => o.Recipient.Email == targetUser.Email 
                                     && o.OrderStatus == OrderStatus.InCart);
+            
 
             if (order == null)
             {
@@ -333,7 +334,6 @@ namespace G6_BevoTunes.Controllers
                     Recipient = targetUser,
                     OrderStatus = OrderStatus.InCart,
                     OrderDate = DateTime.Now,
-                    Card = targetUser.CreditCards.FirstOrDefault()
                 };
 
                 var od = new OrderDetail
@@ -344,12 +344,6 @@ namespace G6_BevoTunes.Controllers
                 };
 
                 order.OrderDetails.Add(od);
-
-                if (order.Card == null)
-                {
-                    TempData["ErrorMessage"] = $"'{targetUser.Email}' has no credit card on file. Please add a credit card before adding items to the cart. TempData User Stored: {TempData["SelectedCustomerEmail"]}";
-                    return RedirectToAction("Index", "Search");
-                }
 
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
@@ -444,7 +438,6 @@ namespace G6_BevoTunes.Controllers
                     Recipient = targetUser,
                     OrderStatus = OrderStatus.InCart,
                     OrderDate = DateTime.Now,
-                    Card = targetUser.CreditCards.FirstOrDefault()
                 };
 
                 var od = new OrderDetail
@@ -455,12 +448,6 @@ namespace G6_BevoTunes.Controllers
                 };
 
                 order.OrderDetails.Add(od);
-
-                if (order.Card == null)
-                {
-                    TempData["ErrorMessage"] = $"'{targetUser.Email}' has no credit card on file. Please add a credit card before adding items to the cart.";
-                    return RedirectToAction("Index", "Search");
-                }
 
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
@@ -535,8 +522,6 @@ namespace G6_BevoTunes.Controllers
             //     .Where(c => c.ActiveStatus == true)
             //     .ToList();
 
-            var ordered_items = order.OrderDetails;
-
             var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
 
             var creditCardItems = credit_card.Select(c => new {
@@ -548,154 +533,154 @@ namespace G6_BevoTunes.Controllers
 
             ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
             
-            return View(ordered_items);
+            return View(order);
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Customer, Admin, Employee")]
-        public async Task<IActionResult> Checkout(int SelectedCard, CustCreditCard newCard, Order order)
-        {
-            AppUser user = await _userManager.GetUserAsync(User);
+        // [HttpPost]
+        // [Authorize(Roles = "Customer, Admin, Employee")]
+        // public async Task<IActionResult> ConfirmCheckout(int SelectedCard, CustCreditCard newCard, Order order)
+        // {
+        //     AppUser user = await _userManager.GetUserAsync(User);
 
-                var ordered_items = await _context.OrderDetails
-                    .Include(od => od.Order)
-                    .Include(od => od.Song).ThenInclude(s => s.Promotions)
-                    .Include(od => od.Album).ThenInclude(a => a.Promotions)
-                    .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
-                    .ToListAsync();
+        //         var ordered_items = await _context.OrderDetails
+        //             .Include(od => od.Order)
+        //             .Include(od => od.Song).ThenInclude(s => s.Promotions)
+        //             .Include(od => od.Album).ThenInclude(a => a.Promotions)
+        //             .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+        //             .ToListAsync();
 
-            if (SelectedCard == 0)
-            {
-                ModelState.Clear();
-                TryValidateModel(newCard);
-                ModelState.Remove("User"); 
-                ModelState.Remove("UserId");
+        //     if (SelectedCard == 0)
+        //     {
+        //         ModelState.Clear();
+        //         TryValidateModel(newCard);
+        //         ModelState.Remove("User"); 
+        //         ModelState.Remove("UserId");
 
-                if (!Enum.IsDefined(typeof(CardType), newCard.CardType))
-                {
-                    ModelState.AddModelError("newCard.CardType", "Please select a card type.");
-                }
+        //         if (!Enum.IsDefined(typeof(CardType), newCard.CardType))
+        //         {
+        //             ModelState.AddModelError("newCard.CardType", "Please select a card type.");
+        //         }
                 
-                if (user.Status != UserStatus.Active)
-                {
-                    ModelState.AddModelError("", "Buyer account is not active.");
-                }
+        //         if (user.Status != UserStatus.Active)
+        //         {
+        //             ModelState.AddModelError("", "Buyer account is not active.");
+        //         }
 
-                if (newCard.CardNumber.Length == 15)
-                {
-                    newCard.CardType = CardType.Amex;
-                } 
-                else if (newCard.CardNumber.StartsWith("54"))
-                {
-                    newCard.CardType = CardType.MasterCard;
-                }
-                else if (newCard.CardNumber.StartsWith("4"))
-                {
-                    newCard.CardType = CardType.Visa;
-                }
-                else if (newCard.CardNumber.StartsWith("6"))
-                {
-                    newCard.CardType = CardType.Discover;
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Card Type cannot be recognised");
-                }
+        //         if (newCard.CardNumber.Length == 15)
+        //         {
+        //             newCard.CardType = CardType.Amex;
+        //         } 
+        //         else if (newCard.CardNumber.StartsWith("54"))
+        //         {
+        //             newCard.CardType = CardType.MasterCard;
+        //         }
+        //         else if (newCard.CardNumber.StartsWith("4"))
+        //         {
+        //             newCard.CardType = CardType.Visa;
+        //         }
+        //         else if (newCard.CardNumber.StartsWith("6"))
+        //         {
+        //             newCard.CardType = CardType.Discover;
+        //         }
+        //         else
+        //         {
+        //             ModelState.AddModelError("", "Card Type cannot be recognised");
+        //         }
 
 
-                if (!ModelState.IsValid)
-                {
-                    var cust_card = await _context.OrderDetails.Include(od => od.Order)
-                        .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
-                        od.Order.Customer != null &&
-                        od.Order.Customer.Id == user.Id).ToListAsync();
+        //         if (!ModelState.IsValid)
+        //         {
+        //             var cust_card = await _context.OrderDetails.Include(od => od.Order)
+        //                 .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+        //                 od.Order.Customer != null &&
+        //                 od.Order.Customer.Id == user.Id).ToListAsync();
 
-                    var credit_card = cust_card
-                        .SelectMany(od => od.Order.Customer.CreditCards)
-                        .DistinctBy(c => c.CustCreditCardID)
-                        .Where(c => c.ActiveStatus == true)
-                        .ToList();
+        //             var credit_card = cust_card
+        //                 .SelectMany(od => od.Order.Customer.CreditCards)
+        //                 .DistinctBy(c => c.CustCreditCardID)
+        //                 .Where(c => c.ActiveStatus == true)
+        //                 .ToList();
 
-                    var creditCardItems = credit_card.Select(c => new {
-                        c.CustCreditCardID,
-                        Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
-                        }).ToList();
+        //             var creditCardItems = credit_card.Select(c => new {
+        //                 c.CustCreditCardID,
+        //                 Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+        //                 }).ToList();
 
-                    creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
-                    ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+        //             creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+        //             ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
 
-                    return View("Checkout", ordered_items);
-                }
-                else
-                {
-                    var tempCard = new CustCreditCard
-                    {
-                        CardNumber = newCard.CardNumber,
-                        CardType = newCard.CardType,
-                        User = user,
-                        ActiveStatus = false
-                    };
+        //             return View("Checkout", ordered_items);
+        //         }
+        //         else
+        //         {
+        //             var tempCard = new CustCreditCard
+        //             {
+        //                 CardNumber = newCard.CardNumber,
+        //                 CardType = newCard.CardType,
+        //                 User = user,
+        //                 ActiveStatus = false
+        //             };
 
-                    order.Card = tempCard;
+        //             order.Card = tempCard;
 
-                    // currentOrder.Recipient = user;
+        //             // currentOrder.Recipient = user;
 
-                    await _context.SaveChangesAsync();
-                }
-            }
-            else
-            {
-                var existingCard = await _context.CustCreditCards
-                    .FirstOrDefaultAsync(c => c.CustCreditCardID == SelectedCard);
+        //             await _context.SaveChangesAsync();
+        //         }
+        //     }
+        //     else
+        //     {
+        //         var existingCard = await _context.CustCreditCards
+        //             .FirstOrDefaultAsync(c => c.CustCreditCardID == SelectedCard);
 
-                ModelState.Clear();
+        //         ModelState.Clear();
 
-                if (existingCard == null)
-                {
-                    ModelState.AddModelError("", "Selected card not found.");
-                }
+        //         if (existingCard == null)
+        //         {
+        //             ModelState.AddModelError("", "Selected card not found.");
+        //         }
 
-                if (user.Status != UserStatus.Active)
-                {
-                    ModelState.AddModelError("", "Buyer account is not active.");
-                }
+        //         if (user.Status != UserStatus.Active)
+        //         {
+        //             ModelState.AddModelError("", "Buyer account is not active.");
+        //         }
 
-                if (!ModelState.IsValid)
-                {
-                    var cust_card = await _context.OrderDetails.Include(od => od.Order)
-                    .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
-                    od.Order.Customer != null &&
-                    od.Order.Customer.Id == user.Id).ToListAsync();
+        //         if (!ModelState.IsValid)
+        //         {
+        //             var cust_card = await _context.OrderDetails.Include(od => od.Order)
+        //             .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+        //             od.Order.Customer != null &&
+        //             od.Order.Customer.Id == user.Id).ToListAsync();
 
-                var credit_card = cust_card
-                    .SelectMany(od => od.Order.Customer.CreditCards)
-                    .DistinctBy(c => c.CustCreditCardID)
-                    .Where(c => c.ActiveStatus == true)
-                    .ToList();
+        //         var credit_card = cust_card
+        //             .SelectMany(od => od.Order.Customer.CreditCards)
+        //             .DistinctBy(c => c.CustCreditCardID)
+        //             .Where(c => c.ActiveStatus == true)
+        //             .ToList();
 
-                var creditCardItems = credit_card.Select(c => new {
-                    c.CustCreditCardID,
-                    Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
-                    }).ToList();
+        //         var creditCardItems = credit_card.Select(c => new {
+        //             c.CustCreditCardID,
+        //             Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+        //             }).ToList();
 
-                creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
-                ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+        //         creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+        //         ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
 
-                return View("Checkout", ordered_items);
+        //         return View("Checkout", ordered_items);
                 
-                }
-                // var currentOrder = await _context.Orders
-                //     .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+        //         }
+        //         // var currentOrder = await _context.Orders
+        //         //     .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
 
-                order.Card = existingCard;
+        //         order.Card = existingCard;
 
-                // currentOrder.Recipient = user;
+        //         // currentOrder.Recipient = user;
 
-                await _context.SaveChangesAsync();
-            }
+        //         await _context.SaveChangesAsync();
+        //     }
             
-            return RedirectToAction("ConfirmCheckout", "Orders", order);
-        }
+        //     return View("ConfirmCheckout", order);
+        // }
 
         [HttpGet]
         [Authorize(Roles = "Customer, Admin, Employee")]
@@ -750,7 +735,7 @@ namespace G6_BevoTunes.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin, Employee, Customer")]
-        public async Task<IActionResult> ConfirmCheckout(Order order)
+        public async Task<IActionResult> ConfirmCheckout(int? id)
         {
             // AppUser user = await _userManager.GetUserAsync(User);
 
@@ -762,6 +747,11 @@ namespace G6_BevoTunes.Controllers
             // .ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
             // .Where(o => o.OrderStatus == OrderStatus.InCart && o.Customer.Id == user.Id)
             // .ToListAsync();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
 
             Order orderdb = await _context.Orders
                         // order details with songs
@@ -776,9 +766,9 @@ namespace G6_BevoTunes.Controllers
                         .Include(o => o.Customer)
                             .ThenInclude(c => c.CreditCards)
                         .Include(o => o.Recipient)
-                        .FirstOrDefaultAsync(o => o.OrderID == order.OrderID);
+                        .FirstOrDefaultAsync(o => o.OrderID == id);
 
-            return View(order);
+            return View(orderdb);
         }
 
         [HttpGet]
