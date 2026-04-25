@@ -4,7 +4,7 @@
     ViewData["Title"] = "Order History";
 }
 
-<h1>Index</h1>
+<h1>Order History</h1>
 @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
 {
     <p>
@@ -34,7 +34,10 @@
                 @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                <a asp-action="Refund" asp-route-id="@item.OrderID">Refund</a> 
+                <a asp-action="Refund" asp-route-orderID="@item.OrderID">Refund</a> 
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.OrderID">Details</a>
             </td>
             }
         </tr>

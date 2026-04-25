@@ -1,0 +1,25 @@
+@using Microsoft.AspNetCore.Razor.Language
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model G6_BevoTunes.Models.Order
+<h3>
+    Refund Order
+</h3>
+<div>
+    <span>Are you sure you placed this order by mistake?</span>
+</div>
+<br/>
+<div>
+        <span>Yes I have Created This Order by Mistake</span>
+        <a asp-action="CancellOrder" asp-route-orderID="@Model.OrderID" class="btn btn-primary">
+            Refund Order
+        </a>
+</div>
+
+<br/>
+<div>
+        <span>No, I clicked on this as mistake</span>
+        <a asp-action="Index" class="btn btn-primary">
+            Back to Order History
+        </a>
+</div>
