@@ -82,7 +82,7 @@ namespace G6_BevoTunes.Controllers
             {
                 ModelState.AddModelError("", "Card Type cannot be recognised");
             }
-            if (_context.CustCreditCards.Where(cc => cc.User.UserName == User.Identity.Name).Count() >= 2)
+            if (_context.CustCreditCards.Where(cc => cc.User.UserName == User.Identity.Name && cc.ActiveStatus == true).Count() >= 2)
             {
                 ModelState.AddModelError("", "You have reached the maximum number of card allowed to be stored");
             }
