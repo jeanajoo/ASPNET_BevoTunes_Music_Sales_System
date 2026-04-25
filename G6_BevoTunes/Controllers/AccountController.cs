@@ -129,16 +129,27 @@ namespace G6_BevoTunes.Controllers
         }
 
         //GET: Account/Index
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             IndexViewModel ivm = new IndexViewModel();
 
-            //get user info
-            String id = User.Identity.Name;
-            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+            // 1. Get the email from the current login cookie
+            string id = User.Identity.Name;
 
-            //populate the view model
-            //(i.e. map the domain model to the view model)
+            // 2. Try to find the user in the database
+            // We use FindByNameAsync because in your setup, Email IS the UserName
+            AppUser user = await _userManager.FindByNameAsync(id);
+
+            // 3. THE GUARD: This prevents the crash
+            if (user == null)
+            {
+                // If the user isn't found, it means the cookie is out of sync.
+                // We sign them out and send them to Login to refresh the cookie.
+                await _signInManager.SignOutAsync();
+                return RedirectToAction("Login", "Account");
+            }
+
+            // 4. Now it is safe to map the properties because we know 'user' is not null
             ivm.Email = user.Email;
             ivm.HasPassword = true;
             ivm.UserID = user.Id;
@@ -149,11 +160,8 @@ namespace G6_BevoTunes.Controllers
             ivm.ZipCode = user.ZipCode;
             ivm.PhoneNumber = user.PhoneNumber;
 
-            //send data to the view
             return View(ivm);
         }
-
-
 
         //Logic for change password
         // GET: /Account/ChangePassword
@@ -368,7 +376,7 @@ namespace G6_BevoTunes.Controllers
                 userToUpdate.LastName = evm.LastName;
             }
 
-            if (User.IsInRole("Admin"))
+            if (User.IsInRole("Admin") || userToUpdate.Id == loggedInUser.Id)
             {
                 userToUpdate.Email = evm.Email;
                 userToUpdate.UserName = evm.Email; // Keep UserName in sync
@@ -380,7 +388,7 @@ namespace G6_BevoTunes.Controllers
             // userToUpdate.City = evm.City;
             // userToUpdate.State = evm.State;
 
-            // 3. Save the Profile Changes first
+            // 3. Save the Profile Changes
             var updateResult = await _userManager.UpdateAsync(userToUpdate);
             if (!updateResult.Succeeded)
             {
@@ -421,7 +429,6 @@ namespace G6_BevoTunes.Controllers
                     await _userManager.UpdateSecurityStampAsync(freshUser);
                 }
             }
-
             return RedirectToAction("Index", "Account");
         }
     }
