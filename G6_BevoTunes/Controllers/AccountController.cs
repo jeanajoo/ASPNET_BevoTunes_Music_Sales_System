@@ -269,14 +269,27 @@ namespace G6_BevoTunes.Controllers
             }
             return RedirectToAction(nameof(UserIndex));
         }
+        private static readonly string[] AllowedRoles = { "Customer", "Employee" };
+
         [Authorize(Roles = "Employee,Admin")]
-        public IActionResult CreateCustomer() => View();
+        public IActionResult CreateCustomer(string role = "Customer")
+        {
+            if (!AllowedRoles.Contains(role)) role = "Customer";
+            ViewBag.Role = role;
+            return View();
+        }
 
         [HttpPost]
         [Authorize(Roles = "Employee,Admin")]
-        public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm)
+        public async Task<IActionResult> CreateCustomer(RegisterViewModel rvm, string role = "Customer")
         {
-            if (!ModelState.IsValid) return View(rvm);
+            if (!AllowedRoles.Contains(role)) role = "Customer";
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Role = role;
+                return View(rvm);
+            }
 
             AppUser newUser = new AppUser {
                 UserName = rvm.Email,
@@ -290,7 +303,7 @@ namespace G6_BevoTunes.Controllers
             };
 
             AddUserModel aum = new AddUserModel {
-                User = newUser, Password = rvm.Password, RoleName = "Customer"
+                User = newUser, Password = rvm.Password, RoleName = role
             };
 
             IdentityResult result = await Utilities.AddUser.AddUserWithRoleAsync(aum, _userManager, _context);
@@ -300,6 +313,7 @@ namespace G6_BevoTunes.Controllers
             }
             
             foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
+            ViewBag.Role = role;
             return View(rvm);
         }
         // GET: /Account/Edit
