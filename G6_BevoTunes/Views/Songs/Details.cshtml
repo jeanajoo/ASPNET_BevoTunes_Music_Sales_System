@@ -29,11 +29,6 @@
     @if (Model.Artists != null && Model.Artists.Count > 0)
     {
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Artist Name</th>
-                </tr>
-            </thead>
             <tbody>
                 @foreach (var artist in Model.Artists)
                 {
@@ -55,11 +50,6 @@
     @if (Model.Albums != null && Model.Albums.Count > 0)
     {
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Album Name</th>
-                </tr>
-            </thead>
             <tbody>
                 @foreach (var album in Model.Albums)
                 {
