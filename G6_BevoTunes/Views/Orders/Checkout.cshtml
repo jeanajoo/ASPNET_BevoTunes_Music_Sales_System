@@ -52,7 +52,7 @@
         </div>
     }
     <div>
-        @Html.DropDownList("SelectedCard", (SelectList)ViewBag.creditCards, new { id = "cardDropdown", onchange = "toggleNewCard(this)" })
+        @Html.DropDownList(expression: "SelectedCard", (SelectList)ViewBag.creditCards, new { id = "cardDropdown", onchange = "toggleNewCard(this)" })
 
         <div id="newCardForm" style="display:none; max-width:300px;" class="mt-3">
             <div class="mb-2">
@@ -94,7 +94,7 @@
             </div>
             <br/>
             <div class="d-flex justify-content-end">
-                <a asp-action="Details" class="btn btn-secondary">
+                <a asp-action="Details" asp-route-id="@Model.FirstOrDefault()?.Order?.OrderID" class="btn btn-secondary">
                     Back to Cart
                 </a>
             </div>

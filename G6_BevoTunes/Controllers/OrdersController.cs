@@ -61,10 +61,21 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             AppUser user = await _userManager.GetUserAsync(User);
+            String selectedCustomerId = TempData["SelectedCustomerId"]?.ToString();
 
-            if (User.IsInRole("Customer"))
+            if (User.IsInRole("Customer") || ((User.IsInRole("Admin") || User.IsInRole("Employee")) && selectedCustomerId != null))
             {
-                Order? currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+                String currentCustomerId;
+                if (User.IsInRole("Customer"))
+                {
+                    currentCustomerId = user.Id;
+                }
+                else
+                {
+                    currentCustomerId = selectedCustomerId;
+                }
+
+                Order? currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == currentCustomerId && o.OrderStatus == OrderStatus.InCart);
                 
                 if (currentCart == null)
                 {
@@ -81,13 +92,13 @@ namespace G6_BevoTunes.Controllers
                     Console.WriteLine(res);
                 }
 
-                currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+                currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == currentCustomerId && o.OrderStatus == OrderStatus.InCart);
 
                 var orderDetails = await _context.OrderDetails
                 .Include(od => od.Song).ThenInclude(s => s.Promotions)
                 .Include(od => od.Album).ThenInclude(a => a.Promotions)
                 .Include(od => od.Order).ThenInclude(o => o.Customer)
-                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+                .Where(od => od.Order.Customer.Id == currentCustomerId && od.Order.OrderStatus == OrderStatus.InCart)
                 .ToListAsync();
 
                 foreach (var orderDetail in orderDetails)
@@ -104,20 +115,20 @@ namespace G6_BevoTunes.Controllers
                 .Include(od => od.Album).ThenInclude(a => a.Promotions)
                 .Include(od => od.Album).ThenInclude(a => a.Reviews)
                 .Include(od => od.Order).ThenInclude(o => o.Customer)
-                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync());
+                .Where(od => od.Order.Customer.Id == currentCustomerId && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync());
             } 
 
-            else if (User.IsInRole("Admin") || User.IsInRole("Employee")) 
-            {
-                var allOrder = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
-                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
-                .Include(od => od.Album).ThenInclude(s => s.Artists)
-                .Include(od => od.Album).ThenInclude(a => a.Promotions)
-                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
-                .ThenInclude(o => o.Customer).ToListAsync();
+            // else if (User.IsInRole("Admin") || User.IsInRole("Employee")) 
+            // {
+            //     var allOrder = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
+            //     .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
+            //     .Include(od => od.Album).ThenInclude(s => s.Artists)
+            //     .Include(od => od.Album).ThenInclude(a => a.Promotions)
+            //     .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
+            //     .ThenInclude(o => o.Customer).ToListAsync();
 
-                return View(allOrder);
-            }
+            //     return View(allOrder);
+            // }
 
             return Unauthorized();
 
@@ -252,6 +263,7 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
         public async Task<IActionResult> AddSongToCart(int? id, string customerId = null)
         {
             if (id == null)
@@ -359,10 +371,11 @@ namespace G6_BevoTunes.Controllers
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Song added to cart successfully.";
+            TempData["OrderId"] = order.OrderID;
             return RedirectToAction("Index", "Search");
         }
 
-
+        [Authorize]
         public async Task<IActionResult> AddAlbumToCart(int? id, string customerId = null)
         {
             if (id == null)
@@ -469,6 +482,7 @@ namespace G6_BevoTunes.Controllers
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Album added to cart successfully.";
+            TempData["OrderId"] = order.OrderID;
             return RedirectToAction("Index", "Search");
         }
 
@@ -481,23 +495,52 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Checkout(int id)
         {
-            AppUser user = await _userManager.GetUserAsync(User);
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            var ordered_items = await _context.OrderDetails.Include(od => od.Order)
-            .Include(od => od.Song).ThenInclude(s => s.Promotions)
-            .Include(od => od.Album).ThenInclude(a => a.Promotions)
-            .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync();
+            // AppUser user = await _userManager.GetUserAsync(User);
 
-            var cust_card = await _context.OrderDetails.Include(od => od.Order)
-            .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
-                 od.Order.Customer != null &&
-                 od.Order.Customer.Id == user.Id).ToListAsync();
+            Order order = await _context.Orders
+                                    // order details with songs
+                                    .Include(o => o.OrderDetails)
+                                    .ThenInclude(od => od.Song)
+                                    .ThenInclude(s => s.Promotions)
+                                    // order details with albums
+                                    .Include(o => o.OrderDetails)
+                                    .ThenInclude(od => od.Album)
+                                    .ThenInclude(a => a.Promotions)
+                                    .Include(o => o.Card)
+                                    .Include(o => o.Customer)
+                                    .ThenInclude(c => c.CreditCards)
+                                    .Include(o => o.Recipient)
+                                    .FirstOrDefaultAsync(o => o.OrderID == id);
+            
+            if (order == null)
+            {
+                return RedirectToAction("Index", "Search");
+            }
 
-            var credit_card = cust_card
-                .SelectMany(od => od.Order.Customer.CreditCards)
-                .DistinctBy(c => c.CustCreditCardID)
-                .Where(c => c.ActiveStatus == true)
-                .ToList();
+            // var ordered_items = await _context.OrderDetails.Include(od => od.Order)
+            // .Include(od => od.Song).ThenInclude(s => s.Promotions)
+            // .Include(od => od.Album).ThenInclude(a => a.Promotions)
+            // .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync();
+
+            // var cust_card = await _context.OrderDetails.Include(od => od.Order)
+            // .ThenInclude(o => o.Customer).ThenInclude(c => c.CreditCards).Where(od => od.Order != null &&
+            //      od.Order.Customer != null &&
+            //      od.Order.Customer.Id == user.Id).ToListAsync();
+
+            // var credit_card = cust_card
+            //     .SelectMany(od => od.Order.Customer.CreditCards)
+            //     .DistinctBy(c => c.CustCreditCardID)
+            //     .Where(c => c.ActiveStatus == true)
+            //     .ToList();
+
+            var ordered_items = order.OrderDetails;
+
+            var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
 
             var creditCardItems = credit_card.Select(c => new {
                 c.CustCreditCardID,
@@ -596,10 +639,7 @@ namespace G6_BevoTunes.Controllers
                         ActiveStatus = false
                     };
 
-                    var currentOrder = await _context.Orders
-                        .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
-
-                    currentOrder.Card = tempCard;
+                    order.Card = tempCard;
 
                     // currentOrder.Recipient = user;
 
@@ -647,17 +687,17 @@ namespace G6_BevoTunes.Controllers
                 return View("Checkout", ordered_items);
                 
                 }
-                var currentOrder = await _context.Orders
-                    .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+                // var currentOrder = await _context.Orders
+                //     .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
 
-                currentOrder.Card = existingCard;
+                order.Card = existingCard;
 
                 // currentOrder.Recipient = user;
 
                 await _context.SaveChangesAsync();
             }
             
-            return RedirectToAction("ConfirmCheckout", "Orders");
+            return RedirectToAction("ConfirmCheckout", "Orders", order);
         }
 
         [HttpGet]
@@ -713,18 +753,33 @@ namespace G6_BevoTunes.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin, Employee, Customer")]
-        public async Task<IActionResult> ConfirmCheckout()
+        public async Task<IActionResult> ConfirmCheckout(Order order)
         {
-            AppUser user = await _userManager.GetUserAsync(User);
+            // AppUser user = await _userManager.GetUserAsync(User);
 
-            var order = await _context.Orders.Include(o => o.OrderDetails)
-            .ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
-            .Include(o => o.Card) 
-            .Include(o => o.Recipient)
-            .Include(o => o.OrderDetails)
-            .ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
-            .Where(o => o.OrderStatus == OrderStatus.InCart && o.Customer.Id == user.Id)
-            .ToListAsync();
+            // var order = await _context.Orders.Include(o => o.OrderDetails)
+            // .ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
+            // .Include(o => o.Card) 
+            // .Include(o => o.Recipient)
+            // .Include(o => o.OrderDetails)
+            // .ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
+            // .Where(o => o.OrderStatus == OrderStatus.InCart && o.Customer.Id == user.Id)
+            // .ToListAsync();
+
+            Order orderdb = await _context.Orders
+                        // order details with songs
+                        .Include(o => o.OrderDetails)
+                            .ThenInclude(od => od.Song)
+                            .ThenInclude(s => s.Promotions)
+                        // order details with albums
+                        .Include(o => o.OrderDetails)
+                            .ThenInclude(od => od.Album)
+                            .ThenInclude(a => a.Promotions)
+                        .Include(o => o.Card)
+                        .Include(o => o.Customer)
+                            .ThenInclude(c => c.CreditCards)
+                        .Include(o => o.Recipient)
+                        .FirstOrDefaultAsync(o => o.OrderID == order.OrderID);
 
             return View(order);
         }

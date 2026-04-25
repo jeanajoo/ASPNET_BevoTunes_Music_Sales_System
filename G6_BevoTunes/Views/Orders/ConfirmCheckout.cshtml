@@ -1,40 +1,38 @@
 @using Microsoft.AspNetCore.Razor.Language
 @using Microsoft.CodeAnalysis.CSharp.Syntax
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
-@model IEnumerable<G6_BevoTunes.Models.Order>
+@model G6_BevoTunes.Models.Order
 
 <h3 class="fw-bold mb-1">Order Information</h3>
 
 <ul class="list-group" style="max-width: 300px;">
         <br/>
         <h5 class="fw-semibold mb-3">Your Order</h5>
-        @foreach (var item in Model)
-            {
                 <div>
                     <strong>Card Used:</strong>
-                    **** **** **** @item.Card?.CardNumber[^4..]
+                    **** **** **** @Model.Card?.CardNumber[^4..]
                 </div>
                 <div>
                     <strong>Card Type:</strong>
-                    @item.Card?.CardType
+                    @Model.Card?.CardType
                 </div>
                 <div>
                     <strong>Recipient:</strong>
-                    @item.Recipient.FirstName @item.Recipient.LastName
+                    @Model.Recipient.FirstName @Model.Recipient.LastName
                 </div>
                 <div>
                     <strong>Order Total:</strong>
-                    @item.OrderTotal.ToString("C")          
+                    @Model.OrderTotal.ToString("C")          
                 </div>
                 <br/>
-                @foreach (var detail in item.OrderDetails)
+                @foreach (var detail in Model.OrderDetails)
                 {
                     var discount = detail.Song?.Promotions?
                         .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
                         ?? detail.Album?.Promotions?
                         .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true);
 
-                    <li class="list-group-item d-flex justify-content-between">
+                    <li class="list-group-Model d-flex justify-content-between">
                         <span>
                             @if (detail.Song != null)
                             {
@@ -50,7 +48,6 @@
                         </span>
                     </li>
                 }
-            }
     </ul>
     <br/>
     <div class="d-flex justify-content-front">

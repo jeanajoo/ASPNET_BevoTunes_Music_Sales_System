@@ -261,7 +261,7 @@ namespace G6_BevoTunes.Controllers
             creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
 
             ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
-            
+
             return View(ordered_items);
         }
 
