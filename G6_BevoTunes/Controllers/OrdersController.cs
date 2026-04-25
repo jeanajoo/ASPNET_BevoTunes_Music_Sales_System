@@ -64,6 +64,24 @@ namespace G6_BevoTunes.Controllers
 
             if (User.IsInRole("Customer"))
             {
+                Order? currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+                
+                if (currentCart == null)
+                {
+                    currentCart = new Order()
+                    {
+                        Customer = user,
+                        Recipient = user,
+                        OrderStatus = OrderStatus.InCart
+                    };
+                   
+
+                    Int32 res = _context.SaveChanges();
+                    Console.WriteLine(res);
+                }
+
+                currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+
                 var orderDetails = await _context.OrderDetails
                 .Include(od => od.Song).ThenInclude(s => s.Promotions)
                 .Include(od => od.Album).ThenInclude(a => a.Promotions)
@@ -581,6 +599,9 @@ namespace G6_BevoTunes.Controllers
                         .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
 
                     currentOrder.Card = tempCard;
+
+                    // currentOrder.Recipient = user;
+
                     await _context.SaveChangesAsync();
                 }
             }
@@ -629,6 +650,9 @@ namespace G6_BevoTunes.Controllers
                     .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
 
                 currentOrder.Card = existingCard;
+
+                // currentOrder.Recipient = user;
+
                 await _context.SaveChangesAsync();
             }
             
@@ -644,7 +668,7 @@ namespace G6_BevoTunes.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Customer, Admin, Employee")]
-        public async Task<IActionResult> PurchaseAsGift (string RecipientEmail, Order order)
+        public async Task<IActionResult> PurchaseAsGift (string RecipientEmail)
         {
             AppUser user = await _userManager.GetUserAsync(User);
 
@@ -673,29 +697,29 @@ namespace G6_BevoTunes.Controllers
 
             var recipient = await _userManager.FindByEmailAsync(RecipientEmail);
 
-            if (recipient != null)
-            {
-                var currentOrder = await _context.Orders
+            var currentOrder = await _context.Orders
                     .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
 
+            if (recipient != null)
+            {
                 currentOrder.Recipient = recipient;
-                await _context.SaveChangesAsync();
-            }           
 
-            var orderdetail = await _context.OrderDetails.ToListAsync();
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToAction("Checkout", "Orders");
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin, Employee, Customer")]
-        public async Task<IActionResult> ConfirmCheckout ()
+        public async Task<IActionResult> ConfirmCheckout()
         {
             AppUser user = await _userManager.GetUserAsync(User);
 
             var order = await _context.Orders.Include(o => o.OrderDetails)
             .ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
             .Include(o => o.Card) 
+            .Include(o => o.Recipient)
             .Include(o => o.OrderDetails)
             .ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
             .Where(o => o.OrderStatus == OrderStatus.InCart && o.Customer.Id == user.Id)
