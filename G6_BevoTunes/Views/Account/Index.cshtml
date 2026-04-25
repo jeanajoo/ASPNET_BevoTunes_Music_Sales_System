@@ -21,7 +21,7 @@
         <dd class="col-sm-9">@Model.Email</dd>
 
         <dt class="col-sm-3">Phone Number:</dt>
-        <dd class="col-sm-9">@Model.PhoneNumber</dd>    
+        <dd class="col-sm-9">@Model.PhoneNumber</dd>
         <dt class="col-sm-3">Address:</dt>
         <dd class="col-sm-9">@Model.Address</dd>
         @* <dt class="col-sm-3">City:</dt>
@@ -30,19 +30,25 @@
         <dd class="col-sm-9">@Model.State</dd> *@
         <dt class="col-sm-3">Zip Code:</dt>
         <dd class="col-sm-9">@Model.ZipCode</dd>
-        
 
+        
         <dt class="col-sm-3">Account Actions:</dt>
         <dd class="col-sm-9">
             <ul class="list-unstyled">
                 <li class="mb-2">
-                    <a asp-action="Edit" asp-controller="Account" asp-route-id="@Model.UserID" class="btn btn-outline-primary">
+                    <a asp-action="Edit" asp-controller="Account" asp-route-id="@Model.UserID"
+                           class="btn btn-outline-primary">
                         Edit Profile Information
                     </a>
                 </li>
-                <li>
+                <li class="mb-2">
                     <a asp-action="ChangePassword" asp-controller="Account" class="btn btn-outline-warning">
                         Change Password
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a asp-action="Index" asp-controller="CustCreditCards" class="btn btn-outline-info">
+                        Manage Credit Cards
                     </a>
                 </li>
             </ul>

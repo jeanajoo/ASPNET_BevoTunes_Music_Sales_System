@@ -417,7 +417,7 @@ namespace G6_BevoTunes.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Account");
         }
     }
 }
