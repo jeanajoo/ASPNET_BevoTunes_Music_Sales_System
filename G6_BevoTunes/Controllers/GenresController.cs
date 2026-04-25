@@ -159,5 +159,38 @@ namespace G6_BevoTunes.Controllers
         {
             return _context.Genres.Any(e => e.GenreId == id);
         }
+
+        // GET: Genres/InactiveList - Admin only
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> InactiveList()
+        {
+            List<Genre> inactiveGenres = await _context.Genres
+                .Where(g => !g.IsActive)
+                .Include(g => g.Albums)
+                .Include(g => g.Artists)
+                .Include(g => g.Songs)
+                .ToListAsync();
+
+            return View(inactiveGenres);
+        }
+
+        // POST: Genres/Activate/5 - Admin only
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var genre = await _context.Genres.FindAsync(id);
+            if (genre == null)
+            {
+                return NotFound();
+            }
+
+            genre.IsActive = true;
+            _context.Genres.Update(genre);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"Genre '{genre.GenreName}' has been reactivated.";
+            return RedirectToAction(nameof(InactiveList));
+        }
     }
 }

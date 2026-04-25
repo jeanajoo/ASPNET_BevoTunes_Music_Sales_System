@@ -1,0 +1,61 @@
+@model IEnumerable<Genre>
+
+@{
+    ViewData["Title"] = "Inactive Genres";
+}
+
+<h1>Inactive Genres</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Index" class="btn btn-secondary">Back to Active Genres</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No inactive genres found.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Genre Name</th>
+                <th>Albums</th>
+                <th>Artists</th>
+                <th>Songs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in Model)
+            {
+                <tr>
+                    <td>@genre.GenreName</td>
+                    <td>@genre.Albums.Count</td>
+                    <td>@genre.Artists.Count</td>
+                    <td>@genre.Songs.Count</td>
+                    <td>
+                        <form asp-action="Activate" asp-route-id="@genre.GenreId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                <i class="bi bi-check-circle"></i> Reactivate
+                            </button>
+                        </form>
+                        <a asp-action="Details" asp-route-id="@genre.GenreId" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

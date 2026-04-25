@@ -1,0 +1,74 @@
+@model IEnumerable<Artist>
+
+@{
+    ViewData["Title"] = "Inactive Artists";
+}
+
+<h1>Inactive Artists</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Index" class="btn btn-secondary">Back to Active Artists</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No inactive artists found.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Artist Name</th>
+                <th>Genres</th>
+                <th>Albums</th>
+                <th>Songs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in Model)
+            {
+                <tr>
+                    <td>@artist.ArtistName</td>
+                    <td>
+                        @if (artist.Genres.Any())
+                        {
+                            @string.Join(", ", artist.Genres.Select(g => g.GenreName).Take(2))
+                            @if (artist.Genres.Count > 2)
+                            {
+                                <span>+@(artist.Genres.Count - 2) more</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">No genres</span>
+                        }
+                    </td>
+                    <td>@artist.Albums.Count</td>
+                    <td>@artist.Songs.Count</td>
+                    <td>
+                        <form asp-action="Activate" asp-route-id="@artist.ArtistId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                <i class="bi bi-check-circle"></i> Reactivate
+                            </button>
+                        </form>
+                        <a asp-action="Details" asp-route-id="@artist.ArtistId" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

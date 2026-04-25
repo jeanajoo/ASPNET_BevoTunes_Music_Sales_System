@@ -25,6 +25,7 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> Index()
         {
             List<Artist> artists = await _context.Artists
+                .Where(a => a.IsActive)
                 .Include(a => a.Genres)
                 .Include(a => a.Albums)
                 .Include(a => a.Songs)
@@ -206,7 +207,8 @@ namespace G6_BevoTunes.Controllers
             var artist = await _context.Artists.FindAsync(id);
             if (artist != null)
             {
-                _context.Artists.Remove(artist);
+                artist.IsActive = false; // Soft delete by setting IsActive to false
+                _context.Artists.Update(artist);
             }
 
             await _context.SaveChangesAsync();
@@ -224,6 +226,40 @@ namespace G6_BevoTunes.Controllers
         private bool ArtistExists(int id)
         {
             return _context.Artists.Any(e => e.ArtistId == id);
+        }
+
+        // GET: Artists/InactiveList - Admin only
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> InactiveList()
+        {
+            List<Artist> inactiveArtists = await _context.Artists
+                .Where(a => !a.IsActive)
+                .Include(a => a.Genres)
+                .Include(a => a.Albums)
+                .Include(a => a.Songs)
+                .Include(a => a.Reviews)
+                .ToListAsync();
+
+            return View(inactiveArtists);
+        }
+
+        // POST: Artists/Activate/5 - Admin only
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var artist = await _context.Artists.FindAsync(id);
+            if (artist == null)
+            {
+                return NotFound();
+            }
+
+            artist.IsActive = true;
+            _context.Artists.Update(artist);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"Artist '{artist.ArtistName}' has been reactivated.";
+            return RedirectToAction(nameof(InactiveList));
         }
     }
 }

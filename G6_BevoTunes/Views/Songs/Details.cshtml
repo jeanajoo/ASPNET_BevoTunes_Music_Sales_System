@@ -29,11 +29,6 @@
     @if (Model.Artists != null && Model.Artists.Count > 0)
     {
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Artist Name</th>
-                </tr>
-            </thead>
             <tbody>
                 @foreach (var artist in Model.Artists)
                 {
@@ -55,11 +50,6 @@
     @if (Model.Albums != null && Model.Albums.Count > 0)
     {
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Album Name</th>
-                </tr>
-            </thead>
             <tbody>
                 @foreach (var album in Model.Albums)
                 {
@@ -82,11 +72,17 @@
         <p>
             <a asp-action="Edit" asp-route-id="@Model?.SongId" class="btn btn-warning">Edit</a>
         </p>
+        <p>
+            <a asp-action="Delete" asp-route-id="@Model?.SongId" class="btn btn-warning">Delete</a>
+        </p>
     }
-    <p>
-        <a asp-controller="Orders" asp-action="AddSongToCart" asp-route-id="@Model.SongId" class="btn btn-success">
-            <i class="bi bi-cart-plus"></i> Add to Cart
-        </a>
-    </p>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+    {
+        <p>
+            <a asp-controller="Orders" asp-action="AddSongToCart" asp-route-id="@Model.SongId" class="btn btn-success">
+                <i class="bi bi-cart-plus"></i> Add to Cart
+            </a>
+        </p>
+    }
     <a asp-action="Index" class="btn btn-secondary">Back to Albums</a>
 </div>

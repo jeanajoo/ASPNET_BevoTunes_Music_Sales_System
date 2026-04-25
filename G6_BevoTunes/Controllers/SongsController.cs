@@ -24,6 +24,7 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> Index()
         {
             List<Song> songs = _context.Songs
+                                .Where(s => s.IsActive)
                                 .Include(s => s.Artists)
                                 .Include(s => s.Genres)
                                 .Include(s => s.Reviews)
@@ -241,9 +242,81 @@ namespace G6_BevoTunes.Controllers
             return View(song);
         }
 
+        
+        // GET: Artists/Delete/5
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var song = await _context.Songs
+                .FirstOrDefaultAsync(m => m.SongId == id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            return View(song);
+        }
+
+        // POST: Artists/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var song = await _context.Songs.FindAsync(id);
+            if (song != null)
+            {
+                song.IsActive = false; // Soft delete by setting IsActive to false
+                _context.Songs.Update(song);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
         private bool SongExists(int id)
         {
             return _context.Songs.Any(e => e.SongId == id);
+        }
+
+        // GET: Songs/InactiveList - Admin only
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> InactiveList()
+        {
+            List<Song> inactiveSongs = await _context.Songs
+                .Where(s => !s.IsActive)
+                .Include(s => s.Artists)
+                .Include(s => s.Genres)
+                .Include(s => s.Reviews)
+                .Include(s => s.Promotions)
+                .ToListAsync();
+
+            return View(inactiveSongs);
+        }
+
+        // POST: Songs/Activate/5 - Admin only
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var song = await _context.Songs.FindAsync(id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            song.IsActive = true;
+            _context.Songs.Update(song);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"Song '{song.SongTitle}' has been reactivated.";
+            return RedirectToAction(nameof(InactiveList));
         }
     }
 }
