@@ -290,8 +290,6 @@ namespace G6_BevoTunes.Controllers
                     ModelState.AddModelError("newCard.CardType", "Please select a card type.");
                 }
                 
-                Console.WriteLine($"CardType value: '{newCard.CardType}'");
-                Console.WriteLine($"CardType defined: {Enum.IsDefined(typeof(CardType), newCard.CardType)}");
 
                 if (!ModelState.IsValid)
                 {
