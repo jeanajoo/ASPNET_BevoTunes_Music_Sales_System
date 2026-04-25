@@ -72,7 +72,8 @@ namespace G6_BevoTunes.Controllers
                     {
                         Customer = user,
                         Recipient = user,
-                        OrderStatus = OrderStatus.InCart
+                        OrderStatus = OrderStatus.InCart,
+                        OrderDate = DateTime.Now
                     };
                    
 
