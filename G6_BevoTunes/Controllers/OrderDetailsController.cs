@@ -99,6 +99,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // GET: OrderDetails/Details/5
+        [HttpGet]
         [Authorize(Roles = "Customer, Admin, Employee")]
         public async Task<IActionResult> Details(int? id)
         {

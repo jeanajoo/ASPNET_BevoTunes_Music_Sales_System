@@ -155,29 +155,6 @@ namespace G6_BevoTunes.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<IActionResult> OrderDetails(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var orderDetail = await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists).Include(od => od.Song)
-                .ThenInclude(s => s.Reviews).Include(od => od.Song).ThenInclude(s => s.Promotions)
-                .Include(od => od.Album).ThenInclude(s => s.Artists)
-                .Include(od => od.Album).ThenInclude(a => a.Promotions)
-                .Include(od => od.Album).ThenInclude(a => a.Reviews).Include(od => od.Order)
-                .FirstOrDefaultAsync(m => m.OrderDetailID == id);
-
-            if (orderDetail == null)
-            {
-                return NotFound();
-            }
-
-            return View(orderDetail);
-        }
-
         // GET: Orders/Create
         public IActionResult Create()
         {
