@@ -25,25 +25,28 @@ namespace G6_BevoTunes.Controllers
             _userManager = userManager;
         }
 
-        private void GetPurchasePrice(OrderDetail orderDetail)
+        private void GetPurchasePrice(Order order)
         {
-            if (orderDetail.Song != null && orderDetail.Song?.Promotions!= null && orderDetail.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+            foreach(var orderDetail in order.OrderDetails)
             {
-                orderDetail.PurchasedPrice = orderDetail.Song.Promotions
-                .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
-            }
-            else if (orderDetail.Album != null && orderDetail.Album?.Promotions!= null && orderDetail.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
-            {
-                orderDetail.PurchasedPrice = orderDetail.Album.Promotions
-                .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
-            }
-            else if (orderDetail.Song != null)
-            {
-                orderDetail.PurchasedPrice = orderDetail.Song.SongPrice;
-            }
-            else if (orderDetail.Album != null)
-            {
-                orderDetail.PurchasedPrice = orderDetail.Album.AlbumPrice;
+                if (orderDetail.Song != null && orderDetail.Song?.Promotions!= null && orderDetail.Song.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+                {
+                    orderDetail.PurchasedPrice = orderDetail.Song.Promotions
+                    .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+                }
+                else if (orderDetail.Album != null && orderDetail.Album?.Promotions!= null && orderDetail.Album.Promotions.Any(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true))
+                {
+                    orderDetail.PurchasedPrice = orderDetail.Album.Promotions
+                    .First(p => p.PromotionType == PromotionType.DISCOUNT).DiscountPrice;
+                }
+                else if (orderDetail.Song != null)
+                {
+                    orderDetail.PurchasedPrice = orderDetail.Song.SongPrice;
+                }
+                else if (orderDetail.Album != null)
+                {
+                    orderDetail.PurchasedPrice = orderDetail.Album.AlbumPrice;
+                }
             }
         }
 
@@ -61,26 +64,26 @@ namespace G6_BevoTunes.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if(id != null)
-            {
-                Order order = _context.Orders.Where(o => o.OrderID == id)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Artists)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Reviews)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Artists)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Reviews)
-                .Include(o => o.OrderDetails).ThenInclude(od => od.Order).ThenInclude(o => o.Customer)
-                .FirstOrDefault();
+            // if(id != null)
+            // {
+            //     Order order = _context.Orders.Where(o => o.OrderID == id)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Artists)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Reviews)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Artists)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Reviews)
+            //     .Include(o => o.OrderDetails).ThenInclude(od => od.Order).ThenInclude(o => o.Customer)
+            //     .FirstOrDefault();
 
-                if (order == null)
-                {
-                    return NotFound();
-                }
+            //     if (order == null)
+            //     {
+            //         return NotFound();
+            //     }
                 
-                return View(order);
+            //     return View(order);
 
-            }
+            // }
 
             AppUser user = await _userManager.GetUserAsync(User);
             String selectedCustomerId = TempData["SelectedCustomerId"]?.ToString();
@@ -111,30 +114,29 @@ namespace G6_BevoTunes.Controllers
                     _context.SaveChanges();
                 }
 
-                currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == currentCustomerId && o.OrderStatus == OrderStatus.InCart);
+                
+                // var orderDetails = await _context.Orders
+                // .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
+                // .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
+                // .Include(o => o.Customer)
+                // .Where(o => o.Customer.Id == currentCustomerId && o.OrderStatus == OrderStatus.InCart)
+                // .ToListAsync();
 
-                var orderDetails = await _context.OrderDetails
-                .Include(od => od.Song).ThenInclude(s => s.Promotions)
-                .Include(od => od.Album).ThenInclude(a => a.Promotions)
-                .Include(od => od.Order).ThenInclude(o => o.Customer)
-                .Where(od => od.Order.Customer.Id == currentCustomerId && od.Order.OrderStatus == OrderStatus.InCart)
-                .ToListAsync();
+                Order order = await _context.Orders
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Artists)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Reviews)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Promotions)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Artists)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Promotions)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Reviews)
+                .Include(o => o.Customer)
+                .Where(o => o.OrderID == currentCart.OrderID).FirstAsync();
 
-                foreach (var orderDetail in orderDetails)
-                {
-                    GetPurchasePrice(orderDetail);
-                }
+                GetPurchasePrice(order);
 
                 await _context.SaveChangesAsync();
 
-                return View(await _context.OrderDetails.Include(od => od.Song).ThenInclude(s => s.Artists)
-                .Include(od => od.Song).ThenInclude(s => s.Reviews)
-                .Include(od => od.Song).ThenInclude(s => s.Promotions)
-                .Include(od => od.Album).ThenInclude(a => a.Artists)
-                .Include(od => od.Album).ThenInclude(a => a.Promotions)
-                .Include(od => od.Album).ThenInclude(a => a.Reviews)
-                .Include(od => od.Order).ThenInclude(o => o.Customer)
-                .Where(od => od.Order.Customer.Id == currentCustomerId && od.Order.OrderStatus == OrderStatus.InCart).ToListAsync());
+                return View(order);
             } 
 
             // else if (User.IsInRole("Admin") || User.IsInRole("Employee")) 

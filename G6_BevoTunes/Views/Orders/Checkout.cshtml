@@ -1,7 +1,7 @@
 @using Microsoft.AspNetCore.Razor.Language
 @using Microsoft.CodeAnalysis.CSharp.Syntax
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
-@model IEnumerable<G6_BevoTunes.Models.OrderDetail>
+@model G6_BevoTunes.Models.Order
 
 <h1>Checkout</h1>
 
@@ -11,7 +11,7 @@
 
     <ul class="list-group" style="max-width: 300px;">
         <h5>Your Order</h5>
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderDetails)
         {
             var discount = item.Song?.Promotions?
                 .FirstOrDefault(p => p.PromotionType == PromotionType.DISCOUNT && p.PromotionActive == true)
@@ -72,15 +72,15 @@
             <table class="table">
                 <tr>
                     <td><b>Subtotal</b></td>
-                    <td>@Model.FirstOrDefault()?.Order?.Subtotal.ToString("C")</td>
+                    <td>@Model.Subtotal.ToString("C")</td>
                 </tr>
                 <tr>
                     <td><b>Sales Tax</b></td>
-                    <td>@Model.FirstOrDefault()?.Order?.SalesTax.ToString("C")</td>
+                    <td>@Model.SalesTax.ToString("C")</td>
                 </tr>
                 <tr>
                     <td><b>Total</b></td>
-                    <td>@Model.FirstOrDefault()?.Order?.OrderTotal.ToString("C")</td>
+                    <td>@Model.OrderTotal.ToString("C")</td>
                 </tr>
             </table>
                 <div class="text-end">
@@ -94,13 +94,14 @@
             </div>
             <br/>
             <div class="d-flex justify-content-end">
-                <a asp-action="Details" asp-route-id="@Model.FirstOrDefault()?.Order?.OrderID" class="btn btn-secondary">
+                <a asp-action="Details" asp-route-id="@Model.OrderID" class="btn btn-secondary">
                     Back to Cart
                 </a>
             </div>
         </div>
     </div>
 </form>
+
 <script>
     function toggleNewCard(select) {
         const form = document.getElementById("newCardForm");
