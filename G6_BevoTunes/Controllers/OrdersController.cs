@@ -536,6 +536,135 @@ namespace G6_BevoTunes.Controllers
             return View(order);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Customer, Admin, Employee")]
+        public async Task<IActionResult> Checkout(int id, int SelectCard, CustCreditCard newCard)
+        {   
+            Order order = await _context.Orders
+                // order details with songs
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Song)
+                .ThenInclude(s => s.Promotions)
+                // order details with albums
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Album)
+                .ThenInclude(a => a.Promotions)
+                .Include(o => o.Card)
+                .Include(o => o.Customer)
+                .ThenInclude(c => c.CreditCards)
+                .Include(o => o.Recipient)
+                .FirstOrDefaultAsync(o => o.OrderID == id);
+
+            if (SelectCard == 0)
+            {
+                AppUser user = await _userManager.GetUserAsync(User);                        
+                ModelState.Clear();
+                TryValidateModel(newCard);
+                ModelState.Remove("User"); 
+                ModelState.Remove("UserId");
+
+                if (string.IsNullOrEmpty(newCard.CardNumber))
+                {
+                    ModelState.TryAddModelError("newCard.CardNumber", "");
+                }
+                else if (newCard.CardNumber.Length != 15 && newCard.CardNumber.Length != 16)
+                {
+                    ModelState.TryAddModelError("newCard.CardNumber", "");
+                }
+                else if (newCard.CardNumber.Length == 15)
+                {
+                    newCard.CardType = CardType.Amex;
+                }
+                else if (newCard.CardNumber.StartsWith("54"))
+                {
+                    newCard.CardType = CardType.MasterCard;
+                }
+                else if (newCard.CardNumber.StartsWith("4"))
+                {
+                    newCard.CardType = CardType.Visa;
+                }
+                else if (newCard.CardNumber.StartsWith("6"))
+                {
+                    newCard.CardType = CardType.Discover;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Card Type cannot be recognised");
+                }
+
+                if (!ModelState.IsValid)
+                {                    
+                    var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
+
+                    var creditCardItems = credit_card.Select(c => new {
+                        c.CustCreditCardID,
+                        Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                        }).ToList();
+
+                    creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+
+                    ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+
+                    return View("Checkout", order);
+                }
+                else
+                {
+                    var tempCard = new CustCreditCard
+                    {
+                        CardNumber = newCard.CardNumber,
+                        CardType = newCard.CardType,
+                        User = user,
+                        ActiveStatus = false
+                    };
+
+                    order.Card = tempCard;
+
+                    // currentOrder.Recipient = user;
+
+                    await _context.SaveChangesAsync();
+                }
+            }
+            else
+            {
+            var existingCard = await _context.CustCreditCards
+                .FirstOrDefaultAsync(c => c.CustCreditCardID == SelectCard);
+
+                ModelState.Clear();
+
+                // if (existingCard == null)
+                // {
+                //     ModelState.AddModelError("", "Selected card not found.");
+                // }
+
+                if (!ModelState.IsValid)
+                {
+                    var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
+
+                    var creditCardItems = credit_card.Select(c => new {
+                        c.CustCreditCardID,
+                        Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
+                        }).ToList();
+
+                    creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+
+                    ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
+
+                    return View("Checkout", order);
+                }
+
+                    // var currentOrder =  _context.Orders;
+                    //     .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+
+                    order.Card = existingCard;
+
+                    // currentOrder.Recipient = user;
+
+                    await _context.SaveChangesAsync();
+
+            }
+            return View("ConfirmCheckout", order);
+        }
+
         // [HttpPost]
         // [Authorize(Roles = "Customer, Admin, Employee")]
         // public async Task<IActionResult> ConfirmCheckout(int SelectedCard, CustCreditCard newCard, Order order)
@@ -730,7 +859,7 @@ namespace G6_BevoTunes.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction("Checkout", "Orders");
+            return RedirectToAction("Checkout", "Orders", new { id = currentOrder.OrderID });
         }
 
         [HttpGet]
