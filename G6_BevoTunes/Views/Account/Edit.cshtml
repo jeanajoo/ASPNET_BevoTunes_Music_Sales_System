@@ -34,13 +34,14 @@
 
     <div class="form-group">
         <label asp-for="Email" class="control-label"></label>
-        @if (User.IsInRole("Manager"))
+        @if (User.IsInRole("Admin") || isEditingSelf)
         {
             <input asp-for="Email" class="form-control" />
         }
         else
         {
             <input asp-for="Email" class="form-control" readonly />
+            <small class="text-muted">Employees cannot change customer email addresses.</small>
         }
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
