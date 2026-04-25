@@ -27,18 +27,20 @@ namespace G6_BevoTunes.Controllers
         {
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("bevotunes@gmail.com", "app-password-here"),
+                Credentials = new NetworkCredential("mis333ksp26group6@gmail.com", "grumble-Crisping-pushover6-Buxom-Imprint-5Scoop-3cannon-Daydream"),
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 EnableSsl = true
             };
 
             MailMessage mail = new MailMessage
             {
-                From = new MailAddress("bevotunes@gmail.com", "BevoTunes"),
-                Subject = subject,
+                From = new MailAddress("mis333ksp26group6@gmail.com", "BevoTunes"),
+                Subject = "[Team 6]" + subject,
                 Body = body,
                 IsBodyHtml = true
             };
+
+            mail.To.Add("mis333ksp26group6@gmail.com");
 
             foreach (var addr in toEmail.Split(',', ';', StringSplitOptions.RemoveEmptyEntries))
             {
