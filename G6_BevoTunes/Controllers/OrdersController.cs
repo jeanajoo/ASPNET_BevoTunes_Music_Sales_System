@@ -74,19 +74,15 @@ namespace G6_BevoTunes.Controllers
                         Recipient = user,
                         OrderStatus = OrderStatus.InCart
                     };
-                   
-
-                    Int32 res = _context.SaveChanges();
-                    Console.WriteLine(res);
+                    _context.Orders.Add(currentCart);
+                    _context.SaveChanges();
                 }
-
-                currentCart = _context.Orders.FirstOrDefault(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
 
                 var orderDetails = await _context.OrderDetails
                 .Include(od => od.Song).ThenInclude(s => s.Promotions)
                 .Include(od => od.Album).ThenInclude(a => a.Promotions)
                 .Include(od => od.Order).ThenInclude(o => o.Customer)
-                .Where(od => od.Order.Customer.Id == user.Id && od.Order.OrderStatus == OrderStatus.InCart)
+                .Where(od => od.Order.OrderID == currentCart.OrderID)
                 .ToListAsync();
 
                 foreach (var orderDetail in orderDetails)
