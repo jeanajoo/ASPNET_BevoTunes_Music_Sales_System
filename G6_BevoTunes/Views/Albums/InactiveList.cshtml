@@ -1,0 +1,89 @@
+@model IEnumerable<Album>
+
+@{
+    ViewData["Title"] = "Inactive Albums";
+}
+
+<h1>Inactive Albums</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Index" class="btn btn-secondary">Back to Active Albums</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No inactive albums found.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Album Name</th>
+                <th>Price</th>
+                <th>Artists</th>
+                <th>Songs</th>
+                <th>Genres</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var album in Model)
+            {
+                <tr>
+                    <td>@album.AlbumName</td>
+                    <td>@string.Format("{0:C}", album.AlbumPrice)</td>
+                    <td>
+                        @if (album.Artists.Any())
+                        {
+                            @string.Join(", ", album.Artists.Select(a => a.ArtistName).Take(2))
+                            @if (album.Artists.Count > 2)
+                            {
+                                <span>+@(album.Artists.Count - 2) more</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">No artists</span>
+                        }
+                    </td>
+                    <td>@album.Songs.Count</td>
+                    <td>
+                        @if (album.Genres.Any())
+                        {
+                            @string.Join(", ", album.Genres.Select(g => g.GenreName).Take(2))
+                            @if (album.Genres.Count > 2)
+                            {
+                                <span>+@(album.Genres.Count - 2) more</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">No genres</span>
+                        }
+                    </td>
+                    <td>
+                        <form asp-action="Activate" asp-route-id="@album.AlbumId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                <i class="bi bi-check-circle"></i> Reactivate
+                            </button>
+                        </form>
+                        <a asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

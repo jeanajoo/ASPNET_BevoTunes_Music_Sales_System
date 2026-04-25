@@ -24,6 +24,7 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> Index()
         {
             List<Album> albums = await _context.Albums
+                        .Where(a => a.IsActive) // Only show active albums
                         .Include(a => a.Artists)
                         .Include(a => a.Genres)
                         .Include(a => a.Promotions)
@@ -288,6 +289,40 @@ namespace G6_BevoTunes.Controllers
         private bool AlbumExists(int id)
         {
             return _context.Albums.Any(e => e.AlbumId == id);
+        }
+
+        // GET: Albums/InactiveList - Admin only
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> InactiveList()
+        {
+            List<Album> inactiveAlbums = await _context.Albums
+                .Where(a => !a.IsActive)
+                .Include(a => a.Artists)
+                .Include(a => a.Genres)
+                .Include(a => a.Songs)
+                .Include(a => a.Reviews)
+                .ToListAsync();
+
+            return View(inactiveAlbums);
+        }
+
+        // POST: Albums/Activate/5 - Admin only
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var album = await _context.Albums.FindAsync(id);
+            if (album == null)
+            {
+                return NotFound();
+            }
+
+            album.IsActive = true;
+            _context.Albums.Update(album);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"Album '{album.AlbumName}' has been reactivated.";
+            return RedirectToAction(nameof(InactiveList));
         }
     }
 }

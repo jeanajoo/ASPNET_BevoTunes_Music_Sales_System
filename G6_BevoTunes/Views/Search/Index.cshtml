@@ -161,11 +161,16 @@
                                                                class="btn btn-sm btn-warning me-2">
                                                             <i class="bi bi-pencil"></i> Edit
                                                         </a>
-                                                        <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId"
-                                                               class="btn btn-sm btn-info">
-                                                            <i class="bi bi-info-circle"></i> Details
+
+                                                        <a asp-controller="Songs" asp-action="Delete" asp-route-id="@song.SongId"
+                                                               class="btn btn-sm btn-danger me-2">
+                                                            <i class="bi bi-trash"></i> Delete
                                                         </a>
                                                     }
+                                                    <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId"
+                                                        class="btn btn-sm btn-info">
+                                                        <i class="bi bi-info-circle"></i> Details
+                                                    </a>
                                                 }
                                             </td>
                                         </tr>
@@ -256,6 +261,10 @@
                                                     <a asp-controller="Albums" asp-action="Edit" asp-route-id="@album.AlbumId" class="btn btn-sm btn-warning me-2">
                                                         <i class="bi bi-pencil"></i> Edit
                                                     </a>
+                                                    <a asp-controller="Albums" asp-action="Delete" asp-route-id="@album.AlbumId" class="btn btn-sm btn-danger me-2">
+                                                        <i class="bi bi-trash"></i> Delete
+                                                    </a>
+
                                                 }
                                             }
                                             <a asp-controller="Albums" asp-action="Details" asp-route-id="@album.AlbumId" class="btn btn-sm btn-info me-2">

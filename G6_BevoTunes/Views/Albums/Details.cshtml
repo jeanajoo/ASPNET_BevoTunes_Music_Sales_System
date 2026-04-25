@@ -35,7 +35,7 @@
                                 {
                                     <tr>
                                         <td>
-                                            <a asp-controller="Products" asp-action="SongDetails" asp-route-id="@song.SongId">
+                                            <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId">
                                                 @song.SongTitle
                                             </a>
                                         </td>
@@ -190,11 +190,17 @@
         <p>
             <a asp-action="Edit" asp-route-id="@Model?.AlbumId" class="btn btn-warning">Edit</a>
         </p>
+        <p>
+            <a asp-action="Delete" asp-route-id="@Model?.AlbumId" class="btn btn-warning">Delete</a>
+        </p>
     }
-    <p>
-        <a asp-controller="Orders" asp-action=""AddAlbumToCart" asp-route-id="@Model.AlbumId" class="btn btn-success">
-            <i class="bi bi-cart-plus"></i> Add to Cart
-        </a>
-    </p>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+    {
+        <p>
+            <a asp-controller="Orders" asp-action="AddAlbumToCart" asp-route-id="@Model.AlbumId" class="btn btn-success">
+                <i class="bi bi-cart-plus"></i> Add to Cart
+            </a>
+        </p>
+    }
     <a asp-action="Index" class="btn btn-secondary">Back to Albums</a>
 </div>
