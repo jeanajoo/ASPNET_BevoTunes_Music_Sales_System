@@ -55,6 +55,13 @@
                 <small class="form-text text-muted">Leave Rating blank for no rating filter</small>
             </div>
 
+            <!-- Hidden fields to preserve customer context -->
+            @if (TempData["SelectedCustomerId"] != null)
+            {
+                <input type="hidden" name="SelectedCustomerId" value="@TempData["SelectedCustomerId"]" />
+                <input type="hidden" name="SelectedCustomerEmail" value="@TempData["SelectedCustomerEmail"]" />
+            }
+
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Search Artists</button>

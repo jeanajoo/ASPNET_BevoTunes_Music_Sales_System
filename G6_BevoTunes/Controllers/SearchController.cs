@@ -67,27 +67,34 @@ namespace G6_BevoTunes.Controllers
         }
 
         // Album Search
-        public async Task<IActionResult> DisplayAlbumSearchResults(AlbumSearchViewModel asvm)
+        public async Task<IActionResult> DisplayAlbumSearchResults(AlbumSearchViewModel asvm, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
+            // Restore customer context from form values
+            if (!string.IsNullOrEmpty(SelectedCustomerId))
+            {
+                TempData["SelectedCustomerId"] = SelectedCustomerId;
+                TempData["SelectedCustomerEmail"] = SelectedCustomerEmail;
+            }
+
             var albumQuery = _context.Albums.AsQueryable();
             var artistQuery = _context.Artists.AsQueryable();
 
             // Filter by Name (applies to all)
             if (!String.IsNullOrEmpty(asvm.AlbumName))
             {
-                albumQuery = albumQuery.Where(a => a.AlbumName.Contains(asvm.AlbumName));
+                albumQuery = albumQuery.Where(a => a.AlbumName.Contains(asvm.AlbumName) && a.IsActive);
             }
 
             if (!String.IsNullOrEmpty(asvm.ArtistName))
             {
                 albumQuery = albumQuery.Where(a => a.Artists // for all artists,
-                                                .Any(ar => ar.ArtistName.Contains(asvm.ArtistName))); // the artist name contains the searched string
+                                                .Any(ar => ar.ArtistName.Contains(asvm.ArtistName) && ar.IsActive)); // the artist name contains the searched string
             }
 
             // Filter by Genre; we probably have to set up the "null" or all genres value, or be lazy and set to null
             if (asvm.Genre != 0)
             {
-                albumQuery = albumQuery.Where(a => a.Genres.Any(g => g.GenreId == asvm.Genre));
+                albumQuery = albumQuery.Where(a => a.Genres.Any(g => g.GenreId == asvm.Genre && g.IsActive));
             }
 
             // Filter by ratings
@@ -118,32 +125,39 @@ namespace G6_BevoTunes.Controllers
         }
         
         // Song Search
-        public Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm)
+        public Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
+            // Restore customer context from form values
+            if (!string.IsNullOrEmpty(SelectedCustomerId))
+            {
+                TempData["SelectedCustomerId"] = SelectedCustomerId;
+                TempData["SelectedCustomerEmail"] = SelectedCustomerEmail;
+            }
+
             var songQuery = _context.Songs.AsQueryable();
 
             // Filter by Song Title
             if (!String.IsNullOrEmpty(ssvm.SongTitle))
             {
-                songQuery = songQuery.Where(s => s.SongTitle.Contains(ssvm.SongTitle));
+                songQuery = songQuery.Where(s => s.SongTitle.Contains(ssvm.SongTitle) && s.IsActive);
             }
 
             // Filter by Album Name
             if (!String.IsNullOrEmpty(ssvm.AlbumName))
             {
-                songQuery = songQuery.Where(s => s.Albums.Any(a => a.AlbumName.Contains(ssvm.AlbumName)));
+                songQuery = songQuery.Where(s => s.Albums.Any(a => a.AlbumName.Contains(ssvm.AlbumName) && a.IsActive));
             }
 
             if (!String.IsNullOrEmpty(ssvm.ArtistName))
             {
                 songQuery = songQuery.Where(s => s.Artists // for all artists,
-                                                .Any(ar => ar.ArtistName.Contains(ssvm.ArtistName)));
+                                                .Any(ar => ar.ArtistName.Contains(ssvm.ArtistName) && ar.IsActive));
             }
 
             // Filter by Genre
             if (ssvm.Genre != 0)
             {
-                songQuery = songQuery.Where(s => s.Genres.Any(g => g.GenreId == ssvm.Genre));
+                songQuery = songQuery.Where(s => s.Genres.Any(g => g.GenreId == ssvm.Genre && g.IsActive));
             }
 
             // Filter by ratings
@@ -175,20 +189,27 @@ namespace G6_BevoTunes.Controllers
         }
 
         // Artist Search
-        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm)
+        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
+            // Restore customer context from form values
+            if (!string.IsNullOrEmpty(SelectedCustomerId))
+            {
+                TempData["SelectedCustomerId"] = SelectedCustomerId;
+                TempData["SelectedCustomerEmail"] = SelectedCustomerEmail;
+            }
+
             var artistQuery = _context.Artists.AsQueryable();
 
             // Filter by Artist Name
             if (!String.IsNullOrEmpty(asvm.ArtistName))
             {
-                artistQuery = artistQuery.Where(ar => ar.ArtistName.Contains(asvm.ArtistName));
+                artistQuery = artistQuery.Where(ar => ar.ArtistName.Contains(asvm.ArtistName) && ar.IsActive);
             }
 
             // Filter by Genre
             if (asvm.Genre != 0)
             {
-                artistQuery = artistQuery.Where(ar => ar.Genres.Any(g => g.GenreId == asvm.Genre));
+                artistQuery = artistQuery.Where(ar => ar.Genres.Any(g => g.GenreId == asvm.Genre && g.IsActive));
             }
 
             // Filter by ratings

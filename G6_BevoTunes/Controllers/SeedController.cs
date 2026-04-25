@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 //TODO: Upddate this namespace to match your project name
 namespace G6_BevoTunes.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class SeedController : Controller
     {
         private readonly AppDbContext _context;

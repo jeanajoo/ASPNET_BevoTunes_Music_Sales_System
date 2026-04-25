@@ -277,7 +277,8 @@ namespace G6_BevoTunes.Controllers
             var album = await _context.Albums.FindAsync(id);
             if (album != null)
             {
-                _context.Albums.Remove(album);
+                album.IsActive = false; // Soft delete by setting IsActive to false
+                _context.Albums.Update(album);
             }
 
             await _context.SaveChangesAsync();

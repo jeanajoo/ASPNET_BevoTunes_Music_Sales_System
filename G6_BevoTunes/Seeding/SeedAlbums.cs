@@ -29,7 +29,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Vanilla Ice Is Back! - Hip Hop Classics",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1587731556938-38755b4803a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1587731556938-38755b4803a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a1.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Vanilla Ice"));
                 a1.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Roddy Ricch"));
@@ -42,7 +43,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Shock Value",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1711054824441-064a99073a0b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1711054824441-064a99073a0b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a2.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Timbaland"));
                 a2.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -53,7 +55,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Alligator Bites Never Heal",
                     AlbumPrice = 12m,
-                    AlbumCover = "https://images.unsplash.com/photo-1598909688344-fbe5e6d4c869?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1598909688344-fbe5e6d4c869?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a3.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Doechii"));
                 a3.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -63,7 +66,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Quality Control: Control The Streets Volume 2",
                     AlbumPrice = 6m,
-                    AlbumCover = "https://images.unsplash.com/photo-1632667113863-24e85951b9d3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1632667113863-24e85951b9d3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a4.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Quality Control"));
                 a4.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -75,7 +79,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Still Rollin",
                     AlbumPrice = 15m,
-                    AlbumCover = "https://images.unsplash.com/photo-1590310182704-037fe3509ada?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1590310182704-037fe3509ada?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a5.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Shubh"));
                 a5.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Fireboy DML"));
@@ -88,7 +93,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Harder Than Ever",
                     AlbumPrice = 14m,
-                    AlbumCover = "https://images.unsplash.com/photo-1761814684971-fa0e7fd606e2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1761814684971-fa0e7fd606e2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWxidW0lMjBjb3ZlcnN8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a6.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
                 a6.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -100,7 +106,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "My Turn (Deluxe)",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579791237963-790a2d836a08?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1579791237963-790a2d836a08?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a7.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
                 a7.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -112,7 +119,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Se Voce Nao Quer Passa a Vez",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1644855640845-ab57a047320e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1644855640845-ab57a047320e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a8.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Delux"));
                 a8.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -122,7 +130,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Homework",
                     AlbumPrice = 9m,
-                    AlbumCover = "https://images.unsplash.com/photo-1737111869062-c96a5514cc08?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1737111869062-c96a5514cc08?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a9.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Daft Punk"));
                 a9.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -132,7 +141,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Nellyville",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1629923759854-156b88c433aa?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1629923759854-156b88c433aa?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a10.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Nelly"));
                 a10.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -144,7 +154,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "The Trinity",
                     AlbumPrice = 22m,
-                    AlbumCover = "https://images.unsplash.com/photo-1612982663544-54e9d6d2818d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1612982663544-54e9d6d2818d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a11.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Sean Paul"));
                 a11.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -155,7 +166,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Ela Joga na Hora",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1566424190930-2956a3735219?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1566424190930-2956a3735219?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a12.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Pogba"));
                 a12.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -166,7 +178,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Artist",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1614283868067-b4e06385bf93?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1614283868067-b4e06385bf93?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a13.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "A Boogie Wit da Hoodie"));
                 a13.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Cazzu"));
@@ -180,7 +193,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Lovin On Me",
                     AlbumPrice = 14m,
-                    AlbumCover = "https://images.unsplash.com/photo-1693434998054-2784e49ca563?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1693434998054-2784e49ca563?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a14.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jack Harlow"));
                 a14.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gunna"));
@@ -192,7 +206,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Que Se Cuide",
                     AlbumPrice = 12m,
-                    AlbumCover = "https://images.unsplash.com/photo-1517883074437-df05bd218272?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1517883074437-df05bd218272?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFsYnVtJTIwY292ZXJzfGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a15.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Luis R Conriquez"));
                 a15.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Problem Child"));
@@ -205,7 +220,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Houdini",
                     AlbumPrice = 20m,
-                    AlbumCover = "https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXJ0fGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXJ0fGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a16.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Eminem"));
                 a16.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -217,7 +233,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Bootlegs And B-Sides",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJ0fGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJ0fGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a17.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Ice Cube"));
                 a17.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -227,7 +244,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "The Game (Deluxe Remastered Version)",
                     AlbumPrice = 15m,
-                    AlbumCover = "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXJ0fGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXJ0fGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a18.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Queen"));
                 a18.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -239,7 +257,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Confrontation",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a19.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bob Marley & The Wailers"));
                 a19.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Delux"));
@@ -252,7 +271,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Culture",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXJ0fGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXJ0fGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a20.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Migos"));
                 a20.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -262,7 +282,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Si Antes Te Hubiera Conocido",
                     AlbumPrice = 21m,
-                    AlbumCover = "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXJ0fGVufDB8fDB8fHww"
+                    AlbumCover = "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXJ0fGVufDB8fDB8fHww",
+                    IsActive = true
                 };
                 a21.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "KAROL G"));
                 a21.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -273,7 +294,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Split Decision",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a22.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dave"));
                 a22.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "G:sson"));
@@ -285,7 +307,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "?",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a23.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "XXXTENTACION"));
                 a23.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -297,7 +320,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Thriller 25 Super Deluxe Edition",
                     AlbumPrice = 10m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a24.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Michael Jackson"));
                 a24.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -307,7 +331,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Lil Boat 3.5",
                     AlbumPrice = 20m,
-                    AlbumCover = "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a25.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Yachty"));
                 a25.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -318,7 +343,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Faz um Vuk Vuk (Teto Espelhado)",
                     AlbumPrice = 9m,
-                    AlbumCover = "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a26.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC Kevin o Chris"));
                 a26.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -330,7 +356,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "ATLiens",
                     AlbumPrice = 25m,
-                    AlbumCover = "https://images.unsplash.com/photo-1577084381380-3b9ea4153664?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1577084381380-3b9ea4153664?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a27.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Outkast"));
                 a27.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -341,7 +368,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Sprinter",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1548811579-017cf2a4268b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1548811579-017cf2a4268b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a28.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dave"));
                 a28.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -351,7 +379,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Uprising",
                     AlbumPrice = 22m,
-                    AlbumCover = "https://images.unsplash.com/photo-1482160549825-59d1b23cb208?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1482160549825-59d1b23cb208?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a29.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bob Marley & The Wailers"));
                 a29.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "reggae"));
@@ -362,7 +391,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "MIXTAPE PLUTO",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1533158326339-7f3cf2404354?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1533158326339-7f3cf2404354?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a30.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Future"));
                 a30.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -372,7 +402,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "One of Wun",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1602464729960-f95937746b68?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1602464729960-f95937746b68?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a31.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gunna"));
                 a31.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Cazzu"));
@@ -390,7 +421,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "nadie sabe lo que va a pasar manana",
                     AlbumPrice = 15m,
-                    AlbumCover = "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a32.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bad Bunny"));
                 a32.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -402,7 +434,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Un Verano Sin Ti",
                     AlbumPrice = 14m,
-                    AlbumCover = "https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a33.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bad Bunny"));
                 a33.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "C. Tangana"));
@@ -421,7 +454,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Doja",
                     AlbumPrice = 15m,
-                    AlbumCover = "https://images.unsplash.com/photo-1549490349-8643362247b5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1549490349-8643362247b5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a34.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Central Cee"));
                 a34.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "gaming"));
@@ -432,7 +466,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "No More Drama",
                     AlbumPrice = 19m,
-                    AlbumCover = "https://images.unsplash.com/photo-1513909894411-7d7e04c28ecd?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1513909894411-7d7e04c28ecd?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a35.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mary J. Blige"));
                 a35.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "r&b"));
@@ -443,7 +478,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "The Eminem Show",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1529154166925-574a0236a4f4?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1529154166925-574a0236a4f4?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a36.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Eminem"));
                 a36.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -455,7 +491,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Savage Mode",
                     AlbumPrice = 23m,
-                    AlbumCover = "https://images.unsplash.com/photo-1582561424760-0321d75e81fa?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1582561424760-0321d75e81fa?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a37.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "21 Savage"));
                 a37.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -466,7 +503,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "The Largest",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1576495169018-bd2414046c6b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1576495169018-bd2414046c6b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a38.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "BigXthaPlug"));
                 a38.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Chip"));
@@ -479,7 +517,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Life After Death (2014 Remastered Edition)",
                     AlbumPrice = 7m,
-                    AlbumCover = "https://images.unsplash.com/photo-1622737133809-d95047b9e673?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1622737133809-d95047b9e673?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a39.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mary J. Blige"));
                 a39.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "The Notorious B.I.G."));
@@ -493,7 +532,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Capital Punishment",
                     AlbumPrice = 7m,
-                    AlbumCover = "https://images.unsplash.com/photo-1522878308970-972ec5eedc0d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1522878308970-972ec5eedc0d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a40.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Big Pun"));
                 a40.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -503,7 +543,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Error 93",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579762715459-5a068c289fda?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579762715459-5a068c289fda?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a41.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Cazzu"));
                 a41.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -515,7 +556,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "WHO CARES?",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1581850518616-bcb8077a2336?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1581850518616-bcb8077a2336?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a42.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Rex Orange County"));
                 a42.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "rock"));
@@ -526,7 +568,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Not Like Us",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1652172264794-a83fe7c190f3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1652172264794-a83fe7c190f3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a43.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kendrick Lamar"));
                 a43.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -538,7 +581,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "4 Your Eyez Only",
                     AlbumPrice = 9m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a44.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "J. Cole"));
                 a44.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -549,7 +593,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Parade - Music from the Motion Picture Under the Cherry Moon",
                     AlbumPrice = 20m,
-                    AlbumCover = "https://images.unsplash.com/photo-1517697471339-4aa32003c11a?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njd8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1517697471339-4aa32003c11a?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njd8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a45.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Prince"));
                 a45.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "pop"));
@@ -560,7 +605,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "JUJU (feat. Shallipopi)",
                     AlbumPrice = 12m,
-                    AlbumCover = "https://images.unsplash.com/photo-1558865869-c93f6f8482af?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1558865869-c93f6f8482af?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a46.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Smur Lee"));
                 a46.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -571,7 +617,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Drip Harder",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a47.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Baby"));
                 a47.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -583,7 +630,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Black Sunday",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1578301978069-45264734cddc?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1578301978069-45264734cddc?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a48.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Cypress Hill"));
                 a48.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -594,7 +642,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Please Excuse Me for Being Antisocial",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1569759276108-31b8e7e43e7b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1569759276108-31b8e7e43e7b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a49.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Delux"));
                 a49.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Roddy Ricch"));
@@ -606,7 +655,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Jogadinha do Paqueta",
                     AlbumPrice = 14m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579783902915-f0b0de2c2eb3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579783902915-f0b0de2c2eb3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a50.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Rf"));
                 a50.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -616,7 +666,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Bumbum granada",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1611273651216-29b4f282d36b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1611273651216-29b4f282d36b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a51.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC's Zaac"));
                 a51.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -626,7 +677,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Tchikita",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1584278773680-8d940a213dcf?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1584278773680-8d940a213dcf?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a52.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jul"));
                 a52.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Perry Goldfish"));
@@ -639,7 +691,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Normally (feat. NSG)",
                     AlbumPrice = 23m,
-                    AlbumCover = "https://images.unsplash.com/photo-1556005693-00fff02f134c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzh8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1556005693-00fff02f134c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzh8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a53.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "JAE5"));
                 a53.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -649,7 +702,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Peru",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a54.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Fireboy DML"));
                 a54.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -659,7 +713,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Tu Hablas Espanhol",
                     AlbumPrice = 14m,
-                    AlbumCover = "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a55.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Migos"));
                 a55.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Delux"));
@@ -671,7 +726,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Abo Nokthula",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1554139681-1adb48e035cb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1554139681-1adb48e035cb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a56.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "TNK MusiQ"));
                 a56.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -682,7 +738,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Beyond Infinity",
                     AlbumPrice = 21m,
-                    AlbumCover = "https://images.unsplash.com/photo-1529432337323-223e988a90fb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODN8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1529432337323-223e988a90fb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODN8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a57.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Lil Frosh"));
                 a57.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -694,7 +751,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Local Mvp",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1580136579585-48a5311ee2f7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1580136579585-48a5311ee2f7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a58.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Saint"));
                 a58.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -706,7 +764,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "GOSSIP",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1578301996581-bf7caec556c0?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1578301996581-bf7caec556c0?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a59.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Killloane"));
                 a59.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -716,7 +775,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Wahala",
                     AlbumPrice = 21m,
-                    AlbumCover = "https://images.unsplash.com/photo-1747863021551-592cf32359bb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Njd8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1747863021551-592cf32359bb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Njd8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a60.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "21 Savage"));
                 a60.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Naira Marley"));
@@ -730,7 +790,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Born Wit It (Bumpa Riddim)",
                     AlbumPrice = 6m,
-                    AlbumCover = "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a61.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Alison Hinds"));
                 a61.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -740,7 +801,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Soca Soca",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a62.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC Mazzie"));
                 a62.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -751,7 +813,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Everybody Loves Ice Prince",
                     AlbumPrice = 20m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a63.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Ice Prince"));
                 a63.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Zinoleesky"));
@@ -763,7 +826,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Caesar",
                     AlbumPrice = 25m,
-                    AlbumCover = "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a64.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Inventor Ace"));
                 a64.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -773,7 +837,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Double M, Vol. 1",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a65.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Machel Montano"));
                 a65.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "low&slow"));
@@ -788,7 +853,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Shorty",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1577084381380-3b9ea4153664?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1577084381380-3b9ea4153664?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFydHxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a66.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kendrick Lamar"));
                 a66.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jerry Di"));
@@ -802,7 +868,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Talibans II",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1491466424936-e304919aada7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1491466424936-e304919aada7?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a67.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Burna Boy"));
                 a67.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -812,7 +879,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Chaque matin",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1484950763426-56b5bf172dbb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1484950763426-56b5bf172dbb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a68.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Key Largo"));
                 a68.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "HOUDI"));
@@ -827,7 +895,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "EZIOKWU",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1503327431567-3ab5e6e79140?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1503327431567-3ab5e6e79140?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a69.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "ODUMODUBLVCK"));
                 a69.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -838,7 +907,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "projection",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a70.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "love_eight"));
                 a70.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -848,7 +918,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "LA FOLIE DES GRANDEURS",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a71.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "HOUDI"));
                 a71.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -859,7 +930,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Chama o Coveiro",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1431440869543-efaf3388c585?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1431440869543-efaf3388c585?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a72.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mc Delux"));
                 a72.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -869,7 +941,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Talk Show",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a73.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Humble Francis"));
                 a73.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -879,7 +952,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "July Key",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y29vbCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    IsActive = true
                 };
                 a74.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Key Largo"));
                 a74.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -891,7 +965,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Buga (Lo Lo Lo)",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1482784160316-6eb046863ece?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1482784160316-6eb046863ece?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a75.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kizz Daniel"));
                 a75.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -903,7 +978,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Nunca Estoy",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1475598322381-f1b499717dda?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1475598322381-f1b499717dda?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a76.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "C. Tangana"));
                 a76.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -915,7 +991,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Grit & Lust",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a77.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Zinoleesky"));
                 a77.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "arabic"));
@@ -925,7 +1002,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Brut de femme",
                     AlbumPrice = 10m,
-                    AlbumCover = "https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a78.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Diam's"));
                 a78.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "electronic"));
@@ -937,7 +1015,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "The Very Best of The Dixie Cups: Chapel of Love",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1503410759647-41040b696833?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1503410759647-41040b696833?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a79.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "The Dixie Cups"));
                 a79.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "world"));
@@ -949,7 +1028,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Hey Hou",
                     AlbumPrice = 15m,
-                    AlbumCover = "https://images.unsplash.com/photo-1445264918150-66a2371142a2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1445264918150-66a2371142a2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a80.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Outkast"));
                 a80.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "DJ Guih Da ZO"));
@@ -962,7 +1042,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "La Cumbia De Carmelo",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1479030160180-b1860951d696?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1479030160180-b1860951d696?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a81.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Quality Control"));
                 a81.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "La Chanchona De Tito Mira"));
@@ -977,7 +1058,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Holiday",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a82.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Problem Child"));
                 a82.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "soca"));
@@ -989,7 +1071,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "REI DO BRASIL",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a83.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Seek"));
                 a83.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -1000,7 +1083,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Body",
                     AlbumPrice = 19m,
-                    AlbumCover = "https://images.unsplash.com/photo-1507936580189-3816b4abf640?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1507936580189-3816b4abf640?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a84.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bob Marley & The Wailers"));
                 a84.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Naira Marley"));
@@ -1014,7 +1098,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "The Evil Genius",
                     AlbumPrice = 20m,
-                    AlbumCover = "https://images.unsplash.com/photo-1507187632231-5beb21a654a2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1507187632231-5beb21a654a2?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a85.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mr Eazi"));
                 a85.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -1025,7 +1110,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Do not forget",
                     AlbumPrice = 23m,
-                    AlbumCover = "https://images.unsplash.com/photo-1459909633680-206dc5c67abb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1459909633680-206dc5c67abb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a86.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Perry Goldfish"));
                 a86.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1036,7 +1122,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Jingle Bell",
                     AlbumPrice = 6m,
-                    AlbumCover = "https://images.unsplash.com/photo-1504288145234-919e7bbc6d19?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1504288145234-919e7bbc6d19?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a87.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC Teteu"));
                 a87.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "brazilian"));
@@ -1047,7 +1134,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Khuphuka",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a88.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Royal MusiQ"));
                 a88.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "afrobeats"));
@@ -1059,7 +1147,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Static",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1443428018053-13da55589fed?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1443428018053-13da55589fed?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a89.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "2JtheRichest"));
                 a89.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -1069,7 +1158,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Milki",
                     AlbumPrice = 22m,
-                    AlbumCover = "https://images.unsplash.com/photo-1500754088824-ce0582cfe45f?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1500754088824-ce0582cfe45f?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a90.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Akapellah"));
                 a90.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -1080,7 +1170,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Colours",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a91.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kid AlpHa"));
                 a91.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -1090,7 +1181,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "LA PANTERA NEGRA",
                     AlbumPrice = 19m,
-                    AlbumCover = "https://images.unsplash.com/photo-1457327289196-f38b88d97147?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1457327289196-f38b88d97147?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a92.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Myke Towers"));
                 a92.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -1100,7 +1192,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Bar Breeze",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1500073584060-670c36a703f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1500073584060-670c36a703f1?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a93.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Hammocks & Lime"));
                 a93.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1111,7 +1204,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Unruly",
                     AlbumPrice = 10m,
-                    AlbumCover = "https://images.unsplash.com/photo-1501791187590-9ef2612ba1eb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1501791187590-9ef2612ba1eb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a94.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Olamide"));
                 a94.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "ambient"));
@@ -1121,7 +1215,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Quest for Coin II",
                     AlbumPrice = 12m,
-                    AlbumCover = "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a95.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "The Notorious B.I.G."));
                 a95.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Kid AlpHa"));
@@ -1136,7 +1231,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Made In Lagos: Deluxe Edition",
                     AlbumPrice = 23m,
-                    AlbumCover = "https://images.unsplash.com/photo-1505699261378-c372af38134c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1505699261378-c372af38134c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a96.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Wizkid"));
                 a96.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "latin"));
@@ -1147,7 +1243,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Shifting Sands",
                     AlbumPrice = 16m,
-                    AlbumCover = "https://images.unsplash.com/photo-1501696461415-6bd6660c6742?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1501696461415-6bd6660c6742?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a97.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "G:sson"));
                 a97.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1157,7 +1254,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Beam Me Up",
                     AlbumPrice = 14m,
-                    AlbumCover = "https://images.unsplash.com/photo-1490237014491-822aee911b99?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1490237014491-822aee911b99?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a98.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Daft Punk"));
                 a98.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Adam Space"));
@@ -1169,7 +1267,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Time Fragments",
                     AlbumPrice = 18m,
-                    AlbumCover = "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a99.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "LoFi Waiter"));
                 a99.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1179,7 +1278,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "PSYCHODRAMA",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a100.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dave"));
                 a100.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -1190,7 +1290,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "glow",
                     AlbumPrice = 17m,
-                    AlbumCover = "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a101.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "low&slow"));
                 a101.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1201,7 +1302,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "spring is coming",
                     AlbumPrice = 10m,
-                    AlbumCover = "https://images.unsplash.com/photo-1430876988766-1be68caef0e4?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1430876988766-1be68caef0e4?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a102.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "jaackson"));
                 a102.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "lofi"));
@@ -1211,7 +1313,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Tekky",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1441260038675-7329ab4cc264?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1441260038675-7329ab4cc264?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a103.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Chip"));
                 a103.Genres.Add(db.Genres.FirstOrDefault(g => g.GenreName == "hip-hop"));
@@ -1222,7 +1325,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Midterm Mix",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1480321182142-e77f14b9aa64?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1480321182142-e77f14b9aa64?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a104.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC Mazzie"));
                 a104.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Humble Francis"));
@@ -1282,7 +1386,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Office Hours",
                     AlbumPrice = 23m,
-                    AlbumCover = "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a105.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Ice Cube"));
                 a105.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Michael Jackson"));
@@ -1343,7 +1448,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Wireframe Weekend",
                     AlbumPrice = 12m,
-                    AlbumCover = "https://images.unsplash.com/photo-1579807851425-41def76a2f47?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1579807851425-41def76a2f47?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a106.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Timbaland"));
                 a106.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Daft Punk"));
@@ -1409,7 +1515,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Sprint 1",
                     AlbumPrice = 13m,
-                    AlbumCover = "https://images.unsplash.com/photo-1466853817435-05b43fe45b39?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1466853817435-05b43fe45b39?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a107.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Michael Jackson"));
                 a107.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "MC Kevin o Chris"));
@@ -1462,7 +1569,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "TA Sessions",
                     AlbumPrice = 10m,
-                    AlbumCover = "https://images.unsplash.com/photo-1502472584811-0a2f2feb8968?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1502472584811-0a2f2feb8968?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a108.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Luis R Conriquez"));
                 a108.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "The Notorious B.I.G."));
@@ -1524,7 +1632,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Refactor Rhapsody",
                     AlbumPrice = 25m,
-                    AlbumCover = "https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a109.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "A Boogie Wit da Hoodie"));
                 a109.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "JAE5"));
@@ -1575,7 +1684,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Diagram Dreams",
                     AlbumPrice = 24m,
-                    AlbumCover = "https://images.unsplash.com/photo-1469719847081-4757697d117a?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1469719847081-4757697d117a?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a110.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Quality Control"));
                 a110.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Mary J. Blige"));
@@ -1633,7 +1743,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Final Release",
                     AlbumPrice = 23m,
-                    AlbumCover = "https://images.unsplash.com/photo-1464254786740-b97e5420c299?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1464254786740-b97e5420c299?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a111.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Queen"));
                 a111.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Dave"));
@@ -1684,7 +1795,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Code Freeze",
                     AlbumPrice = 19m,
-                    AlbumCover = "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a112.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "21 Savage"));
                 a112.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Jerry Di"));
@@ -1725,7 +1837,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Bug Bash",
                     AlbumPrice = 11m,
-                    AlbumCover = "https://images.unsplash.com/photo-1428447207228-b396f310848b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1428447207228-b396f310848b?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a113.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Timbaland"));
                 a113.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Gunna"));
@@ -1779,7 +1892,8 @@ namespace G6_BevoTunes.Seeding
                 {
                     AlbumName = "Unit Test Utopia",
                     AlbumPrice = 8m,
-                    AlbumCover = "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D"
+                    AlbumCover = "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fGNvb2wlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D",
+                    IsActive = true
                 };
                 a114.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Bob Marley & The Wailers"));
                 a114.Artists.Add(db.Artists.FirstOrDefault(a => a.ArtistName == "Central Cee"));

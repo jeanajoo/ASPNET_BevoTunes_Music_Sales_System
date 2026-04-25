@@ -15,6 +15,8 @@ namespace G6_BevoTunes.Models
         [Display(Name = "Artist Image")]
         public string? ArtistImage { get; set; }
 
+        public Boolean IsActive { get; set; } = true;
+
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
         public List<Album> Albums { get; set; } = new List<Album>();

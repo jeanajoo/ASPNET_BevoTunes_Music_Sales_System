@@ -149,6 +149,9 @@ namespace G6_BevoTunes.Migrations
                     b.Property<decimal>("AlbumPrice")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("AlbumId");
 
                     b.ToTable("Albums");
@@ -254,6 +257,9 @@ namespace G6_BevoTunes.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("ArtistId");
 
                     b.ToTable("Artists");
@@ -301,6 +307,9 @@ namespace G6_BevoTunes.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.HasKey("GenreId");
 
@@ -452,6 +461,9 @@ namespace G6_BevoTunes.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SongId"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("SongImage")
                         .HasColumnType("nvarchar(max)");
