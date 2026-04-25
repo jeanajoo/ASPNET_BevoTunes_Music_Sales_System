@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.OrderStatus)
             </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -32,9 +35,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderStatus)
-            </td>
-            <td>
-                <a asp-action="Refund" asp-route-orderID="@item.OrderID">Refund</a> 
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrderID">Details</a>

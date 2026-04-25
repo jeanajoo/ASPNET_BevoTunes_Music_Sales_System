@@ -115,4 +115,11 @@
 </div>
 
 <br />
-<a asp-action="Index" class="btn btn-secondary">Back to Cart</a>
+@if (Model.Order.OrderStatus == OrderStatus.InCart)
+{
+    <a asp-controller="Orders" asp-action="Details" class="btn btn-secondary">Back to Cart</a>
+}
+@if (Model.Order.OrderStatus == OrderStatus.Ordered)
+{
+<a asp-controller="Orders" asp-action="Details" asp-route-id="@Model.Order.OrderID" class="btn btn-secondary">Back to Order Details</a>
+}
