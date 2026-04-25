@@ -73,7 +73,6 @@ namespace G6_BevoTunes.Controllers
                         Customer = user,
                         Recipient = user,
                         OrderStatus = OrderStatus.InCart,
-                        OrderDate = DateTime.Now
                     };
                     _context.Orders.Add(currentCart);
                     _context.SaveChanges();
@@ -729,8 +728,62 @@ namespace G6_BevoTunes.Controllers
         [Authorize(Roles = "Admin, Employee, Customer")]
         public async Task<IActionResult> Confirm ()
         {
+            AppUser user = await _userManager.GetUserAsync(User);
+
+            var currentOrder = await _context.Orders.Include(o => o.Customer).Include(o => o.Recipient)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Song)
+                .Include(o => o.OrderDetails).ThenInclude(od => od.Album)
+                .FirstOrDefaultAsync(o => o.Customer.Id == user.Id && o.OrderStatus == OrderStatus.InCart);
+
+            currentOrder.OrderDate = DateTime.Now;
+            currentOrder.OrderStatus = OrderStatus.Ordered;
+
+            await _context.SaveChangesAsync();
+
+            if (currentOrder.Customer.Id != currentOrder.Recipient.Id)
+            {
+                string subject = String.Format("Dear {0} {1}, Your order [#{2}] for {3} {4} is successful", currentOrder.Customer.FirstName, currentOrder.Customer.LastName, currentOrder.OrderID, currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName);
+                string body = String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+                await EmailController.SendEmailAsync("", subject, body);
+
+                subject = String.Format("Dear {0} {1}, You have recieved a Order [#{2}] from {3} {4}", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID,currentOrder.Customer.FirstName, currentOrder.Customer.LastName);
+                body = String.Format("This gift consist of: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+                body += "</table>";
+                await EmailController.SendEmailAsync("", subject, body);
+            }
+            else
+            {
+                string subject = String.Format("Dear {0} {1}, your purchase Order [#{2}] is successful", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID);
+                string body = String.Format("This order consist of: \n <table><tr><th>Items</th></tr>");
+                foreach (OrderDetail od in currentOrder.OrderDetails)
+                {
+                    if(od.Album != null)
+                    {
+                        body += String.Format("<tr>Album: {0}</tr>", od.Album.AlbumName);
+                    }
+                    if(od.Song != null)
+                    {
+                        body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
+                    }
+                }
+                body += "</table>";
+                await EmailController.SendEmailAsync("", subject, body);
+            }
+
             return View();
         }
+
 
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> SelectCustomer()
