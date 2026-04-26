@@ -3,18 +3,22 @@
 <div class="container">
     <h2>My Purchased Music Rights</h2>
 
-    <form asp-action="MusicRights" method="get" class="mb-4">
-        <div class="input-group">
-            <input type="text" name="searchString" class="form-control" placeholder="Search by title or artist..." />
-            <button type="submit" class="btn btn-primary">Filter</button>
+    <form asp-action="MusicRights" method="get" class="mb-3">
+        <input type="hidden" name="sortOrder" value="@ViewBag.SortOrder" />
+        <div class="input-group" style="max-width: 650px;">
+            <input type="text" name="searchString" value="@ViewBag.SearchString" 
+                class="form-control" placeholder="Search Song/Album Titles, Artists or Genre" />
+            <button type="submit" class="btn btn-dark">Search</button>
         </div>
     </form>
 
-    <p>Sort By:</p>
-    <div class="btn-group" role="group" aria-label="Basic example">
-       <a asp-action="MusicRights" asp-route-sortOrder="title" class="btn btn-primary">Title</a>
-       <a asp-action="MusicRights" asp-route-sortOrder="artist" class="btn btn-primary">Artist</a>
-       <a asp-action="MusicRights" asp-route-sortOrder="genre" class="btn btn-primary">Genre</a>
+    <div class="mb-3">
+        <a asp-action="MusicRights" asp-route-sortOrder="title" asp-route-searchString="@ViewBag.SearchString"
+        class="btn btn-outline-dark btn-sm me-1">Title</a>
+        <a asp-action="MusicRights" asp-route-sortOrder="artist" asp-route-searchString="@ViewBag.SearchString"
+        class="btn btn-outline-dark btn-sm me-1">Artist</a>
+        <a asp-action="MusicRights" asp-route-sortOrder="genre" asp-route-searchString="@ViewBag.SearchString"
+        class="btn btn-outline-dark btn-sm me-1">Genre</a>
     </div>
 
     <table class="table table-hover">

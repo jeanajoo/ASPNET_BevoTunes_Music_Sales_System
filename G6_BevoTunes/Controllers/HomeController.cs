@@ -33,6 +33,7 @@ public class HomeController : Controller
         }
         return View(hvm);
     }
+
     [Authorize]
     public async Task<IActionResult> MusicRights(string searchString, string sortOrder)
     {
@@ -95,6 +96,9 @@ public class HomeController : Controller
             default: mySongs = mySongs.OrderBy(s => s.SongTitle).ToList(); break;
         }
 
+        ViewBag.SearchString = searchString;
+        ViewBag.SortOrder = sortOrder;
+        
         return View(mySongs);
     }
 
