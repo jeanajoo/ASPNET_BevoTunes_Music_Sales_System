@@ -24,7 +24,7 @@ namespace G6_BevoTunes.Controllers
         // GET: Genres
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Genres.ToListAsync());
+            return View(await _context.Genres.Where(g => g.IsActive == true).ToListAsync());
         }
 
         // GET: Genres/Details/5
@@ -131,6 +131,7 @@ namespace G6_BevoTunes.Controllers
 
             var genre = await _context.Genres
                 .FirstOrDefaultAsync(m => m.GenreId == id);
+
             if (genre == null)
             {
                 return NotFound();
@@ -148,9 +149,11 @@ namespace G6_BevoTunes.Controllers
             var genre = await _context.Genres.FindAsync(id);
             if (genre != null)
             {
-                _context.Genres.Remove(genre);
-            }
+                genre.IsActive = false;
+                 _context.Genres.Update(genre);
 
+            }
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -166,9 +169,9 @@ namespace G6_BevoTunes.Controllers
         {
             List<Genre> inactiveGenres = await _context.Genres
                 .Where(g => !g.IsActive)
-                .Include(g => g.Albums)
-                .Include(g => g.Artists)
-                .Include(g => g.Songs)
+                // .Include(g => g.Albums)
+                // .Include(g => g.Artists)
+                // .Include(g => g.Songs)
                 .ToListAsync();
 
             return View(inactiveGenres);

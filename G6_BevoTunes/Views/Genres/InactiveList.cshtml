@@ -30,9 +30,9 @@ else
         <thead class="table-dark">
             <tr>
                 <th>Genre Name</th>
-                <th>Albums</th>
+                @* <th>Albums</th>
                 <th>Artists</th>
-                <th>Songs</th>
+                <th>Songs</th> *@
                 <th>Actions</th>
             </tr>
         </thead>
@@ -41,9 +41,9 @@ else
             {
                 <tr>
                     <td>@genre.GenreName</td>
-                    <td>@genre.Albums.Count</td>
+                    @* <td>@genre.Albums.Count</td>
                     <td>@genre.Artists.Count</td>
-                    <td>@genre.Songs.Count</td>
+                    <td>@genre.Songs.Count</td> *@
                     <td>
                         <form asp-action="Activate" asp-route-id="@genre.GenreId" method="post" style="display:inline;">
                             <button type="submit" class="btn btn-sm btn-success">
