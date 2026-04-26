@@ -24,7 +24,7 @@ namespace G6_BevoTunes.Controllers
         #region Songs
 
         // GET: Products/Songs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {   
                 if (TempData["SelectedCustomerId"] != null)
                 {
@@ -53,7 +53,7 @@ namespace G6_BevoTunes.Controllers
                 .Include(s => s.Artists)
                 .Include(s => s.Genres)
                 .Include(s => s.Albums)
-                .Include(s => s.Reviews)
+                .Include(s => s.Reviews.Where(r => r.Status == ReviewStatus.Approve))
                 .Include(s => s.Promotions)
                 .ToListAsync();
 
@@ -64,6 +64,44 @@ namespace G6_BevoTunes.Controllers
                 // .Include(a => a.Songs)
                 // .Include(a => a.Reviews)
                 .ToListAsync();
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    songs = songs.OrderByDescending(s => s.SongTitle).ToList();
+                    albums = albums.OrderByDescending(a => a.AlbumName).ToList();
+                    break;
+                
+                case "title_asc":
+                    songs = songs.OrderBy(s => s.SongTitle).ToList();
+                    albums = albums.OrderBy(a => a.AlbumName).ToList();
+                    break;
+                    
+                case "genre":
+                    songs = songs.OrderBy(s => s.Genres != null && s.Genres.Any() ? s.Genres.FirstOrDefault().GenreName : string.Empty).ToList();
+                    albums = albums.OrderBy(a => a.Genres != null && a.Genres.Any() ? a.Genres.FirstOrDefault().GenreName : string.Empty).ToList();
+                    break;
+                
+                case "genre_desc":
+                    songs = songs.OrderByDescending(s => s.Genres != null && s.Genres.Any() ? s.Genres.FirstOrDefault().GenreName : string.Empty).ToList();
+                    albums = albums.OrderByDescending(a => a.Genres != null && a.Genres.Any() ? a.Genres.FirstOrDefault().GenreName : string.Empty).ToList();
+                    break;
+                    
+                case "rating_desc":
+                    songs = songs.OrderByDescending(s => s.Reviews != null && s.Reviews.Any() ? s.Reviews.Average(r => r.Rating) : 0).ToList();
+                    albums = albums.OrderByDescending(a => a.Reviews != null && a.Reviews.Any() ? a.Reviews.Average(r => r.Rating) : 0).ToList();
+                    break;
+                
+                case "rating_asc":
+                    songs = songs.OrderBy(s => s.Reviews != null && s.Reviews.Any() ? s.Reviews.Average(r => r.Rating) : 0).ToList();
+                    albums = albums.OrderBy(a => a.Reviews != null && a.Reviews.Any() ? a.Reviews.Average(r => r.Rating) : 0).ToList();
+                    break;
+                    
+                default: // "title_asc" acts as the default fallback
+                    songs = songs.OrderBy(s => s.SongTitle).ToList();
+                    albums = albums.OrderBy(a => a.AlbumName).ToList();
+                    break;
+            }
 
             ProductsViewModel pvm = new ProductsViewModel();
 
@@ -92,7 +130,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // Album Search
-        public async Task<IActionResult> DisplayAlbumSearchResults(AlbumSearchViewModel asvm, int[] selectedGenres, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
+        public async Task<IActionResult> DisplayAlbumSearchResults(AlbumSearchViewModel asvm, int[] selectedGenres, String sortOrder, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
             if (!string.IsNullOrEmpty(SelectedCustomerId))
             {
@@ -101,6 +139,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             var albumQuery = _context.Albums.AsQueryable();
+            
             if (!string.IsNullOrEmpty(asvm.AlbumName))
             {
                 albumQuery = albumQuery.Where(a => a.AlbumName.Contains(asvm.AlbumName) && a.IsActive);
@@ -111,7 +150,6 @@ namespace G6_BevoTunes.Controllers
                 albumQuery = albumQuery.Where(a => a.Artists.Any(ar => ar.ArtistName.Contains(asvm.ArtistName) && ar.IsActive));
             }
 
-            // Filter by Genre; we probably have to set up the "null" or all genres value, or be lazy and set to null
             if (selectedGenres != null && selectedGenres.Length > 0)
             {
                 albumQuery = albumQuery.Where(a => a.Genres.Any(g => selectedGenres.Contains(g.GenreId) && g.IsActive));
@@ -129,22 +167,53 @@ namespace G6_BevoTunes.Controllers
                 }
             }
 
-            var results = albumQuery
-                            .Include(s => s.Artists)
-                            .Include(s => s.Genres)
-                            // .Include(s => s.Songs)
-                            .Include(s => s.Reviews)
-                            .Include(s => s.Promotions)
-                            .ToList();
+            // Apply Sorting
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    albumQuery = albumQuery.OrderByDescending(a => a.AlbumName);
+                    break;
+                case "genre_asc":
+                    albumQuery = albumQuery.OrderBy(a => a.Genres.Any() ? a.Genres.FirstOrDefault().GenreName : string.Empty);
+                    break;
+                case "genre_desc":
+                    albumQuery = albumQuery.OrderByDescending(a => a.Genres.Any() ? a.Genres.FirstOrDefault().GenreName : string.Empty);
+                    break;
+                case "rating_desc":
+                    albumQuery = albumQuery.OrderByDescending(a => a.Reviews.Any() ? a.Reviews.Average(r => r.Rating) : 0);
+                    break;
+                case "rating_asc":
+                    albumQuery = albumQuery.OrderBy(a => a.Reviews.Any() ? a.Reviews.Average(r => r.Rating) : 0);
+                    break;
+                case "title_asc": 
+                default: // Default fallback is Title A-Z
+                    albumQuery = albumQuery.OrderBy(a => a.AlbumName);
+                    break;
+            }
+
+            var results = await albumQuery
+                            .Include(a => a.Artists)
+                            .Include(a => a.Genres)
+                            .Include(a => a.Reviews.Where(r => r.Status == ReviewStatus.Approve))
+                            .Include(a => a.Promotions)
+                            .ToListAsync();
 
             ProductsViewModel pvm = new ProductsViewModel { Albums = results };
+
+            // Save state to ViewBag
+            ViewBag.SearchAlbumName = asvm.AlbumName;
+            ViewBag.SearchArtistName = asvm.ArtistName;
+            ViewBag.SearchRating = asvm.Rating;
+            ViewBag.SearchRatingBound = asvm.RatingBound;
+            ViewBag.CurrentGenres = selectedGenres;
+            ViewBag.CurrentAction = "DisplayAlbumSearchResults"; // Tells the Index view where to post back to!
 
             TempData["DisplayAlbumsMessage"] = "Displaying " + results.Count() + " of " + _context.Albums.Count() + " albums";
             return View("Index", pvm);
         }
-        
+
         // Song Search
-        public Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm, int[] selectedGenres, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
+        public async Task<IActionResult> DisplaySongSearchResults(SongSearchViewModel ssvm, int[] selectedGenres, String sortOrder, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
             if (!string.IsNullOrEmpty(SelectedCustomerId))
             {
@@ -185,22 +254,55 @@ namespace G6_BevoTunes.Controllers
                     songQuery = songQuery.Where(s => s.Reviews.Any() && (decimal)s.Reviews.Average(r => r.Rating) <= ssvm.Rating);
                 }
             }
-            var results = songQuery
+
+            // Expanded Sorting Logic
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    songQuery = songQuery.OrderByDescending(s => s.SongTitle);
+                    break;
+                case "genre_asc":
+                    songQuery = songQuery.OrderBy(s => s.Genres.Any() ? s.Genres.FirstOrDefault().GenreName : string.Empty);
+                    break;
+                case "genre_desc":
+                    songQuery = songQuery.OrderByDescending(s => s.Genres.Any() ? s.Genres.FirstOrDefault().GenreName : string.Empty);
+                    break;
+                case "rating_desc":
+                    songQuery = songQuery.OrderByDescending(s => s.Reviews.Any() ? s.Reviews.Average(r => r.Rating) : 0);
+                    break;
+                case "rating_asc":
+                    songQuery = songQuery.OrderBy(s => s.Reviews.Any() ? s.Reviews.Average(r => r.Rating) : 0);
+                    break;
+                case "title_asc": 
+                default: // Default fallback is Title A-Z
+                    songQuery = songQuery.OrderBy(s => s.SongTitle);
+                    break;
+            }
+
+            var results = await songQuery
                             .Include(s => s.Artists)
                             .Include(s => s.Genres)
-                            // .Include(s => s.Albums)
-                            .Include(s => s.Reviews)
+                            .Include(s => s.Reviews.Where(r => r.Status == ReviewStatus.Approve))
                             .Include(s => s.Promotions)
-                            .ToList();
+                            .ToListAsync();
 
             ProductsViewModel pvm = new ProductsViewModel { Songs = results };
 
+            // Save state to ViewBag
+            ViewBag.SearchSongTitle = ssvm.SongTitle;
+            ViewBag.SearchAlbumName = ssvm.AlbumName;
+            ViewBag.SearchArtistName = ssvm.ArtistName;
+            ViewBag.SearchRating = ssvm.Rating;
+            ViewBag.SearchRatingBound = ssvm.RatingBound;
+            ViewBag.CurrentGenres = selectedGenres;
+            ViewBag.CurrentAction = "DisplaySongSearchResults"; // Tells the Index view where to post back to!
+
             TempData["DisplaySongsMessage"] = "Displaying " + results.Count() + " of " + _context.Songs.Count() + " songs";
-            return Task.FromResult<IActionResult>(View("Index", pvm));
-        }
+            return View("Index", pvm);
+        }   
 
         // Artist Search
-        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm, int[] selectedGenres, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
+        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm, int[] selectedGenres,  String sortOrder, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
             // Restore customer context from form values
             if (!string.IsNullOrEmpty(SelectedCustomerId))
@@ -236,14 +338,43 @@ namespace G6_BevoTunes.Controllers
                 }
             }
 
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    artistQuery = artistQuery.OrderByDescending(a => a.ArtistName);
+                    break;
+                
+                case "title_asc":
+                    artistQuery = artistQuery.OrderBy(a => a.ArtistName);
+                    break;
+                    
+                case "rating_desc":
+                    artistQuery = artistQuery.OrderByDescending(a => a.Reviews.Any() ? a.Reviews.Average(r => r.Rating) : 0);
+                    break;
+                
+                case "rating_asc":
+                    artistQuery = artistQuery.OrderBy(a => a.Reviews.Any() ? a.Reviews.Average(r => r.Rating) : 0);
+                    break;
+                    
+                default: // "title_asc" acts as the default fallback
+                    artistQuery = artistQuery.OrderBy(a => a.ArtistName);
+                    break;
+            }
+
             // Execute query
             var results = await artistQuery
                             .Include(ar => ar.Genres)
                             .Include(ar => ar.Albums)
                             .Include(ar => ar.Songs)
-                            .Include(ar => ar.Reviews)
+                            .Include(ar => ar.Reviews.Where(r => r.Status == ReviewStatus.Approve))
                             .ToListAsync();
 
+            ViewBag.SearchName = asvm.ArtistName;
+            ViewBag.SearchRating = asvm.Rating;
+            ViewBag.SearchRatingBound = asvm.RatingBound;
+            ViewBag.CurrentGenres = selectedGenres;
+            ViewBag.SelectedCustomerId = SelectedCustomerId;
+            ViewBag.SelectedCustomerEmail = SelectedCustomerEmail;
             TempData["DisplayArtistsMessage"] = "Displaying " + results.Count() + " of " + _context.Artists.Count() + " artists";
             return View("ArtistSearchResults", results);
         }

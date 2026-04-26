@@ -39,13 +39,22 @@ namespace G6_BevoTunes.Models
         {
             get
             {
-                if (Reviews.Count == 0)
+                // Safety check just in case the collection wasn't initialized
+                if (Reviews == null)
                 {
                     return -1.0m;
                 }
-                return Decimal.Parse(Reviews.Where(r => r.Status == ReviewStatus.Approve).Average(r => r.Rating).ToString());;
+                var approvedReviews = Reviews.Where(r => r.Status == ReviewStatus.Approve);
+                if (!approvedReviews.Any())
+                {
+                    return -1.0m;
+                } 
+                else
+                {
+                    // 3. Safely calculate the average
+                    return (decimal)approvedReviews.Average(r => r.Rating);
+                }
             }
-        
         }
     }
 }
