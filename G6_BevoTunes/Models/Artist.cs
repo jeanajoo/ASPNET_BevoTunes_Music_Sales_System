@@ -26,5 +26,19 @@ namespace G6_BevoTunes.Models
         public List<Review> Reviews { get; set; } = new List<Review>();
 
         public List<Promotion> Promotions { get; set; } = new List<Promotion>();
+
+        [Display(Name = "Average Rating")]
+        public Decimal AverageRating 
+        {
+            get
+            {
+                if (Reviews.Count == 0)
+                {
+                    return -1.0m;
+                }
+                return Decimal.Parse(Reviews.Where(r => r.Status == ReviewStatus.Approve).Average(r => r.Rating).ToString());;
+            }
+        
+        }
     }
 }

@@ -66,6 +66,17 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
+        // Set initial product type if one was pre-selected from a detail page
+        @if (!string.IsNullOrEmpty(ViewBag.SelectedProductType))
+        {
+            <text>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("productType").value = "@ViewBag.SelectedProductType";
+                document.getElementById("productType").dispatchEvent(new Event("change"));
+            });
+            </text>
+        }
+
         document.getElementById("productType").addEventListener("change", function () {
             let type = this.value;
 
