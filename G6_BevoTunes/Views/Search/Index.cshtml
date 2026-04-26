@@ -1,3 +1,5 @@
+@using Microsoft.AspNetCore.Razor.Language
+@using System.Runtime.CompilerServices
 @model G6_BevoTunes.Models.ProductsViewModel
 
 @{
@@ -115,7 +117,14 @@
                                                 <strong>@song.SongTitle</strong>
                                             </td>
                                             <td>
-                                                @string.Format("{0:C}", song.SongPrice)
+                                                @if (song.Promotions != null && (song.Promotions.Where(p => p.PromotionActive && p.PromotionType == PromotionType.DISCOUNT).Count() > 0))
+                                                {
+                                                    @string.Format("{0:C}", song.Promotions.Where(p => p.PromotionActive && p.PromotionType == PromotionType.DISCOUNT).First().DiscountPrice)
+                                                }
+                                                else
+                                                {
+                                                    @string.Format("{0:C}", song.SongPrice)
+                                                }
                                             </td>
                                             <td>
                                                 @if (song.Artists != null && song.Artists.Any())
@@ -234,9 +243,18 @@
                                             <h5 class="card-title">@album.AlbumName</h5>
 
                                             <div class="mb-2">
-                                                <p class="card-text text-muted">
+                                                @if (album.Promotions != null && (album.Promotions.Where(p => p.PromotionActive && p.PromotionType == PromotionType.DISCOUNT).Count() > 0))
+                                                {
+                                                    <p class="card-text text-muted">
+                                                    <strong>Price:</strong> @string.Format("{0:C}", album.Promotions.Where(p => p.PromotionActive && p.PromotionType == PromotionType.DISCOUNT).First().DiscountPrice)
+                                                    </p>
+                                                }
+                                                else
+                                                {   
+                                                    <p class="card-text text-muted">
                                                     <strong>Price:</strong> @string.Format("{0:C}", album.AlbumPrice)
-                                                </p>
+                                                    </p>
+                                                }
                                             </div>
 
                                             @if (album.Artists != null && album.Artists.Any())
