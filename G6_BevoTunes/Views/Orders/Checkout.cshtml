@@ -84,11 +84,14 @@
                     <td>@Model.OrderTotal.ToString("C")</td>
                 </tr>
             </table>
+            @if (User.IsInRole("Customer"))
+            {
                 <div class="text-end">
                     <a asp-action="PurchaseAsGift" class="btn btn-primary">
                         Purchase as a Gift
                     </a>
                 </div>
+            }
             <br/>
                 <div class="text-end">
                     <button type="submit" class="btn btn-primary">Confirm Order</button>

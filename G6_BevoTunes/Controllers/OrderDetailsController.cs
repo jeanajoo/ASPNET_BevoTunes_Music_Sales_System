@@ -208,7 +208,10 @@ namespace G6_BevoTunes.Controllers
             }
 
             var orderDetail = await _context.OrderDetails
+                .Include(od => od.Order).Include(od => od.Song)
+                .Include(od => od.Album)
                 .FirstOrDefaultAsync(m => m.OrderDetailID == id);
+
             if (orderDetail == null)
             {
                 return NotFound();
@@ -223,14 +226,21 @@ namespace G6_BevoTunes.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var orderDetail = await _context.OrderDetails.FindAsync(id);
+            var orderDetail = await _context.OrderDetails
+                .Include(od => od.Order).Include(od => od.Song)
+                .Include(od => od.Album)
+                .FirstOrDefaultAsync(od => od.OrderDetailID == id);
+
+            int orderId = 0;
+
             if (orderDetail != null)
             {
+                 orderId = orderDetail.Order.OrderID;
                 _context.OrderDetails.Remove(orderDetail);
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Orders", new { id = orderId });
         }
 
         [HttpGet]
