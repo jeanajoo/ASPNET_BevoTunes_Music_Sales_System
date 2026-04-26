@@ -998,6 +998,7 @@ namespace G6_BevoTunes.Controllers
                 string subject = String.Format("Dear {0} {1}, Your order [#{2}] for {3} {4} is successful", currentOrder.Customer.FirstName, currentOrder.Customer.LastName, currentOrder.OrderID, currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName);
                 string body = String.Format("This message was intended for {0}", currentOrder.Customer.Email);
                 body += String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+                body += String.Format("If this order was made by mistake, you can refund here. https://sp26bevotunesgroup6.azurewebsites.net/Orders/Refund/?orderID={0}", currentOrder.OrderID);
                 await EmailController.SendEmailAsync("", subject, body);
 
                 subject = String.Format("Dear {0} {1}, You have recieved a Order [#{2}] from {3} {4}", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID,currentOrder.Customer.FirstName, currentOrder.Customer.LastName);
@@ -1056,6 +1057,8 @@ namespace G6_BevoTunes.Controllers
                     body += String.Format("song: {0} that may interest you.", recommend_song.SongTitle);
                 }
                 body += String.Format("This message was intended for {0}", currentOrder.Recipient.Email);
+
+                body += String.Format("If this order was made by mistake, you can refund here. https://sp26bevotunesgroup6.azurewebsites.net/Orders/Refund/?orderID={0}", currentOrder.OrderID);
 
                 await EmailController.SendEmailAsync("", subject, body);
             }

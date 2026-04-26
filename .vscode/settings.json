@@ -1,0 +1,4 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "G6_BevoTunes/bin/Release/net10.0/publish"
+}
