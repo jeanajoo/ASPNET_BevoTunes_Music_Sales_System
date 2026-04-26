@@ -117,7 +117,7 @@ namespace G6_BevoTunes.Controllers
 
                 _context.Add(song);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Search");
             }
 
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
@@ -230,7 +230,7 @@ namespace G6_BevoTunes.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Search");
             }
 
             ViewBag.Artists = new SelectList(await _context.Artists.ToListAsync(), "ArtistId", "ArtistName");
@@ -276,7 +276,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Search");
         }
 
 

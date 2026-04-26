@@ -579,6 +579,10 @@ namespace G6_BevoTunes.Controllers
                 {
                     ModelState.TryAddModelError("newCard.CardNumber", "");
                 }
+                else if(order.Customer.Status != UserStatus.Active )
+                {
+                    ModelState.AddModelError("", "Your account is in a disabled state, you cannot checkout");
+                }
                 else if (newCard.CardNumber.Length != 15 && newCard.CardNumber.Length != 16)
                 {
                     ModelState.TryAddModelError("newCard.CardNumber", "");
@@ -599,6 +603,7 @@ namespace G6_BevoTunes.Controllers
                 {
                     newCard.CardType = CardType.Discover;
                 }
+
                 else
                 {
                     ModelState.AddModelError("", "Card Type cannot be recognised");
@@ -658,6 +663,11 @@ namespace G6_BevoTunes.Controllers
                 {
                     ModelState.AddModelError("", "There is not a valid Card entry");
                 }
+                else if(order.Customer.Status != UserStatus.Active )
+                {
+                    ModelState.AddModelError("", "Your account is in a disabled state, you cannot checkout");
+                }
+                
                 if (!ModelState.IsValid)
                 {
                     var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
