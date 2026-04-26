@@ -267,16 +267,17 @@ namespace G6_BevoTunes.Controllers
                 return NotFound();
             }
 
-            return View("Index");
+            return View(album);
         }
 
         // POST: Products/DeleteAlbum/5
-        [HttpPost, ActionName("DeleteAlbum")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var album = await _context.Albums.FindAsync(id);
+
             if (album != null)
             {
                 album.IsActive = false; // Soft delete by setting IsActive to false
@@ -284,6 +285,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             await _context.SaveChangesAsync();
+
             return RedirectToAction("Index", "Search");
         }
 

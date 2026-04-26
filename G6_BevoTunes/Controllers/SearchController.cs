@@ -55,12 +55,14 @@ namespace G6_BevoTunes.Controllers
                 .Include(s => s.Albums)
                 .Include(s => s.Reviews)
                 .Include(s => s.Promotions)
+                .Where(s => s.IsActive == true)
                 .ToListAsync();
 
             List<Album> albums = await _context.Albums
                 .Include(a => a.Artists)
                 .Include(a => a.Genres)
                 .Include(a => a.Promotions)
+                .Where(a => a.IsActive == true)
                 // .Include(a => a.Songs)
                 // .Include(a => a.Reviews)
                 .ToListAsync();
