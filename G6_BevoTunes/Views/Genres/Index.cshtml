@@ -31,6 +31,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.GenreId" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.GenreId" class="btn btn-danger">Delete</a>
                     }
                 </td>
             </tr>

@@ -149,19 +149,37 @@ namespace G6_BevoTunes.Controllers
             return ownSongsArtists.Union(ownAlbumsArtists).ToList();
         }
 
+        private bool OwnsSong(AppUser user, int songId)
+        {
+            if (user == null)
+                return false;
+            return GetOwnedSongs(user).Any(s => s.SongId == songId) || GetOwnedAlbumSongs(user).Any(s => s.SongId == songId);
+        }
+
+        private bool OwnsAlbum(AppUser user, int albumId)
+        {
+            if (user == null)
+                return false;
+            return GetOwnedAlbums(user).Any(a => a.AlbumId == albumId);
+        }
+
+        private bool OwnsArtist(AppUser user, int artistId)
+        {
+            if (user == null)
+                return false;
+            return GetOwnedArtists(user).Any(a => a.ArtistId == artistId);
+        }
+
         // GET: Reviews/Create
         [Authorize(Roles = "Customer")]
-        public IActionResult Create()
+        public IActionResult Create(int? songId, int? albumId, int? artistId)
         {
             AppUser user = _userManager.GetUserAsync(User).Result;
 
             var ownedSongs = GetOwnedSongs(user);
-
-            var ownedAlbums = GetOwnedAlbums(user);
-
-            var ownedArtists = GetOwnedArtists(user);
-
             var ownedAlbumSongs = GetOwnedAlbumSongs(user);
+            var ownedAlbums = GetOwnedAlbums(user);
+            var ownedArtists = GetOwnedArtists(user);
             
             bool hasProduct = ownedSongs.Any() || ownedAlbums.Any() || ownedArtists.Any();
 
@@ -170,12 +188,43 @@ namespace G6_BevoTunes.Controllers
                 return Unauthorized();
             }
 
+            // Validate ownership if specific product is provided
+            if (songId.HasValue && !OwnsSong(user, songId.Value))
+            {
+                return Unauthorized();
+            }
+            if (albumId.HasValue && !OwnsAlbum(user, albumId.Value))
+            {
+                return Unauthorized();
+            }
+            if (artistId.HasValue && !OwnsArtist(user, artistId.Value))
+            {
+                return Unauthorized();
+            }
+
             var allSongs = ownedSongs.Union(ownedAlbumSongs).ToList();
 
-            ViewBag.OwnedSongs = new SelectList(allSongs, "SongId", "SongTitle");
-            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName");
-            ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName");
+            ViewBag.OwnedSongs = new SelectList(allSongs, "SongId", "SongTitle", songId);
+            ViewBag.OwnedAlbums = new SelectList(ownedAlbums, "AlbumId", "AlbumName", albumId);
+            ViewBag.OwnedArtists = new SelectList(ownedArtists, "ArtistId", "ArtistName", artistId);
             ViewBag.HasProduct = hasProduct;
+            
+            // Set the product type if one was provided as a query parameter
+            if (songId.HasValue)
+            {
+                ViewBag.SelectedProductType = "Song";
+                ViewBag.SelectedProductId = songId;
+            }
+            else if (albumId.HasValue)
+            {
+                ViewBag.SelectedProductType = "Album";
+                ViewBag.SelectedProductId = albumId;
+            }
+            else if (artistId.HasValue)
+            {
+                ViewBag.SelectedProductType = "Artist";
+                ViewBag.SelectedProductId = artistId;
+            }
     
             return View();
         }

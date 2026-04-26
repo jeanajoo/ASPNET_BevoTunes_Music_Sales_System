@@ -139,6 +139,7 @@ namespace G6_BevoTunes.Controllers
 
             ProductsViewModel pvm = new ProductsViewModel { Albums = results };
 
+            TempData["DisplayAlbumsMessage"] = "Displaying " + results.Count() + " of " + _context.Albums.Count() + " albums";
             return View("Index", pvm);
         }
         
@@ -194,6 +195,7 @@ namespace G6_BevoTunes.Controllers
 
             ProductsViewModel pvm = new ProductsViewModel { Songs = results };
 
+            TempData["DisplaySongsMessage"] = "Displaying " + results.Count() + " of " + _context.Songs.Count() + " songs";
             return Task.FromResult<IActionResult>(View("Index", pvm));
         }
 
@@ -242,6 +244,7 @@ namespace G6_BevoTunes.Controllers
                             .Include(ar => ar.Reviews)
                             .ToListAsync();
 
+            TempData["DisplayArtistsMessage"] = "Displaying " + results.Count() + " of " + _context.Artists.Count() + " artists";
             return View("ArtistSearchResults", results);
         }
 

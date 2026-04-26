@@ -74,10 +74,9 @@
                             <p class="card-text">
                                 <strong>Average Rating:</strong> 
                                 @{
-                                    var songApprovedReviews = song.Reviews.Where(r => r.Status == ReviewStatus.Approve).ToList();
-                                    decimal songAvgRating = songApprovedReviews.Any() ? (decimal)songApprovedReviews.Average(r => r.Rating) : 0;
+                                    var AverageRating = song.AverageRating;
                                 }
-                                @(songApprovedReviews.Any() ? songAvgRating.ToString("F2") : "No ratings") / 5
+                                @(AverageRating != -1.0m ? AverageRating.ToString("F2") : "No ratings") / 5
                             </p>
                             <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId" class="btn btn-sm btn-primary">View Details</a>
                         </div>
@@ -128,10 +127,16 @@
 }
 
 <!-- Reviews Section -->
-@if (Model.Reviews.Any(r => r.Status == ReviewStatus.Approve))
-{
-    <div class="mb-4">
-        <h3>Reviews & Ratings</h3>
+<div class="mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Reviews & Ratings</h3>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+        {
+            <a asp-controller="Reviews" asp-action="Create" asp-route-artistId="@Model.ArtistId" class="btn btn-sm btn-primary">Write Review</a>
+        }
+    </div>
+    @if (Model.Reviews.Any(r => r.Status == ReviewStatus.Approve))
+    {
         <div class="row">
             @foreach (var review in Model.Reviews.Where(r => r.Status == ReviewStatus.Approve).OrderByDescending(r => r.ReviewID))
             {
@@ -160,14 +165,17 @@
                 </div>
             }
         </div>
-    </div>
-}
-else if (Model.Reviews.Any())
-{
-    <div class="alert alert-info">
-        Reviews are pending approval.
-    </div>
-}
+    }
+    else if (Model.Reviews.Any())
+    {
+        <div class="alert alert-info">
+            Reviews are pending approval.
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">No reviews yet. Be the first to review this artist!</p>
+    }
 
 <div class="mb-3">
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
