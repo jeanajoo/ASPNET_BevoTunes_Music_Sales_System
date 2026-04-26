@@ -25,7 +25,30 @@ namespace G6_BevoTunes.Controllers
 
         // GET: Products/Songs
         public async Task<IActionResult> Index()
-        {
+        {   
+                if (TempData["SelectedCustomerId"] != null)
+                {
+                    TempData.Keep("SelectedCustomerId");
+                    TempData.Keep("SelectedCustomerEmail");
+
+                    string selectedCustomerId = TempData["SelectedCustomerId"].ToString();
+                    
+                    var activeOrder = await _context.Orders
+                        .FirstOrDefaultAsync(o => o.Customer.Id == selectedCustomerId 
+                                            && o.OrderStatus == OrderStatus.InCart);
+                    
+                    if (activeOrder != null)
+                    {
+                        TempData["OrderId"] = activeOrder.OrderID;
+                    }
+                    else
+                    {
+                        TempData.Remove("OrderId"); 
+                    }
+
+                    TempData.Keep("OrderId");
+                }
+            
             List<Song> songs = await _context.Songs
                 .Include(s => s.Artists)
                 .Include(s => s.Genres)

@@ -172,11 +172,22 @@
                 <td>@Model.OrderTotal.ToString("C")</td>
             </tr>
         </table>
+        @if (Model.OrderStatus == OrderStatus.InCart)
+        {
             <div class="d-flex justify-content-end">
-                <a asp-action="Index" class="btn btn-secondary">
-                    Back to Order History
+                <a asp-controller ="Search"asp-action="Index" class="btn btn-secondary">
+                    Back to Ordering
                 </a>
             </div>
+        }
+        else if (Model.OrderStatus == OrderStatus.Ordered)
+        {
+            <div class="d-flex justify-content-end">
+                <a asp-action="Index" class="btn btn-secondary">
+                    Back to Order List
+                </a>
+            </div>
+        }
         <br/>
         @if(Model.OrderDetails.Count() > 0 && Model.OrderStatus == OrderStatus.InCart)
         {

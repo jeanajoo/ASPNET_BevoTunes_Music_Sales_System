@@ -208,7 +208,8 @@ namespace G6_BevoTunes.Controllers
             }
 
             var orderDetail = await _context.OrderDetails
-                .Include(od => od.Order)
+                .Include(od => od.Order).Include(od => od.Song)
+                .Include(od => od.Album)
                 .FirstOrDefaultAsync(m => m.OrderDetailID == id);
 
             if (orderDetail == null)
@@ -226,7 +227,8 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var orderDetail = await _context.OrderDetails
-                .Include(od => od.Order)
+                .Include(od => od.Order).Include(od => od.Song)
+                .Include(od => od.Album)
                 .FirstOrDefaultAsync(od => od.OrderDetailID == id);
 
             int orderId = 0;

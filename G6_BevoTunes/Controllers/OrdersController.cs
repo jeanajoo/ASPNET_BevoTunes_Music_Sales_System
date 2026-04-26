@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 
 namespace G6_BevoTunes.Controllers
 {
+    [Authorize(Roles = "Customer, Admin, Employee")]
     public class OrdersController : Controller
     {
         private readonly AppDbContext _context;
@@ -533,7 +534,14 @@ namespace G6_BevoTunes.Controllers
                 Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
                 }).ToList();
 
+            if (User.IsInRole("Customer"))
+            {
             creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+            }
+            else if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+            creditCardItems.Add(new { CustCreditCardID = -1, Display = " ---" });
+            }
 
             ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
             
@@ -605,7 +613,14 @@ namespace G6_BevoTunes.Controllers
                         Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
                         }).ToList();
 
+                    if (User.IsInRole("Customer"))
+                    {
                     creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+                    }
+                    else if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                    {
+                    creditCardItems.Add(new { CustCreditCardID = -1, Display = "---" });
+                    }
 
                     ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
 
@@ -639,7 +654,10 @@ namespace G6_BevoTunes.Controllers
                 // {
                 //     ModelState.AddModelError("", "Selected card not found.");
                 // }
-
+                if (SelectCard == -1)
+                {
+                    ModelState.AddModelError("", "There is not a valid Card entry");
+                }
                 if (!ModelState.IsValid)
                 {
                     var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
@@ -649,7 +667,14 @@ namespace G6_BevoTunes.Controllers
                         Display = $"**** **** **** {c.CardNumber[^4..]} - {c.CardType}"
                         }).ToList();
 
+                    if (User.IsInRole("Customer"))
+                    {
                     creditCardItems.Add(new { CustCreditCardID = 0, Display = "Use a new card" });
+                    }
+                    else if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                    {
+                    creditCardItems.Add(new { CustCreditCardID = -1, Display = "---" });
+                    }
 
                     ViewBag.creditCards = new SelectList(creditCardItems, "CustCreditCardID", "Display");
 
@@ -819,14 +844,14 @@ namespace G6_BevoTunes.Controllers
         // }
 
         [HttpGet]
-        [Authorize(Roles = "Customer, Admin, Employee")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> PurchaseAsGift ()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Customer, Admin, Employee")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> PurchaseAsGift (string RecipientEmail)
         {
             AppUser user = await _userManager.GetUserAsync(User);
@@ -962,6 +987,7 @@ namespace G6_BevoTunes.Controllers
             {
                 string subject = String.Format("Dear {0} {1}, Your order [#{2}] for {3} {4} is successful", currentOrder.Customer.FirstName, currentOrder.Customer.LastName, currentOrder.OrderID, currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName);
                 string body = String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+                body += String.Format("This message was intended for {0}", currentOrder.Customer.Email);
                 await EmailController.SendEmailAsync("", subject, body);
 
                 subject = String.Format("Dear {0} {1}, You have recieved a Order [#{2}] from {3} {4}", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID,currentOrder.Customer.FirstName, currentOrder.Customer.LastName);
@@ -988,6 +1014,9 @@ namespace G6_BevoTunes.Controllers
                 {
                     body += String.Format("song: {0} that may interest you.", recommend_song.SongTitle);
                 }
+
+                body += String.Format("This message was intended for {0}", currentOrder.Recipient.Email);
+
                 await EmailController.SendEmailAsync("", subject, body);
             }
             else
@@ -1016,6 +1045,8 @@ namespace G6_BevoTunes.Controllers
                 {
                     body += String.Format("song: {0} that may interest you.", recommend_song.SongTitle);
                 }
+                body += String.Format("This message was intended for {0}", currentOrder.Recipient.Email);
+
                 await EmailController.SendEmailAsync("", subject, body);
             }
 
@@ -1081,6 +1112,8 @@ namespace G6_BevoTunes.Controllers
                         body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
                     }
                 }
+                body += String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+
             await EmailController.SendEmailAsync("", subject, body);
 
             subject = String.Format("Dear {0} {1}, Your order [#{2}] from {3} {4} has been successful Refunded", currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName, currentOrder.OrderID, currentOrder.Customer.FirstName, currentOrder.Customer.LastName);
@@ -1096,6 +1129,7 @@ namespace G6_BevoTunes.Controllers
                         body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
                     }
                 }
+                body += String.Format("This message was intended for {0}", currentOrder.Recipient.Email);
             await EmailController.SendEmailAsync("", subject, body);
 
             }
@@ -1113,7 +1147,10 @@ namespace G6_BevoTunes.Controllers
                     {
                         body += String.Format("<tr>Song: {0}</tr>", od.Song.SongTitle);
                     }
+                    
                 }
+                body += String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+
             await EmailController.SendEmailAsync("", subject, body);
             }
             return View();
