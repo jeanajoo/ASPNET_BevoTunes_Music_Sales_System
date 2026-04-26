@@ -996,8 +996,7 @@ namespace G6_BevoTunes.Controllers
             if (currentOrder.Customer.Id != currentOrder.Recipient.Id)
             {
                 string subject = String.Format("Dear {0} {1}, Your order [#{2}] for {3} {4} is successful", currentOrder.Customer.FirstName, currentOrder.Customer.LastName, currentOrder.OrderID, currentOrder.Recipient.FirstName, currentOrder.Recipient.LastName);
-                string body = String.Format("This message was intended for {0}", currentOrder.Customer.Email);
-                body += String.Format("This message was intended for {0}", currentOrder.Customer.Email);
+                string body = String.Format("This message was intended for {0}. ", currentOrder.Customer.Email);
                 body += String.Format("If this order was made by mistake, you can refund here. https://sp26bevotunesgroup6.azurewebsites.net/Orders/Refund/?orderID={0}", currentOrder.OrderID);
                 await EmailController.SendEmailAsync("", subject, body);
 
@@ -1056,7 +1055,7 @@ namespace G6_BevoTunes.Controllers
                 {
                     body += String.Format("song: {0} that may interest you.", recommend_song.SongTitle);
                 }
-                body += String.Format("This message was intended for {0}", currentOrder.Recipient.Email);
+                body += String.Format("This message was intended for {0}. ", currentOrder.Recipient.Email);
 
                 body += String.Format("If this order was made by mistake, you can refund here. https://sp26bevotunesgroup6.azurewebsites.net/Orders/Refund/?orderID={0}", currentOrder.OrderID);
 
