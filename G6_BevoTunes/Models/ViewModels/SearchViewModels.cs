@@ -10,7 +10,7 @@ public class AlbumSearchViewModel
     public String ArtistName {get; set;}
     
     [Display(Name = "Genre:")]
-    public Int32 Genre {get; set;}
+    public List<Int32> Genres {get; set;}
 
     [Range(1.0, 5.0)]
     public Decimal Rating {get; set;}
@@ -33,7 +33,7 @@ public class SongSearchViewModel
     public String ArtistName {get; set;}
     
     [Display(Name = "Genre:")]
-    public Int32 Genre {get; set;}
+    public List<Int32> Genres {get; set;}
 
     [Range(1.0, 5.0)]
     public Decimal Rating {get; set;}
@@ -50,7 +50,7 @@ public class ArtistSearchViewModel
     public String ArtistName {get; set;}
     
     [Display(Name = "Genre:")]
-    public Int32 Genre {get; set;}
+    public List<Int32> Genres {get; set;}
 
     [Range(0.0, 5.0)]
     public Decimal Rating {get; set;}

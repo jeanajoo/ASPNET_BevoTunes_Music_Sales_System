@@ -86,9 +86,10 @@ namespace G6_BevoTunes.Controllers
                 albumQuery = albumQuery.Where(a => a.Artists.Any(ar => ar.ArtistName.Contains(asvm.ArtistName) && ar.IsActive));
             }
 
+            // Filter by Genre; we probably have to set up the "null" or all genres value, or be lazy and set to null
             if (selectedGenres != null && selectedGenres.Length > 0)
             {
-                albumQuery = albumQuery.Where(a => a.Genres.Any(g => selectedGenres.Contains(g.GenreId)));
+                albumQuery = albumQuery.Where(a => a.Genres.Any(g => selectedGenres.Contains(g.GenreId) && g.IsActive));
             }
 
             if (asvm.Rating != 0.0m)
@@ -103,13 +104,13 @@ namespace G6_BevoTunes.Controllers
                 }
             }
 
-            var results = await albumQuery
-                            .Include(a => a.Artists)
-                            .Include(a => a.Genres)
-                            .Include(a => a.Songs)
-                            .Include(a => a.Reviews)
-                            .AsNoTracking() 
-                            .ToListAsync();
+            var results = albumQuery
+                            .Include(s => s.Artists)
+                            .Include(s => s.Genres)
+                            // .Include(s => s.Songs)
+                            .Include(s => s.Reviews)
+                            .Include(s => s.Promotions)
+                            .ToList();
 
             ProductsViewModel pvm = new ProductsViewModel { Albums = results };
 
@@ -144,7 +145,7 @@ namespace G6_BevoTunes.Controllers
 
             if (selectedGenres != null && selectedGenres.Length > 0)
             {
-                songQuery = songQuery.Where(s => s.Genres.Any(g => selectedGenres.Contains(g.GenreId)));
+                songQuery = songQuery.Where(s => s.Genres.Any(g => selectedGenres.Contains(g.GenreId) && g.IsActive));
             }
 
             if (ssvm.Rating != 0.0m)
@@ -161,7 +162,7 @@ namespace G6_BevoTunes.Controllers
             var results = songQuery
                             .Include(s => s.Artists)
                             .Include(s => s.Genres)
-                            .Include(s => s.Albums)
+                            // .Include(s => s.Albums)
                             .Include(s => s.Reviews)
                             .Include(s => s.Promotions)
                             .ToList();
@@ -172,7 +173,7 @@ namespace G6_BevoTunes.Controllers
         }
 
         // Artist Search
-        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
+        public async Task<IActionResult> DisplayArtistSearchResults(ArtistSearchViewModel asvm, int[] selectedGenres, string SelectedCustomerId = null, string SelectedCustomerEmail = null)
         {
             // Restore customer context from form values
             if (!string.IsNullOrEmpty(SelectedCustomerId))
@@ -190,9 +191,9 @@ namespace G6_BevoTunes.Controllers
             }
 
             // Filter by Genre
-            if (asvm.Genre != 0)
+            if (selectedGenres != null && selectedGenres.Length > 0)
             {
-                artistQuery = artistQuery.Where(ar => ar.Genres.Any(g => g.GenreId == asvm.Genre && g.IsActive));
+                artistQuery = artistQuery.Where(ar => ar.Genres.Any(g => selectedGenres.Contains(g.GenreId) && g.IsActive));
             }
 
             // Filter by ratings
