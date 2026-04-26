@@ -46,6 +46,7 @@ namespace G6_BevoTunes.Controllers
                 .Include(a => a.Songs)
                     .ThenInclude(s => s.Reviews)
                 .Include(a => a.Reviews)
+                .Include(a => a.Promotions)
                 .FirstOrDefaultAsync(m => m.AlbumId == id);
 
             if (album == null)
