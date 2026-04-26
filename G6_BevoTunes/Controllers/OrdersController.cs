@@ -257,7 +257,7 @@ namespace G6_BevoTunes.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Details));
         }
 
         [Authorize]
@@ -666,7 +666,9 @@ namespace G6_BevoTunes.Controllers
                     await _context.SaveChangesAsync();
 
             }
+
             TempData["RecipientId"] = order.Recipient.Id;
+            TempData["CustomerId"] = order.Customer.Id;
             return View("ConfirmCheckout", order);
         }
 
@@ -910,10 +912,12 @@ namespace G6_BevoTunes.Controllers
         public async Task<IActionResult> Confirm()
         {
             String recipientId = TempData["RecipientId"]?.ToString();
+            String customerId = TempData["CustomerId"]?.ToString();
+
             var currentOrder = await _context.Orders.Include(o => o.Customer).Include(o => o.Recipient)
                 .Include(o => o.OrderDetails).ThenInclude(od => od.Song).ThenInclude(s => s.Genres)
                 .Include(o => o.OrderDetails).ThenInclude(od => od.Album).ThenInclude(a => a.Genres)
-                .FirstOrDefaultAsync(o => o.Customer.Id == recipientId && o.OrderStatus == OrderStatus.InCart);
+                .FirstOrDefaultAsync(o => o.Customer.Id == customerId && o.OrderStatus == OrderStatus.InCart);
 
             currentOrder.OrderDate = DateTime.Now;
             currentOrder.OrderStatus = OrderStatus.Ordered;
