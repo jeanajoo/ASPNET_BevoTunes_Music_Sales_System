@@ -667,7 +667,7 @@ namespace G6_BevoTunes.Controllers
                 {
                     ModelState.AddModelError("", "Your account is in a disabled state, you cannot checkout");
                 }
-                
+
                 if (!ModelState.IsValid)
                 {
                     var credit_card = order.Customer.CreditCards.Where(c => c.ActiveStatus == true).ToList();
@@ -1188,7 +1188,7 @@ namespace G6_BevoTunes.Controllers
             return RedirectToAction("Index", "Search");
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Employee")]
         public IActionResult ClearCustomerContext()
         {
             TempData.Remove("SelectedCustomerId");

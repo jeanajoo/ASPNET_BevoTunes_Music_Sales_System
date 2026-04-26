@@ -60,6 +60,7 @@ public class HomeController : Controller
             .ToListAsync();
         
         List<Song> mySongs = new List<Song>();
+        
         foreach(Order o in myOrders)
         {
             foreach(OrderDetail od in o.OrderDetails)
@@ -68,9 +69,8 @@ public class HomeController : Controller
                 {
                     mySongs.Add(od.Song);
                 }
-                 if(od.Album != null)
+                if(od.Album != null)
                 {
-
                     foreach(Song s in od.Album.Songs)
                     {
                         mySongs.Add(s);
@@ -98,7 +98,7 @@ public class HomeController : Controller
 
         ViewBag.SearchString = searchString;
         ViewBag.SortOrder = sortOrder;
-        
+
         return View(mySongs);
     }
 

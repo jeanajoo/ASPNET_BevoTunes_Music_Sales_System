@@ -85,7 +85,7 @@ namespace G6_BevoTunes.Controllers
             return _context.OrderDetails
                 .Include(od => od.Order)
                 .Include(od => od.Song)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                .Where(od => od.Order != null && od.Order.Recipient != null && od.Order.Recipient.Id == user.Id 
                 && od.Song != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Select(od => od.Song)
                 .Distinct()
@@ -101,7 +101,7 @@ namespace G6_BevoTunes.Controllers
                 .Include(od => od.Order)
                 .Include(od => od.Album)
                 .ThenInclude(a => a.Songs)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                .Where(od => od.Order != null && od.Order.Recipient != null && od.Order.Recipient.Id == user.Id 
                 && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .SelectMany(od => od.Album.Songs)
                 .Distinct()
@@ -116,7 +116,7 @@ namespace G6_BevoTunes.Controllers
             return _context.OrderDetails
                 .Include(od => od.Order)
                 .Include(od => od.Album)
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                .Where(od => od.Order != null && od.Order.Recipient != null && od.Order.Recipient.Id == user.Id 
                 && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Select(od => od.Album)
                 .Distinct()
@@ -129,7 +129,7 @@ namespace G6_BevoTunes.Controllers
                 return new List<Artist>();
                 
             HashSet<Artist> ownSongsArtists = _context.OrderDetails
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                .Where(od => od.Order != null && od.Order.Recipient != null && od.Order.Recipient.Id == user.Id 
                 && od.Song != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Include(od => od.Song)
                 .ThenInclude(s => s.Artists)
@@ -138,7 +138,7 @@ namespace G6_BevoTunes.Controllers
                 .ToHashSet();
 
             HashSet<Artist> ownAlbumsArtists = _context.OrderDetails
-                .Where(od => od.Order != null && od.Order.Customer != null && od.Order.Customer.Id == user.Id 
+                .Where(od => od.Order != null && od.Order.Recipient != null && od.Order.Recipient.Id == user.Id 
                 && od.Album != null && od.Order.OrderStatus == OrderStatus.Ordered)
                 .Include(od => od.Album)
                 .ThenInclude(s => s.Artists)

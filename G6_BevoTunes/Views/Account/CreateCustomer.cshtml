@@ -15,7 +15,10 @@
                 <label class="control-label">Role</label>
                 <select name="role" class="form-control">
                     <option value="Customer" selected="@(role == "Customer")">Customer</option>
+                    @if (User.IsInRole("Admin"))
+                    {
                     <option value="Employee" selected="@(role == "Employee")">Employee</option>
+                    }
                 </select>
             </div>
 
