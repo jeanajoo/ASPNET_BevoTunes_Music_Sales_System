@@ -1,10 +1,11 @@
-## Bevo’s Tunes (ASP.NET Core MVC Music Sales Platform)
-> Bevo’s Tunes is an enterprise ASP.NET Core 8.0 MVC platform for digital music sales and catalog management. Built with C# and EF Core on Azure SQL, it features role-based access control (RBAC), multi-criteria search algorithms, dynamic 8.25% tax and order workflows, transactional integrity, and automated Gmail SMTP integration for gift routing.
+Bevo’s Tunes (ASP.NET Core MVC Music Sales Platform)
 
-## Project Overview
+Bevo’s Tunes is an enterprise ASP.NET Core 8.0 MVC platform for digital music sales and catalog management. Built with C# and EF Core on Azure SQL, it features role-based access control (RBAC), multi-criteria search algorithms, dynamic 8.25% tax and order workflows, transactional integrity, and automated Gmail SMTP integration for gift routing.
+
+#Project Overview
 Bevo’s Tunes (BT) is a Texas-based music sales and management web application built for the **MIS 333K (Spring 2026) Final Project** at UT Austin. The system manages relational music catalog data, customer accounts, transactional shopping carts, order history, and back-office administrative reporting.
 
-## Tech Stack & Architecture
+#Tech Stack & Architecture
 * **Backend:** C#, ASP.NET Core 8.0 MVC
 * **ORM & Database:** Entity Framework Core (Code-First), Azure SQL Database / Microsoft SQL Server
 * **Frontend:** Razor Views, HTML5, CSS3, Bootstrap 5
