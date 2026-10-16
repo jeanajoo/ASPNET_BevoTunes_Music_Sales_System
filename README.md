@@ -4,7 +4,7 @@ Bevo’s Tunes is an enterprise ASP.NET Core 8.0 MVC platform for digital music 
 
 **Project Overview**
 
-Bevo’s Tunes (BT) is a Texas-based music sales and management web application built for the MIS 333K (Spring 2026) Final Project at UT Austin. The system manages relational music catalog data, customer accounts, transactional shopping carts, order history, and back-office administrative reporting.
+The Bevo’s Tunes (BT) system manages relational music catalog data, customer accounts, transactional shopping carts, order history, and back-office administrative reporting for a simulated music store.
 
 Tech Stack & Architecture
 - Backend: C#, ASP.NET Core 8.0 MVC
